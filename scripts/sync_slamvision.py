@@ -19,7 +19,6 @@ def main():
     data={'generated_at':datetime.datetime.now(datetime.timezone.utc).isoformat(),'channels':{}}
     channels=read('channels')
     byid={c['id']:c for c in channels}
-    print('PURO CANDIDATES: '+json.dumps([{'number':x.get('number'),'id':x.get('id'),'name':x.get('name')} for x in channels if any(t in (str(x.get('id',''))+' '+str(x.get('name',''))+' '+str(x.get('callsign',''))).lower() for t in ('puro','japan','wrestle-1','bjw','ddt'))]),flush=True)
     ajpw=next((ch for ch in channels if ch.get('number')==5),None)
     if not ajpw: raise RuntimeError('SlamVision Channel 05 missing')
     joshi=next((ch for ch in channels if ch.get('number')==11),None)
@@ -135,7 +134,24 @@ def main():
       'up_next':[program(x) for x in dg_now.get('up_next',[])[:8]],
       'guide':[program(x) for x in byguide.get('dgtv',{}).get('slots',[])],
       'server_time':dg_now.get('server_time')}}}
+    puro_channels={'43':'ddt','44':'dream-graps','46':'dramatic-graps','47':'bjw'}
+    puro_data={'generated_at':datetime.datetime.now(datetime.timezone.utc).isoformat(),'channels':{}}
+    for number,channel_id in puro_channels.items():
+        ch=byid.get(channel_id)
+        if not ch or ch.get('number')!=int(number):
+            raise RuntimeError('Puroresu channel mismatch '+number)
+        now=read('channels/'+channel_id+'/now')
+        current=program(now.get('current'))
+        if not current or not current['stream_url']:
+            raise RuntimeError('Missing puroresu current stream '+channel_id)
+        puro_data['channels'][number]={
+          'id':channel_id,'name':ch.get('name',channel_id),'current':current,
+          'up_next':[program(x) for x in now.get('up_next',[])[:8]],
+          'guide':[program(x) for x in byguide.get(channel_id,{}).get('slots',[])],
+          'server_time':now.get('server_time')
+        }
     OUT.mkdir(parents=True,exist_ok=True)
+    (OUT/'puro-live.json').write_text(json.dumps(puro_data,ensure_ascii=False,separators=(',',':')),encoding='utf-8')
     (OUT/'dragongate-live.json').write_text(json.dumps(dg_data,ensure_ascii=False,separators=(',',':')),encoding='utf-8')
     (OUT/'independent-live.json').write_text(json.dumps(indie_data,ensure_ascii=False,separators=(',',':')),encoding='utf-8')
     (OUT/'noah-live.json').write_text(json.dumps(noah_data,ensure_ascii=False,separators=(',',':')),encoding='utf-8')
