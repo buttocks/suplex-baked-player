@@ -19,7 +19,6 @@ def main():
     data={'generated_at':datetime.datetime.now(datetime.timezone.utc).isoformat(),'channels':{}}
     channels=read('channels')
     byid={c['id']:c for c in channels}
-    print('DRAGON GATE CANDIDATES: '+json.dumps([{'number':x.get('number'),'id':x.get('id'),'name':x.get('name')} for x in channels if 'dragon' in (str(x.get('id',''))+' '+str(x.get('name',''))+' '+str(x.get('callsign',''))).lower()]),flush=True)
     ajpw=next((ch for ch in channels if ch.get('number')==5),None)
     if not ajpw: raise RuntimeError('SlamVision Channel 05 missing')
     joshi=next((ch for ch in channels if ch.get('number')==11),None)
@@ -122,7 +121,21 @@ def main():
           'guide':[program(x) for x in byguide.get(channel_id,{}).get('slots',[])],
           'server_time':now.get('server_time')
         }
+    dg=byid.get('dgtv')
+    if not dg or dg.get('number')!=37:
+        raise RuntimeError('SlamVision Dragon Gate channel 37 unavailable')
+    dg_now=read('channels/dgtv/now')
+    dg_current=program(dg_now.get('current'))
+    if not dg_current or not dg_current['stream_url']:
+        raise RuntimeError('No playable Dragon Gate current program')
+    dg_data={'generated_at':datetime.datetime.now(datetime.timezone.utc).isoformat(),
+      'channels':{'37':{'id':'dgtv','name':dg.get('name','Dragongate'),
+      'current':dg_current,
+      'up_next':[program(x) for x in dg_now.get('up_next',[])[:8]],
+      'guide':[program(x) for x in byguide.get('dgtv',{}).get('slots',[])],
+      'server_time':dg_now.get('server_time')}}}
     OUT.mkdir(parents=True,exist_ok=True)
+    (OUT/'dragongate-live.json').write_text(json.dumps(dg_data,ensure_ascii=False,separators=(',',':')),encoding='utf-8')
     (OUT/'independent-live.json').write_text(json.dumps(indie_data,ensure_ascii=False,separators=(',',':')),encoding='utf-8')
     (OUT/'noah-live.json').write_text(json.dumps(noah_data,ensure_ascii=False,separators=(',',':')),encoding='utf-8')
     (OUT/'roh-live.json').write_text(json.dumps(roh_data,ensure_ascii=False,separators=(',',':')),encoding='utf-8')
