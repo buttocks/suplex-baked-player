@@ -14,8 +14,6 @@ button:hover{background:#252c3c}
 #controls>div{display:flex;gap:6px;pointer-events:auto}
 #status{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;text-align:center;white-space:pre-line;padding:30px;background:#05070a;pointer-events:none}
 #status[hidden]{display:none}
-#badge{position:absolute;right:14px;bottom:14px;background:#080c14cb;border:1px solid #9998;padding:5px 9px;font-size:12px;font-weight:800;letter-spacing:.08em;pointer-events:none}
-#badge[hidden]{display:none}
 #guide{position:absolute;z-index:4;left:12px;top:56px;width:min(420px,calc(100vw - 24px));max-height:min(75vh,530px);overflow:auto;background:#101621f5;border:1px solid #667085;border-radius:7px;box-shadow:0 16px 40px #000a}
 #guide[hidden]{display:none}
 #guide header{padding:12px 14px;position:sticky;top:0;background:#151c29;border-bottom:1px solid #384254}
@@ -34,8 +32,7 @@ button:hover{background:#252c3c}
 <body>
 <video id="video" playsinline autoplay preload="auto" muted></video>
 <div id="status">Tuning AJPW…</div>
-<div id="badge" hidden>AJPW-TV</div>
-<div id="controls"><div><button id="guide-toggle" type="button" aria-expanded="false">☷ TV Guide</button><button id="logo-toggle" type="button">Logo: Off</button></div><div><button id="sound-toggle" type="button">🔇 Unmute</button></div></div>
+<div id="controls"><div><button id="guide-toggle" type="button" aria-expanded="false">☷ TV Guide</button></div><div><button id="sound-toggle" type="button">🔇 Unmute</button></div></div>
 <aside id="guide" hidden aria-label="Live AJPW program schedule"><header><strong id="guide-title">AJPW-TV SCHEDULE</strong><div><small id="guide-refresh">Loading…</small></div></header><ol id="guide-rows"></ol><footer>Schedule: SlamVision · Videos: Internet Archive · Times shown locally</footer></aside>
 <script>
 (()=>{
@@ -44,20 +41,18 @@ const params=new URLSearchParams(location.search);
 const channel='05';
 const key='baked-ajpw-'+channel+'-';
 const $=id=>document.getElementById(id);
-const video=$('video'),status=$('status'),badge=$('badge'),guide=$('guide');
-const guideButton=$('guide-toggle'),logoButton=$('logo-toggle'),soundButton=$('sound-toggle');
+const video=$('video'),status=$('status'),guide=$('guide');
+const guideButton=$('guide-toggle'),soundButton=$('sound-toggle');
 const rows=$('guide-rows'),title=$('guide-title'),refresh=$('guide-refresh');
-let schedule=null,playingKey='',changing=false,timer=null,muted=true,guideOpen=false,logoVisible=false;
+let schedule=null,playingKey='',changing=false,timer=null,muted=true,guideOpen=false;
 function stored(k){try{return localStorage.getItem(key+k)==='true'}catch{return false}}
 function save(k,v){try{localStorage.setItem(key+k,String(v))}catch{}}
-guideOpen=stored('guide');logoVisible=stored('logo');
+guideOpen=stored('guide');
 function renderControls(){
  guide.hidden=!guideOpen;guideButton.textContent=guideOpen?'✕ Hide Guide':'☷ TV Guide';guideButton.setAttribute('aria-expanded',String(guideOpen));
- badge.hidden=!logoVisible;badge.textContent='CH '+channel+' · AJPW-TV';logoButton.textContent=logoVisible?'Logo: On':'Logo: Off';
  soundButton.textContent=muted?'🔇 Unmute':'🔊 Mute';video.muted=muted;
 }
 guideButton.onclick=()=>{guideOpen=!guideOpen;save('guide',guideOpen);renderControls();if(guideOpen)renderGuide()};
-logoButton.onclick=()=>{logoVisible=!logoVisible;save('logo',logoVisible);renderControls()};
 soundButton.onclick=()=>{muted=!muted;renderControls();video.play().catch(()=>{})};
 renderControls();
 const ms=t=>Date.parse(t||'');
