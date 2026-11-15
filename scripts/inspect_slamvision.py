@@ -24,3 +24,18 @@ for term in ['queryKey:[`now`','queryKey:[`guide`','/api/channels','/api/guide',
  matches=[m.start() for m in re.finditer(re.escape(term),js,re.I)]
  data['interesting'].append({'term':term,'occurrences':len(matches),'contexts':[js[max(0,i-400):i+700] for i in matches[:8]]})
 out.write_text(json.dumps(data,indent=2))
+
+imports=re.findall(r'(?:from|import)\\s*["\\'](\\./[^"\\']+\\.js)["\\']',js)
+extra=[]
+for filename in sorted(set(imports))[:35]:
+ try:
+  url=urllib.parse.urljoin(scripts[0],filename)
+  body=get(url)
+  hits=[]
+  for needle in ['/api/','/channels','/guide','/now','baseURL','axios','fetch(','njpw','stream_url','video_url']:
+   for m in list(re.finditer(re.escape(needle),body,re.I))[:5]:
+    hits.append({'term':needle,'context':body[max(0,m.start()-180):m.start()+300]})
+  if hits:extra.append({'url':url,'length':len(body),'hits':hits[:25]})
+ except Exception as exc:extra.append({'error':str(exc),'file':filename})
+data['modules']=extra
+out.write_text(json.dumps(data,indent=2))
