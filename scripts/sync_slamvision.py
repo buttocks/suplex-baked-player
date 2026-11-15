@@ -19,7 +19,6 @@ def main():
     data={'generated_at':datetime.datetime.now(datetime.timezone.utc).isoformat(),'channels':{}}
     channels=read('channels')
     byid={c['id']:c for c in channels}
-    print('LUCHA CANDIDATES: '+json.dumps([{'number':c.get('number'),'id':c.get('id'),'name':c.get('name'),'callsign':c.get('callsign')} for c in channels if any(t in (str(c.get('id',''))+' '+str(c.get('name',''))+' '+str(c.get('callsign',''))).lower() for t in ('lucha','cmll','aaa'))]),flush=True)
     ajpw=next((ch for ch in channels if ch.get('number')==5),None)
     if not ajpw: raise RuntimeError('SlamVision Channel 05 missing')
     joshi=next((ch for ch in channels if ch.get('number')==11),None)
@@ -61,20 +60,26 @@ def main():
        'current':joshi_current,'up_next':[program(x) for x in response11.get('up_next',[])[:8]],
        'guide':[program(x) for x in byguide.get(joshi['id'],{}).get('slots',[])],
        'server_time':response11.get('server_time')}}}
-    lucha=next((ch for ch in channels if ch.get('id')=='100-lucha' and ch.get('number')==16),None)
-    if not lucha: raise RuntimeError('100% Lucha Channel 16 missing')
-    lucha_now=read('channels/'+lucha['id']+'/now')
-    lucha_current=program(lucha_now.get('current'))
-    if not lucha_current or not lucha_current['stream_url']: raise RuntimeError('No playable 100% Lucha current program')
-    lucha_data={'generated_at':datetime.datetime.now(datetime.timezone.utc).isoformat(),
-      'channels':{'16':{'id':lucha['id'],'name':lucha.get('name','100% Lucha'),
-      'current':lucha_current,'up_next':[program(x) for x in lucha_now.get('up_next',[])[:8]],
-      'guide':[program(x) for x in byguide.get(lucha['id'],{}).get('slots',[])],
-      'server_time':lucha_now.get('server_time')}}}
+    lucha_channels={'16':'100-lucha','54':'lu-tv','60':'cmll','62':'aaa','93':'universal-lucha-libre'}
+    lucha_data={'generated_at':datetime.datetime.now(datetime.timezone.utc).isoformat(),'channels':{}}
+    for number,channel_id in lucha_channels.items():
+        ch=byid.get(channel_id)
+        if not ch or ch.get('number')!=int(number):
+            raise RuntimeError('Lucha channel mismatch: '+number+' '+channel_id)
+        now=read('channels/'+channel_id+'/now')
+        current=program(now.get('current'))
+        if not current or not current['stream_url']:
+            raise RuntimeError('No playable current program for '+channel_id)
+        lucha_data['channels'][number]={
+          'id':channel_id,'name':ch.get('name',channel_id),
+          'current':current,'up_next':[program(x) for x in now.get('up_next',[])[:8]],
+          'guide':[program(x) for x in byguide.get(channel_id,{}).get('slots',[])],
+          'server_time':now.get('server_time')
+        }
     OUT.mkdir(parents=True,exist_ok=True)
     (OUT/'lucha-live.json').write_text(json.dumps(lucha_data,ensure_ascii=False,separators=(',',':')),encoding='utf-8')
     (OUT/'joshi-live.json').write_text(json.dumps(joshi_data,ensure_ascii=False,separators=(',',':')),encoding='utf-8')
     (OUT/'ajpw-live.json').write_text(json.dumps(ajpw_data,ensure_ascii=False,separators=(',',':')),encoding='utf-8')
     (OUT/'njpw-live.json').write_text(json.dumps(data,ensure_ascii=False,separators=(',',':')),encoding='utf-8')
-    print('Mirrored NJPW channels '+', '.join(CHANNELS.values())+' and AJPW Channel 05 ('+ajpw['id']+')',flush=True)
+    print('Mirrored NJPW, AJPW, Joshi and five lucha channels',flush=True)
 if __name__=='__main__': main()
