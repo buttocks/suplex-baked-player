@@ -19,6 +19,7 @@ def main():
     data={'generated_at':datetime.datetime.now(datetime.timezone.utc).isoformat(),'channels':{}}
     channels=read('channels')
     byid={c['id']:c for c in channels}
+    print('LUCHA CANDIDATES: '+json.dumps([{'number':c.get('number'),'id':c.get('id'),'name':c.get('name'),'callsign':c.get('callsign')} for c in channels if any(t in (str(c.get('id',''))+' '+str(c.get('name',''))+' '+str(c.get('callsign',''))).lower() for t in ('lucha','cmll','aaa'))]),flush=True)
     ajpw=next((ch for ch in channels if ch.get('number')==5),None)
     if not ajpw: raise RuntimeError('SlamVision Channel 05 missing')
     joshi=next((ch for ch in channels if ch.get('number')==11),None)
