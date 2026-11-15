@@ -21,6 +21,9 @@ def main():
     byid={c['id']:c for c in channels}
     ajpw=next((ch for ch in channels if ch.get('number')==5),None)
     if not ajpw: raise RuntimeError('SlamVision Channel 05 missing')
+    joshi=next((ch for ch in channels if ch.get('number')==11),None)
+    if not joshi: raise RuntimeError('SlamVision Channel 11 (Joshi) missing')
+    print('Channel 11: '+str(joshi.get('id'))+' / '+str(joshi.get('name')),flush=True)
     guide=read('guide?hours=4')
     byguide={r['channel']['id']:r for r in guide.get('rows',[])}
     for channel_id,number in CHANNELS.items():
@@ -48,7 +51,17 @@ def main():
        'up_next':[program(x) for x in response.get('up_next',[])[:8]],
        'guide':[program(x) for x in byguide.get(ajpw['id'],{}).get('slots',[])],
        'server_time':response.get('server_time')}}}
+    response11=read('channels/'+joshi['id']+'/now')
+    if response11.get('current') is None: raise RuntimeError('No active Joshi Channel 11 program')
+    joshi_current=program(response11['current'])
+    if not joshi_current['stream_url']: raise RuntimeError('Missing Joshi Channel 11 stream URL')
+    joshi_data={'generated_at':datetime.datetime.now(datetime.timezone.utc).isoformat(),
+      'channels':{'11':{'id':joshi['id'],'name':joshi.get('name','Joshi Puroresu'),
+       'current':joshi_current,'up_next':[program(x) for x in response11.get('up_next',[])[:8]],
+       'guide':[program(x) for x in byguide.get(joshi['id'],{}).get('slots',[])],
+       'server_time':response11.get('server_time')}}}
     OUT.mkdir(parents=True,exist_ok=True)
+    (OUT/'joshi-live.json').write_text(json.dumps(joshi_data,ensure_ascii=False,separators=(',',':')),encoding='utf-8')
     (OUT/'ajpw-live.json').write_text(json.dumps(ajpw_data,ensure_ascii=False,separators=(',',':')),encoding='utf-8')
     (OUT/'njpw-live.json').write_text(json.dumps(data,ensure_ascii=False,separators=(',',':')),encoding='utf-8')
     print('Mirrored NJPW channels '+', '.join(CHANNELS.values())+' and AJPW Channel 05 ('+ajpw['id']+')',flush=True)
