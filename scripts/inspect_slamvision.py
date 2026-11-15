@@ -39,3 +39,21 @@ for filename in sorted(set(imports))[:35]:
  except Exception as exc:extra.append({'error':str(exc),'file':filename})
 data['modules']=extra
 out.write_text(json.dumps(data,indent=2))
+
+api={}
+for path in ['channels','guide?hours=3']:
+ try:
+  raw,= [get(urllib.parse.urljoin(base,'/api/'+path))]
+  obj=json.loads(raw)
+  if path=='channels':
+   api['channels']=[c for c in obj if c.get('number') in [1,12]]
+   api['channels_summary']={'type':str(type(obj)), 'count':len(obj)}
+   for ch in api['channels']:
+    try:api['now_'+str(ch['number'])]=json.loads(get(urllib.parse.urljoin(base,'/api/channels/'+str(ch['id'])+'/now')))
+    except Exception as e:api['now_'+str(ch['number'])]={'error':str(e)}
+  else:
+   api['guide_summary']={'keys':list(obj.keys())}
+   api['guide_rows']=[x for x in obj.get('rows',[]) if x.get('channel',{}).get('number') in [1,12]]
+ except Exception as e:api[path]={'error':str(e)}
+data['api']=api
+out.write_text(json.dumps(data,indent=2))
