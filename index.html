@@ -88,8 +88,8 @@ async function refreshGuide(){
  finally{guideBusy=false}
 }
 setInterval(refreshGuide,60000);
-showGuide(guideOpen);
 let channelId=null,current=null,run=0,timer=null,delay=1000,muted=true;
+showGuide(guideOpen);
 video.muted=true;audio.muted=true;
 function status(s){message.textContent=s;panel.style.display='flex'}
 function updateMute(){video.muted=audio.muted=muted;toggle.textContent=muted?'🔇 Unmute':'🔊 Mute'}
