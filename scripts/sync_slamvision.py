@@ -61,7 +61,18 @@ def main():
        'current':joshi_current,'up_next':[program(x) for x in response11.get('up_next',[])[:8]],
        'guide':[program(x) for x in byguide.get(joshi['id'],{}).get('slots',[])],
        'server_time':response11.get('server_time')}}}
+    lucha=next((ch for ch in channels if ch.get('id')=='100-lucha' and ch.get('number')==16),None)
+    if not lucha: raise RuntimeError('100% Lucha Channel 16 missing')
+    lucha_now=read('channels/'+lucha['id']+'/now')
+    lucha_current=program(lucha_now.get('current'))
+    if not lucha_current or not lucha_current['stream_url']: raise RuntimeError('No playable 100% Lucha current program')
+    lucha_data={'generated_at':datetime.datetime.now(datetime.timezone.utc).isoformat(),
+      'channels':{'16':{'id':lucha['id'],'name':lucha.get('name','100% Lucha'),
+      'current':lucha_current,'up_next':[program(x) for x in lucha_now.get('up_next',[])[:8]],
+      'guide':[program(x) for x in byguide.get(lucha['id'],{}).get('slots',[])],
+      'server_time':lucha_now.get('server_time')}}}
     OUT.mkdir(parents=True,exist_ok=True)
+    (OUT/'lucha-live.json').write_text(json.dumps(lucha_data,ensure_ascii=False,separators=(',',':')),encoding='utf-8')
     (OUT/'joshi-live.json').write_text(json.dumps(joshi_data,ensure_ascii=False,separators=(',',':')),encoding='utf-8')
     (OUT/'ajpw-live.json').write_text(json.dumps(ajpw_data,ensure_ascii=False,separators=(',',':')),encoding='utf-8')
     (OUT/'njpw-live.json').write_text(json.dumps(data,ensure_ascii=False,separators=(',',':')),encoding='utf-8')
