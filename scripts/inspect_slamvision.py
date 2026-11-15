@@ -17,7 +17,8 @@ for u in scripts[:8]:
  except Exception as e:data['interesting'].append({'script':u,'error':str(e)})
 js=get(scripts[0])
 for pattern in [r'/api/[a-zA-Z0-9_/?=.${}-]+',r'slamvision:[a-zA-Z0-9_-]+',r'channel-tab-[^'+"'"+r']+',r'pathname.{0,150}',r'navigate\\(.{0,130}',r'channels\\?{0,100}',r'embed.{0,130}']:
- matches=list(dict.fromkeys(re.findall(pattern,js,re.I)))
+ try: matches=list(dict.fromkeys(re.findall(pattern,js,re.I)))
+ except re.error: matches=[]
  data['interesting'].append({'pattern':pattern,'matches':matches[:120]})
 for term in ['queryKey:[`now`','queryKey:[`guide`','/api/channels','/api/guide','/api/schedule','hide-logo','showLogo','location.search','URLSearchParams','channels/','useSearchParams']:
  matches=[m.start() for m in re.finditer(re.escape(term),js,re.I)]
