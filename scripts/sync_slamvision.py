@@ -19,7 +19,6 @@ def main():
     data={'generated_at':datetime.datetime.now(datetime.timezone.utc).isoformat(),'channels':{}}
     channels=read('channels')
     byid={c['id']:c for c in channels}
-    print('WCW CANDIDATES: '+json.dumps([{'number':x.get('number'),'id':x.get('id'),'name':x.get('name')} for x in channels if 'wcw' in (str(x.get('id',''))+' '+str(x.get('name',''))+' '+str(x.get('callsign',''))).lower() or 'world championship wrestling' in str(x.get('name','')).lower()]),flush=True)
     ajpw=next((ch for ch in channels if ch.get('number')==5),None)
     if not ajpw: raise RuntimeError('SlamVision Channel 05 missing')
     joshi=next((ch for ch in channels if ch.get('number')==11),None)
@@ -215,7 +214,24 @@ def main():
           'guide':[program(x) for x in byguide.get(channel_id,{}).get('slots',[])],
           'server_time':now.get('server_time')
         }
+    wcw_channels={'02':'wcw','23':'wcw-tv','31':'wcw-ppv'}
+    wcw_data={'generated_at':datetime.datetime.now(datetime.timezone.utc).isoformat(),'channels':{}}
+    for number,channel_id in wcw_channels.items():
+        ch=byid.get(channel_id)
+        if not ch or ch.get('number')!=int(number):
+            raise RuntimeError('WCW channel mismatch '+number)
+        now=read('channels/'+channel_id+'/now')
+        current=program(now.get('current'))
+        if not current or not current['stream_url']:
+            raise RuntimeError('Missing WCW stream '+channel_id)
+        wcw_data['channels'][number]={
+          'id':channel_id,'name':ch.get('name',channel_id),'current':current,
+          'up_next':[program(x) for x in now.get('up_next',[])[:8]],
+          'guide':[program(x) for x in byguide.get(channel_id,{}).get('slots',[])],
+          'server_time':now.get('server_time')
+        }
     OUT.mkdir(parents=True,exist_ok=True)
+    (OUT/'wcw-live.json').write_text(json.dumps(wcw_data,ensure_ascii=False,separators=(',',':')),encoding='utf-8')
     (OUT/'tna-live.json').write_text(json.dumps(tna_data,ensure_ascii=False,separators=(',',':')),encoding='utf-8')
     (OUT/'wwf-live.json').write_text(json.dumps(wwf_data,ensure_ascii=False,separators=(',',':')),encoding='utf-8')
     (OUT/'ecw-live.json').write_text(json.dumps(ecw_data,ensure_ascii=False,separators=(',',':')),encoding='utf-8')
