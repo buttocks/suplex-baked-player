@@ -21,9 +21,6 @@ def main():
     byid={c['id']:c for c in channels}
     ajpw=next((ch for ch in channels if ch.get('number')==5),None)
     if not ajpw: raise RuntimeError('SlamVision Channel 05 missing')
-    ch100=next((ch for ch in channels if ch.get('number')==100),None)
-    if not ch100: raise RuntimeError('SlamVision Channel 100 missing')
-    print('Channel 100 identified: '+ch100['id']+' — '+ch100.get('name',''),flush=True)
     guide=read('guide?hours=4')
     byguide={r['channel']['id']:r for r in guide.get('rows',[])}
     for channel_id,number in CHANNELS.items():
@@ -51,17 +48,7 @@ def main():
        'up_next':[program(x) for x in response.get('up_next',[])[:8]],
        'guide':[program(x) for x in byguide.get(ajpw['id'],{}).get('slots',[])],
        'server_time':response.get('server_time')}}}
-    response100=read('channels/'+ch100['id']+'/now')
-    if response100.get('current') is None: raise RuntimeError('No active Channel 100 program')
-    p100=program(response100['current'])
-    if not p100['stream_url']: raise RuntimeError('Missing Channel 100 stream URL')
-    data100={'generated_at':datetime.datetime.now(datetime.timezone.utc).isoformat(),
-      'channels':{'100':{'id':ch100['id'],'name':ch100.get('name','Channel 100'),
-       'current':p100,'up_next':[program(x) for x in response100.get('up_next',[])[:8]],
-       'guide':[program(x) for x in byguide.get(ch100['id'],{}).get('slots',[])],
-       'server_time':response100.get('server_time')}}}
     OUT.mkdir(parents=True,exist_ok=True)
-    (OUT/'channel-100-live.json').write_text(json.dumps(data100,ensure_ascii=False,separators=(',',':')),encoding='utf-8')
     (OUT/'ajpw-live.json').write_text(json.dumps(ajpw_data,ensure_ascii=False,separators=(',',':')),encoding='utf-8')
     (OUT/'njpw-live.json').write_text(json.dumps(data,ensure_ascii=False,separators=(',',':')),encoding='utf-8')
     print('Mirrored NJPW channels '+', '.join(CHANNELS.values())+' and AJPW Channel 05 ('+ajpw['id']+')',flush=True)
