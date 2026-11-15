@@ -25,7 +25,7 @@ for term in ['queryKey:[`now`','queryKey:[`guide`','/api/channels','/api/guide',
  data['interesting'].append({'term':term,'occurrences':len(matches),'contexts':[js[max(0,i-400):i+700] for i in matches[:8]]})
 out.write_text(json.dumps(data,indent=2))
 
-imports=re.findall(r'(?:from|import)\\s*["\\'](\\./[^"\\']+\\.js)["\\']',js)
+imports=re.findall(r'\\./[A-Za-z0-9_./-]+\\.js',js)
 extra=[]
 for filename in sorted(set(imports))[:35]:
  try:
