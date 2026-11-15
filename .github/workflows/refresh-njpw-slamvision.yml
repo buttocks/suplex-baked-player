@@ -31,6 +31,6 @@ jobs:
           git add slamvision/njpw-live.json slamvision/ajpw-live.json slamvision/joshi-live.json
           if ! git diff --cached --quiet; then
             git commit -m "Refresh SlamVision NJPW stream data"
-            git pull --rebase origin main
+            git pull --rebase -X theirs origin main
             git push
           fi
