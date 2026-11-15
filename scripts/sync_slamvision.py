@@ -19,7 +19,6 @@ def main():
     data={'generated_at':datetime.datetime.now(datetime.timezone.utc).isoformat(),'channels':{}}
     channels=read('channels')
     byid={c['id']:c for c in channels}
-    print('INDIE CANDIDATES: '+json.dumps([{'number':x.get('number'),'id':x.get('id'),'name':x.get('name')} for x in channels if any(t in (str(x.get('id',''))+' '+str(x.get('name',''))+' '+str(x.get('callsign',''))).lower() for t in ('indie','independent','indy','gcw','pwg','czw','deathmatch'))]),flush=True)
     ajpw=next((ch for ch in channels if ch.get('number')==5),None)
     if not ajpw: raise RuntimeError('SlamVision Channel 05 missing')
     joshi=next((ch for ch in channels if ch.get('number')==11),None)
@@ -106,7 +105,24 @@ def main():
       'up_next':[program(x) for x in noah_now.get('up_next',[])[:8]],
       'guide':[program(x) for x in byguide.get('noah-tv',{}).get('slots',[])],
       'server_time':noah_now.get('server_time')}}}
+    indie_channels={'22':'gcw-tv','48':'death','49':'czw-tv','72':'pwg'}
+    indie_data={'generated_at':datetime.datetime.now(datetime.timezone.utc).isoformat(),'channels':{}}
+    for number,channel_id in indie_channels.items():
+        ch=byid.get(channel_id)
+        if not ch or ch.get('number')!=int(number):
+            raise RuntimeError('Independent wrestling channel mismatch '+number)
+        now=read('channels/'+channel_id+'/now')
+        current=program(now.get('current'))
+        if not current or not current['stream_url']:
+            raise RuntimeError('Missing independent wrestling stream '+channel_id)
+        indie_data['channels'][number]={
+          'id':channel_id,'name':ch.get('name',channel_id),'current':current,
+          'up_next':[program(x) for x in now.get('up_next',[])[:8]],
+          'guide':[program(x) for x in byguide.get(channel_id,{}).get('slots',[])],
+          'server_time':now.get('server_time')
+        }
     OUT.mkdir(parents=True,exist_ok=True)
+    (OUT/'independent-live.json').write_text(json.dumps(indie_data,ensure_ascii=False,separators=(',',':')),encoding='utf-8')
     (OUT/'noah-live.json').write_text(json.dumps(noah_data,ensure_ascii=False,separators=(',',':')),encoding='utf-8')
     (OUT/'roh-live.json').write_text(json.dumps(roh_data,ensure_ascii=False,separators=(',',':')),encoding='utf-8')
     (OUT/'lucha-live.json').write_text(json.dumps(lucha_data,ensure_ascii=False,separators=(',',':')),encoding='utf-8')
