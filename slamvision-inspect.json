@@ -158,5 +158,116 @@
       "contexts": []
     }
   ],
-  "modules": []
+  "modules": [
+    {
+      "url": "https://ring-channel-tv.emergent.host/assets/AdminGate-BdKp37Ty.js",
+      "length": 133055,
+      "hits": [
+        {
+          "term": "/channels",
+          "context": "earch_terms:``,autofill:!0};function ki({onCreated:e}){let t=s(),[n,r]=(0,Z.useState)(!1),[i,a]=(0,Z.useState)(Oi),o=e=>t=>a(n=>({...n,[e]:t.target.value})),c=Vt({mutationFn:e=>O(`/channels`,e),onSuccess:n=>{F.success(`CH ${String(n.number).padStart(2,`0`)} ${n.callsign} is on the air with ${n.program_count} tapes`),t.invalidateQueries({queryKey:[`channels`]}),t.invalidateQueries({queryKey:[`guide`]}),r(!1),a(Oi),e(n.id)},onError:e=>F.error(zt(e))}),l=i.name.trim().length>=2&"
+        },
+        {
+          "term": "/channels",
+          "context": "data?.find(t=>t.channel_id===e.id),a=!!r.data?.some(e=>e.running),[o,c]=(0,Z.useState)(``),l=()=>{n.invalidateQueries({queryKey:[`discovery-status`]}),t()},u=Vt({mutationFn:()=>O(`/channels/${e.id}/discover`,{}),onSuccess:t=>{F.success(t.added_items?`Found ${t.added_items} new Archive items (${t.added_programs} tapes) for ${e.callsign}`:`No new tapes this pass. Checked ${t.scanned} items, next scan digs deeper`),l()},onError:e=>F.error(zt(e))}),d=Vt({mutationFn:()=>O(`/discov"
+        },
+        {
+          "term": "/channels",
+          "context": "ery channel. New tapes land as they're found`:`A scan is already running`),n.invalidateQueries({queryKey:[`discovery-status`]})},onError:e=>F.error(zt(e))}),f=Vt({mutationFn:t=>A(`/channels/${e.id}/strategies`,{strategies:t}),onSuccess:()=>{F.success(`Search list saved`),c(``),l()},onError:e=>F.error(zt(e))}),p=e.strategies.length?e.strategies:[e.query],m=i?.last_result;return(0,Q.jsxs)(`div`,{\"data-testid\":`discovery-panel`,className:`rounded-md border border-[#1e293b] bg-[#"
+        },
+        {
+          "term": "/channels",
+          "context": "me:`shrink-0 font-mono text-xs`,children:(0,Q.jsx)(Ta,{pending:i,added:r})})]},n.identifier)})]})]})]})}function Da({onRestored:e}){let t=l({queryKey:[`signed-off`],queryFn:()=>h(`/channels/signed-off`)}),n=Vt({mutationFn:e=>O(`/channels/${e}/restore`,{}),onSuccess:t=>{F.success(`CH ${String(t.number).padStart(2,`0`)} ${t.callsign} is back on the air with ${t.program_count} tapes`),e(t.id)},onError:e=>F.error(zt(e))}),r=t.isError?[]:t.data??[];return r.length?(0,Q.jsxs)(`div`"
+        },
+        {
+          "term": "/channels",
+          "context": "x)(Ta,{pending:i,added:r})})]},n.identifier)})]})]})]})}function Da({onRestored:e}){let t=l({queryKey:[`signed-off`],queryFn:()=>h(`/channels/signed-off`)}),n=Vt({mutationFn:e=>O(`/channels/${e}/restore`,{}),onSuccess:t=>{F.success(`CH ${String(t.number).padStart(2,`0`)} ${t.callsign} is back on the air with ${t.program_count} tapes`),e(t.id)},onError:e=>F.error(zt(e))}),r=t.isError?[]:t.data??[];return r.length?(0,Q.jsxs)(`div`,{\"data-testid\":`signed-off-list`,className:`mt-"
+        },
+        {
+          "term": "fetch(",
+          "context": "hanged:e}){let t=l({queryKey:[`cleanup`],queryFn:()=>h(`/library/cleanup`)}),n=Vt({mutationFn:()=>O(`/library/cleanup`,{}),onSuccess:n=>{F.success(`Library checked: ${ka(n)}`),t.refetch(),e()},onError:e=>F.error(zt(e))}),r=t.isError?void 0:t.data;return(0,Q.jsxs)(`div`,{\"data-testid\":`cleanup-panel`,className:`rounded-md border border-[#1e293b] bg-[#0d152f] p-4`,children:[(0,Q.jsxs)(`p`,{className:`flex items-center gap-2 font-heading text-xs font-extrabold uppercase tracking"
+        },
+        {
+          "term": "njpw",
+          "context": "apes on the wrong channel move to the right one, or come off the air.`}),(0,Q.jsx)(`li`,{children:`Plain names: \"ECW Hardcore TV \u00b7 Aug 26, 1996\", \"Kengo Kimura vs. Satoru Sayama \u00b7 NJPW \u00b7 Jul 28, 1977\".`})]}),(0,Q.jsx)(`p`,{\"data-testid\":`cleanup-last-run`,className:`mt-3 font-mono text-[11px] text-slate-300`,children:r?.at?`Last check ${da(new Date(r.at),{addSuffix:!0})}: ${ka(r)}`:`Not checked yet.`}),(0,Q.jsxs)(dt,{size:`sm`,\"data-testid\":`cleanup-run-button`,disabled:n.isP"
+        },
+        {
+          "term": "njpw",
+          "context": "(e=>(0,Q.jsx)(vs,{value:e,children:Ts[e]},e))]})]})]})}var Ds=e=>String(e).padStart(2,`0`);function Os(){let e=s(),{data:t,isError:n}=p(),r=!n&&t?.length?t:y,[i,a]=(0,Z.useState)(`njpw`),[o,c]=(0,Z.useState)(!1),u=r.find(e=>e.id===i)??r[0],d=u.id,m=D(),_=l({queryKey:[`programs`,d],queryFn:()=>h(`/programs?channel_id=${d}`)}),v=()=>{for(let t of[[`programs`,d],[`channels`],[`guide`],[`now`],[`discovery-status`],[`signed-off`]])e.invalidateQueries({queryKey:t})},b=Vt({mutationF"
+        }
+      ]
+    },
+    {
+      "url": "https://ring-channel-tv.emergent.host/assets/OnDemand-DG6u_yY4.js",
+      "length": 26804,
+      "hits": [
+        {
+          "term": "fetch(",
+          "context": "iousPage.bind(this)}setOptions(e){e._type=`infinite`,super.setOptions(e)}getOptimisticResult(e){return e._type=`infinite`,super.getOptimisticResult(e)}fetchNextPage(e){return this.fetch({...e,meta:{fetchMore:{direction:`forward`}}})}fetchPreviousPage(e){return this.fetch({...e,meta:{fetchMore:{direction:`backward`}}})}createResult(e,t){let{state:n}=e,r=super.createResult(e,t),{isFetching:a,isRefetching:o,isError:s,isRefetchError:c}=r,u=n.fetchMeta?.fetchMore?.direction,d=s&&u"
+        },
+        {
+          "term": "fetch(",
+          "context": "Result(e){return e._type=`infinite`,super.getOptimisticResult(e)}fetchNextPage(e){return this.fetch({...e,meta:{fetchMore:{direction:`forward`}}})}fetchPreviousPage(e){return this.fetch({...e,meta:{fetchMore:{direction:`backward`}}})}createResult(e,t){let{state:n}=e,r=super.createResult(e,t),{isFetching:a,isRefetching:o,isError:s,isRefetchError:c}=r,u=n.fetchMeta?.fetchMore?.direction,d=s&&u===`forward`,f=a&&u===`forward`,p=s&&u===`backward`,m=a&&u===`backward`;return{...r,fe"
+        },
+        {
+          "term": "stream_url",
+          "context": ".jsx)(b,{className:`size-4`})})]})]}),(0,J.jsxs)(`div`,{className:`relative overflow-hidden rounded-sm bg-black`,children:[(0,J.jsx)(`video`,{ref:k,\"data-testid\":`vod-video`,src:N.stream_url,controls:!0,autoPlay:!0,playsInline:!0,preload:`metadata`,className:`aspect-video w-full bg-black`,onLoadedMetadata:e=>{e.currentTarget.defaultPlaybackRate=h,e.currentTarget.playbackRate=h,l.current>0&&(e.currentTarget.currentTime=l.current,l.current=0)},onTimeUpdate:e=>L(e.currentTarget)"
+        }
+      ]
+    },
+    {
+      "url": "https://ring-channel-tv.emergent.host/assets/SiteHeader-CwCB7UcK.js",
+      "length": 380831,
+      "hits": [
+        {
+          "term": "/channels",
+          "context": "der-lime-400`,`bg-slate-700 text-slate-100 border-slate-400`];function xu(e){return yu[e.id]??bu[e.number%bu.length]}function Su(){return rt({queryKey:[`channels`],queryFn:()=>fu(`/channels`)})}function Cu(){return rt({queryKey:[`discovery-status`],queryFn:()=>fu(`/discovery/status`),refetchInterval:e=>e.state.data?.some(e=>e.running)?4e3:3e4})}function wu(){return rt({queryKey:[`guide`],queryFn:()=>fu(`/guide?hours=3`),refetchInterval:6e4})}function Tu(e){return rt({queryKey"
+        },
+        {
+          "term": "/channels",
+          "context": ")}function wu(){return rt({queryKey:[`guide`],queryFn:()=>fu(`/guide?hours=3`),refetchInterval:6e4})}function Tu(e){return rt({queryKey:[`now`,e],queryFn:async()=>{let t=await fu(`/channels/${e}/now`);return{...t,skewMs:Date.parse(t.server_time)-Date.now()}},enabled:!!e,staleTime:3e4})}function Eu(e=1e3){let[t,n]=(0,O.useState)(()=>Date.now());return(0,O.useEffect)(()=>{let t=setInterval(()=>n(Date.now()),e);return()=>clearInterval(t)},[e]),t}function Du(e){let t=Math.max(0,M"
+        },
+        {
+          "term": "/guide",
+          "context": ":[`discovery-status`],queryFn:()=>fu(`/discovery/status`),refetchInterval:e=>e.state.data?.some(e=>e.running)?4e3:3e4})}function wu(){return rt({queryKey:[`guide`],queryFn:()=>fu(`/guide?hours=3`),refetchInterval:6e4})}function Tu(e){return rt({queryKey:[`now`,e],queryFn:async()=>{let t=await fu(`/channels/${e}/now`);return{...t,skewMs:Date.parse(t.server_time)-Date.now()}},enabled:!!e,staleTime:3e4})}function Eu(e=1e3){let[t,n]=(0,O.useState)(()=>Date.now());return(0,O.useEf"
+        },
+        {
+          "term": "/now",
+          "context": "){return rt({queryKey:[`guide`],queryFn:()=>fu(`/guide?hours=3`),refetchInterval:6e4})}function Tu(e){return rt({queryKey:[`now`,e],queryFn:async()=>{let t=await fu(`/channels/${e}/now`);return{...t,skewMs:Date.parse(t.server_time)-Date.now()}},enabled:!!e,staleTime:3e4})}function Eu(e=1e3){let[t,n]=(0,O.useState)(()=>Date.now());return(0,O.useEffect)(()=>{let t=setInterval(()=>n(Date.now()),e);return()=>clearInterval(t)},[e]),t}function Du(e){let t=Math.max(0,Math.floor(e)),"
+        },
+        {
+          "term": "fetch(",
+          "context": "=0){return this.state.data===void 0?!0:e===`static`?!1:this.state.isInvalidated?!0:!y(this.state.dataUpdatedAt,e)}onFocus(){this.observers.find(e=>e.shouldFetchOnWindowFocus())?.refetch({cancelRefetch:!1}),this.#a?.continue()}onOnline(){this.observers.find(e=>e.shouldFetchOnReconnect())?.refetch({cancelRefetch:!1}),this.#a?.continue()}addObserver(e){this.observers.includes(e)||(this.observers.push(e),this.clearGcTimeout(),this.#r.notify({type:`observerAdded`,query:this,observ"
+        },
+        {
+          "term": "fetch(",
+          "context": "e)}onFocus(){this.observers.find(e=>e.shouldFetchOnWindowFocus())?.refetch({cancelRefetch:!1}),this.#a?.continue()}onOnline(){this.observers.find(e=>e.shouldFetchOnReconnect())?.refetch({cancelRefetch:!1}),this.#a?.continue()}addObserver(e){this.observers.includes(e)||(this.observers.push(e),this.clearGcTimeout(),this.#r.notify({type:`observerAdded`,query:this,observer:e}))}removeObserver(e){this.observers.includes(e)&&(this.observers=this.observers.filter(t=>t!==e),this.obse"
+        },
+        {
+          "term": "fetch(",
+          "context": "return this.observers.length}#c(){return this.state.fetchStatus===`paused`&&this.state.status===`pending`}invalidate(){this.state.isInvalidated||this.#l({type:`invalidate`})}async fetch(e,t){if(this.state.fetchStatus!==`idle`&&this.#a?.status()!==`rejected`){if(this.state.data!==void 0&&t?.cancelRefetch)this.cancel({silent:!0});else if(this.#a)return this.#a.continueRetry(),this.#a.promise}if(e&&this.setOptions(e),!this.options.queryFn){let e=this.observers.find(e=>e.options."
+        },
+        {
+          "term": "fetch(",
+          "context": "s:t,options:this.options,queryKey:this.queryKey,client:this.#i,state:this.state,fetchFn:i};return r(e),e})();(this.#e===`infinite`?we(this.options.pages):this.options.behavior)?.onFetch(a,this),this.#n=this.state,(this.state.fetchStatus===`idle`||this.state.fetchMeta!==a.fetchOptions?.meta)&&this.#l({type:`fetch`,meta:a.fetchOptions?.meta}),this.#a=Se({initialPromise:t?.initialPromise,fn:a.fetchFn,onCancel:e=>{e instanceof xe&&e.revert&&this.setState({...this.#n,fetchStatus:`"
+        },
+        {
+          "term": "fetch(",
+          "context": "==`pending`&&this.#o.reject(Error(`experimental_prefetchInRender feature flag is not enabled`))),Reflect.get(e,n))})}trackProp(e){this.#m.add(e)}getCurrentQuery(){return this.#t}refetch({...e}={}){return this.fetch({...e})}fetchOptimistic(e){let t=this.#e.defaultQueryOptions(e),n=this.#e.getQueryCache().build(this.#e,t);return n.fetch().then(()=>this.createResult(n,t))}fetch(e){return this.#h({...e,cancelRefetch:e.cancelRefetch??!0}).then(()=>(this.updateResult(),this.#r))}#h"
+        },
+        {
+          "term": "njpw",
+          "context": "d:t}=Xc(),n=rt({queryKey:[`me`],queryFn:()=>fu(`/me`),enabled:!!(t&&e),staleTime:5*6e4,retry:1});return{...n,isLoaded:t,isSignedIn:!!e,isAdmin:n.data?.role===`admin`}}var vu=[{id:`njpw`,number:1,category:`promotions`,callsign:`NJPW-TV`,name:`New Japan Pro-Wrestling`,tagline:`Strong Style classics`,query:``,strategies:[],archived:!1,program_count:0,loop_seconds:0,new_count:0},{id:`wcw`,number:2,category:`promotions`,callsign:`WCW-NITRO`,name:`World Championship Wrestling`,tagl"
+        },
+        {
+          "term": "njpw",
+          "context": "`/me`),enabled:!!(t&&e),staleTime:5*6e4,retry:1});return{...n,isLoaded:t,isSignedIn:!!e,isAdmin:n.data?.role===`admin`}}var vu=[{id:`njpw`,number:1,category:`promotions`,callsign:`NJPW-TV`,name:`New Japan Pro-Wrestling`,tagline:`Strong Style classics`,query:``,strategies:[],archived:!1,program_count:0,loop_seconds:0,new_count:0},{id:`wcw`,number:2,category:`promotions`,callsign:`WCW-NITRO`,name:`World Championship Wrestling`,tagline:`Nitro & Starrcade`,query:``,strategies:[],"
+        },
+        {
+          "term": "njpw",
+          "context": "ategory:`promotions`,callsign:`AJPW-KINGS`,name:`All Japan Pro-Wrestling`,tagline:`King's Road`,query:``,strategies:[],archived:!1,program_count:0,loop_seconds:0,new_count:0}],yu={njpw:`bg-red-800 text-white border-red-500`,wcw:`bg-blue-800 text-white border-blue-400`,wwf:`bg-amber-800 text-yellow-200 border-amber-500`,territories:`bg-emerald-900 text-emerald-100 border-emerald-500`,ajpw:`bg-purple-900 text-purple-100 border-purple-400`},bu=[`bg-orange-800 text-orange-100 bor"
+        }
+      ]
+    }
+  ]
 }
