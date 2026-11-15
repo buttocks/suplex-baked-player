@@ -19,7 +19,6 @@ def main():
     data={'generated_at':datetime.datetime.now(datetime.timezone.utc).isoformat(),'channels':{}}
     channels=read('channels')
     byid={c['id']:c for c in channels}
-    print('NOAH CANDIDATES: '+json.dumps([{'number':x.get('number'),'id':x.get('id'),'name':x.get('name')} for x in channels if 'noah' in (str(x.get('id',''))+' '+str(x.get('name',''))+' '+str(x.get('callsign',''))).lower()]),flush=True)
     ajpw=next((ch for ch in channels if ch.get('number')==5),None)
     if not ajpw: raise RuntimeError('SlamVision Channel 05 missing')
     joshi=next((ch for ch in channels if ch.get('number')==11),None)
@@ -93,7 +92,21 @@ def main():
           'guide':[program(x) for x in byguide.get(channel_id,{}).get('slots',[])],
           'server_time':now.get('server_time')
         }
+    noah=byid.get('noah-tv')
+    if not noah or noah.get('number')!=20:
+        raise RuntimeError('SlamVision NOAH-TV channel 20 unavailable')
+    noah_now=read('channels/noah-tv/now')
+    noah_current=program(noah_now.get('current'))
+    if not noah_current or not noah_current['stream_url']:
+        raise RuntimeError('No playable NOAH current program')
+    noah_data={'generated_at':datetime.datetime.now(datetime.timezone.utc).isoformat(),
+      'channels':{'20':{'id':'noah-tv','name':noah.get('name','NOAH-TV'),
+      'current':noah_current,
+      'up_next':[program(x) for x in noah_now.get('up_next',[])[:8]],
+      'guide':[program(x) for x in byguide.get('noah-tv',{}).get('slots',[])],
+      'server_time':noah_now.get('server_time')}}}
     OUT.mkdir(parents=True,exist_ok=True)
+    (OUT/'noah-live.json').write_text(json.dumps(noah_data,ensure_ascii=False,separators=(',',':')),encoding='utf-8')
     (OUT/'roh-live.json').write_text(json.dumps(roh_data,ensure_ascii=False,separators=(',',':')),encoding='utf-8')
     (OUT/'lucha-live.json').write_text(json.dumps(lucha_data,ensure_ascii=False,separators=(',',':')),encoding='utf-8')
     (OUT/'joshi-live.json').write_text(json.dumps(joshi_data,ensure_ascii=False,separators=(',',':')),encoding='utf-8')
