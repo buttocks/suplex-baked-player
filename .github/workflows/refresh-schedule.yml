@@ -1,0 +1,35 @@
+name: Refresh SUPLEX schedule
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '*/5 * * * *'
+  push:
+    paths:
+      - '.github/workflows/refresh-schedule.yml'
+      - 'scripts/sync_schedule.py'
+permissions:
+  contents: write
+concurrency:
+  group: suplex-schedule-cache
+  cancel-in-progress: false
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Fetch current SUPLEX schedule
+        run: python scripts/sync_schedule.py
+      - name: Commit updated schedule if changed
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add broadcast/
+          if ! git diff --cached --quiet; then
+            git commit -m "Refresh public SUPLEX broadcast schedule"
+            git push
+          fi
