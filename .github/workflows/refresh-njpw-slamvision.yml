@@ -1,4 +1,4 @@
-name: Refresh SlamVision NJPW and AJPW streams
+name: Refresh SlamVision Baked channel schedules
 on:
   workflow_dispatch:
   schedule:
@@ -28,7 +28,7 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add slamvision/njpw-live.json slamvision/ajpw-live.json
+          git add slamvision/njpw-live.json slamvision/ajpw-live.json slamvision/channel-100-live.json
           if ! git diff --cached --quiet; then
             git commit -m "Refresh SlamVision NJPW stream data"
             git pull --rebase origin main
