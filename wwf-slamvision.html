@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>SlamVision WWF — Baked.live</title>
+<style>
+:root{color-scheme:dark}
+*{box-sizing:border-box}
+html,body{width:100%;height:100%;margin:0;background:#000;color:#eee;font:14px system-ui,sans-serif;overflow:hidden}
+video{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;background:#000}
+button{font:600 12px system-ui;cursor:pointer;border:1px solid #666;background:#10141de8;color:#fff;border-radius:6px;padding:9px 10px;white-space:nowrap}
+button:hover{background:#252c3c}
+#controls{position:absolute;z-index:5;left:12px;top:12px;right:12px;display:flex;justify-content:space-between;gap:6px;pointer-events:none}
+#controls>div{display:flex;gap:6px;pointer-events:auto}
+#status{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;text-align:center;white-space:pre-line;padding:30px;background:#05070a;pointer-events:none}
+#status[hidden]{display:none}
+#guide{position:absolute;z-index:4;left:12px;top:56px;width:min(420px,calc(100vw - 24px));max-height:min(75vh,530px);overflow:auto;background:#101621f5;border:1px solid #667085;border-radius:7px;box-shadow:0 16px 40px #000a}
+#guide[hidden]{display:none}
+#guide header{padding:12px 14px;position:sticky;top:0;background:#151c29;border-bottom:1px solid #384254}
+#guide header strong{letter-spacing:.07em}
+#guide small{color:#9ca9bb}
+#guide ol{list-style:none;padding:0;margin:0}
+#guide li{display:grid;grid-template-columns:74px minmax(0,1fr);gap:12px;padding:12px;border-bottom:1px solid #323c4b}
+#guide li.live{background:#163024;border-left:3px solid #62d693;padding-left:9px}
+#guide .time{font-size:12px;color:#b0bbcb;font-variant-numeric:tabular-nums}
+#guide .name{font-weight:650;overflow-wrap:anywhere}
+#guide .episode{font-size:11px;color:#bac2d0;margin-top:4px}
+#guide footer{font-size:11px;color:#a0aaba;padding:10px}
+@media(max-width:460px){button{font-size:11px;padding:7px}#controls{left:7px;right:7px;top:7px}#guide{left:7px;top:45px;width:calc(100vw - 14px);max-height:58vh}}
+</style>
+</head>
+<body>
+<video id="video" playsinline autoplay preload="auto" muted></video>
+<div id="status">Tuning WWF…</div>
+<div id="controls"><div><button id="guide-toggle" type="button" aria-expanded="false">☷ TV Guide</button></div><div><button id="sound-toggle" type="button">🔇 Unmute</button></div></div>
+<aside id="guide" hidden aria-label="Live WWF program schedule"><header><strong id="guide-title">WWF SCHEDULE</strong><div><small id="guide-refresh">Loading…</small></div></header><ol id="guide-rows"></ol><footer>Schedule: SlamVision · Videos: Internet Archive · Times shown locally</footer></aside>
+<script>
+(()=>{
+'use strict';
+const params=new URLSearchParams(location.search);
+const channel='14';
+const key='baked-wwf-'+channel+'-';
+const $=id=>document.getElementById(id);
+const video=$('video'),status=$('status'),guide=$('guide');
+const guideButton=$('guide-toggle'),soundButton=$('sound-toggle');
+const rows=$('guide-rows'),title=$('guide-title'),refresh=$('guide-refresh');
+let schedule=null,playingKey='',changing=false,timer=null,muted=true,guideOpen=false;
+function stored(k){try{return localStorage.getItem(key+k)==='true'}catch{return false}}
+function save(k,v){try{localStorage.setItem(key+k,String(v))}catch{}}
+guideOpen=stored('guide');
+function renderControls(){
+ guide.hidden=!guideOpen;guideButton.textContent=guideOpen?'✕ Hide Guide':'☷ TV Guide';guideButton.setAttribute('aria-expanded',String(guideOpen));
+ soundButton.textContent=muted?'🔇 Unmute':'🔊 Mute';video.muted=muted;
+}
+guideButton.onclick=()=>{guideOpen=!guideOpen;save('guide',guideOpen);renderControls();if(guideOpen)renderGuide()};
+soundButton.onclick=()=>{muted=!muted;renderControls();video.play().catch(()=>{})};
+renderControls();
+const ms=t=>Date.parse(t||'');
+const clock=t=>new Date(t).toLocaleTimeString([],{hour:'numeric',minute:'2-digit'});
+function setStatus(text){status.textContent=text;status.hidden=false}
+function selected(){return schedule?.channels?.[channel]||null}
+function allSlots(){
+ const c=selected();if(!c)return [];
+ const list=[c.current,...(c.up_next||[])].filter(Boolean);
+ return [...new Map(list.map(x=>[x.id+'|'+x.start,x])).values()].sort((a,b)=>ms(a.start)-ms(b.start));
+}
+function activeSlot(now=Date.now()){
+ return allSlots().find(x=>ms(x.start)<=now&&now<ms(x.end))||null;
+}
+function renderGuide(){
+ const c=selected();if(!c)return;
+ title.textContent='CH '+channel+' · WWF SCHEDULE';
+ const all=allSlots();const now=Date.now();rows.replaceChildren();
+ for(const slot of all){
+  if(ms(slot.end)<now-60000)continue;
+  const li=document.createElement('li');const live=ms(slot.start)<=now&&now<ms(slot.end);
+  if(live)li.classList.add('live');
+  const time=document.createElement('div');time.className='time';time.textContent=live?'● NOW':clock(ms(slot.start));
+  const info=document.createElement('div'),name=document.createElement('div'),episode=document.createElement('div');
+  name.className='name';name.textContent=slot.title||'WWF programming';
+  episode.className='episode';episode.textContent=(slot.episode||'')+(live?' · Until '+clock(ms(slot.end)):' · '+clock(ms(slot.end)));
+  info.append(name,episode);li.append(time,info);rows.append(li);
+ }
+ if(!rows.children.length){const li=document.createElement('li');li.textContent='Updating schedule…';rows.append(li)}
+ refresh.textContent='Live schedule · '+new Date().toLocaleString();
+}
+function choose(){
+ const slot=activeSlot();if(!slot){if(!schedule)setStatus('Loading WWF channel…');else setStatus('Updating live program schedule…');return}
+ const id=slot.id+'|'+slot.start;
+ if(id===playingKey)return;
+ if(!slot.stream_url||!slot.stream_url.startsWith('https://archive.org/')){setStatus('Video source unavailable. Checking next show…');return}
+ playingKey=id;changing=true;
+ video.pause();video.src=slot.stream_url;video.load();
+ setStatus('Tuning CH '+channel+'…\n'+(slot.title||'WWF'));
+ video.onloadedmetadata=()=>{
+  if(playingKey!==id)return;
+  const offset=(Date.now()-ms(slot.start))/1000;
+  if(Number.isFinite(video.duration)&&video.duration>0 && offset>0) {
+   try{video.currentTime=Math.min(offset,Math.max(0,video.duration-0.4))}catch{}
+  }
+  video.play().then(()=>{status.hidden=true;changing=false}).catch(()=>setStatus('Click Unmute to start WWF playback.'));
+ };
+ video.onerror=()=>{if(playingKey===id){setStatus('Archive stream unavailable. Retrying…');playingKey='';setTimeout(choose,12000)}};
+}
+async function refreshData(){
+ try{
+  // Same-origin cached API data avoids cross-site CORS restrictions.
+  const response=await fetch('./slamvision/wwf-live.json?t='+Date.now(),{cache:'no-store'});
+  if(!response.ok)throw Error('Schedule returned '+response.status);
+  const next=await response.json();
+  if(!next.channels?.[channel])throw Error('No WWF channel '+channel);
+  schedule=next;renderGuide();choose();
+ }catch(e){if(!schedule)setStatus('Unable to reach WWF schedule.\nRetrying automatically…')}
+}
+video.addEventListener('ended',()=>{playingKey='';refreshData()});
+setInterval(()=>{
+ const slot=activeSlot(),id=slot?.id+'|'+slot?.start;
+ if(slot&&id!==playingKey){choose();return}
+ if(slot&&video.readyState>=2&&!changing){
+   const t=(Date.now()-ms(slot.start))/1000;
+   if(Number.isFinite(video.duration)&&t>0&&t<video.duration-.4&&Math.abs(video.currentTime-t)>10){
+     try{video.currentTime=t}catch{}
+   }
+ }
+ if(guideOpen)renderGuide();
+},8000);
+setInterval(refreshData,45000);
+refreshData();
+})();
+</script>
+</body></html>
