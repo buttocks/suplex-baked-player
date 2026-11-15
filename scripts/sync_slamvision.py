@@ -19,7 +19,6 @@ def main():
     data={'generated_at':datetime.datetime.now(datetime.timezone.utc).isoformat(),'channels':{}}
     channels=read('channels')
     byid={c['id']:c for c in channels}
-    print('TNA CANDIDATES: '+json.dumps([{'number':x.get('number'),'id':x.get('id'),'name':x.get('name')} for x in channels if any(t in (str(x.get('id',''))+' '+str(x.get('name',''))+' '+str(x.get('callsign',''))).lower() for t in ('tna','impact wrestling','total nonstop action'))]),flush=True)
     ajpw=next((ch for ch in channels if ch.get('number')==5),None)
     if not ajpw: raise RuntimeError('SlamVision Channel 05 missing')
     joshi=next((ch for ch in channels if ch.get('number')==11),None)
@@ -199,7 +198,24 @@ def main():
           'guide':[program(x) for x in byguide.get(channel_id,{}).get('slots',[])],
           'server_time':now.get('server_time')
         }
+    tna_channels={'17':'tna','18':'tna-tv','19':'iw'}
+    tna_data={'generated_at':datetime.datetime.now(datetime.timezone.utc).isoformat(),'channels':{}}
+    for number,channel_id in tna_channels.items():
+        ch=byid.get(channel_id)
+        if not ch or ch.get('number')!=int(number):
+            raise RuntimeError('TNA channel mismatch '+number)
+        now=read('channels/'+channel_id+'/now')
+        current=program(now.get('current'))
+        if not current or not current['stream_url']:
+            raise RuntimeError('Missing TNA current stream '+channel_id)
+        tna_data['channels'][number]={
+          'id':channel_id,'name':ch.get('name',channel_id),'current':current,
+          'up_next':[program(x) for x in now.get('up_next',[])[:8]],
+          'guide':[program(x) for x in byguide.get(channel_id,{}).get('slots',[])],
+          'server_time':now.get('server_time')
+        }
     OUT.mkdir(parents=True,exist_ok=True)
+    (OUT/'tna-live.json').write_text(json.dumps(tna_data,ensure_ascii=False,separators=(',',':')),encoding='utf-8')
     (OUT/'wwf-live.json').write_text(json.dumps(wwf_data,ensure_ascii=False,separators=(',',':')),encoding='utf-8')
     (OUT/'ecw-live.json').write_text(json.dumps(ecw_data,ensure_ascii=False,separators=(',',':')),encoding='utf-8')
     (OUT/'shoot-live.json').write_text(json.dumps(shoot_data,ensure_ascii=False,separators=(',',':')),encoding='utf-8')
