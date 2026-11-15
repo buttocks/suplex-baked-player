@@ -4,6 +4,7 @@ on:
   push:
     paths:
       - '.github/workflows/inspect-slamvision.yml'
+      - 'scripts/inspect_slamvision.py'
 permissions:
   contents: write
 jobs:
