@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>SUPLEX — Baked.live Player</title>
+<style>
+html,body{margin:0;width:100%;height:100%;overflow:hidden;background:#000;color:#eee;font:16px system-ui,sans-serif}
+video{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;background:#000}
+#panel{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:#070707;text-align:center;padding:24px;box-sizing:border-box;pointer-events:none}
+#message{max-width:620px;white-space:pre-line}
+#info{position:absolute;left:0;bottom:0;right:0;background:linear-gradient(transparent,rgba(0,0,0,.85));padding:45px 15px 10px;pointer-events:none;font-size:13px;opacity:0;transition:opacity .3s}
+body:hover #info{opacity:1}#toggle{position:absolute;right:12px;top:12px;border:1px solid #aaa;background:rgba(0,0,0,.8);color:white;padding:8px 12px;border-radius:5px;cursor:pointer;z-index:4}
+#credit{font-size:11px;opacity:.7;margin-top:4px}
+</style></head>
+<body>
+<video id="video" autoplay playsinline preload="auto"></video>
+<div id="panel"><div id="message">Tuning into SUPLEX…</div></div>
+<div id="info"><strong id="title">SUPLEX</strong><div id="credit">Schedule: Spelunkr.tv · Video: Internet Archive · Independent viewer</div></div>
+<button id="toggle" type="button">🔇 Unmute</button><audio id="audio" preload="auto"></audio>
+<script type="module">
+import { Broadcast } from 'https://cdn.jsdelivr.net/gh/buddytohelpu/spelunkr-guide@main/web/broadcast.js';
+const video=document.querySelector('#video'),audio=document.querySelector('#audio'),panel=document.querySelector('#panel'),message=document.querySelector('#message'),title=document.querySelector('#title'),toggle=document.querySelector('#toggle');
+const broadcast=new Broadcast();
+let channelId=null,current=null,run=0,timer=null,delay=1000,muted=true;
+video.muted=true;audio.muted=true;
+function status(s){message.textContent=s;panel.style.display='flex'}
+function updateMute(){video.muted=audio.muted=muted;toggle.textContent=muted?'🔇 Unmute':'🔊 Mute'}
+toggle.onclick=()=>{muted=!muted;updateMute();if(!muted){video.play().catch(()=>{});audio.play().catch(()=>{})}};
+function wipe(){video.pause();audio.pause();video.removeAttribute('src');audio.removeAttribute('src');video.load();audio.load()}
+async function start(){try{const lineup=await broadcast.lineup();const channel=lineup.channels.find(c=>/suplex/i.test(c.name)||/suplex/i.test(c.id));if(!channel)throw Error('SUPLEX not found in public broadcast lineup');channelId=channel.id;delay=1000;await tune()}catch(e){status('SUPLEX unavailable.\n'+e.message+'\nRetrying automatically…');setTimeout(start,15000)}}
+async function tune(){if(!channelId)return;const token=++run;clearTimeout(timer);try{
+const data=await broadcast.tune(channelId);if(token!==run)return;
+delay=1000;current=data;title.textContent=`${data.channel.name} — ${data.title||'Station break'}`;wipe();
+timer=setTimeout(tune,Math.max(1000,data.endMs-Date.now()+200));
+if(data.url){
+video.src=data.url;video.load();
+video.onloadedmetadata=()=>{if(token!==run)return;const seek=data.seek+Math.max(0,(Date.now()-data.serverTime)/1000);if(Number.isFinite(seek)&&seek>0&&Number.isFinite(video.duration))video.currentTime=Math.min(Math.max(0,seek),Math.max(0,video.duration-.1));video.play().then(()=>{if(token===run)panel.style.display='none'}).catch(()=>status('Click the video or Unmute to begin playback.'))};
+video.onerror=()=>{if(token===run){status('Archive video unavailable. Retrying…');clearTimeout(timer);timer=setTimeout(tune,4500)}};
+}else{
+status(data.cards?.length?data.cards.map(x=>x.text).join('\n\n'):(data.message||'SUPLEX · Station break'));
+if(data.audioUrl){audio.src=data.audioUrl;audio.onloadedmetadata=()=>{if(token!==run)return;const seek=data.audioSeek+Math.max(0,(Date.now()-data.serverTime)/1000);if(Number.isFinite(seek)&&seek>0&&Number.isFinite(audio.duration))audio.currentTime=Math.min(seek,Math.max(0,audio.duration-.1));audio.play().catch(()=>{})}}
+}
+}catch(e){status('Reconnecting to SUPLEX…\n'+e.message);delay=Math.min(30000,delay*2);timer=setTimeout(tune,delay)}
+}
+video.addEventListener('ended',()=>{if(current&&Date.now()<current.endMs-2500)return;tune()});
+video.addEventListener('click',()=>{if(video.paused)video.play().catch(()=>{});else{muted=!muted;updateMute()}});
+setInterval(()=>{if(!current||!channelId)return;if(Date.now()>=current.endMs+1000){tune();return}
+if(current.url&&video.readyState>=2&&Number.isFinite(video.duration)&&video.currentSrc){const expected=current.seek+(Date.now()-current.serverTime)/1000;if(Math.abs(video.currentTime-expected)>8&&expected>0&&expected<video.duration-.5)video.currentTime=expected}},5000);
+window.addEventListener('unhandledrejection',e=>status('Player problem: '+String(e.reason?.message||e.reason)));
+start();
+</script></body></html>
