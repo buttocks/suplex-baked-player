@@ -28,7 +28,7 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add slamvision/njpw-live.json slamvision/ajpw-live.json slamvision/joshi-live.json slamvision/lucha-live.json slamvision/roh-live.json slamvision/noah-live.json slamvision/independent-live.json slamvision/dragongate-live.json slamvision/puro-live.json slamvision/shoot-live.json slamvision/ecw-live.json
+          git add slamvision/njpw-live.json slamvision/ajpw-live.json slamvision/joshi-live.json slamvision/lucha-live.json slamvision/roh-live.json slamvision/noah-live.json slamvision/independent-live.json slamvision/dragongate-live.json slamvision/puro-live.json slamvision/shoot-live.json slamvision/ecw-live.json slamvision/wwf-live.json
           if ! git diff --cached --quiet; then
             git commit -m "Refresh SlamVision NJPW stream data"
             git pull --rebase -X theirs origin main
