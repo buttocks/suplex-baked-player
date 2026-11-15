@@ -19,7 +19,6 @@ def main():
     data={'generated_at':datetime.datetime.now(datetime.timezone.utc).isoformat(),'channels':{}}
     channels=read('channels')
     byid={c['id']:c for c in channels}
-    print('ROH CANDIDATES: '+json.dumps([{'number':x.get('number'),'id':x.get('id'),'name':x.get('name')} for x in channels if 'roh' in (str(x.get('id',''))+' '+str(x.get('name',''))+' '+str(x.get('callsign',''))).lower() or 'ring of honor' in str(x.get('name','')).lower()]),flush=True)
     ajpw=next((ch for ch in channels if ch.get('number')==5),None)
     if not ajpw: raise RuntimeError('SlamVision Channel 05 missing')
     joshi=next((ch for ch in channels if ch.get('number')==11),None)
@@ -77,7 +76,24 @@ def main():
           'guide':[program(x) for x in byguide.get(channel_id,{}).get('slots',[])],
           'server_time':now.get('server_time')
         }
+    roh_channels={'15':'roh-tv','56':'croh'}
+    roh_data={'generated_at':datetime.datetime.now(datetime.timezone.utc).isoformat(),'channels':{}}
+    for number,channel_id in roh_channels.items():
+        ch=byid.get(channel_id)
+        if not ch or ch.get('number')!=int(number):
+            raise RuntimeError('ROH channel mismatch '+number)
+        now=read('channels/'+channel_id+'/now')
+        current=program(now.get('current'))
+        if not current or not current['stream_url']:
+            raise RuntimeError('Missing ROH current stream '+channel_id)
+        roh_data['channels'][number]={
+          'id':channel_id,'name':ch.get('name',channel_id),'current':current,
+          'up_next':[program(x) for x in now.get('up_next',[])[:8]],
+          'guide':[program(x) for x in byguide.get(channel_id,{}).get('slots',[])],
+          'server_time':now.get('server_time')
+        }
     OUT.mkdir(parents=True,exist_ok=True)
+    (OUT/'roh-live.json').write_text(json.dumps(roh_data,ensure_ascii=False,separators=(',',':')),encoding='utf-8')
     (OUT/'lucha-live.json').write_text(json.dumps(lucha_data,ensure_ascii=False,separators=(',',':')),encoding='utf-8')
     (OUT/'joshi-live.json').write_text(json.dumps(joshi_data,ensure_ascii=False,separators=(',',':')),encoding='utf-8')
     (OUT/'ajpw-live.json').write_text(json.dumps(ajpw_data,ensure_ascii=False,separators=(',',':')),encoding='utf-8')
