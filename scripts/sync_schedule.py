@@ -27,7 +27,7 @@ def valid(path):
 def main():
     blob,lineup,source=fetch("lineup.json")
     channels=lineup.get("channels") or []
-    selected=[next((c for c in channels if c.get("id")==cid),None) for cid in ("suplex","radio-active-tv","warp-zone","final-frontier","dusty-trails")]
+    selected=[next((c for c in channels if c.get("id")==cid),None) for cid in ("suplex","radio-active-tv","warp-zone","final-frontier","dusty-trails","late-nite-swimclub","toonertia")]
     if any(c is None for c in selected): raise RuntimeError("Required Spelunkr channels missing from lineup; leaving existing cache in place")
     required={}
     for channel in selected:
