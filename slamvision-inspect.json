@@ -269,5 +269,581 @@
         }
       ]
     }
-  ]
+  ],
+  "api": {
+    "channels": [
+      {
+        "id": "njpw",
+        "number": 1,
+        "callsign": "NJPW-TV",
+        "name": "New Japan Pro-Wrestling",
+        "tagline": "Strong Style classics, G1 Climax & Tokyo Dome supercards",
+        "query": "title:(Aew) AND (subject:(wrestling) OR title:(wrestling OR wrestle OR \"pro-wres\") OR description:(wrestling)) AND -title:(PS1 OR PS2 OR PSX OR PlayStation OR N64 OR \"Nintendo 64\" OR Xbox OR gameplay OR longplay OR walkthrough OR \"WWE 2K\" OR \"Fire Pro\" OR \"SmackDown vs\" OR review OR reaction OR magazine)",
+        "strategies": [
+          "title:(Aew)",
+          "title:(nxt)"
+        ],
+        "archived": false,
+        "category_override": null,
+        "virtual_year": null,
+        "category": "promotions",
+        "category_auto": true,
+        "program_count": 1135,
+        "loop_seconds": 3585216.36,
+        "new_count": 1135
+      },
+      {
+        "id": "njpw-tv",
+        "number": 12,
+        "callsign": "NJPW-TV",
+        "name": "New Japan Pro Wrestling",
+        "tagline": "NJPW",
+        "query": "title:(New Japan Pro Wrestling) AND (subject:(wrestling) OR title:(wrestling OR wrestle OR \"pro-wres\") OR description:(wrestling)) AND -title:(PS1 OR PS2 OR PSX OR PlayStation OR N64 OR \"Nintendo 64\" OR Xbox OR gameplay OR longplay OR walkthrough OR \"WWE 2K\" OR \"Fire Pro\" OR \"SmackDown vs\" OR review OR reaction OR magazine)",
+        "strategies": [
+          "title:(New Japan Pro Wrestling)",
+          "subject:(New Japan Pro Wrestling)"
+        ],
+        "archived": false,
+        "category_override": null,
+        "virtual_year": null,
+        "category": "promotions",
+        "category_auto": true,
+        "program_count": 1391,
+        "loop_seconds": 2863845.37,
+        "new_count": 1391
+      }
+    ],
+    "channels_summary": {
+      "type": "<class 'list'>",
+      "count": 96
+    },
+    "now_1": {
+      "channel": {
+        "id": "njpw",
+        "number": 1,
+        "callsign": "NJPW-TV",
+        "name": "New Japan Pro-Wrestling",
+        "tagline": "Strong Style classics, G1 Climax & Tokyo Dome supercards",
+        "query": "title:(Aew) AND (subject:(wrestling) OR title:(wrestling OR wrestle OR \"pro-wres\") OR description:(wrestling)) AND -title:(PS1 OR PS2 OR PSX OR PlayStation OR N64 OR \"Nintendo 64\" OR Xbox OR gameplay OR longplay OR walkthrough OR \"WWE 2K\" OR \"Fire Pro\" OR \"SmackDown vs\" OR review OR reaction OR magazine)",
+        "strategies": [
+          "title:(Aew)",
+          "title:(nxt)"
+        ],
+        "archived": false,
+        "category_override": null,
+        "virtual_year": null
+      },
+      "server_time": "2026-11-15T04:25:49.904479Z",
+      "current": {
+        "program": {
+          "id": "2ceeedbf-7c3f-4217-bf6b-689728ca1461",
+          "channel_id": "njpw",
+          "identifier": "approved_aug2024_match_picks",
+          "title": "Stephanie Vaquer vs. la Catalina",
+          "episode": "NJPW Fantastica Mania 2024 \u00b7 Jun 2024",
+          "raw_title": "APPROVED Wrestling Match Pack (June 2024)",
+          "raw_episode": "(06.21) {CMLL} Stephanie Vaquer vs. La Catalina [NJPW STRONG Women's Title] (Fantastica Mania Mexico)",
+          "clean_v": 15,
+          "keep": false,
+          "file_name": "(06.21) {CMLL} Stephanie Vaquer vs. La Catalina [NJPW STRONG Women's Title] (Fantastica Mania Mexico).mp4",
+          "stream_url": "https://archive.org/download/approved_aug2024_match_picks/%2806.21%29%20%7BCMLL%7D%20Stephanie%20Vaquer%20vs.%20La%20Catalina%20%5BNJPW%20STRONG%20Women%27s%20Title%5D%20%28Fantastica%20Mania%20Mexico%29.mp4",
+          "duration": 1398.23,
+          "year": "2024",
+          "uploaded_at": "2024-08-02T12:21:27",
+          "source": "auto",
+          "position": 391,
+          "batch": 1794522668,
+          "active": true,
+          "retired_reason": null,
+          "queued_at": null,
+          "last_checked": "2026-11-13T03:36:12.816000",
+          "created_at": "2026-11-12T22:31:24.736000"
+        },
+        "start": "2026-11-15T04:09:34.765000Z",
+        "end": "2026-11-15T04:32:52.995000Z",
+        "block": null
+      },
+      "offset_seconds": 975.139479,
+      "up_next": [
+        {
+          "program": {
+            "id": "c898ff06-a918-47e1-a6a3-7135880ff5da",
+            "channel_id": "njpw",
+            "identifier": "cross-road",
+            "title": "New Japan vs. NOAH Jr Three Match Trial \u2013 No 2",
+            "episode": "NJPW \u00b7 Aug 29, 2002",
+            "raw_title": "NJPW CROSS ROAD 8/29/02",
+            "raw_episode": "2002.08.29e-NJPW-4th Match-New Japan VS NOAH Jr. Three Match Trial~No. 2-Koji Kanemoto VS Makoto Hashi",
+            "clean_v": 15,
+            "keep": false,
+            "file_name": "2002.08.29e-NJPW-4th Match-New Japan VS NOAH Jr. Three Match Trial~No. 2-Koji Kanemoto VS Makoto Hashi.mp4",
+            "stream_url": "https://archive.org/download/cross-road/2002.08.29e-NJPW-4th%20Match-New%20Japan%20VS%20NOAH%20Jr.%20Three%20Match%20Trial~No.%202-Koji%20Kanemoto%20VS%20Makoto%20Hashi.mp4",
+            "duration": 992.98,
+            "year": "2002",
+            "uploaded_at": "2020-12-30T16:52:01",
+            "source": "auto",
+            "position": 2121,
+            "batch": 1794349866,
+            "active": true,
+            "retired_reason": null,
+            "queued_at": null,
+            "last_checked": "2026-11-12T22:18:48.522000",
+            "created_at": "2026-11-10T22:31:30.436000"
+          },
+          "start": "2026-11-15T04:32:52.995000Z",
+          "end": "2026-11-15T04:49:25.975000Z",
+          "block": null
+        },
+        {
+          "program": {
+            "id": "bff8d6ac-0bcf-464d-aaca-f0b6dcd97535",
+            "channel_id": "njpw",
+            "identifier": "cross-road",
+            "title": "Masayuki Naruse vs. Takehiro Murahama",
+            "episode": "NJPW \u00b7 Aug 29, 2002",
+            "raw_title": "NJPW CROSS ROAD 8/29/02",
+            "raw_episode": "2002.08.29f-NJPW-5th Match-Masayuki Naruse VS Takehiro Murahama",
+            "clean_v": 15,
+            "keep": false,
+            "file_name": "2002.08.29f-NJPW-5th Match-Masayuki Naruse VS Takehiro Murahama.mp4",
+            "stream_url": "https://archive.org/download/cross-road/2002.08.29f-NJPW-5th%20Match-Masayuki%20Naruse%20VS%20Takehiro%20Murahama.mp4",
+            "duration": 1230.0,
+            "year": "2002",
+            "uploaded_at": "2020-12-30T16:52:01",
+            "source": "auto",
+            "position": 2122,
+            "batch": 1794349866,
+            "active": true,
+            "retired_reason": null,
+            "queued_at": null,
+            "last_checked": "2026-11-12T22:18:49.010000",
+            "created_at": "2026-11-10T22:31:30.436000"
+          },
+          "start": "2026-11-15T04:49:25.975000Z",
+          "end": "2026-11-15T05:09:55.975000Z",
+          "block": null
+        },
+        {
+          "program": {
+            "id": "c256e401-7962-4571-9f69-49d1176fa75f",
+            "channel_id": "njpw",
+            "identifier": "cross-road",
+            "title": "New Japan vs. NOAH Jr 3 Match Trial \u2013 #3",
+            "episode": "NJPW \u00b7 Aug 29, 2002",
+            "raw_title": "NJPW CROSS ROAD 8/29/02",
+            "raw_episode": "2002.08.29j-NJPW-9th Match-New Japan VS NOAH Jr. 3 Match Trial~#3-IWGP Jr. Tag Title-Liger, Minoru (C) VS Kikuchi, Kanemaru",
+            "clean_v": 15,
+            "keep": false,
+            "file_name": "2002.08.29j-NJPW-9th Match-New Japan VS NOAH Jr. 3 Match Trial~#3-IWGP Jr. Tag Title-Liger, Minoru (C) VS Kikuchi, Kanemaru.mp4",
+            "stream_url": "https://archive.org/download/cross-road/2002.08.29j-NJPW-9th%20Match-New%20Japan%20VS%20NOAH%20Jr.%203%20Match%20Trial~%233-IWGP%20Jr.%20Tag%20Title-Liger%2C%20Minoru%20%28C%29%20VS%20Kikuchi%2C%20Kanemaru.mp4",
+            "duration": 1771.03,
+            "year": "2002",
+            "uploaded_at": "2020-12-30T16:52:01",
+            "source": "auto",
+            "position": 2123,
+            "batch": 1794349866,
+            "active": true,
+            "retired_reason": null,
+            "queued_at": null,
+            "last_checked": "2026-11-12T22:18:49.144000",
+            "created_at": "2026-11-10T22:31:30.436000"
+          },
+          "start": "2026-11-15T05:09:55.975000Z",
+          "end": "2026-11-15T05:39:27.005000Z",
+          "block": null
+        }
+      ]
+    },
+    "now_12": {
+      "channel": {
+        "id": "njpw-tv",
+        "number": 12,
+        "callsign": "NJPW-TV",
+        "name": "New Japan Pro Wrestling",
+        "tagline": "NJPW",
+        "query": "title:(New Japan Pro Wrestling) AND (subject:(wrestling) OR title:(wrestling OR wrestle OR \"pro-wres\") OR description:(wrestling)) AND -title:(PS1 OR PS2 OR PSX OR PlayStation OR N64 OR \"Nintendo 64\" OR Xbox OR gameplay OR longplay OR walkthrough OR \"WWE 2K\" OR \"Fire Pro\" OR \"SmackDown vs\" OR review OR reaction OR magazine)",
+        "strategies": [
+          "title:(New Japan Pro Wrestling)",
+          "subject:(New Japan Pro Wrestling)"
+        ],
+        "archived": false,
+        "category_override": null,
+        "virtual_year": null
+      },
+      "server_time": "2026-11-15T04:25:50.033408Z",
+      "current": {
+        "program": {
+          "id": "dd303f44-9363-467b-ad16-c4d01a25f4c7",
+          "channel_id": "njpw-tv",
+          "identifier": "approved_match_picks_01_2025",
+          "title": "David Finlay vs. Yota Tsuji",
+          "episode": "NJPW Wrestle Kingdom 19 \u00b7 Jan 2025",
+          "raw_title": "APPROVED Wrestling Match Pack (January 2025)",
+          "raw_episode": "(01.04) {NJPW} David Finlay vs. Yota Tsuji [IWGP Global Heavyweight Championship] (WRESTLE KINGDOM 19)",
+          "clean_v": 15,
+          "keep": false,
+          "file_name": "(01.04) {NJPW} David Finlay vs. Yota Tsuji [IWGP Global Heavyweight Championship] (WRESTLE KINGDOM 19).mp4",
+          "stream_url": "https://archive.org/download/approved_match_picks_01_2025/%2801.04%29%20%7BNJPW%7D%20David%20Finlay%20vs.%20Yota%20Tsuji%20%5BIWGP%20Global%20Heavyweight%20Championship%5D%20%28WRESTLE%20KINGDOM%2019%29.mp4",
+          "duration": 1837.08,
+          "year": "2025",
+          "uploaded_at": "2025-03-31T07:47:52",
+          "source": "auto",
+          "position": 2091,
+          "batch": 1794355419,
+          "active": true,
+          "retired_reason": null,
+          "queued_at": null,
+          "last_checked": "2026-11-12T15:04:30.364000",
+          "created_at": "2026-11-11T00:03:57.643000"
+        },
+        "start": "2026-11-15T03:58:44.518000Z",
+        "end": "2026-11-15T04:29:21.598000Z",
+        "block": null
+      },
+      "offset_seconds": 1625.515408,
+      "up_next": [
+        {
+          "program": {
+            "id": "2e3e2de3-869d-4b1a-af65-ea340a29be15",
+            "channel_id": "njpw-tv",
+            "identifier": "approved_match_picks_01_2025",
+            "title": "Jeff Cobb vs. Ryohei Oiwa vs. El Phantasmo vs. Ren Narita",
+            "episode": "NJPW Wrestle Kingdom 19 \u00b7 Jan 2025",
+            "raw_title": "APPROVED Wrestling Match Pack (January 2025)",
+            "raw_episode": "(01.04) {NJPW} Jeff Cobb vs. Ryohei Oiwa vs. El Phantasmo vs. Ren Narita [NJPW World TV Championship] (WRESTLE KINGDOM 19)",
+            "clean_v": 15,
+            "keep": false,
+            "file_name": "(01.04) {NJPW} Jeff Cobb vs. Ryohei Oiwa vs. El Phantasmo vs. Ren Narita [NJPW World TV Championship] (WRESTLE KINGDOM 19).mp4",
+            "stream_url": "https://archive.org/download/approved_match_picks_01_2025/%2801.04%29%20%7BNJPW%7D%20Jeff%20Cobb%20vs.%20Ryohei%20Oiwa%20vs.%20El%20Phantasmo%20vs.%20Ren%20Narita%20%5BNJPW%20World%20TV%20Championship%5D%20%28WRESTLE%20KINGDOM%2019%29.mp4",
+            "duration": 1006.93,
+            "year": "2025",
+            "uploaded_at": "2025-03-31T07:47:52",
+            "source": "auto",
+            "position": 2092,
+            "batch": 1794355419,
+            "active": true,
+            "retired_reason": null,
+            "queued_at": null,
+            "last_checked": "2026-11-12T15:04:30.274000",
+            "created_at": "2026-11-11T00:03:57.643000"
+          },
+          "start": "2026-11-15T04:29:21.598000Z",
+          "end": "2026-11-15T04:46:08.528000Z",
+          "block": null
+        },
+        {
+          "program": {
+            "id": "ed2e6c02-d7f1-4d1f-9f88-4498fd001292",
+            "channel_id": "njpw-tv",
+            "identifier": "approved_match_picks_01_2025",
+            "title": "Mayu Iwatani vs. AZM",
+            "episode": "NJPW Wrestle Kingdom 19 \u00b7 Jan 2025",
+            "raw_title": "APPROVED Wrestling Match Pack (January 2025)",
+            "raw_episode": "(01.04) {NJPW} Mayu Iwatani vs. AZM [IWGP Women's Championship] (WRESTLE KINGDOM 19)",
+            "clean_v": 15,
+            "keep": false,
+            "file_name": "(01.04) {NJPW} Mayu Iwatani vs. AZM [IWGP Women's Championship] (WRESTLE KINGDOM 19).mp4",
+            "stream_url": "https://archive.org/download/approved_match_picks_01_2025/%2801.04%29%20%7BNJPW%7D%20Mayu%20Iwatani%20vs.%20AZM%20%5BIWGP%20Women%27s%20Championship%5D%20%28WRESTLE%20KINGDOM%2019%29.mp4",
+            "duration": 974.93,
+            "year": "2025",
+            "uploaded_at": "2025-03-31T07:47:52",
+            "source": "auto",
+            "position": 2093,
+            "batch": 1794355419,
+            "active": true,
+            "retired_reason": null,
+            "queued_at": null,
+            "last_checked": "2026-11-12T15:04:30.040000",
+            "created_at": "2026-11-11T00:03:57.643000"
+          },
+          "start": "2026-11-15T04:46:08.528000Z",
+          "end": "2026-11-15T05:02:23.458000Z",
+          "block": null
+        },
+        {
+          "program": {
+            "id": "be3d5d7f-3042-43d8-8eeb-0cf7349db271",
+            "channel_id": "njpw-tv",
+            "identifier": "92-super-warrior-in-osaka-castle-hall-part-1-and-2",
+            "title": "Jyushin Thunder Liger vs. El Samurai",
+            "episode": "NJPW \u00b7 May 17, 1992",
+            "raw_title": "NJPW '92 SUPER WARRIOR IN Osaka Castle Hall PART 1 & 2 5/17/92",
+            "raw_episode": "1992.05.17c-NJPW-IWGP Junior Heavyweight Championship-Jyushin Thunder Liger (C-V3) VS El Samurai",
+            "clean_v": 15,
+            "keep": false,
+            "file_name": "1992.05.17c-NJPW-IWGP Junior Heavyweight Championship-Jyushin Thunder Liger (C-V3) VS El Samurai.mp4",
+            "stream_url": "https://archive.org/download/92-super-warrior-in-osaka-castle-hall-part-1-and-2/1992.05.17c-NJPW-IWGP%20Junior%20Heavyweight%20Championship-Jyushin%20Thunder%20Liger%20%28C-V3%29%20VS%20El%20Samurai.mp4",
+            "duration": 1600.15,
+            "year": "1992",
+            "uploaded_at": "2021-01-05T11:06:17",
+            "source": "auto",
+            "position": 2102,
+            "batch": 1794355419,
+            "active": true,
+            "retired_reason": null,
+            "queued_at": null,
+            "last_checked": "2026-11-12T15:04:30.184000",
+            "created_at": "2026-11-11T00:03:57.759000"
+          },
+          "start": "2026-11-15T05:02:23.458000Z",
+          "end": "2026-11-15T05:29:03.608000Z",
+          "block": null
+        }
+      ]
+    },
+    "guide_summary": {
+      "keys": [
+        "server_time",
+        "window_start",
+        "window_end",
+        "rows"
+      ]
+    },
+    "guide_rows": [
+      {
+        "channel": {
+          "id": "njpw",
+          "number": 1,
+          "callsign": "NJPW-TV",
+          "name": "New Japan Pro-Wrestling"
+        },
+        "slots": [
+          {
+            "program": {
+              "id": "8b7a17fc-acd7-44dd-9849-68dfca1c5ee1",
+              "channel_id": "njpw",
+              "identifier": "approved_aug2024_match_picks",
+              "title": "Shingo Takagi vs. HENARE",
+              "episode": "NJPW \u00b7 Jun 2024",
+              "duration": 1699.97,
+              "uploaded_at": "2024-08-02T12:21:27"
+            },
+            "start": "2026-11-15T03:41:14.795000Z",
+            "end": "2026-11-15T04:09:34.765000Z",
+            "block": null
+          },
+          {
+            "program": {
+              "id": "2ceeedbf-7c3f-4217-bf6b-689728ca1461",
+              "channel_id": "njpw",
+              "identifier": "approved_aug2024_match_picks",
+              "title": "Stephanie Vaquer vs. la Catalina",
+              "episode": "NJPW Fantastica Mania 2024 \u00b7 Jun 2024",
+              "duration": 1398.23,
+              "uploaded_at": "2024-08-02T12:21:27"
+            },
+            "start": "2026-11-15T04:09:34.765000Z",
+            "end": "2026-11-15T04:32:52.995000Z",
+            "block": null
+          },
+          {
+            "program": {
+              "id": "c898ff06-a918-47e1-a6a3-7135880ff5da",
+              "channel_id": "njpw",
+              "identifier": "cross-road",
+              "title": "New Japan vs. NOAH Jr Three Match Trial \u2013 No 2",
+              "episode": "NJPW \u00b7 Aug 29, 2002",
+              "duration": 992.98,
+              "uploaded_at": "2020-12-30T16:52:01"
+            },
+            "start": "2026-11-15T04:32:52.995000Z",
+            "end": "2026-11-15T04:49:25.975000Z",
+            "block": null
+          },
+          {
+            "program": {
+              "id": "bff8d6ac-0bcf-464d-aaca-f0b6dcd97535",
+              "channel_id": "njpw",
+              "identifier": "cross-road",
+              "title": "Masayuki Naruse vs. Takehiro Murahama",
+              "episode": "NJPW \u00b7 Aug 29, 2002",
+              "duration": 1230.0,
+              "uploaded_at": "2020-12-30T16:52:01"
+            },
+            "start": "2026-11-15T04:49:25.975000Z",
+            "end": "2026-11-15T05:09:55.975000Z",
+            "block": null
+          },
+          {
+            "program": {
+              "id": "c256e401-7962-4571-9f69-49d1176fa75f",
+              "channel_id": "njpw",
+              "identifier": "cross-road",
+              "title": "New Japan vs. NOAH Jr 3 Match Trial \u2013 #3",
+              "episode": "NJPW \u00b7 Aug 29, 2002",
+              "duration": 1771.03,
+              "uploaded_at": "2020-12-30T16:52:01"
+            },
+            "start": "2026-11-15T05:09:55.975000Z",
+            "end": "2026-11-15T05:39:27.005000Z",
+            "block": null
+          },
+          {
+            "program": {
+              "id": "5e716b7d-08f0-4c54-854e-c852f18c0cea",
+              "channel_id": "njpw",
+              "identifier": "cross-road",
+              "title": "Kazuyuki Fujita vs. Yoshihiro Takayama",
+              "episode": "NJPW \u00b7 Aug 29, 2002",
+              "duration": 1323.05,
+              "uploaded_at": "2020-12-30T16:52:01"
+            },
+            "start": "2026-11-15T05:39:27.005000Z",
+            "end": "2026-11-15T06:01:30.055000Z",
+            "block": null
+          },
+          {
+            "program": {
+              "id": "49054355-0564-4336-8f74-97d6ba880b9a",
+              "channel_id": "njpw",
+              "identifier": "njpw-new-japan-cup-2026-day-5-10-03-26",
+              "title": "NJPW New Japan Cup 2026",
+              "episode": "Day 5 \u00b7 Mar 10, 2026",
+              "duration": 8658.55,
+              "uploaded_at": "2026-03-11T03:12:24"
+            },
+            "start": "2026-11-15T06:01:30.055000Z",
+            "end": "2026-11-15T08:25:48.605000Z",
+            "block": null
+          }
+        ]
+      },
+      {
+        "channel": {
+          "id": "njpw-tv",
+          "number": 12,
+          "callsign": "NJPW-TV",
+          "name": "New Japan Pro Wrestling"
+        },
+        "slots": [
+          {
+            "program": {
+              "id": "dd303f44-9363-467b-ad16-c4d01a25f4c7",
+              "channel_id": "njpw-tv",
+              "identifier": "approved_match_picks_01_2025",
+              "title": "David Finlay vs. Yota Tsuji",
+              "episode": "NJPW Wrestle Kingdom 19 \u00b7 Jan 2025",
+              "duration": 1837.08,
+              "uploaded_at": "2025-03-31T07:47:52"
+            },
+            "start": "2026-11-15T03:58:44.518000Z",
+            "end": "2026-11-15T04:29:21.598000Z",
+            "block": null
+          },
+          {
+            "program": {
+              "id": "2e3e2de3-869d-4b1a-af65-ea340a29be15",
+              "channel_id": "njpw-tv",
+              "identifier": "approved_match_picks_01_2025",
+              "title": "Jeff Cobb vs. Ryohei Oiwa vs. El Phantasmo vs. Ren Narita",
+              "episode": "NJPW Wrestle Kingdom 19 \u00b7 Jan 2025",
+              "duration": 1006.93,
+              "uploaded_at": "2025-03-31T07:47:52"
+            },
+            "start": "2026-11-15T04:29:21.598000Z",
+            "end": "2026-11-15T04:46:08.528000Z",
+            "block": null
+          },
+          {
+            "program": {
+              "id": "ed2e6c02-d7f1-4d1f-9f88-4498fd001292",
+              "channel_id": "njpw-tv",
+              "identifier": "approved_match_picks_01_2025",
+              "title": "Mayu Iwatani vs. AZM",
+              "episode": "NJPW Wrestle Kingdom 19 \u00b7 Jan 2025",
+              "duration": 974.93,
+              "uploaded_at": "2025-03-31T07:47:52"
+            },
+            "start": "2026-11-15T04:46:08.528000Z",
+            "end": "2026-11-15T05:02:23.458000Z",
+            "block": null
+          },
+          {
+            "program": {
+              "id": "be3d5d7f-3042-43d8-8eeb-0cf7349db271",
+              "channel_id": "njpw-tv",
+              "identifier": "92-super-warrior-in-osaka-castle-hall-part-1-and-2",
+              "title": "Jyushin Thunder Liger vs. El Samurai",
+              "episode": "NJPW \u00b7 May 17, 1992",
+              "duration": 1600.15,
+              "uploaded_at": "2021-01-05T11:06:17"
+            },
+            "start": "2026-11-15T05:02:23.458000Z",
+            "end": "2026-11-15T05:29:03.608000Z",
+            "block": null
+          },
+          {
+            "program": {
+              "id": "3df9bc75-4bdb-4853-91e6-2f26bff5be31",
+              "channel_id": "njpw-tv",
+              "identifier": "92-super-warrior-in-osaka-castle-hall-part-1-and-2",
+              "title": "Antonio Inoki, Hiroshi Hase vs. Monsieur Rambo, Brad Rheingans",
+              "episode": "NJPW \u00b7 May 17, 1992",
+              "duration": 1133.68,
+              "uploaded_at": "2021-01-05T11:06:17"
+            },
+            "start": "2026-11-15T05:29:03.608000Z",
+            "end": "2026-11-15T05:47:57.288000Z",
+            "block": null
+          },
+          {
+            "program": {
+              "id": "2bc36b63-afb0-4bf6-a0e7-76dcf20ec93f",
+              "channel_id": "njpw-tv",
+              "identifier": "92-super-warrior-in-osaka-castle-hall-part-1-and-2",
+              "title": "Tiger Mask vs. Pegasus Kid",
+              "episode": "NJPW \u00b7 May 17, 1992",
+              "duration": 1279.38,
+              "uploaded_at": "2021-01-05T11:06:17"
+            },
+            "start": "2026-11-15T05:47:57.288000Z",
+            "end": "2026-11-15T06:09:16.668000Z",
+            "block": null
+          },
+          {
+            "program": {
+              "id": "958f487e-fc37-4248-ad58-452236d72b1f",
+              "channel_id": "njpw-tv",
+              "identifier": "92-super-warrior-in-osaka-castle-hall-part-1-and-2",
+              "title": "Riki Choshu vs. Keiji Muto",
+              "episode": "NJPW \u00b7 May 17, 1992",
+              "duration": 1575.32,
+              "uploaded_at": "2021-01-05T11:06:17"
+            },
+            "start": "2026-11-15T06:09:16.668000Z",
+            "end": "2026-11-15T06:35:31.988000Z",
+            "block": null
+          },
+          {
+            "program": {
+              "id": "2480580a-4681-4199-91ee-c42482108381",
+              "channel_id": "njpw-tv",
+              "identifier": "1992-super-warrior-in-yokohama-arena-part-1-and-2",
+              "title": "Masahiro Chono vs. Shinya Hashimoto",
+              "episode": "NJPW \u00b7 Mar 1, 1992",
+              "duration": 1307.03,
+              "uploaded_at": "2021-01-05T11:40:20"
+            },
+            "start": "2026-11-15T06:35:31.988000Z",
+            "end": "2026-11-15T06:57:19.018000Z",
+            "block": null
+          },
+          {
+            "program": {
+              "id": "eb7f15f9-52b0-4ffa-bbd4-16d09b2cc5b6",
+              "channel_id": "njpw-tv",
+              "identifier": "1992-super-warrior-in-yokohama-arena-part-1-and-2",
+              "title": "Keiji Muto, Hiroshi Hase vs. Big Van Vader, Crusher Bam Bam Bigelow",
+              "episode": "NJPW \u00b7 Mar 1, 1992",
+              "duration": 1983.89,
+              "uploaded_at": "2021-01-05T11:40:20"
+            },
+            "start": "2026-11-15T06:57:19.018000Z",
+            "end": "2026-11-15T07:30:22.908000Z",
+            "block": null
+          }
+        ]
+      }
+    ]
+  }
 }
