@@ -27,7 +27,7 @@ def valid(path):
 def main():
     blob,lineup,source=fetch("lineup.json")
     channels=lineup.get("channels") or []
-    selected=[next((c for c in channels if c.get("id")==cid),None) for cid in ("suplex","radio-active-tv","warp-zone","final-frontier")]
+    selected=[next((c for c in channels if c.get("id")==cid),None) for cid in ("suplex","radio-active-tv","warp-zone","final-frontier","dusty-trails")]
     if any(c is None for c in selected): raise RuntimeError("Required Spelunkr channels missing from lineup; leaving existing cache in place")
     required={}
     for channel in selected:
@@ -46,5 +46,5 @@ def main():
         if path not in fetched: fetched[path]=fetch(path)[0]
     for path,b in fetched.items(): save(path,b)
     save("lineup.json",blob)
-    print(f"SUPLEX, RADIO-ACTIVE TV, WARP ZONE and FINAL FRONTIER mirrored {len(fetched)} assets from {source} at {time.ctime()}")
+    print(f"SUPLEX, RADIO-ACTIVE TV, WARP ZONE FINAL FRONTIER and DUSTY TRAILS mirrored {len(fetched)} assets from {source} at {time.ctime()}")
 if __name__=="__main__":main()
