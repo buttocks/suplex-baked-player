@@ -35,7 +35,7 @@ def main():
         if not valid(path):raise RuntimeError("Bad manifest path "+str(path))
         required[path]=True
     fetched={}
-    for path in required:
+    for path in list(required):
         b,manifest,_=fetch(path);fetched[path]=b
         platform=manifest.get("platform")
         if platform:
