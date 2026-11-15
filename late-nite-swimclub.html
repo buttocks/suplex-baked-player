@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>LATE NITE SWIMCLUB — Baked.live Player</title>
+<style>
+html,body{margin:0;width:100%;height:100%;overflow:hidden;background:#000;color:#eee;font:16px system-ui,sans-serif}
+video{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;background:#000}
+#panel{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:#070707;text-align:center;padding:24px;box-sizing:border-box;pointer-events:none}
+#message{max-width:620px;white-space:pre-line}
+#info{position:absolute;left:0;bottom:0;right:0;background:linear-gradient(transparent,rgba(0,0,0,.85));padding:45px 15px 10px;pointer-events:none;font-size:13px;opacity:0;transition:opacity .3s}
+body:hover #info{opacity:1}#toggle{position:absolute;right:12px;top:12px;border:1px solid #aaa;background:rgba(0,0,0,.8);color:white;padding:8px 12px;border-radius:5px;cursor:pointer;z-index:4}
+#credit{font-size:11px;opacity:.7;margin-top:4px}
+#guide-toggle{position:absolute;z-index:7;top:12px;left:12px;border:1px solid #777;border-radius:5px;background:rgba(0,0,0,.83);color:#fff;padding:8px 11px;font:13px system-ui;cursor:pointer}
+#guide{position:absolute;z-index:6;left:12px;top:52px;width:min(390px,calc(100% - 24px));max-height:min(72vh,510px);overflow:auto;box-sizing:border-box;background:rgba(12,14,20,.96);border:1px solid #505461;border-radius:8px;box-shadow:0 9px 35px #000b;color:#eee;font-size:13px}
+#guide[hidden]{display:none}
+#guide header{padding:12px 14px 9px;border-bottom:1px solid #343944;position:sticky;top:0;background:#12151c}
+#guide header strong{letter-spacing:.09em}
+#guide .sub{color:#afb4c0;font-size:11px;margin-top:4px}
+#guide-list{list-style:none;padding:0;margin:0}
+#guide-list li{padding:10px 14px;border-bottom:1px solid #343944;display:grid;grid-template-columns:77px 1fr;gap:10px}
+#guide-list li.onair{background:#203126;border-left:3px solid #6ecb83;padding-left:11px}
+#guide-list .when{font-variant-numeric:tabular-nums;color:#b5bcca;font-size:12px}
+#guide-list .name{font-weight:600;overflow-wrap:anywhere}
+#guide-list .note{font-size:11px;color:#9ca6b4;margin-top:4px}
+#guide footer{padding:9px 14px;color:#8d96a6;font-size:11px}
+@media(max-width:600px){#guide{max-height:55vh}#guide-toggle,#toggle{font-size:12px}}
+</style></head>
+<body>
+<video id="video" autoplay playsinline preload="auto"></video>
+<div id="panel"><div id="message">Tuning into LATE NITE SWIMCLUB…</div></div>
+<div id="info"><strong id="title">LATE NITE SWIMCLUB</strong><div id="credit">Schedule: Spelunkr.tv · Video: Internet Archive · Independent viewer</div></div>
+<button id="guide-toggle" type="button" aria-controls="guide" aria-expanded="false">☷ TV Guide</button>
+<aside id="guide" hidden aria-label="LATE NITE SWIMCLUB television schedule">
+<header><strong>LATE NITE SWIMCLUB TV GUIDE</strong><div class="sub" id="guide-sub">Loading schedule…</div></header>
+<ol id="guide-list"></ol><footer>Times displayed in your local time zone · Schedule: Spelunkr</footer>
+</aside>
+<button id="toggle" type="button">🔇 Unmute</button><audio id="audio" preload="auto"></audio>
+<script type="module">
+import { Broadcast } from './broadcast.js';
+import { resolveAt } from './schedule-engine.js';
+const video=document.querySelector('#video'),audio=document.querySelector('#audio'),panel=document.querySelector('#panel'),message=document.querySelector('#message'),title=document.querySelector('#title'),toggle=document.querySelector('#toggle');
+const broadcast=new Broadcast();
+const guideButton=document.querySelector('#guide-toggle'),guideBox=document.querySelector('#guide'),guideList=document.querySelector('#guide-list'),guideSub=document.querySelector('#guide-sub');
+let guideChannel=null, guideBusy=false;
+const formatTime=ms=>new Date(ms).toLocaleTimeString([],{hour:'numeric',minute:'2-digit'});
+const displayDuration=ms=>Math.max(1,Math.ceil(ms/60000))+' min';
+let guideOpen=false;
+try{guideOpen=localStorage.getItem('late-nite-swimclub-guide-open')==='true'}catch{}
+function showGuide(open){
+ guideOpen=open;guideBox.hidden=!open;guideButton.setAttribute('aria-expanded',String(open));
+ guideButton.textContent=open?'✕ Hide Guide':'☷ TV Guide';
+ try{localStorage.setItem('late-nite-swimclub-guide-open',String(open))}catch{}
+ if(open)refreshGuide();
+}
+guideButton.onclick=()=>showGuide(!guideOpen);
+function makeGuideRow(program,now){
+ const li=document.createElement('li');
+ const isNow=program.startMs<=now&&program.endMs>now;
+ if(isNow)li.className='onair';
+ const when=document.createElement('div');when.className='when';
+ when.textContent=isNow?'● NOW':formatTime(program.startMs);
+ const description=document.createElement('div');
+ const name=document.createElement('div');name.className='name';
+ name.textContent=program.item.title||((program.item.type==='video')?'Untitled program':'Station break');
+ const note=document.createElement('div');note.className='note';
+ const end=formatTime(program.endMs);
+ note.textContent=(isNow?'On until ':'Until ')+end+(isNow?' · '+displayDuration(program.endMs-now)+' left':'');
+ description.append(name,note);li.append(when,description);return li;
+}
+async function refreshGuide(){
+ if(!guideOpen||guideBusy||!channelId)return;
+ guideBusy=true;
+ try{
+   guideChannel=await broadcast.channel(channelId);
+   const now=Date.now();let cursor=now;const entries=[];let videoCount=0;
+   // Include scheduled station breaks, but stop after six upcoming video programs.
+   for(let i=0;i<70&&videoCount<7;i++){
+     const pos=resolveAt(guideChannel.playlist,cursor);
+     if(!(pos.endMs>cursor))throw Error('Schedule did not advance');
+     entries.push(pos);
+     if(pos.item.type==='video')videoCount++;
+     cursor=pos.endMs+1;
+   }
+   guideList.replaceChildren(...entries.map(p=>makeGuideRow(p,now)));
+   guideSub.textContent='LIVE PROGRAMMING · '+new Date(now).toLocaleDateString([],{weekday:'short',month:'short',day:'numeric'});
+ }catch(err){guideSub.textContent='Schedule temporarily unavailable';guideList.replaceChildren();const li=document.createElement('li');li.textContent=err.message||'Try again shortly';guideList.append(li)}
+ finally{guideBusy=false}
+}
+setInterval(refreshGuide,60000);
+let channelId=null,current=null,run=0,timer=null,delay=1000,muted=true;
+showGuide(guideOpen);
+video.muted=true;audio.muted=true;
+function status(s){message.textContent=s;panel.style.display='flex'}
+function updateMute(){video.muted=audio.muted=muted;toggle.textContent=muted?'🔇 Unmute':'🔊 Mute'}
+toggle.onclick=()=>{muted=!muted;updateMute();if(!muted){video.play().catch(()=>{});audio.play().catch(()=>{})}};
+function wipe(){video.pause();audio.pause();video.removeAttribute('src');audio.removeAttribute('src');video.load();audio.load()}
+async function start(){try{const lineup=await broadcast.lineup();const channel=lineup.channels.find(c=>c.dial===54 && c.id==='late-nite-swimclub');if(!channel)throw Error('LATE NITE SWIMCLUB not found in public broadcast lineup');channelId=channel.id;delay=1000;refreshGuide();await tune()}catch(e){status('LATE NITE SWIMCLUB schedule temporarily unavailable.\n'+e.message+'\nRetrying automatically…');setTimeout(start,15000)}}
+async function tune(){if(!channelId)return;const token=++run;clearTimeout(timer);try{
+const data=await broadcast.tune(channelId);if(token!==run)return;
+delay=1000;current=data;refreshGuide();title.textContent=`${data.channel.name} — ${data.title||'Station break'}`;wipe();
+timer=setTimeout(tune,Math.max(1000,data.endMs-Date.now()+200));
+if(data.url){
+video.src=data.url;video.load();
+video.onloadedmetadata=()=>{if(token!==run)return;const seek=data.seek+Math.max(0,(Date.now()-data.serverTime)/1000);if(Number.isFinite(seek)&&seek>0&&Number.isFinite(video.duration))video.currentTime=Math.min(Math.max(0,seek),Math.max(0,video.duration-.1));video.play().then(()=>{if(token===run)panel.style.display='none'}).catch(()=>status('Click the video or Unmute to begin playback.'))};
+video.onerror=()=>{if(token===run){status('Archive video unavailable. Retrying…');clearTimeout(timer);timer=setTimeout(tune,4500)}};
+}else{
+status(data.cards?.length?data.cards.map(x=>x.text).join('\n\n'):(data.message||'LATE NITE SWIMCLUB · Station break'));
+if(data.audioUrl){audio.src=data.audioUrl;audio.onloadedmetadata=()=>{if(token!==run)return;const seek=data.audioSeek+Math.max(0,(Date.now()-data.serverTime)/1000);if(Number.isFinite(seek)&&seek>0&&Number.isFinite(audio.duration))audio.currentTime=Math.min(seek,Math.max(0,audio.duration-.1));audio.play().catch(()=>{})}}
+}
+}catch(e){status('Reconnecting to LATE NITE SWIMCLUB…\n'+e.message);delay=Math.min(30000,delay*2);timer=setTimeout(tune,delay)}
+}
+video.addEventListener('ended',()=>{if(current&&Date.now()<current.endMs-2500)return;tune()});
+video.addEventListener('click',()=>{if(video.paused)video.play().catch(()=>{});else{muted=!muted;updateMute()}});
+setInterval(()=>{if(!current||!channelId)return;if(Date.now()>=current.endMs+1000){tune();return}
+if(current.url&&video.readyState>=2&&Number.isFinite(video.duration)&&video.currentSrc){const expected=current.seek+(Date.now()-current.serverTime)/1000;if(Math.abs(video.currentTime-expected)>8&&expected>0&&expected<video.duration-.5)video.currentTime=expected}},5000);
+window.addEventListener('unhandledrejection',e=>status('Player problem: '+String(e.reason?.message||e.reason)));
+start();
+</script></body></html>
