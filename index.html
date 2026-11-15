@@ -18,7 +18,7 @@ body:hover #info{opacity:1}#toggle{position:absolute;right:12px;top:12px;border:
 <div id="info"><strong id="title">SUPLEX</strong><div id="credit">Schedule: Spelunkr.tv · Video: Internet Archive · Independent viewer</div></div>
 <button id="toggle" type="button">🔇 Unmute</button><audio id="audio" preload="auto"></audio>
 <script type="module">
-import { Broadcast } from 'https://cdn.jsdelivr.net/gh/buddytohelpu/spelunkr-guide@main/web/broadcast.js';
+import { Broadcast } from './broadcast.js';
 const video=document.querySelector('#video'),audio=document.querySelector('#audio'),panel=document.querySelector('#panel'),message=document.querySelector('#message'),title=document.querySelector('#title'),toggle=document.querySelector('#toggle');
 const broadcast=new Broadcast();
 let channelId=null,current=null,run=0,timer=null,delay=1000,muted=true;
@@ -27,7 +27,7 @@ function status(s){message.textContent=s;panel.style.display='flex'}
 function updateMute(){video.muted=audio.muted=muted;toggle.textContent=muted?'🔇 Unmute':'🔊 Mute'}
 toggle.onclick=()=>{muted=!muted;updateMute();if(!muted){video.play().catch(()=>{});audio.play().catch(()=>{})}};
 function wipe(){video.pause();audio.pause();video.removeAttribute('src');audio.removeAttribute('src');video.load();audio.load()}
-async function start(){try{const lineup=await broadcast.lineup();const channel=lineup.channels.find(c=>/suplex/i.test(c.name)||/suplex/i.test(c.id));if(!channel)throw Error('SUPLEX not found in public broadcast lineup');channelId=channel.id;delay=1000;await tune()}catch(e){status('SUPLEX unavailable.\n'+e.message+'\nRetrying automatically…');setTimeout(start,15000)}}
+async function start(){try{const lineup=await broadcast.lineup();const channel=lineup.channels.find(c=>/suplex/i.test(c.name)||/suplex/i.test(c.id));if(!channel)throw Error('SUPLEX not found in public broadcast lineup');channelId=channel.id;delay=1000;await tune()}catch(e){status('SUPLEX schedule temporarily unavailable.\n'+e.message+'\nRetrying automatically…');setTimeout(start,15000)}}
 async function tune(){if(!channelId)return;const token=++run;clearTimeout(timer);try{
 const data=await broadcast.tune(channelId);if(token!==run)return;
 delay=1000;current=data;title.textContent=`${data.channel.name} — ${data.title||'Station break'}`;wipe();
