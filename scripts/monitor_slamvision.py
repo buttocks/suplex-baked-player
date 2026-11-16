@@ -183,17 +183,92 @@ def open_incident(token):
                  and "pull_request" not in i), None)
 
 
+def github_dispatch_refresh(token):
+    """Request main's refresh workflow (204 No Content on success)."""
+    url = ("https://api.github.com/repos/" + REPO +
+           "/actions/workflows/refresh-njpw-slamvision.yml/dispatches")
+    request = urllib.request.Request(
+        url, data=json.dumps({"ref": "main"}).encode("utf-8"), method="POST",
+        headers={"Authorization": "Bearer " + token,
+                 "Accept": "application/vnd.github+json",
+                 "X-GitHub-Api-Version": "2022-11-28",
+                 "Content-Type": "application/json",
+                 "User-Agent": USER_AGENT})
+    with urllib.request.urlopen(request, timeout=15) as response:
+        if response.status != 204:
+            raise RuntimeError("Refresh dispatch returned HTTP " + str(response.status))
+
+
+def latest_refresh_runs(token):
+    result = github(
+        "GET",
+        "/actions/workflows/refresh-njpw-slamvision.yml/runs?branch=main&per_page=15",
+        token)
+    return result.get("workflow_runs", [])
+
+
+def should_dispatch(runs, now):
+    """Avoid a storm of recovery jobs; don't shadow a recently successful schedule job."""
+    recent_manual = False
+    newest_age = None
+    newest_result = None
+    for run in runs:
+        created = iso_to_seconds(run.get("created_at"))
+        if created is None:
+            continue
+        age = now - created
+        if run.get("event") == "workflow_dispatch" and -60 <= age < 15 * 60:
+            recent_manual = True
+        if newest_age is None or age < newest_age:
+            newest_age = age
+            newest_result = run
+    # A recent scheduled refresh should be allowed to publish. A recent manual
+    # recovery attempt is the dedupe state, not a reason to keep alerts silent.
+    recently_refreshing = (
+        newest_result is not None and newest_age is not None and
+        -60 <= newest_age < 7 * 60 and
+        newest_result.get("status") in ("queued", "pending", "in_progress"))
+    recent_success = (
+        newest_result is not None and newest_age is not None and
+        -60 <= newest_age < 4 * 60 and
+        newest_result.get("conclusion") == "success")
+    return (not recent_manual and not recently_refreshing and not recent_success,
+            recent_manual, recently_refreshing or recent_success)
+
+
 def reconcile_alert(errors, warnings, summary, token):
     issue = open_incident(token)
     if errors:
+        auto_repair_requested = False
+        wait_for_refresh = False
+        try:
+            now = time.time()
+            runs = latest_refresh_runs(token)
+            dispatch, recent_manual, just_refreshed = should_dispatch(runs, now)
+            if dispatch:
+                github_dispatch_refresh(token)
+                auto_repair_requested = True
+                print("AUTO-REPAIR: Requested a main-branch schedule refresh.", flush=True)
+            elif just_refreshed:
+                wait_for_refresh = True
+                print("AUTO-REPAIR: Recent refresh is running or deploying.", flush=True)
+            elif recent_manual:
+                print("AUTO-REPAIR: Recovery already requested recently.", flush=True)
+        except Exception as exc:
+            print("WARNING: Automatic refresh request failed: " + str(exc), flush=True)
+
         if issue:
             print("OUTAGE STILL OPEN: Issue #" + str(issue["number"]) +
-                  "; duplicate notifications suppressed", flush=True)
+                  "; no duplicate notifications.", flush=True)
             return 0
+        if auto_repair_requested or wait_for_refresh:
+            print("EARLY WARNING: Holding the first notification while recovery runs.", flush=True)
+            return 0
+
         body = (
-            "The published GitHub Pages JSON is unhealthy. This monitor checks "
-            "the 24 working SlamVision channels; it intentionally excludes 11 "
-            "known missing/repurposed upstream feeds.\n\n"
+            "The published GitHub Pages JSON needs attention. This monitor watches "
+            "24 working SlamVision channels, excluding 11 known missing or reassigned "
+            "upstream feeds.\n\n"
             + "**Detected:** " + dt.datetime.now(dt.timezone.utc).isoformat() + "\n\n"
             + "**Summary:** " + summary + "\n\n"
             + "**Problems:**\n" +
@@ -201,21 +276,19 @@ def reconcile_alert(errors, warnings, summary, token):
             + "**Warnings:**\n" +
             ("\n".join("- " + w for w in warnings[:30]) if warnings else "- None") +
             "\n\n"
-            + "Investigate the refresh workflow and Pages deployment. "
-            + "This issue will close after the monitor verifies recovery.\n"
+            + "The monitor has already checked for recent refresh jobs. "
+            + "It will close this issue after verifying recovery.\n"
         )
+        # Creating an issue produces a single GitHub issue notification for
+        # subscribers. Do not also assign the owner or fail the workflow.
         created = github("POST", "/issues", token,
-                         {"title": ISSUE_TITLE, "body": body, "assignees": ["buttocks"]})
+                         {"title": ISSUE_TITLE, "body": body})
         print("NEW OUTAGE: Opened issue #" + str(created["number"]) +
-              " and failing this FIRST run to trigger a GitHub Actions email.", flush=True)
-        return 1
+              " (no assignment, no intentional Actions failure).", flush=True)
+        return 0
     if issue:
         number = issue["number"]
-        github("POST", "/issues/" + str(number) + "/comments", token, {
-            "body": "Automatic recovery verified at " +
-                    dt.datetime.now(dt.timezone.utc).isoformat() +
-                    ". " + summary
-        })
+        # Close without posting an extra comment/email.
         github("PATCH", "/issues/" + str(number), token, {"state": "closed"})
         print("RECOVERED: Closed issue #" + str(number), flush=True)
     return 0
