@@ -86,6 +86,8 @@ def fetch_one(category, dial, expected, by_dial, by_guide):
     if not channel or not channel.get("id"):
         raise RuntimeError("Upstream dial " + dial + " is missing")
     actual = channel["id"]
+    if actual != expected:
+        raise RuntimeError("Channel " + dial + " belongs to " + actual + ", not " + expected + "; refusing wrong feed")
     response = read("channels/" + urllib.parse.quote(str(actual), safe="") + "/now")
     current = program(response.get("current"))
     if not current or not current["stream_url"]:
