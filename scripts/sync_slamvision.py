@@ -1,249 +1,181 @@
 #!/usr/bin/env python3
-"""Cache only the public NJPW broadcast data required for GitHub Pages players."""
-import json, pathlib, urllib.request, datetime, sys
-ROOT=pathlib.Path(__file__).resolve().parent.parent
-OUT=ROOT/'slamvision'
-BASE='https://ring-channel-tv.emergent.host/api/'
-CHANNELS={'njpw':'01','njpw-tv':'12'}  # Preserve both existing NJPW feeds
+"""Independent, resilient refresh of SlamVision's existing channel JSON snapshots."""
+import concurrent.futures
+import datetime
+import json
+import pathlib
+import time
+import urllib.error
+import urllib.parse
+import urllib.request
+
+ROOT = pathlib.Path(__file__).resolve().parent.parent
+OUT = ROOT / "slamvision"
+BASE = "https://ring-channel-tv.emergent.host/api/"
+TIMEOUT = 15
+ATTEMPTS = 3
+GROUPS = {
+    "njpw": {"01": "njpw", "12": "njpw-tv"},
+    "ajpw": {"05": "ajpw"},
+    "joshi": {"11": "joshi"},
+    "lucha": {"16": "100-lucha", "54": "lu-tv", "60": "cmll", "62": "aaa", "93": "universal-lucha-libre"},
+    "roh": {"15": "roh-tv", "56": "croh"},
+    "noah": {"20": "noah-tv"},
+    "independent": {"22": "gcw-tv", "48": "death", "49": "czw-tv", "72": "pwg"},
+    "dragongate": {"37": "dgtv"},
+    "puro": {"43": "ddt", "44": "dream-graps", "46": "dramatic-graps", "47": "bjw"},
+    "shoot": {"29": "tsn", "32": "mma-tv"},
+    "ecw": {"10": "ecw-tv", "30": "ecw-tv2"},
+    "wwf": {"14": "wwf", "25": "wwe", "52": "wwf-90-00", "64": "wwwf"},
+    "tna": {"17": "tna", "18": "tna-tv", "19": "iw"},
+    "wcw": {"02": "wcw", "23": "wcw-tv", "31": "wcw-ppv"},
+}
+
 def read(path):
-    req=urllib.request.Request(BASE+path,headers={'User-Agent':'Mozilla/5.0 (compatible; NJPW-Baked-Viewer/1.0)','Accept':'application/json'})
-    with urllib.request.urlopen(req,timeout=30) as resp:
-        return json.load(resp)
+    last = None
+    for attempt in range(ATTEMPTS):
+        try:
+            request = urllib.request.Request(
+                BASE + path,
+                headers={"User-Agent": "Mozilla/5.0 (compatible; NJPW-Baked-Viewer/1.0)",
+                         "Accept": "application/json"})
+            with urllib.request.urlopen(request, timeout=TIMEOUT) as response:
+                return json.load(response)
+        except (OSError, ValueError) as exc:
+            last = exc
+            if isinstance(exc, urllib.error.HTTPError) and exc.code == 404:
+                break
+            if attempt + 1 < ATTEMPTS:
+                time.sleep(2 * (attempt + 1))
+    raise RuntimeError("Request failed for " + path + ": " + str(last))
+
 def program(slot):
-    if not slot: return None
-    p=slot.get('program') or {}
-    return {'title':p.get('title') or 'Untitled program','episode':p.get('episode') or '',
-            'stream_url':p.get('stream_url') or '', 'start':slot.get('start'),
-            'end':slot.get('end'), 'id':p.get('id') or '', 'block':slot.get('block')}
+    if not slot:
+        return None
+    p = slot.get("program") or {}
+    return {"title": p.get("title") or "Untitled program",
+            "episode": p.get("episode") or "",
+            "stream_url": p.get("stream_url") or "",
+            "start": slot.get("start"), "end": slot.get("end"),
+            "id": p.get("id") or "", "block": slot.get("block")}
+
+def parse_time(value):
+    try:
+        return datetime.datetime.fromisoformat(str(value).replace("Z", "+00:00")).timestamp()
+    except (ValueError, TypeError, OverflowError):
+        return None
+
+def cached_if_active(category, dial, now):
+    """An old slot may be reused while CURRENT; never resurrect expired slots."""
+    try:
+        old = json.loads((OUT / (category + "-live.json")).read_text(encoding="utf-8"))
+        item = old["channels"][dial]
+        slots = [item.get("current"), *(item.get("up_next") or [])]
+        for slot in slots:
+            if not isinstance(slot, dict) or not slot.get("stream_url"):
+                continue
+            start, end = parse_time(slot.get("start")), parse_time(slot.get("end"))
+            if start is not None and end is not None and start <= now < end:
+                return item
+    except (OSError, ValueError, KeyError, TypeError, AttributeError):
+        pass
+    return None
+
+def fetch_one(category, dial, expected, by_dial, by_guide):
+    channel = by_dial.get(int(dial))
+    if not channel or not channel.get("id"):
+        raise RuntimeError("Upstream dial " + dial + " is missing")
+    actual = channel["id"]
+    if actual != expected:
+        raise RuntimeError("Channel " + dial + " belongs to " + actual + ", not " + expected + "; refusing wrong feed")
+    response = read("channels/" + urllib.parse.quote(str(actual), safe="") + "/now")
+    current = program(response.get("current"))
+    if not current or not current["stream_url"]:
+        raise RuntimeError("No playable current program for dial " + dial)
+    end = parse_time(current.get("end"))
+    if end is not None and end < time.time() - 60:
+        raise RuntimeError("Upstream program already expired for dial " + dial)
+    return {
+        "id": actual, "name": channel.get("name") or expected,
+        "current": current,
+        "up_next": [program(slot) for slot in (response.get("up_next") or [])[:8]],
+        "guide": [program(slot) for slot in
+                  (by_guide.get(actual, {}).get("slots") or [])],
+        "server_time": response.get("server_time"),
+    }
+
 def main():
-    data={'generated_at':datetime.datetime.now(datetime.timezone.utc).isoformat(),'channels':{}}
-    channels=read('channels')
-    byid={c['id']:c for c in channels}
-    ajpw=next((ch for ch in channels if ch.get('number')==5),None)
-    if not ajpw: raise RuntimeError('SlamVision Channel 05 missing')
-    joshi=next((ch for ch in channels if ch.get('number')==11),None)
-    if not joshi: raise RuntimeError('SlamVision Channel 11 (Joshi) missing')
-    print('Channel 11: '+str(joshi.get('id'))+' / '+str(joshi.get('name')),flush=True)
-    guide=read('guide?hours=4')
-    byguide={r['channel']['id']:r for r in guide.get('rows',[])}
-    for channel_id,number in CHANNELS.items():
-        if channel_id not in byid: raise RuntimeError('Missing channel '+channel_id)
-        response=read('channels/'+channel_id+'/now')
-        if response.get('current') is None: raise RuntimeError('No active program on '+channel_id)
-        current=program(response.get('current'))
-        upcoming=[program(x) for x in response.get('up_next',[])[:8]]
-        if current and not current['stream_url']: raise RuntimeError('Missing stream URL on '+channel_id)
-        data['channels'][number]={
-            'id':channel_id,'name':byid[channel_id].get('name','NJPW-TV'),
-            'current':current,'up_next':upcoming,
-            'guide': [program(x) for x in byguide.get(channel_id,{}).get('slots',[])],
-            'server_time': response.get('server_time')
-        }
-    response=read('channels/'+ajpw['id']+'/now')
-    if response.get('current') is None: raise RuntimeError('No active program for AJPW Channel 05')
-    ajpw_current=program(response['current'])
-    if not ajpw_current['stream_url']: raise RuntimeError('Missing AJPW stream URL')
-    ajpw_data={
-      'generated_at':datetime.datetime.now(datetime.timezone.utc).isoformat(),
-      'channels':{'05':{
-       'id':ajpw['id'],'name':ajpw.get('name','All Japan Pro Wrestling'),
-       'current':ajpw_current,
-       'up_next':[program(x) for x in response.get('up_next',[])[:8]],
-       'guide':[program(x) for x in byguide.get(ajpw['id'],{}).get('slots',[])],
-       'server_time':response.get('server_time')}}}
-    response11=read('channels/'+joshi['id']+'/now')
-    if response11.get('current') is None: raise RuntimeError('No active Joshi Channel 11 program')
-    joshi_current=program(response11['current'])
-    if not joshi_current['stream_url']: raise RuntimeError('Missing Joshi Channel 11 stream URL')
-    joshi_data={'generated_at':datetime.datetime.now(datetime.timezone.utc).isoformat(),
-      'channels':{'11':{'id':joshi['id'],'name':joshi.get('name','Joshi Puroresu'),
-       'current':joshi_current,'up_next':[program(x) for x in response11.get('up_next',[])[:8]],
-       'guide':[program(x) for x in byguide.get(joshi['id'],{}).get('slots',[])],
-       'server_time':response11.get('server_time')}}}
-    lucha_channels={'16':'100-lucha','54':'lu-tv','60':'cmll','62':'aaa','93':'universal-lucha-libre'}
-    lucha_data={'generated_at':datetime.datetime.now(datetime.timezone.utc).isoformat(),'channels':{}}
-    for number,channel_id in lucha_channels.items():
-        ch=byid.get(channel_id)
-        if not ch or ch.get('number')!=int(number):
-            raise RuntimeError('Lucha channel mismatch: '+number+' '+channel_id)
-        now=read('channels/'+channel_id+'/now')
-        current=program(now.get('current'))
-        if not current or not current['stream_url']:
-            raise RuntimeError('No playable current program for '+channel_id)
-        lucha_data['channels'][number]={
-          'id':channel_id,'name':ch.get('name',channel_id),
-          'current':current,'up_next':[program(x) for x in now.get('up_next',[])[:8]],
-          'guide':[program(x) for x in byguide.get(channel_id,{}).get('slots',[])],
-          'server_time':now.get('server_time')
-        }
-    roh_channels={'15':'roh-tv','56':'croh'}
-    roh_data={'generated_at':datetime.datetime.now(datetime.timezone.utc).isoformat(),'channels':{}}
-    for number,channel_id in roh_channels.items():
-        ch=byid.get(channel_id)
-        if not ch or ch.get('number')!=int(number):
-            raise RuntimeError('ROH channel mismatch '+number)
-        now=read('channels/'+channel_id+'/now')
-        current=program(now.get('current'))
-        if not current or not current['stream_url']:
-            raise RuntimeError('Missing ROH current stream '+channel_id)
-        roh_data['channels'][number]={
-          'id':channel_id,'name':ch.get('name',channel_id),'current':current,
-          'up_next':[program(x) for x in now.get('up_next',[])[:8]],
-          'guide':[program(x) for x in byguide.get(channel_id,{}).get('slots',[])],
-          'server_time':now.get('server_time')
-        }
-    noah=byid.get('noah-tv')
-    if not noah or noah.get('number')!=20:
-        raise RuntimeError('SlamVision NOAH-TV channel 20 unavailable')
-    noah_now=read('channels/noah-tv/now')
-    noah_current=program(noah_now.get('current'))
-    if not noah_current or not noah_current['stream_url']:
-        raise RuntimeError('No playable NOAH current program')
-    noah_data={'generated_at':datetime.datetime.now(datetime.timezone.utc).isoformat(),
-      'channels':{'20':{'id':'noah-tv','name':noah.get('name','NOAH-TV'),
-      'current':noah_current,
-      'up_next':[program(x) for x in noah_now.get('up_next',[])[:8]],
-      'guide':[program(x) for x in byguide.get('noah-tv',{}).get('slots',[])],
-      'server_time':noah_now.get('server_time')}}}
-    indie_channels={'22':'gcw-tv','48':'death','49':'czw-tv','72':'pwg'}
-    indie_data={'generated_at':datetime.datetime.now(datetime.timezone.utc).isoformat(),'channels':{}}
-    for number,channel_id in indie_channels.items():
-        ch=byid.get(channel_id)
-        if not ch or ch.get('number')!=int(number):
-            raise RuntimeError('Independent wrestling channel mismatch '+number)
-        now=read('channels/'+channel_id+'/now')
-        current=program(now.get('current'))
-        if not current or not current['stream_url']:
-            raise RuntimeError('Missing independent wrestling stream '+channel_id)
-        indie_data['channels'][number]={
-          'id':channel_id,'name':ch.get('name',channel_id),'current':current,
-          'up_next':[program(x) for x in now.get('up_next',[])[:8]],
-          'guide':[program(x) for x in byguide.get(channel_id,{}).get('slots',[])],
-          'server_time':now.get('server_time')
-        }
-    dg=byid.get('dgtv')
-    if not dg or dg.get('number')!=37:
-        raise RuntimeError('SlamVision Dragon Gate channel 37 unavailable')
-    dg_now=read('channels/dgtv/now')
-    dg_current=program(dg_now.get('current'))
-    if not dg_current or not dg_current['stream_url']:
-        raise RuntimeError('No playable Dragon Gate current program')
-    dg_data={'generated_at':datetime.datetime.now(datetime.timezone.utc).isoformat(),
-      'channels':{'37':{'id':'dgtv','name':dg.get('name','Dragongate'),
-      'current':dg_current,
-      'up_next':[program(x) for x in dg_now.get('up_next',[])[:8]],
-      'guide':[program(x) for x in byguide.get('dgtv',{}).get('slots',[])],
-      'server_time':dg_now.get('server_time')}}}
-    puro_channels={'43':'ddt','44':'dream-graps','46':'dramatic-graps','47':'bjw'}
-    puro_data={'generated_at':datetime.datetime.now(datetime.timezone.utc).isoformat(),'channels':{}}
-    for number,channel_id in puro_channels.items():
-        ch=byid.get(channel_id)
-        if not ch or ch.get('number')!=int(number):
-            raise RuntimeError('Puroresu channel mismatch '+number)
-        now=read('channels/'+channel_id+'/now')
-        current=program(now.get('current'))
-        if not current or not current['stream_url']:
-            raise RuntimeError('Missing puroresu current stream '+channel_id)
-        puro_data['channels'][number]={
-          'id':channel_id,'name':ch.get('name',channel_id),'current':current,
-          'up_next':[program(x) for x in now.get('up_next',[])[:8]],
-          'guide':[program(x) for x in byguide.get(channel_id,{}).get('slots',[])],
-          'server_time':now.get('server_time')
-        }
-    shoot_channels={'29':'tsn','32':'mma-tv'}
-    shoot_data={'generated_at':datetime.datetime.now(datetime.timezone.utc).isoformat(),'channels':{}}
-    for number,channel_id in shoot_channels.items():
-        ch=byid.get(channel_id)
-        if not ch or ch.get('number')!=int(number):
-            raise RuntimeError('Shoot channel mismatch '+number)
-        now=read('channels/'+channel_id+'/now')
-        current=program(now.get('current'))
-        if not current or not current['stream_url']:
-            raise RuntimeError('Missing shoot channel stream '+channel_id)
-        shoot_data['channels'][number]={
-          'id':channel_id,'name':ch.get('name',channel_id),'current':current,
-          'up_next':[program(x) for x in now.get('up_next',[])[:8]],
-          'guide':[program(x) for x in byguide.get(channel_id,{}).get('slots',[])],
-          'server_time':now.get('server_time')
-        }
-    ecw_channels={'10':'ecw-tv','30':'ecw-tv2'}
-    ecw_data={'generated_at':datetime.datetime.now(datetime.timezone.utc).isoformat(),'channels':{}}
-    for number,channel_id in ecw_channels.items():
-        ch=byid.get(channel_id)
-        if not ch or ch.get('number')!=int(number):
-            raise RuntimeError('ECW channel mismatch '+number)
-        now=read('channels/'+channel_id+'/now')
-        current=program(now.get('current'))
-        if not current or not current['stream_url']:
-            raise RuntimeError('Missing ECW current stream '+channel_id)
-        ecw_data['channels'][number]={
-          'id':channel_id,'name':ch.get('name',channel_id),'current':current,
-          'up_next':[program(x) for x in now.get('up_next',[])[:8]],
-          'guide':[program(x) for x in byguide.get(channel_id,{}).get('slots',[])],
-          'server_time':now.get('server_time')
-        }
-    wwf_channels={'14':'wwf','25':'wwe','52':'wwf-90-00','64':'wwwf'}
-    wwf_data={'generated_at':datetime.datetime.now(datetime.timezone.utc).isoformat(),'channels':{}}
-    for number,channel_id in wwf_channels.items():
-        ch=byid.get(channel_id)
-        if not ch or ch.get('number')!=int(number):
-            raise RuntimeError('WWF channel mismatch '+number)
-        now=read('channels/'+channel_id+'/now')
-        current=program(now.get('current'))
-        if not current or not current['stream_url']:
-            raise RuntimeError('Missing WWF stream '+channel_id)
-        wwf_data['channels'][number]={
-          'id':channel_id,'name':ch.get('name',channel_id),'current':current,
-          'up_next':[program(x) for x in now.get('up_next',[])[:8]],
-          'guide':[program(x) for x in byguide.get(channel_id,{}).get('slots',[])],
-          'server_time':now.get('server_time')
-        }
-    tna_channels={'17':'tna','18':'tna-tv','19':'iw'}
-    tna_data={'generated_at':datetime.datetime.now(datetime.timezone.utc).isoformat(),'channels':{}}
-    for number,channel_id in tna_channels.items():
-        ch=byid.get(channel_id)
-        if not ch or ch.get('number')!=int(number):
-            raise RuntimeError('TNA channel mismatch '+number)
-        now=read('channels/'+channel_id+'/now')
-        current=program(now.get('current'))
-        if not current or not current['stream_url']:
-            raise RuntimeError('Missing TNA current stream '+channel_id)
-        tna_data['channels'][number]={
-          'id':channel_id,'name':ch.get('name',channel_id),'current':current,
-          'up_next':[program(x) for x in now.get('up_next',[])[:8]],
-          'guide':[program(x) for x in byguide.get(channel_id,{}).get('slots',[])],
-          'server_time':now.get('server_time')
-        }
-    wcw_channels={'02':'wcw','23':'wcw-tv','31':'wcw-ppv'}
-    wcw_data={'generated_at':datetime.datetime.now(datetime.timezone.utc).isoformat(),'channels':{}}
-    for number,channel_id in wcw_channels.items():
-        ch=byid.get(channel_id)
-        if not ch or ch.get('number')!=int(number):
-            raise RuntimeError('WCW channel mismatch '+number)
-        now=read('channels/'+channel_id+'/now')
-        current=program(now.get('current'))
-        if not current or not current['stream_url']:
-            raise RuntimeError('Missing WCW stream '+channel_id)
-        wcw_data['channels'][number]={
-          'id':channel_id,'name':ch.get('name',channel_id),'current':current,
-          'up_next':[program(x) for x in now.get('up_next',[])[:8]],
-          'guide':[program(x) for x in byguide.get(channel_id,{}).get('slots',[])],
-          'server_time':now.get('server_time')
-        }
-    OUT.mkdir(parents=True,exist_ok=True)
-    (OUT/'wcw-live.json').write_text(json.dumps(wcw_data,ensure_ascii=False,separators=(',',':')),encoding='utf-8')
-    (OUT/'tna-live.json').write_text(json.dumps(tna_data,ensure_ascii=False,separators=(',',':')),encoding='utf-8')
-    (OUT/'wwf-live.json').write_text(json.dumps(wwf_data,ensure_ascii=False,separators=(',',':')),encoding='utf-8')
-    (OUT/'ecw-live.json').write_text(json.dumps(ecw_data,ensure_ascii=False,separators=(',',':')),encoding='utf-8')
-    (OUT/'shoot-live.json').write_text(json.dumps(shoot_data,ensure_ascii=False,separators=(',',':')),encoding='utf-8')
-    (OUT/'puro-live.json').write_text(json.dumps(puro_data,ensure_ascii=False,separators=(',',':')),encoding='utf-8')
-    (OUT/'dragongate-live.json').write_text(json.dumps(dg_data,ensure_ascii=False,separators=(',',':')),encoding='utf-8')
-    (OUT/'independent-live.json').write_text(json.dumps(indie_data,ensure_ascii=False,separators=(',',':')),encoding='utf-8')
-    (OUT/'noah-live.json').write_text(json.dumps(noah_data,ensure_ascii=False,separators=(',',':')),encoding='utf-8')
-    (OUT/'roh-live.json').write_text(json.dumps(roh_data,ensure_ascii=False,separators=(',',':')),encoding='utf-8')
-    (OUT/'lucha-live.json').write_text(json.dumps(lucha_data,ensure_ascii=False,separators=(',',':')),encoding='utf-8')
-    (OUT/'joshi-live.json').write_text(json.dumps(joshi_data,ensure_ascii=False,separators=(',',':')),encoding='utf-8')
-    (OUT/'ajpw-live.json').write_text(json.dumps(ajpw_data,ensure_ascii=False,separators=(',',':')),encoding='utf-8')
-    (OUT/'njpw-live.json').write_text(json.dumps(data,ensure_ascii=False,separators=(',',':')),encoding='utf-8')
-    print('Mirrored NJPW, AJPW, Joshi and five lucha channels',flush=True)
-if __name__=='__main__': main()
+    # The dial number is authoritative: upstream can rename an ID without
+    # breaking every other channel's scheduled refresh.
+    channels = read("channels")
+    if not isinstance(channels, list):
+        raise RuntimeError("Invalid upstream channel list")
+    by_dial = {}
+    for channel in channels:
+        try:
+            by_dial.setdefault(int(channel["number"]), channel)
+        except (KeyError, ValueError, TypeError):
+            continue
+    try:
+        guide = read("guide?hours=4")
+        by_guide = {x["channel"]["id"]: x for x in guide.get("rows", [])
+                    if isinstance(x, dict) and isinstance(x.get("channel"), dict)
+                    and x["channel"].get("id")}
+    except Exception as exc:
+        print("WARNING: TV guide unavailable: " + str(exc), flush=True)
+        by_guide = {}
+
+    tasks = [(group, dial, expected) for group, dials in GROUPS.items()
+             for dial, expected in dials.items()]
+    snapshots = {group: {} for group in GROUPS}
+    problems = []
+    fresh = 0
+    with concurrent.futures.ThreadPoolExecutor(max_workers=5) as pool:
+        pending = {pool.submit(fetch_one, group, dial, expected, by_dial, by_guide):
+                   (group, dial, expected)
+                   for group, dial, expected in tasks}
+        for future in concurrent.futures.as_completed(pending):
+            group, dial, expected = pending[future]
+            try:
+                result = future.result()
+                snapshots[group][dial] = result
+                fresh += 1
+                alias = " (upstream renamed " + expected + ")" if result["id"] != expected else ""
+                print("OK CH " + dial + " " + result["id"] + alias, flush=True)
+            except Exception as exc:
+                problems.append("CH " + dial + " (" + expected + "): " + str(exc))
+
+    # Preserve only still-current fallbacks, never an expired program.
+    used_cache = 0
+    now = time.time()
+    for group, dials in GROUPS.items():
+        for dial in dials:
+            if dial not in snapshots[group]:
+                cached = cached_if_active(group, dial, now)
+                if cached:
+                    snapshots[group][dial] = cached
+                    used_cache += 1
+                    print("CACHE CH " + dial + " (still active)", flush=True)
+
+    if fresh == 0:
+        raise RuntimeError("All upstream channels unavailable; existing snapshots preserved. "
+                           + "; ".join(problems[:4]))
+
+    OUT.mkdir(parents=True, exist_ok=True)
+    stamped = datetime.datetime.now(datetime.timezone.utc).isoformat()
+    for group in GROUPS:
+        if not snapshots[group]:
+            print("WARNING: " + group + " has no available channels; old file preserved", flush=True)
+            continue
+        path = OUT / (group + "-live.json")
+        path.write_text(json.dumps(
+            {"generated_at": stamped, "channels": snapshots[group]},
+            ensure_ascii=False, separators=(",", ":")), encoding="utf-8")
+    for problem in problems:
+        print("WARNING " + problem, flush=True)
+    print("Refreshed " + str(fresh) + "/" + str(len(tasks)) +
+          " channels; " + str(used_cache) + " cached; " +
+          str(len(problems)) + " unavailable", flush=True)
+
+if __name__ == "__main__":
+    main()
