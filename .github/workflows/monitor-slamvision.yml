@@ -1,0 +1,41 @@
+name: Monitor SlamVision published schedules
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '2,7,12,17,22,27,32,37,42,47,52,57 * * * *'
+  push:
+    branches:
+      - main
+      - monitor/slamvision-schedule-health
+    paths:
+      - .github/workflows/monitor-slamvision.yml
+      - scripts/monitor_slamvision.py
+
+permissions:
+  contents: read
+  issues: write
+
+concurrency:
+  group: slamvision-schedule-health
+  cancel-in-progress: false
+
+jobs:
+  monitor:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Verify monitor rules offline
+        run: python scripts/monitor_slamvision.py --self-test
+      - name: Check actual published GitHub Pages schedules
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          if [ "$GITHUB_REF_NAME" = "main" ]; then
+            python scripts/monitor_slamvision.py --alert
+          else
+            python scripts/monitor_slamvision.py --dry-run
+          fi
