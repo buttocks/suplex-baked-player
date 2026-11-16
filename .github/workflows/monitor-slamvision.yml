@@ -3,11 +3,12 @@ name: Monitor SlamVision published schedules
 on:
   workflow_dispatch:
   schedule:
-    - cron: '2,7,12,17,22,27,32,37,42,47,52,57 * * * *'
+    - cron: '4,9,14,19,24,29,34,39,44,49,54,59 * * * *'
   push:
     branches:
       - main
       - monitor/slamvision-schedule-health
+      - fix/slamvision-schedule-and-single-alert
     paths:
       - .github/workflows/monitor-slamvision.yml
       - scripts/monitor_slamvision.py
@@ -15,6 +16,7 @@ on:
 permissions:
   contents: read
   issues: write
+  actions: write
 
 concurrency:
   group: slamvision-schedule-health
