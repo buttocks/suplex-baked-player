@@ -2,7 +2,7 @@ name: Refresh SlamVision wrestling channels
 on:
   workflow_dispatch:
   schedule:
-    - cron: '*/5 * * * *'
+    - cron: '1,6,11,16,21,26,31,36,41,46,51,56 * * * *'
   push:
     paths:
       - '.github/workflows/refresh-njpw-slamvision.yml'
