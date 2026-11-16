@@ -230,10 +230,13 @@ def should_dispatch(runs, now):
         newest_result.get("status") in ("queued", "pending", "in_progress"))
     recent_success = (
         newest_result is not None and newest_age is not None and
-        -60 <= newest_age < 4 * 60 and
+        -60 <= newest_age < 10 * 60 and
         newest_result.get("conclusion") == "success")
+    # Don't hide a real Pages deployment failure indefinitely behind a steady
+    # stream of successful refresh jobs. Only grant a 90-second deploy grace.
+    deploy_grace = recent_success and newest_age < 90
     return (not recent_manual and not recently_refreshing and not recent_success,
-            recent_manual, recently_refreshing or recent_success)
+            recent_manual, recently_refreshing or deploy_grace)
 
 
 def reconcile_alert(errors, warnings, summary, token):
@@ -325,7 +328,15 @@ def self_test():
     data = fixture()
     data["wwf"]["channels"]["52"]["current"]["end"] = fmt(now - 1)
     assert any("RIGHT NOW" in p for p in inspect(data, now)[0]), "No current slot must alert"
-    print("PASS: 7 offline health-monitor scenarios")
+    # Avoid false silence when refresh itself succeeds but GitHub Pages stays stale.
+    def fake_run(age, event="schedule", status="completed", conclusion="success"):
+        return {"created_at": fmt(now - age), "event": event,
+                "status": status, "conclusion": conclusion}
+    assert should_dispatch([fake_run(40)], now) == (False, False, True)
+    assert should_dispatch([fake_run(180)], now) == (False, False, False)
+    assert should_dispatch([fake_run(700)], now)[0]
+    assert should_dispatch([fake_run(300, "workflow_dispatch")], now)[1]
+    print("PASS: 11 offline health-monitor scenarios")
 
 
 def main():
