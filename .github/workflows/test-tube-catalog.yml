@@ -1,0 +1,51 @@
+name: Test SlamVision tube catalog
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - investigate/slamvision-related-feed-discovery
+    paths:
+      - .github/workflows/test-tube-catalog.yml
+      - research/slamvision-tube-catalog.html
+      - research/slamvision-by-tube-2026-11-17.json
+      - research/slamvision-by-tube-2026-11-17.csv
+      - research/slamvision-by-tube-2026-11-17.md
+permissions:
+  contents: read
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Validate all 116 categories and existing embed paths
+        run: |
+          python - <<'PY'
+          import json,csv, pathlib, re, subprocess, tempfile
+          root=pathlib.Path.cwd()
+          p=root/'research'
+          data=json.loads((p/'slamvision-by-tube-2026-11-17.json').read_text())
+          rows=data['channels']
+          assert len(rows)==116
+          assert len({x['id'] for x in rows})==116
+          assert len(data['destination_tubes'])==17
+          assert sum(data['destination_tubes'].values())==116
+          assert sum(bool(x.get('embed_url')) for x in rows)==24
+          assert sum(not x.get('embed_url') for x in rows)==92
+          with (p/'slamvision-by-tube-2026-11-17.csv').open(newline='',encoding='utf-8') as f:
+              csvrows=list(csv.DictReader(f))
+          assert len(csvrows)==116
+          assert [x['stable_id'] for x in csvrows]==[x['id'] for x in rows]
+          for x in rows:
+              if x['embed_url']:
+                  source=x['embed_url'].split('/suplex-baked-player/',1)[1].split('?',1)[0]
+                  assert (root/source).is_file(), (x['id'],source)
+                  assert x['embed_html'].count('<iframe')==1
+          html=(p/'slamvision-tube-catalog.html').read_text()
+          assert 'Copy iframe' in html and 'Copy feed ID' in html
+          inline=html.split('<script>',1)[1].split('</script>',1)[0]
+          with tempfile.TemporaryDirectory() as temp:
+              js=pathlib.Path(temp)/'catalog.js'
+              js.write_text(inline)
+              subprocess.run(['node','--check',str(js)],check=True)
+          print('PASS: 116 unique feeds / 17 tube categories / 24 valid existing embeds / 92 pending pages / HTML JavaScript syntax',flush=True)
+          PY
