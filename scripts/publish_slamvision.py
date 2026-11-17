@@ -52,7 +52,12 @@ def publish(saved, branch, cwd=ROOT, retries=4):
         for path, data in saved.items():
             target = cwd / path
             incoming = timestamp(data, path + " (generated)")
-            if target.exists():
+            # Newly generated files are untracked until their first publish.
+            # git reset --hard leaves those local files in place. Treating
+            # their own timestamp as the remote timestamp would skip publishing!
+            tracked = git("ls-files", "--error-unmatch", "--", path,
+                          cwd=cwd, check=False).returncode == 0
+            if tracked and target.exists():
                 current = timestamp(target.read_bytes(), path + " (remote)")
                 if current >= incoming:
                     skipped.append(path + " (remote is newer or equal)")
@@ -125,7 +130,18 @@ def self_test():
         publish({file: snap(30)}, "main", cwd=older)
         git("fetch", "origin", "main", cwd=latest)
         assert timestamp(git("show", "FETCH_HEAD:" + file, cwd=latest).stdout, file) == timestamp(snap(30), file)
-    print("PASS: publishing protects newer remote data and applies newer snapshots")
+        # Regression: a brand-new generated file remains UNTRACKED during the
+        # runner's fetch/reset. It must still be added on first publish.
+        fresh_file = "slamvision/shared-live.json"
+        (older / fresh_file).write_bytes(snap(40))
+        assert git("ls-files", "--error-unmatch", "--", fresh_file,
+                   cwd=older, check=False).returncode != 0
+        publish({fresh_file: snap(40)}, "main", cwd=older)
+        git("fetch", "origin", "main", cwd=latest)
+        assert timestamp(git("show", "FETCH_HEAD:" + fresh_file, cwd=latest).stdout,
+                         fresh_file) == timestamp(snap(40), fresh_file), (
+            "Newly generated untracked shared cache was never published")
+    print("PASS: publishing protects newer remote data, publishes fresh snapshots, and adds untracked new files")
 
 
 def main():
