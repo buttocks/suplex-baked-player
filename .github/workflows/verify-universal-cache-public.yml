@@ -1,0 +1,33 @@
+name: Verify public universal schedule backup
+on:
+  push:
+    branches: [verify/slamvision-universal-cache-public]
+    paths: [.github/workflows/verify-universal-cache-public.yml]
+permissions:
+  contents: read
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Check public 78-feed JSON and generic player
+        run: |
+          python - <<'PY'
+          import urllib.request,json,datetime
+          base='https://buttocks.github.io/suplex-baked-player/'
+          for path in ('slamvision/shared-live.json','slamvision-feed.html','slamvision-direct-fallback.js'):
+              with urllib.request.urlopen(urllib.request.Request(base+path+'?verify=78',headers={'User-Agent':'Mozilla/5.0'}),timeout=25) as r:
+                  body=r.read()
+                  print('PUBLIC_FILE',path,'status',r.status,'bytes',len(body),flush=True)
+                  assert r.status==200
+                  if path.endswith('shared-live.json'):
+                      obj=json.loads(body)
+                      ids=obj['channels']
+                      assert len(ids)==78
+                      assert all(id==entry['id'] for id,entry in ids.items())
+                      age=(datetime.datetime.now(datetime.timezone.utc)-datetime.datetime.fromisoformat(obj['generated_at'])).total_seconds()
+                      assert age<600,'Published backup was already too old'
+                      print('PASS: Public Pages JSON has 78 correctly named and recent feeds; age',round(age),'seconds',flush=True)
+                  elif path.endswith('slamvision-feed.html'):
+                      assert b'shared-live.json' in body
+          PY
