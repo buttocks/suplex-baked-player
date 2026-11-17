@@ -1,0 +1,70 @@
+name: Auto-update SlamVision channel catalog
+
+on:
+  workflow_dispatch:
+  schedule:
+    # Every six hours, UTC. Scheduled GitHub jobs are best-effort.
+    - cron: '37 0,6,12,18 * * *'
+  push:
+    branches:
+      - main
+      - automation/slamvision-six-hour-lineup
+    paths:
+      - .github/workflows/update-slamvision-catalog.yml
+      - scripts/update_slamvision_catalog.py
+      - scripts/test_slamvision_catalog.py
+      - research/slamvision-tube-catalog.html
+
+permissions:
+  contents: write
+
+concurrency:
+  group: slamvision-lineup-catalog
+  cancel-in-progress: false
+
+jobs:
+  catalog:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Verify snapshot and change-detection safeguards
+        run: |
+          python -m py_compile scripts/update_slamvision_catalog.py
+          python scripts/update_slamvision_catalog.py --self-test
+          python scripts/test_slamvision_catalog.py
+      - name: Stage-only live scan, no repository changes
+        if: github.ref_name != 'main'
+        run: python scripts/update_slamvision_catalog.py --scan --dry-run
+      - name: Scan and publish catalog only when lineup changed
+        if: github.ref_name == 'main'
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          for attempt in 1 2 3; do
+            git fetch --no-tags origin refs/heads/main
+            git reset --hard FETCH_HEAD
+            python scripts/update_slamvision_catalog.py --scan
+            # The research directory always exists; snapshots are created only on changes.
+            git add -A -- research/
+            if git diff --cached --quiet; then
+              echo "No lineup changes: nothing to commit or deploy."
+              exit 0
+            fi
+            git commit -m "Update SlamVision channel lineup and tube catalog"
+            if git push origin HEAD:refs/heads/main; then
+              echo "Published changed lineup and new embeds."
+              exit 0
+            fi
+            echo "Another commit landed; retrying from latest main ($attempt/3)."
+          done
+          echo "Catalog publish failed after safe retries" >&2
+          exit 1

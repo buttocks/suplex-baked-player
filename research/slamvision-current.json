@@ -1,0 +1,4400 @@
+{
+  "snapshot_utc": "2026-11-17T17:40:53.687172+00:00",
+  "total": 116,
+  "destination_tubes": {
+    "NJPW Tube": 8,
+    "AJPW Tube": 10,
+    "Lucha Tube": 3,
+    "Joshi Tube": 5,
+    "WWF / WWE Tube": 17,
+    "WCW Tube": 14,
+    "ECW Tube": 2,
+    "AEW Tube": 4,
+    "ROH Tube": 3,
+    "TNA / Impact Tube": 2,
+    "NOAH Tube": 1,
+    "DDT Tube": 1,
+    "Other Japanese Wrestling Tube": 9,
+    "Indies / Hardcore Tube": 11,
+    "Shoot / MMA Tube": 3,
+    "Territories / Classic US Tube": 3,
+    "Years / Mixed Wrestling Tube": 20
+  },
+  "channels": [
+    {
+      "number": 63,
+      "id": "njpw",
+      "name": "New Japan Pro-Wrestling",
+      "callsign": "NJPW",
+      "category": "promotions",
+      "tagline": "Everything else from NJPW: specials, rare shows and tapes without their own channel",
+      "archived": false,
+      "now": {
+        "title": "NJPW Fantastica Mania 2026",
+        "episode": "Day 6 · Feb 26, 2026",
+        "start": "2026-11-17T15:24:41.655000Z",
+        "end": "2026-11-17T17:53:52.505000Z",
+        "stream_url": ""
+      },
+      "next": {
+        "title": "NJPW Mutiny Episode 4",
+        "episode": "Jun 4, 2022",
+        "start": "2026-11-17T17:53:52.505000Z",
+        "end": "2026-11-17T18:46:52.965000Z",
+        "stream_url": ""
+      },
+      "next2": {
+        "title": "NJPW Mutiny Episode 2",
+        "episode": "May 21, 2022",
+        "start": "2026-11-17T18:46:52.965000Z",
+        "end": "2026-11-17T19:52:07.385000Z",
+        "stream_url": ""
+      },
+      "guide_slots": 4,
+      "existing_embed": true,
+      "legacy_channel_number": "01",
+      "tube": "NJPW Tube",
+      "embed_url": "https://buttocks.github.io/suplex-baked-player/njpw-slamvision.html?channel=01",
+      "embed_html": "<iframe src=\"https://buttocks.github.io/suplex-baked-player/njpw-slamvision.html?channel=01\" width=\"1280\" height=\"720\" frameborder=\"0\" allow=\"autoplay; fullscreen; picture-in-picture\" allowfullscreen></iframe>",
+      "player_type": "legacy",
+      "availability": "available",
+      "missing_scans": 0
+    },
+    {
+      "number": 64,
+      "id": "njpw-destructi",
+      "name": "NJPW Destruction",
+      "callsign": "NJPW-DESTRUCTI",
+      "category": "shows",
+      "tagline": "Every NJPW Destruction on the Archive, 24/7",
+      "archived": false,
+      "now": {
+        "title": "NJPW Destruction 2011",
+        "episode": "Oct 10, 2011 · Part 2",
+        "start": "2026-11-17T17:28:26.964000Z",
+        "end": "2026-11-17T19:36:36.134000Z",
+        "stream_url": ""
+      },
+      "next": {
+        "title": "NJPW Destruction 2026",
+        "episode": "Day 1 · Sep 5, 2026",
+        "start": "2026-11-17T19:36:36.134000Z",
+        "end": "2026-11-17T21:54:24.904000Z",
+        "stream_url": ""
+      },
+      "next2": null,
+      "guide_slots": 2,
+      "existing_embed": false,
+      "legacy_channel_number": null,
+      "tube": "NJPW Tube",
+      "embed_url": "https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=njpw-destructi",
+      "embed_html": "<iframe src=\"https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=njpw-destructi\" width=\"1280\" height=\"720\" frameborder=\"0\" allow=\"autoplay; fullscreen; picture-in-picture\" allowfullscreen></iframe>",
+      "player_type": "shared",
+      "availability": "available",
+      "missing_scans": 0
+    },
+    {
+      "number": 65,
+      "id": "njpw-g1climax",
+      "name": "NJPW G1 Climax",
+      "callsign": "NJPW-G1",
+      "category": "shows",
+      "tagline": "Every NJPW G1 Climax on the Archive, 24/7",
+      "archived": false,
+      "now": {
+        "title": "NJPW G1 Climax 35",
+        "episode": "Day 1 · Jul 19, 2025",
+        "start": "2026-11-17T16:27:18.969000Z",
+        "end": "2026-11-17T19:59:06.059000Z",
+        "stream_url": ""
+      },
+      "next": {
+        "title": "NJPW G1 Climax 31",
+        "episode": "Day 6 · Sep 29, 2021",
+        "start": "2026-11-17T19:59:06.059000Z",
+        "end": "2026-11-17T22:24:09.059000Z",
+        "stream_url": ""
+      },
+      "next2": null,
+      "guide_slots": 2,
+      "existing_embed": false,
+      "legacy_channel_number": null,
+      "tube": "NJPW Tube",
+      "embed_url": "https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=njpw-g1climax",
+      "embed_html": "<iframe src=\"https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=njpw-g1climax\" width=\"1280\" height=\"720\" frameborder=\"0\" allow=\"autoplay; fullscreen; picture-in-picture\" allowfullscreen></iframe>",
+      "player_type": "shared",
+      "availability": "available",
+      "missing_scans": 0
+    },
+    {
+      "number": 66,
+      "id": "njpw-starrcade",
+      "name": "NJPW Starrcade in Tokyo Dome",
+      "callsign": "NJPW-STARRCADE",
+      "category": "shows",
+      "tagline": "Every NJPW Starrcade in Tokyo Dome on the Archive, 24/7",
+      "archived": false,
+      "now": {
+        "title": "Shinjiro Otani vs. Ultimo Dragon",
+        "episode": "NJPW Tokyo Dome 1998 · Jan 4, 1998",
+        "start": "2026-11-17T17:38:33.622000Z",
+        "end": "2026-11-17T17:59:29.962000Z",
+        "stream_url": ""
+      },
+      "next": {
+        "title": "Tatsumi Fujinami & Osamu Nishimura vs. Manabu Nakanishi & Satoshi Kojima",
+        "episode": "NJPW Tokyo Dome 1998 · Jan 4, 1998",
+        "start": "2026-11-17T17:59:29.962000Z",
+        "end": "2026-11-17T18:17:36.062000Z",
+        "stream_url": ""
+      },
+      "next2": {
+        "title": "NJPW Tokyo Dome 1998",
+        "episode": "Jan 4, 1998",
+        "start": "2026-11-17T18:17:36.062000Z",
+        "end": "2026-11-17T18:36:33.772000Z",
+        "stream_url": ""
+      },
+      "guide_slots": 8,
+      "existing_embed": false,
+      "legacy_channel_number": null,
+      "tube": "NJPW Tube",
+      "embed_url": "https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=njpw-starrcade",
+      "embed_html": "<iframe src=\"https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=njpw-starrcade\" width=\"1280\" height=\"720\" frameborder=\"0\" allow=\"autoplay; fullscreen; picture-in-picture\" allowfullscreen></iframe>",
+      "player_type": "shared",
+      "availability": "available",
+      "missing_scans": 0
+    },
+    {
+      "number": 67,
+      "id": "njpw-wp",
+      "name": "NJPW World Pro-Wrestling",
+      "callsign": "NJPW-WORLDPRO",
+      "category": "shows",
+      "tagline": "Every NJPW World Pro-Wrestling on the Archive, 24/7",
+      "archived": false,
+      "now": {
+        "title": "Keiji Muto, Masahiro Chono vs. Masa Saito, Shinya Hashimoto",
+        "episode": "NJPW World Pro-Wrestling · Jun 26, 1990",
+        "start": "2026-11-17T17:27:00.397000Z",
+        "end": "2026-11-17T17:47:38.247000Z",
+        "stream_url": ""
+      },
+      "next": {
+        "title": "Riki Choshu, Kantaro Hoshino, Shiro Koshinaka, Kuniaki Kobayashi, Kensuke Sasaki vs.…",
+        "episode": "NJPW World Pro-Wrestling · Jun 26, 1990",
+        "start": "2026-11-17T17:47:38.247000Z",
+        "end": "2026-11-17T18:11:39.227000Z",
+        "stream_url": ""
+      },
+      "next2": {
+        "title": "Riki Choshu, Masahiro Chono, Jushin Liger vs. Big Van Vader, Tony St. Clair, Tom Prichard",
+        "episode": "NJPW World Pro-Wrestling · Nov 1, 1989",
+        "start": "2026-11-17T17:53:55.347000Z",
+        "end": "2026-11-17T18:15:25.157000Z",
+        "stream_url": ""
+      },
+      "guide_slots": 22,
+      "existing_embed": false,
+      "legacy_channel_number": null,
+      "tube": "NJPW Tube",
+      "embed_url": "https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=njpw-wp",
+      "embed_html": "<iframe src=\"https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=njpw-wp\" width=\"1280\" height=\"720\" frameborder=\"0\" allow=\"autoplay; fullscreen; picture-in-picture\" allowfullscreen></iframe>",
+      "player_type": "shared",
+      "availability": "available",
+      "missing_scans": 0
+    },
+    {
+      "number": 68,
+      "id": "njpw-wk",
+      "name": "NJPW Wrestle Kingdom",
+      "callsign": "NJPW-WK",
+      "category": "shows",
+      "tagline": "Every NJPW Wrestle Kingdom on the Archive, 24/7",
+      "archived": false,
+      "now": {
+        "title": "NJPW Wrestle Kingdom 15",
+        "episode": "Day 2 · Jan 5, 2021",
+        "start": "2026-11-17T17:39:34.441000Z",
+        "end": "2026-11-17T21:43:37.521000Z",
+        "stream_url": ""
+      },
+      "next": null,
+      "next2": null,
+      "guide_slots": 2,
+      "existing_embed": false,
+      "legacy_channel_number": null,
+      "tube": "NJPW Tube",
+      "embed_url": "https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=njpw-wk",
+      "embed_html": "<iframe src=\"https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=njpw-wk\" width=\"1280\" height=\"720\" frameborder=\"0\" allow=\"autoplay; fullscreen; picture-in-picture\" allowfullscreen></iframe>",
+      "player_type": "shared",
+      "availability": "available",
+      "missing_scans": 0
+    },
+    {
+      "number": 69,
+      "id": "njpw-wrestling",
+      "name": "NJPW Wrestling Dontaku",
+      "callsign": "NJPW-WRESTLING",
+      "category": "shows",
+      "tagline": "Every NJPW Wrestling Dontaku on the Archive, 24/7",
+      "archived": false,
+      "now": {
+        "title": "NJPW Wrestling Dontaku 2021",
+        "episode": "Day 4 · Apr 15, 2021",
+        "start": "2026-11-17T16:47:27.598000Z",
+        "end": "2026-11-17T18:54:35.088000Z",
+        "stream_url": ""
+      },
+      "next": {
+        "title": "NJPW Wrestling Dontaku 2025",
+        "episode": "Day 1 · Apr 19, 2025",
+        "start": "2026-11-17T18:54:35.088000Z",
+        "end": "2026-11-17T21:18:21.008000Z",
+        "stream_url": ""
+      },
+      "next2": {
+        "title": "NJPW Wrestling Dontaku 2021",
+        "episode": "Day 1 · Apr 10, 2021",
+        "start": "2026-11-17T21:18:21.008000Z",
+        "end": "2026-11-17T23:48:09.998000Z",
+        "stream_url": ""
+      },
+      "guide_slots": 3,
+      "existing_embed": false,
+      "legacy_channel_number": null,
+      "tube": "NJPW Tube",
+      "embed_url": "https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=njpw-wrestling",
+      "embed_html": "<iframe src=\"https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=njpw-wrestling\" width=\"1280\" height=\"720\" frameborder=\"0\" allow=\"autoplay; fullscreen; picture-in-picture\" allowfullscreen></iframe>",
+      "player_type": "shared",
+      "availability": "available",
+      "missing_scans": 0
+    },
+    {
+      "number": 31,
+      "id": "ain",
+      "name": "Antonio Inoki Network",
+      "callsign": "AIN",
+      "category": "wrestlers",
+      "tagline": "The Spirit of a Legend",
+      "archived": false,
+      "now": {
+        "title": "Kensuke Sasaki, Shinya Hashimoto, Junji Hirata vs. Scott Norton, Masahiro Chono, Big Titan",
+        "episode": "Feb 4, 1998",
+        "start": "2026-11-17T17:38:05.928000Z",
+        "end": "2026-11-17T17:55:12.018000Z",
+        "stream_url": ""
+      },
+      "next": {
+        "title": "Kensuke Sasaki vs. Osamu Nishimura",
+        "episode": "Feb 7, 1998",
+        "start": "2026-11-17T17:55:12.018000Z",
+        "end": "2026-11-17T18:19:46.178000Z",
+        "stream_url": ""
+      },
+      "next2": {
+        "title": "Kensuke, Hashimoto, Nakanishi, Kojima, Nishimura, Yasuda vs. Norton, Muto, Chono,…",
+        "episode": "Feb 8, 1998",
+        "start": "2026-11-17T18:19:46.178000Z",
+        "end": "2026-11-17T18:37:51.188000Z",
+        "stream_url": ""
+      },
+      "guide_slots": 10,
+      "existing_embed": false,
+      "legacy_channel_number": null,
+      "tube": "NJPW Tube",
+      "embed_url": "https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=ain",
+      "embed_html": "<iframe src=\"https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=ain\" width=\"1280\" height=\"720\" frameborder=\"0\" allow=\"autoplay; fullscreen; picture-in-picture\" allowfullscreen></iframe>",
+      "player_type": "shared",
+      "availability": "available",
+      "missing_scans": 0
+    },
+    {
+      "number": 20,
+      "id": "ajpw",
+      "name": "All Japan Pro-Wrestling",
+      "callsign": "AJPW",
+      "category": "promotions",
+      "tagline": "Everything else from AJPW: specials, rare shows and tapes without their own channel",
+      "archived": false,
+      "now": {
+        "title": "AJPW Royal Road 2023",
+        "episode": "Day 1 · Aug 19, 2023",
+        "start": "2026-11-17T17:38:35.247000Z",
+        "end": "2026-11-17T20:44:38.387000Z",
+        "stream_url": ""
+      },
+      "next": {
+        "title": "Kojimakashin vs. Hashimotoogasawara",
+        "episode": "AJPW · Jan 13, 2003",
+        "start": "2026-11-17T20:44:38.387000Z",
+        "end": "2026-11-17T21:05:58.037000Z",
+        "stream_url": ""
+      },
+      "next2": {
+        "title": "Tanahashi vs. Honma",
+        "episode": "AJPW · Jul 22, 2004",
+        "start": "2026-11-17T21:05:58.037000Z",
+        "end": "2026-11-17T21:26:51.387000Z",
+        "stream_url": ""
+      },
+      "guide_slots": 5,
+      "existing_embed": true,
+      "legacy_channel_number": "05",
+      "tube": "AJPW Tube",
+      "embed_url": "https://buttocks.github.io/suplex-baked-player/ajpw-slamvision.html",
+      "embed_html": "<iframe src=\"https://buttocks.github.io/suplex-baked-player/ajpw-slamvision.html\" width=\"1280\" height=\"720\" frameborder=\"0\" allow=\"autoplay; fullscreen; picture-in-picture\" allowfullscreen></iframe>",
+      "player_type": "legacy",
+      "availability": "available",
+      "missing_scans": 0
+    },
+    {
+      "number": 21,
+      "id": "ajpw-carnival",
+      "name": "AJPW Champion Carnival",
+      "callsign": "AJPW-CARNIVAL",
+      "category": "shows",
+      "tagline": "Every AJPW Champion Carnival on the Archive, 24/7",
+      "archived": false,
+      "now": {
+        "title": "AJPW Champion Carnival 2021",
+        "episode": "Day 1 · Apr 9, 2021",
+        "start": "2026-11-17T16:14:11.119000Z",
+        "end": "2026-11-17T18:05:11.219000Z",
+        "stream_url": ""
+      },
+      "next": {
+        "title": "AJPW Champion Carnival 2019",
+        "episode": "Day 12 · Apr 20, 2019",
+        "start": "2026-11-17T18:05:11.219000Z",
+        "end": "2026-11-17T20:49:12.199000Z",
+        "stream_url": ""
+      },
+      "next2": {
+        "title": "AJPW Champion Carnival 2020",
+        "episode": "Day 3 · Sep 15, 2020",
+        "start": "2026-11-17T20:49:12.199000Z",
+        "end": "2026-11-17T23:12:14.949000Z",
+        "stream_url": ""
+      },
+      "guide_slots": 3,
+      "existing_embed": false,
+      "legacy_channel_number": null,
+      "tube": "AJPW Tube",
+      "embed_url": "https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=ajpw-carnival",
+      "embed_html": "<iframe src=\"https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=ajpw-carnival\" width=\"1280\" height=\"720\" frameborder=\"0\" allow=\"autoplay; fullscreen; picture-in-picture\" allowfullscreen></iframe>",
+      "player_type": "shared",
+      "availability": "available",
+      "missing_scans": 0
+    },
+    {
+      "number": 22,
+      "id": "ajpw-dynamite",
+      "name": "AJPW Dynamite Series",
+      "callsign": "AJPW-DYNAMITE",
+      "category": "shows",
+      "tagline": "Every AJPW Dynamite Series on the Archive, 24/7",
+      "archived": false,
+      "now": {
+        "title": "AJPW Dynamite Series 2024",
+        "episode": "Day 1 · Jun 24, 2024",
+        "start": "2026-11-17T14:48:19.313000Z",
+        "end": "2026-11-17T18:09:25.423000Z",
+        "stream_url": ""
+      },
+      "next": {
+        "title": "Kuroshio Tokyo JAPAN vs. Yuma Aoyagi",
+        "episode": "AJPW Dynamite Series 2024 · Jun 2024",
+        "start": "2026-11-17T18:09:25.423000Z",
+        "end": "2026-11-17T18:32:44.153000Z",
+        "stream_url": ""
+      },
+      "next2": {
+        "title": "Ryuki Honda, Ren Ayabe, Rising Hayato vs. Jun Saito, Rei Saito, Naruko Doi",
+        "episode": "AJPW Dynamite Series 2024 · Jun 2024",
+        "start": "2026-11-17T18:32:44.153000Z",
+        "end": "2026-11-17T18:58:00.433000Z",
+        "stream_url": ""
+      },
+      "guide_slots": 7,
+      "existing_embed": false,
+      "legacy_channel_number": null,
+      "tube": "AJPW Tube",
+      "embed_url": "https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=ajpw-dynamite",
+      "embed_html": "<iframe src=\"https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=ajpw-dynamite\" width=\"1280\" height=\"720\" frameborder=\"0\" allow=\"autoplay; fullscreen; picture-in-picture\" allowfullscreen></iframe>",
+      "player_type": "shared",
+      "availability": "available",
+      "missing_scans": 0
+    },
+    {
+      "number": 23,
+      "id": "ajpw-excite",
+      "name": "AJPW Excite Series",
+      "callsign": "AJPW-EXCITE",
+      "category": "shows",
+      "tagline": "Every AJPW Excite Series on the Archive, 24/7",
+      "archived": false,
+      "now": {
+        "title": "AJPW Excite Series 2022",
+        "episode": "Day 3 · Feb 9, 2022",
+        "start": "2026-11-17T16:39:08.876000Z",
+        "end": "2026-11-17T19:04:09.656000Z",
+        "stream_url": ""
+      },
+      "next": {
+        "title": "AJPW Excite Series 2025",
+        "episode": "Day 3 · Feb 14, 2025",
+        "start": "2026-11-17T19:04:09.656000Z",
+        "end": "2026-11-17T21:04:36.826000Z",
+        "stream_url": ""
+      },
+      "next2": {
+        "title": "AJPW Excite Series 2022",
+        "episode": "Day 6 · Feb 27, 2022",
+        "start": "2026-11-17T21:04:36.826000Z",
+        "end": "2026-11-17T22:53:10.396000Z",
+        "stream_url": ""
+      },
+      "guide_slots": 3,
+      "existing_embed": false,
+      "legacy_channel_number": null,
+      "tube": "AJPW Tube",
+      "embed_url": "https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=ajpw-excite",
+      "embed_html": "<iframe src=\"https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=ajpw-excite\" width=\"1280\" height=\"720\" frameborder=\"0\" allow=\"autoplay; fullscreen; picture-in-picture\" allowfullscreen></iframe>",
+      "player_type": "shared",
+      "availability": "available",
+      "missing_scans": 0
+    },
+    {
+      "number": 24,
+      "id": "ajpw-series",
+      "name": "AJPW New Year Giant Series",
+      "callsign": "AJPW-SERIES",
+      "category": "shows",
+      "tagline": "Every AJPW New Year Giant Series on the Archive, 24/7",
+      "archived": false,
+      "now": {
+        "title": "AJPW New Year Giant Series 2023",
+        "episode": "Day 2 · Jan 3, 2023",
+        "start": "2026-11-17T16:54:48.443000Z",
+        "end": "2026-11-17T19:35:49.483000Z",
+        "stream_url": ""
+      },
+      "next": {
+        "title": "AJPW Giant Series 2023",
+        "episode": "Day 3 · Sep 8, 2023",
+        "start": "2026-11-17T19:35:49.483000Z",
+        "end": "2026-11-17T22:42:50.923000Z",
+        "stream_url": ""
+      },
+      "next2": null,
+      "guide_slots": 2,
+      "existing_embed": false,
+      "legacy_channel_number": null,
+      "tube": "AJPW Tube",
+      "embed_url": "https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=ajpw-series",
+      "embed_html": "<iframe src=\"https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=ajpw-series\" width=\"1280\" height=\"720\" frameborder=\"0\" allow=\"autoplay; fullscreen; picture-in-picture\" allowfullscreen></iframe>",
+      "player_type": "shared",
+      "availability": "available",
+      "missing_scans": 0
+    },
+    {
+      "number": 25,
+      "id": "ajpw-tagleague",
+      "name": "AJPW Real World Tag League",
+      "callsign": "AJPW-TAGLEAGUE",
+      "category": "shows",
+      "tagline": "Every AJPW Real World Tag League on the Archive, 24/7",
+      "archived": false,
+      "now": {
+        "title": "AJPW Real World Tag League 2023",
+        "episode": "Day 6 · Nov 26, 2023",
+        "start": "2026-11-17T17:19:27.221000Z",
+        "end": "2026-11-17T20:26:13.121000Z",
+        "stream_url": ""
+      },
+      "next": {
+        "title": "AJPW Real World Tag League 2022",
+        "episode": "Day 1 · Nov 13, 2022",
+        "start": "2026-11-17T20:26:13.121000Z",
+        "end": "2026-11-17T22:56:17.941000Z",
+        "stream_url": ""
+      },
+      "next2": null,
+      "guide_slots": 2,
+      "existing_embed": false,
+      "legacy_channel_number": null,
+      "tube": "AJPW Tube",
+      "embed_url": "https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=ajpw-tagleague",
+      "embed_html": "<iframe src=\"https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=ajpw-tagleague\" width=\"1280\" height=\"720\" frameborder=\"0\" allow=\"autoplay; fullscreen; picture-in-picture\" allowfullscreen></iframe>",
+      "player_type": "shared",
+      "availability": "available",
+      "missing_scans": 0
+    },
+    {
+      "number": 26,
+      "id": "ajpw-summer",
+      "name": "AJPW Summer Action Series",
+      "callsign": "AJPW-SUMMER",
+      "category": "shows",
+      "tagline": "Every AJPW Summer Action Series on the Archive, 24/7",
+      "archived": false,
+      "now": {
+        "title": "AJPW Summer Action Series 2024",
+        "episode": "Day 3 · Jul 20, 2024",
+        "start": "2026-11-17T16:25:02.442000Z",
+        "end": "2026-11-17T19:49:08.712000Z",
+        "stream_url": ""
+      },
+      "next": {
+        "title": "AJPW Summer Action Series 2023",
+        "episode": "Day 4 · Jul 23, 2023",
+        "start": "2026-11-17T19:49:08.712000Z",
+        "end": "2026-11-17T23:08:12.732000Z",
+        "stream_url": ""
+      },
+      "next2": null,
+      "guide_slots": 2,
+      "existing_embed": false,
+      "legacy_channel_number": null,
+      "tube": "AJPW Tube",
+      "embed_url": "https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=ajpw-summer",
+      "embed_html": "<iframe src=\"https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=ajpw-summer\" width=\"1280\" height=\"720\" frameborder=\"0\" allow=\"autoplay; fullscreen; picture-in-picture\" allowfullscreen></iframe>",
+      "player_type": "shared",
+      "availability": "available",
+      "missing_scans": 0
+    },
+    {
+      "number": 78,
+      "id": "sh-tv",
+      "name": "Stan Hansen",
+      "callsign": "SH-TV",
+      "category": "wrestlers",
+      "tagline": "The AJPW Big Gaijin",
+      "archived": false,
+      "now": {
+        "title": "Mitsuharu Misawa vs. Stan Hansen",
+        "episode": "Apr 21, 1993",
+        "start": "2026-11-17T17:33:11.107000Z",
+        "end": "2026-11-17T17:59:10.467000Z",
+        "stream_url": ""
+      },
+      "next": {
+        "title": "Mitsuharu Misawa vs. Stan Hansen",
+        "episode": "Aug 22, 1992",
+        "start": "2026-11-17T17:59:10.467000Z",
+        "end": "2026-11-17T18:31:28.547000Z",
+        "stream_url": ""
+      },
+      "next2": {
+        "title": "WWF Bruno Sammartino vs. Stan Hansen Steel Cage Match",
+        "episode": "Aug 7, 1976",
+        "start": "2026-11-17T18:31:28.547000Z",
+        "end": "2026-11-17T18:49:22.177000Z",
+        "stream_url": ""
+      },
+      "guide_slots": 11,
+      "existing_embed": false,
+      "legacy_channel_number": null,
+      "tube": "AJPW Tube",
+      "embed_url": "https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=sh-tv",
+      "embed_html": "<iframe src=\"https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=sh-tv\" width=\"1280\" height=\"720\" frameborder=\"0\" allow=\"autoplay; fullscreen; picture-in-picture\" allowfullscreen></iframe>",
+      "player_type": "shared",
+      "availability": "available",
+      "missing_scans": 0
+    },
+    {
+      "number": 81,
+      "id": "tbn",
+      "name": "The Baba Network",
+      "callsign": "TBN",
+      "category": "wrestlers",
+      "tagline": "A Giant Legacy. An Eternal Tradition.",
+      "archived": false,
+      "now": {
+        "title": "Jumbo Tsuruta & Akira Taue vs. Mitsuharu Misawa & Toshiaki Kawada",
+        "episode": "Sep 30, 1990",
+        "start": "2026-11-17T17:08:52.446000Z",
+        "end": "2026-11-17T17:55:38.616000Z",
+        "stream_url": ""
+      },
+      "next": {
+        "title": "Giant Baba & Abdullah the Butcher vs. Andre the Giant & Stan Hansen",
+        "episode": "Sep 30, 1990",
+        "start": "2026-11-17T17:55:38.616000Z",
+        "end": "2026-11-17T18:16:33.226000Z",
+        "stream_url": ""
+      },
+      "next2": {
+        "title": "Giant Baba & Antonio Inoki vs. Abdullah the Butcher & Tiger Jeet Singh",
+        "episode": "Aug 26, 1979",
+        "start": "2026-11-17T18:16:33.226000Z",
+        "end": "2026-11-17T18:44:20.406000Z",
+        "stream_url": ""
+      },
+      "guide_slots": 7,
+      "existing_embed": false,
+      "legacy_channel_number": null,
+      "tube": "AJPW Tube",
+      "embed_url": "https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=tbn",
+      "embed_html": "<iframe src=\"https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=tbn\" width=\"1280\" height=\"720\" frameborder=\"0\" allow=\"autoplay; fullscreen; picture-in-picture\" allowfullscreen></iframe>",
+      "player_type": "shared",
+      "availability": "available",
+      "missing_scans": 0
+    },
+    {
+      "number": 88,
+      "id": "krt",
+      "name": "The Three Pillars",
+      "callsign": "KRT",
+      "category": "wrestlers",
+      "tagline": "Three Men. One Legacy. Immortal Glory.",
+      "archived": false,
+      "now": {
+        "title": "Mitsuharu Misawa vs. Stan Hansen",
+        "episode": "Aug 22, 1992",
+        "start": "2026-11-17T17:23:16.269000Z",
+        "end": "2026-11-17T17:55:34.349000Z",
+        "stream_url": ""
+      },
+      "next": {
+        "title": "Mitsuharu Misawa vs. Steve Williams",
+        "episode": "Jul 28, 1994",
+        "start": "2026-11-17T17:55:34.349000Z",
+        "end": "2026-11-17T18:24:45.179000Z",
+        "stream_url": ""
+      },
+      "next2": {
+        "title": "Mitsuharu Misawa, Kenta Kobashi, Stan Hansen vs. Toshiaki Kawada, Akira Tauen, Johnny Ace",
+        "episode": "Apr 2, 1995",
+        "start": "2026-11-17T18:24:45.179000Z",
+        "end": "2026-11-17T19:05:25.859000Z",
+        "stream_url": ""
+      },
+      "guide_slots": 8,
+      "existing_embed": false,
+      "legacy_channel_number": null,
+      "tube": "AJPW Tube",
+      "embed_url": "https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=krt",
+      "embed_html": "<iframe src=\"https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=krt\" width=\"1280\" height=\"720\" frameborder=\"0\" allow=\"autoplay; fullscreen; picture-in-picture\" allowfullscreen></iframe>",
+      "player_type": "shared",
+      "availability": "available",
+      "missing_scans": 0
+    },
+    {
+      "number": 54,
+      "id": "100-lucha",
+      "name": "Lucha Libre",
+      "callsign": "100% LUCHA",
+      "category": "promotions",
+      "tagline": "Every lucha libre promotion: CMLL, AAA, UWA, Universal Pro and more",
+      "archived": false,
+      "now": {
+        "title": "Lucha 【 Cmllの今が見られる！】第 3回配信 アレナ・メヒコ「 Viernes Espectacular de Arena México」辻陽太 Yota 出場！【毎月一回更新！】",
+        "episode": "Nov 18, 2022",
+        "start": "2026-11-17T16:05:57.393000Z",
+        "end": "2026-11-17T18:13:09.353000Z",
+        "stream_url": ""
+      },
+      "next": {
+        "title": "Lucha CMLL En Vivo Desde la Arena Coliseo de Guadalajara 24 de Junio",
+        "episode": "",
+        "start": "2026-11-17T18:13:09.353000Z",
+        "end": "2026-11-17T21:35:59.813000Z",
+        "stream_url": ""
+      },
+      "next2": null,
+      "guide_slots": 2,
+      "existing_embed": true,
+      "legacy_channel_number": "16",
+      "tube": "Lucha Tube",
+      "embed_url": "https://buttocks.github.io/suplex-baked-player/lucha-slamvision.html",
+      "embed_html": "<iframe src=\"https://buttocks.github.io/suplex-baked-player/lucha-slamvision.html\" width=\"1280\" height=\"720\" frameborder=\"0\" allow=\"autoplay; fullscreen; picture-in-picture\" allowfullscreen></iframe>",
+      "player_type": "legacy",
+      "availability": "available",
+      "missing_scans": 0
+    },
+    {
+      "number": 55,
+      "id": "lu-tv",
+      "name": "Lucha Underground",
+      "callsign": "LU-TV",
+      "category": "promotions",
+      "tagline": "Lucha From The Underground Temple",
+      "archived": false,
+      "now": {
+        "title": "Lucha Underground Season 1",
+        "episode": "1x19 - Grave Consequences",
+        "start": "2026-11-17T17:01:37.888000Z",
+        "end": "2026-11-17T17:45:52.488000Z",
+        "stream_url": ""
+      },
+      "next": {
+        "title": "Lucha Underground Season 1",
+        "episode": "1x20 - The Art of War",
+        "start": "2026-11-17T17:45:52.488000Z",
+        "end": "2026-11-17T18:30:07.158000Z",
+        "stream_url": ""
+      },
+      "next2": {
+        "title": "Lucha Underground Season 2",
+        "episode": "2x21 - Six to Survive",
+        "start": "2026-11-17T18:30:07.158000Z",
+        "end": "2026-11-17T19:13:20.948000Z",
+        "stream_url": ""
+      },
+      "guide_slots": 7,
+      "existing_embed": true,
+      "legacy_channel_number": "54",
+      "tube": "Lucha Tube",
+      "embed_url": "https://buttocks.github.io/suplex-baked-player/lucha-underground-slamvision.html",
+      "embed_html": "<iframe src=\"https://buttocks.github.io/suplex-baked-player/lucha-underground-slamvision.html\" width=\"1280\" height=\"720\" frameborder=\"0\" allow=\"autoplay; fullscreen; picture-in-picture\" allowfullscreen></iframe>",
+      "player_type": "legacy",
+      "availability": "available",
+      "missing_scans": 0
+    },
+    {
+      "number": 74,
+      "id": "619",
+      "name": "Rey Mysterio Greatest Hits",
+      "callsign": "619",
+      "category": "wrestlers",
+      "tagline": "Rey Mysterio Magic",
+      "archived": false,
+      "now": {
+        "title": "Chavo Guerrero Jr vs. Rey Mysterio Jr",
+        "episode": "Feb 18, 2001",
+        "start": "2026-11-17T17:26:00.002000Z",
+        "end": "2026-11-17T17:45:31.032000Z",
+        "stream_url": ""
+      },
+      "next": {
+        "title": "Kid Romeo & Elix Skipper vs. Billy Kidman & Rey Mysterio Jr",
+        "episode": "Mar 18, 2001",
+        "start": "2026-11-17T17:45:31.032000Z",
+        "end": "2026-11-17T18:03:00.992000Z",
+        "stream_url": ""
+      },
+      "next2": {
+        "title": "Ultimo Dragon vs. Rey Mysterio Jr",
+        "episode": "Dec 13, 1996",
+        "start": "2026-11-17T18:03:00.992000Z",
+        "end": "2026-11-17T18:20:33.962000Z",
+        "stream_url": ""
+      },
+      "guide_slots": 13,
+      "existing_embed": false,
+      "legacy_channel_number": null,
+      "tube": "Lucha Tube",
+      "embed_url": "https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=619",
+      "embed_html": "<iframe src=\"https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=619\" width=\"1280\" height=\"720\" frameborder=\"0\" allow=\"autoplay; fullscreen; picture-in-picture\" allowfullscreen></iframe>",
+      "player_type": "shared",
+      "availability": "available",
+      "missing_scans": 0
+    },
+    {
+      "number": 50,
+      "id": "joshi",
+      "name": "Joshi Puroresu",
+      "callsign": "JOSHI",
+      "category": "promotions",
+      "tagline": "All Japan Women, Crush Gals & Dream Slam",
+      "archived": false,
+      "now": {
+        "title": "Kong, K Inoue, T Inoue & Hasegawa vs. Kansai, Ozaki, Suzuki & Fukuoka (J",
+        "episode": "Joshi",
+        "start": "2026-11-17T17:20:51.982000Z",
+        "end": "2026-11-17T18:35:24.522000Z",
+        "stream_url": ""
+      },
+      "next": {
+        "title": "Mina Shirakawa, Xena, HANAKO vs. Starlight Kid, AZM, Suzu Suzuki",
+        "episode": "Joshi · Jul 2024",
+        "start": "2026-11-17T18:35:24.522000Z",
+        "end": "2026-11-17T18:53:07.122000Z",
+        "stream_url": ""
+      },
+      "next2": {
+        "title": "Maika, Mina Shirakawa, Saya Kamitani, Syuri vs. Momo Watanabe, Thekla, Konami, Ruaka",
+        "episode": "Joshi · Jul 2024",
+        "start": "2026-11-17T18:53:07.122000Z",
+        "end": "2026-11-17T19:19:12.392000Z",
+        "stream_url": ""
+      },
+      "guide_slots": 9,
+      "existing_embed": true,
+      "legacy_channel_number": "11",
+      "tube": "Joshi Tube",
+      "embed_url": "https://buttocks.github.io/suplex-baked-player/joshi-slamvision.html",
+      "embed_html": "<iframe src=\"https://buttocks.github.io/suplex-baked-player/joshi-slamvision.html\" width=\"1280\" height=\"720\" frameborder=\"0\" allow=\"autoplay; fullscreen; picture-in-picture\" allowfullscreen></iframe>",
+      "player_type": "legacy",
+      "availability": "available",
+      "missing_scans": 0
+    },
+    {
+      "number": 58,
+      "id": "marigold",
+      "name": "Marigold",
+      "callsign": "MARIGOLD",
+      "category": "wrestlers",
+      "tagline": "24/7 Marigold",
+      "archived": false,
+      "now": {
+        "title": "Marigold Spring Victory Series 2025 Day 1",
+        "episode": "Mar 1, 2025",
+        "start": "2026-11-17T16:18:21.156000Z",
+        "end": "2026-11-17T18:08:58.806000Z",
+        "stream_url": ""
+      },
+      "next": {
+        "title": "Marigold Fantastic Adventure Day 2",
+        "episode": "Oct 7, 2024",
+        "start": "2026-11-17T18:08:58.806000Z",
+        "end": "2026-11-17T20:59:50.306000Z",
+        "stream_url": ""
+      },
+      "next2": {
+        "title": "Marigold Battle Heart Day 8",
+        "episode": "Oct 18, 2025",
+        "start": "2026-11-17T20:59:50.306000Z",
+        "end": "2026-11-17T22:34:24.086000Z",
+        "stream_url": ""
+      },
+      "guide_slots": 4,
+      "existing_embed": false,
+      "legacy_channel_number": null,
+      "tube": "Joshi Tube",
+      "embed_url": "https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=marigold",
+      "embed_html": "<iframe src=\"https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=marigold\" width=\"1280\" height=\"720\" frameborder=\"0\" allow=\"autoplay; fullscreen; picture-in-picture\" allowfullscreen></iframe>",
+      "player_type": "shared",
+      "availability": "available",
+      "missing_scans": 0
+    },
+    {
+      "number": 79,
+      "id": "star",
+      "name": "Stardom",
+      "callsign": "STAR",
+      "category": "wrestlers",
+      "tagline": "24/7 Stardom",
+      "archived": false,
+      "now": {
+        "title": "Stardom in Sendai 2026 Jun",
+        "episode": "Jun 6, 2026",
+        "start": "2026-11-17T16:44:15.516000Z",
+        "end": "2026-11-17T19:13:32.356000Z",
+        "stream_url": ""
+      },
+      "next": {
+        "title": "Stardom 5STAR Grand Prix 2021 Day 11",
+        "episode": "Sep 11, 2021",
+        "start": "2026-11-17T19:13:32.356000Z",
+        "end": "2026-11-17T21:18:07.396000Z",
+        "stream_url": ""
+      },
+      "next2": {
+        "title": "Stardom Take Care Of Iwate",
+        "episode": "Jun 23, 2021",
+        "start": "2026-11-17T21:18:07.396000Z",
+        "end": "2026-11-17T22:57:11.256000Z",
+        "stream_url": ""
+      },
+      "guide_slots": 3,
+      "existing_embed": false,
+      "legacy_channel_number": null,
+      "tube": "Joshi Tube",
+      "embed_url": "https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=star",
+      "embed_html": "<iframe src=\"https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=star\" width=\"1280\" height=\"720\" frameborder=\"0\" allow=\"autoplay; fullscreen; picture-in-picture\" allowfullscreen></iframe>",
+      "player_type": "shared",
+      "availability": "available",
+      "missing_scans": 0
+    },
+    {
+      "number": 89,
+      "id": "tjpw-tv",
+      "name": "TJPW",
+      "callsign": "TJPW-TV",
+      "category": "wrestlers",
+      "tagline": "KAWAII × DREAM × STRONG — Pro-Wrestling That Makes You Look Forward to Tomorrow",
+      "archived": false,
+      "now": {
+        "title": "TJPW Beyond the Origins, Into the Future",
+        "episode": "Jan 30, 2023",
+        "start": "2026-11-17T15:40:55.318000Z",
+        "end": "2026-11-17T18:27:36.278000Z",
+        "stream_url": ""
+      },
+      "next": {
+        "title": "TJPW CITY CIRCUIT WINTER～Kamata Performance～",
+        "episode": "Feb 23, 2023",
+        "start": "2026-11-17T18:27:36.278000Z",
+        "end": "2026-11-17T20:11:49.338000Z",
+        "stream_url": ""
+      },
+      "next2": {
+        "title": "TJPW Happy Summer Vacation! Tokyo Joshi Pro Summer Vacation 2023",
+        "episode": "Aug 26, 2023",
+        "start": "2026-11-17T20:11:49.338000Z",
+        "end": "2026-11-17T22:02:18.398000Z",
+        "stream_url": ""
+      },
+      "guide_slots": 3,
+      "existing_embed": false,
+      "legacy_channel_number": null,
+      "tube": "Joshi Tube",
+      "embed_url": "https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=tjpw-tv",
+      "embed_html": "<iframe src=\"https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=tjpw-tv\" width=\"1280\" height=\"720\" frameborder=\"0\" allow=\"autoplay; fullscreen; picture-in-picture\" allowfullscreen></iframe>",
+      "player_type": "shared",
+      "availability": "available",
+      "missing_scans": 0
+    },
+    {
+      "number": 48,
+      "id": "io",
+      "name": "Io Shirai",
+      "callsign": "IO",
+      "category": "wrestlers",
+      "tagline": "Best of Io Shirai/IYO SKY",
+      "archived": false,
+      "now": {
+        "title": "Io Shirai vs. Meiko Satomura – Sendai Girls",
+        "episode": "Apr 19, 2018",
+        "start": "2026-11-17T17:16:37.527000Z",
+        "end": "2026-11-17T17:43:34.447000Z",
+        "stream_url": ""
+      },
+      "next": {
+        "title": "Io Shirai vs. Meiko Satomura – Sendai Girls",
+        "episode": "Apr 19, 2018",
+        "start": "2026-11-17T17:43:34.447000Z",
+        "end": "2026-11-17T18:10:31.367000Z",
+        "stream_url": ""
+      },
+      "next2": {
+        "title": "Io Shirai vs. Meiko Satomura – Sendai Girls",
+        "episode": "Apr 19, 2018",
+        "start": "2026-11-17T18:10:31.367000Z",
+        "end": "2026-11-17T18:37:28.287000Z",
+        "stream_url": ""
+      },
+      "guide_slots": 9,
+      "existing_embed": false,
+      "legacy_channel_number": null,
+      "tube": "Joshi Tube",
+      "embed_url": "https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=io",
+      "embed_html": "<iframe src=\"https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=io\" width=\"1280\" height=\"720\" frameborder=\"0\" allow=\"autoplay; fullscreen; picture-in-picture\" allowfullscreen></iframe>",
+      "player_type": "shared",
+      "availability": "available",
+      "missing_scans": 0
+    },
+    {
+      "number": 109,
+      "id": "wwe",
+      "name": "Wwe",
+      "callsign": "WWE",
+      "category": "promotions",
+      "tagline": "Get the F out",
+      "archived": false,
+      "now": {
+        "title": "WWE War",
+        "episode": "S21E38 Raw ecfcheinrich · Sep 23, 2013",
+        "start": "2026-11-17T16:18:20.003000Z",
+        "end": "2026-11-17T18:31:25.173000Z",
+        "stream_url": ""
+      },
+      "next": {
+        "title": "WWE War",
+        "episode": "S21E39 Raw ecfcheinrich · Sep 30, 2013",
+        "start": "2026-11-17T18:31:25.173000Z",
+        "end": "2026-11-17T20:47:01.903000Z",
+        "stream_url": ""
+      },
+      "next2": {
+        "title": "WWE War",
+        "episode": "S21E40 Raw ecfcheinrich · Oct 7, 2013",
+        "start": "2026-11-17T20:47:01.903000Z",
+        "end": "2026-11-17T23:00:39.333000Z",
+        "stream_url": ""
+      },
+      "guide_slots": 3,
+      "existing_embed": true,
+      "legacy_channel_number": "25",
+      "tube": "WWF / WWE Tube",
+      "embed_url": "https://buttocks.github.io/suplex-baked-player/wwe-slamvision.html",
+      "embed_html": "<iframe src=\"https://buttocks.github.io/suplex-baked-player/wwe-slamvision.html\" width=\"1280\" height=\"720\" frameborder=\"0\" allow=\"autoplay; fullscreen; picture-in-picture\" allowfullscreen></iframe>",
+      "player_type": "legacy",
+      "availability": "available",
+      "missing_scans": 0
+    },
+    {
+      "number": 110,
+      "id": "wwf",
+      "name": "wwf",
+      "callsign": "WWF",
+      "category": "promotions",
+      "tagline": "Everything else from WWF: specials, rare shows and tapes without their own channel",
+      "archived": false,
+      "now": {
+        "title": "WWF Wrestling",
+        "episode": "Jun 1991",
+        "start": "2026-11-17T17:09:04.573000Z",
+        "end": "2026-11-17T18:38:07.413000Z",
+        "stream_url": ""
+      },
+      "next": {
+        "title": "WWF Royal Rumble 2001",
+        "episode": "",
+        "start": "2026-11-17T18:38:07.413000Z",
+        "end": "2026-11-17T21:28:08.733000Z",
+        "stream_url": ""
+      },
+      "next2": {
+        "title": "WWF Wrestling MIXTAPE",
+        "episode": "Feb 1992",
+        "start": "2026-11-17T21:28:08.733000Z",
+        "end": "2026-11-17T23:15:26.303000Z",
+        "stream_url": ""
+      },
+      "guide_slots": 3,
+      "existing_embed": true,
+      "legacy_channel_number": "14",
+      "tube": "WWF / WWE Tube",
+      "embed_url": "https://buttocks.github.io/suplex-baked-player/wwf-slamvision.html",
+      "embed_html": "<iframe src=\"https://buttocks.github.io/suplex-baked-player/wwf-slamvision.html\" width=\"1280\" height=\"720\" frameborder=\"0\" allow=\"autoplay; fullscreen; picture-in-picture\" allowfullscreen></iframe>",
+      "player_type": "legacy",
+      "availability": "available",
+      "missing_scans": 0
+    },
+    {
+      "number": 111,
+      "id": "wwwf",
+      "name": "WWWF",
+      "callsign": "WWWF",
+      "category": "promotions",
+      "tagline": "Everything else from WWF: specials, rare shows and tapes without their own channel",
+      "archived": false,
+      "now": {
+        "title": "Capitol Wrestling Corperation/ WWWF/WWF",
+        "episode": "Philadelphia Spectrum · Nov 8, 1980",
+        "start": "2026-11-17T17:00:56.211000Z",
+        "end": "2026-11-17T18:52:09.671000Z",
+        "stream_url": ""
+      },
+      "next": {
+        "title": "Capitol Wrestling Corperation/ WWWF/WWF",
+        "episode": "Philadelphia Spectrum · Apr 18, 1981",
+        "start": "2026-11-17T18:52:09.671000Z",
+        "end": "2026-11-17T20:51:30.681000Z",
+        "stream_url": ""
+      },
+      "next2": {
+        "title": "Capitol Wrestling Corperation/ WWWF/WWF",
+        "episode": "Feb 1993",
+        "start": "2026-11-17T20:51:30.681000Z",
+        "end": "2026-11-17T22:51:14.051000Z",
+        "stream_url": ""
+      },
+      "guide_slots": 3,
+      "existing_embed": true,
+      "legacy_channel_number": "64",
+      "tube": "WWF / WWE Tube",
+      "embed_url": "https://buttocks.github.io/suplex-baked-player/wwwf-slamvision.html",
+      "embed_html": "<iframe src=\"https://buttocks.github.io/suplex-baked-player/wwwf-slamvision.html\" width=\"1280\" height=\"720\" frameborder=\"0\" allow=\"autoplay; fullscreen; picture-in-picture\" allowfullscreen></iframe>",
+      "player_type": "legacy",
+      "availability": "available",
+      "missing_scans": 0
+    },
+    {
+      "number": 112,
+      "id": "wwf-90-00",
+      "name": "WWF 1990-2000",
+      "callsign": "WWF-RAW",
+      "category": "shows",
+      "tagline": "Classic raw is war era and early ruthless aggression",
+      "archived": false,
+      "now": {
+        "title": "WWF Raw Is War",
+        "episode": "Jun 21, 1999",
+        "start": "2026-11-17T16:20:06.300000Z",
+        "end": "2026-11-17T17:46:58.450000Z",
+        "stream_url": ""
+      },
+      "next": {
+        "title": "WWF Shotgun Saturday Night",
+        "episode": "Jun 26, 1999",
+        "start": "2026-11-17T17:46:58.450000Z",
+        "end": "2026-11-17T18:31:25.990000Z",
+        "stream_url": ""
+      },
+      "next2": {
+        "title": "WWF King of the Ring 1999",
+        "episode": "Jun 27, 1999",
+        "start": "2026-11-17T18:31:25.990000Z",
+        "end": "2026-11-17T20:57:38.560000Z",
+        "stream_url": ""
+      },
+      "guide_slots": 4,
+      "existing_embed": true,
+      "legacy_channel_number": "52",
+      "tube": "WWF / WWE Tube",
+      "embed_url": "https://buttocks.github.io/suplex-baked-player/wwf-90-00-slamvision.html",
+      "embed_html": "<iframe src=\"https://buttocks.github.io/suplex-baked-player/wwf-90-00-slamvision.html\" width=\"1280\" height=\"720\" frameborder=\"0\" allow=\"autoplay; fullscreen; picture-in-picture\" allowfullscreen></iframe>",
+      "player_type": "legacy",
+      "availability": "available",
+      "missing_scans": 0
+    },
+    {
+      "number": 113,
+      "id": "wwf-wrestling",
+      "name": "WWF All American Wrestling",
+      "callsign": "WWF-WRESTLING",
+      "category": "shows",
+      "tagline": "Every WWF All American Wrestling on the Archive, 24/7",
+      "archived": false,
+      "now": {
+        "title": "WWF All American Wrestling",
+        "episode": "Feb 19, 1989",
+        "start": "2026-11-17T17:30:57.723000Z",
+        "end": "2026-11-17T18:14:00.773000Z",
+        "stream_url": ""
+      },
+      "next": {
+        "title": "WWF All American Wrestling",
+        "episode": "Apr 23, 1989",
+        "start": "2026-11-17T18:14:00.773000Z",
+        "end": "2026-11-17T18:57:18.973000Z",
+        "stream_url": ""
+      },
+      "next2": {
+        "title": "WWF All American Wrestling",
+        "episode": "Dec 10, 1989",
+        "start": "2026-11-17T18:57:18.973000Z",
+        "end": "2026-11-17T19:33:54.613000Z",
+        "stream_url": ""
+      },
+      "guide_slots": 7,
+      "existing_embed": false,
+      "legacy_channel_number": null,
+      "tube": "WWF / WWE Tube",
+      "embed_url": "https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=wwf-wrestling",
+      "embed_html": "<iframe src=\"https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=wwf-wrestling\" width=\"1280\" height=\"720\" frameborder=\"0\" allow=\"autoplay; fullscreen; picture-in-picture\" allowfullscreen></iframe>",
+      "player_type": "shared",
+      "availability": "available",
+      "missing_scans": 0
+    },
+    {
+      "number": 114,
+      "id": "wwf-ptw",
+      "name": "WWF Prime Time Wrestling",
+      "callsign": "WWF-PRIMETIME",
+      "category": "shows",
+      "tagline": "Every WWF Prime Time Wrestling on the Archive, 24/7",
+      "archived": false,
+      "now": {
+        "title": "WWF Prime Time Wrestling",
+        "episode": "May 21, 1991",
+        "start": "2026-11-17T16:35:23.774000Z",
+        "end": "2026-11-17T18:12:04.294000Z",
+        "stream_url": ""
+      },
+      "next": {
+        "title": "WWF Prime Time Wrestling",
+        "episode": "May 28, 1991",
+        "start": "2026-11-17T18:12:04.294000Z",
+        "end": "2026-11-17T19:41:43.164000Z",
+        "stream_url": ""
+      },
+      "next2": {
+        "title": "WWF Prime Time Wrestling",
+        "episode": "Apr 3, 1989",
+        "start": "2026-11-17T19:41:43.164000Z",
+        "end": "2026-11-17T21:15:55.684000Z",
+        "stream_url": ""
+      },
+      "guide_slots": 4,
+      "existing_embed": false,
+      "legacy_channel_number": null,
+      "tube": "WWF / WWE Tube",
+      "embed_url": "https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=wwf-ptw",
+      "embed_html": "<iframe src=\"https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=wwf-ptw\" width=\"1280\" height=\"720\" frameborder=\"0\" allow=\"autoplay; fullscreen; picture-in-picture\" allowfullscreen></iframe>",
+      "player_type": "shared",
+      "availability": "available",
+      "missing_scans": 0
+    },
+    {
+      "number": 115,
+      "id": "wwf-heat",
+      "name": "WWF Sunday Night Heat",
+      "callsign": "WWF-HEAT",
+      "category": "shows",
+      "tagline": "Every WWF Sunday Night Heat on the Archive, 24/7",
+      "archived": false,
+      "now": {
+        "title": "WWF Sunday Night Heat",
+        "episode": "Nov 2002",
+        "start": "2026-11-17T17:32:46.270000Z",
+        "end": "2026-11-17T18:30:16.270000Z",
+        "stream_url": ""
+      },
+      "next": {
+        "title": "WWF Sunday Night Heat",
+        "episode": "Nov 2002",
+        "start": "2026-11-17T18:30:16.270000Z",
+        "end": "2026-11-17T19:26:54.200000Z",
+        "stream_url": ""
+      },
+      "next2": {
+        "title": "WWF Sunday Night Heat",
+        "episode": "Nov 2002",
+        "start": "2026-11-17T19:26:54.200000Z",
+        "end": "2026-11-17T20:25:39.270000Z",
+        "stream_url": ""
+      },
+      "guide_slots": 6,
+      "existing_embed": false,
+      "legacy_channel_number": null,
+      "tube": "WWF / WWE Tube",
+      "embed_url": "https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=wwf-heat",
+      "embed_html": "<iframe src=\"https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=wwf-heat\" width=\"1280\" height=\"720\" frameborder=\"0\" allow=\"autoplay; fullscreen; picture-in-picture\" allowfullscreen></iframe>",
+      "player_type": "shared",
+      "availability": "available",
+      "missing_scans": 0
+    },
+    {
+      "number": 116,
+      "id": "wwf-sow",
+      "name": "WWF Superstars of Wrestling",
+      "callsign": "WWF-SUPERSTARS",
+      "category": "shows",
+      "tagline": "Every WWF Superstars of Wrestling on the Archive, 24/7",
+      "archived": false,
+      "now": {
+        "title": "WWF Superstars of Wrestling",
+        "episode": "Feb 25, 1989",
+        "start": "2026-11-17T17:21:34.985000Z",
+        "end": "2026-11-17T18:07:13.945000Z",
+        "stream_url": ""
+      },
+      "next": {
+        "title": "WWF Superstars of Wrestling",
+        "episode": "Apr 1, 1989",
+        "start": "2026-11-17T18:07:13.945000Z",
+        "end": "2026-11-17T18:53:45.985000Z",
+        "stream_url": ""
+      },
+      "next2": {
+        "title": "WWF Superstars of Wrestling",
+        "episode": "May 4, 1991",
+        "start": "2026-11-17T18:53:45.985000Z",
+        "end": "2026-11-17T19:36:24.915000Z",
+        "stream_url": ""
+      },
+      "guide_slots": 6,
+      "existing_embed": false,
+      "legacy_channel_number": null,
+      "tube": "WWF / WWE Tube",
+      "embed_url": "https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=wwf-sow",
+      "embed_html": "<iframe src=\"https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=wwf-sow\" width=\"1280\" height=\"720\" frameborder=\"0\" allow=\"autoplay; fullscreen; picture-in-picture\" allowfullscreen></iframe>",
+      "player_type": "shared",
+      "availability": "available",
+      "missing_scans": 0
+    },
+    {
+      "number": 117,
+      "id": "wwf-mania",
+      "name": "WWF WrestleMania",
+      "callsign": "WWF-MANIA",
+      "category": "shows",
+      "tagline": "Every WWF WrestleMania on the Archive, 24/7",
+      "archived": false,
+      "now": {
+        "title": "WWF WrestleMania X-7",
+        "episode": "",
+        "start": "2026-11-17T17:07:00.047000Z",
+        "end": "2026-11-17T20:52:22.647000Z",
+        "stream_url": ""
+      },
+      "next": {
+        "title": "WWF WrestleMania III",
+        "episode": "",
+        "start": "2026-11-17T20:52:22.647000Z",
+        "end": "2026-11-18T00:08:48.877000Z",
+        "stream_url": ""
+      },
+      "next2": null,
+      "guide_slots": 2,
+      "existing_embed": false,
+      "legacy_channel_number": null,
+      "tube": "WWF / WWE Tube",
+      "embed_url": "https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=wwf-mania",
+      "embed_html": "<iframe src=\"https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=wwf-mania\" width=\"1280\" height=\"720\" frameborder=\"0\" allow=\"autoplay; fullscreen; picture-in-picture\" allowfullscreen></iframe>",
+      "player_type": "shared",
+      "availability": "available",
+      "missing_scans": 0
+    },
+    {
+      "number": 118,
+      "id": "wwf-challenge",
+      "name": "WWF Wrestling Challenge",
+      "callsign": "WWF-CHALLENGE",
+      "category": "shows",
+      "tagline": "Every WWF Wrestling Challenge on the Archive, 24/7",
+      "archived": false,
+      "now": {
+        "title": "WWF Wrestling Challenge",
+        "episode": "Jun 9, 1991",
+        "start": "2026-11-17T17:40:24.869000Z",
+        "end": "2026-11-17T18:25:30.299000Z",
+        "stream_url": ""
+      },
+      "next": {
+        "title": "WWF Wrestling Challenge",
+        "episode": "Jun 16, 1991",
+        "start": "2026-11-17T18:25:30.299000Z",
+        "end": "2026-11-17T19:17:55.539000Z",
+        "stream_url": ""
+      },
+      "next2": {
+        "title": "WWF Wrestling Challenge",
+        "episode": "Jun 23, 1991",
+        "start": "2026-11-17T19:17:55.539000Z",
+        "end": "2026-11-17T20:09:46.249000Z",
+        "stream_url": ""
+      },
+      "guide_slots": 6,
+      "existing_embed": false,
+      "legacy_channel_number": null,
+      "tube": "WWF / WWE Tube",
+      "embed_url": "https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=wwf-challenge",
+      "embed_html": "<iframe src=\"https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=wwf-challenge\" width=\"1280\" height=\"720\" frameborder=\"0\" allow=\"autoplay; fullscreen; picture-in-picture\" allowfullscreen></iframe>",
+      "player_type": "shared",
+      "availability": "available",
+      "missing_scans": 0
+    },
+    {
+      "number": 107,
+      "id": "wm",
+      "name": "Wrestlemania",
+      "callsign": "WM",
+      "category": "wrestlers",
+      "tagline": "Wrestlemania’s",
+      "archived": false,
+      "now": {
+        "title": "WWE WrestleMania XXVIII - in Miami, Florida",
+        "episode": "Apr 1, 2012",
+        "start": "2026-11-17T14:41:10.093000Z",
+        "end": "2026-11-17T18:32:21.303000Z",
+        "stream_url": ""
+      },
+      "next": {
+        "title": "W WE jnnn Wrestle Mania IX – Becoming A Spectacle – 2025 04 11 WWE Wrestlemania IX Becoming A Spec kj kj",
+        "episode": "Apr 11, 2025",
+        "start": "2026-11-17T18:32:21.303000Z",
+        "end": "2026-11-17T20:21:22.423000Z",
+        "stream_url": ""
+      },
+      "next2": {
+        "title": "WWF WrestleMania III",
+        "episode": "",
+        "start": "2026-11-17T20:21:22.423000Z",
+        "end": "2026-11-17T23:37:48.653000Z",
+        "stream_url": ""
+      },
+      "guide_slots": 3,
+      "existing_embed": false,
+      "legacy_channel_number": null,
+      "tube": "WWF / WWE Tube",
+      "embed_url": "https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=wm",
+      "embed_html": "<iframe src=\"https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=wm\" width=\"1280\" height=\"720\" frameborder=\"0\" allow=\"autoplay; fullscreen; picture-in-picture\" allowfullscreen></iframe>",
+      "player_type": "shared",
+      "availability": "available",
+      "missing_scans": 0
+    },
+    {
+      "number": 49,
+      "id": "cena",
+      "name": "John Cena",
+      "callsign": "CENA",
+      "category": "wrestlers",
+      "tagline": "24/7 John Cena",
+      "archived": false,
+      "now": {
+        "title": "John Cena Headcanon",
+        "episode": "John Cena Headcanon Season 1 Ep 7 If Cena Wins We Riot",
+        "start": "2026-11-17T17:36:13.687000Z",
+        "end": "2026-11-17T19:20:27.147000Z",
+        "stream_url": ""
+      },
+      "next": {
+        "title": "Total Bellas Season 1-6",
+        "episode": "Total Bellas S01E01 Cena House Rules",
+        "start": "2026-11-17T19:20:27.147000Z",
+        "end": "2026-11-17T20:04:18.717000Z",
+        "stream_url": ""
+      },
+      "next2": {
+        "title": "Total Bellas Season 1-6",
+        "episode": "Total Bellas S03E01 Have You Cena",
+        "start": "2026-11-17T20:04:18.717000Z",
+        "end": "2026-11-17T20:48:06.707000Z",
+        "stream_url": ""
+      },
+      "guide_slots": 5,
+      "existing_embed": false,
+      "legacy_channel_number": null,
+      "tube": "WWF / WWE Tube",
+      "embed_url": "https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=cena",
+      "embed_html": "<iframe src=\"https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=cena\" width=\"1280\" height=\"720\" frameborder=\"0\" allow=\"autoplay; fullscreen; picture-in-picture\" allowfullscreen></iframe>",
+      "player_type": "shared",
+      "availability": "available",
+      "missing_scans": 0
+    },
+    {
+      "number": 84,
+      "id": "hhn",
+      "name": "The Hulk Hogan Network",
+      "callsign": "HHN",
+      "category": "wrestlers",
+      "tagline": "The Best Wrestling Network in the World Dude",
+      "archived": false,
+      "now": {
+        "title": "Hulk Hogan, Brooke Shields, And George Miller The Tonight Show Starring Johnny Crson (June",
+        "episode": "Jun 15, 1982",
+        "start": "2026-11-17T17:06:19.876000Z",
+        "end": "2026-11-17T17:49:24.986000Z",
+        "stream_url": ""
+      },
+      "next": {
+        "title": "The Rock vs. Hollywood Hulk Hogan Wrestle Mania X 8",
+        "episode": "",
+        "start": "2026-11-17T17:49:24.986000Z",
+        "end": "2026-11-17T18:15:54.046000Z",
+        "stream_url": ""
+      },
+      "next2": {
+        "title": "Antonio Inoki & Hulk Hogan vs. Killer Khan & Tiger Toguchi",
+        "episode": "Dec 3, 1982",
+        "start": "2026-11-17T18:15:54.046000Z",
+        "end": "2026-11-17T18:33:25.716000Z",
+        "stream_url": ""
+      },
+      "guide_slots": 6,
+      "existing_embed": false,
+      "legacy_channel_number": null,
+      "tube": "WWF / WWE Tube",
+      "embed_url": "https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=hhn",
+      "embed_html": "<iframe src=\"https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=hhn\" width=\"1280\" height=\"720\" frameborder=\"0\" allow=\"autoplay; fullscreen; picture-in-picture\" allowfullscreen></iframe>",
+      "player_type": "shared",
+      "availability": "available",
+      "missing_scans": 0
+    },
+    {
+      "number": 83,
+      "id": "hart",
+      "name": "The Hart Family",
+      "callsign": "HART",
+      "category": "wrestlers",
+      "tagline": "Excellence in Execution",
+      "archived": false,
+      "now": {
+        "title": "Cafe De Rene Livestream 231 W Special Guest Teddy Hart",
+        "episode": "",
+        "start": "2026-11-17T17:23:05.210000Z",
+        "end": "2026-11-17T19:07:49.760000Z",
+        "stream_url": ""
+      },
+      "next": {
+        "title": "Bret Hart vs. Stone Cold Steve Austin Submission Match Wrestle Mania 13",
+        "episode": "",
+        "start": "2026-11-17T19:07:49.760000Z",
+        "end": "2026-11-17T19:37:08.220000Z",
+        "stream_url": ""
+      },
+      "next2": {
+        "title": "The Hart Brothers vs. The Steiner Brothers",
+        "episode": "Nov 1, 1994",
+        "start": "2026-11-17T19:37:08.220000Z",
+        "end": "2026-11-17T20:07:52.350000Z",
+        "stream_url": ""
+      },
+      "guide_slots": 6,
+      "existing_embed": false,
+      "legacy_channel_number": null,
+      "tube": "WWF / WWE Tube",
+      "embed_url": "https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=hart",
+      "embed_html": "<iframe src=\"https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=hart\" width=\"1280\" height=\"720\" frameborder=\"0\" allow=\"autoplay; fullscreen; picture-in-picture\" allowfullscreen></iframe>",
+      "player_type": "shared",
+      "availability": "available",
+      "missing_scans": 0
+    },
+    {
+      "number": 85,
+      "id": "otc",
+      "name": "The OTC",
+      "callsign": "OTC",
+      "category": "wrestlers",
+      "tagline": "Roman Reign’s Battles",
+      "archived": false,
+      "now": {
+        "title": "FULL MATCH Roman Reigns & The Rock vs. Cody Rhodes & Seth Rollins WWE WrestleMania XL",
+        "episode": "2024",
+        "start": "2026-11-17T17:34:15.711000Z",
+        "end": "2026-11-17T18:19:24.741000Z",
+        "stream_url": ""
+      },
+      "next": {
+        "title": "FULL MATCH Roman Reigns vs. Cody Rhodes",
+        "episode": "2024",
+        "start": "2026-11-17T18:19:24.741000Z",
+        "end": "2026-11-17T19:18:33.821000Z",
+        "stream_url": ""
+      },
+      "next2": {
+        "title": "WWE 3132017 Monday N Ight Raw Preview Preshow Roman Reigns vs. The Undertaker…",
+        "episode": "",
+        "start": "2026-11-17T19:18:33.821000Z",
+        "end": "2026-11-17T20:06:14.881000Z",
+        "stream_url": ""
+      },
+      "guide_slots": 6,
+      "existing_embed": false,
+      "legacy_channel_number": null,
+      "tube": "WWF / WWE Tube",
+      "embed_url": "https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=otc",
+      "embed_html": "<iframe src=\"https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=otc\" width=\"1280\" height=\"720\" frameborder=\"0\" allow=\"autoplay; fullscreen; picture-in-picture\" allowfullscreen></iframe>",
+      "player_type": "shared",
+      "availability": "available",
+      "missing_scans": 0
+    },
+    {
+      "number": 30,
+      "id": "atg",
+      "name": "Andre The Giant",
+      "callsign": "ATG",
+      "category": "wrestlers",
+      "tagline": "The 8th Wonder's Own Channel",
+      "archived": false,
+      "now": {
+        "title": "Seiji Sakaguchi & Tatsumi Fujinami vs. Andre the Giant & Rene Goulet",
+        "episode": "Nov 26, 1982",
+        "start": "2026-11-17T17:34:34.813000Z",
+        "end": "2026-11-17T17:50:13.523000Z",
+        "stream_url": ""
+      },
+      "next": {
+        "title": "Hulk Hogan vs. Andre the Giant",
+        "episode": "Dec 24, 1982",
+        "start": "2026-11-17T17:50:13.523000Z",
+        "end": "2026-11-17T18:07:21.923000Z",
+        "stream_url": ""
+      },
+      "next2": {
+        "title": "Antonio Inoki, Hulk Hogan, Tatsumi Fujinami vs. Andre the Giant, Dick Murdoch, El Canek",
+        "episode": "Jul 8, 1982",
+        "start": "2026-11-17T18:07:21.923000Z",
+        "end": "2026-11-17T18:31:57.363000Z",
+        "stream_url": ""
+      },
+      "guide_slots": 14,
+      "existing_embed": false,
+      "legacy_channel_number": null,
+      "tube": "WWF / WWE Tube",
+      "embed_url": "https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=atg",
+      "embed_html": "<iframe src=\"https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=atg\" width=\"1280\" height=\"720\" frameborder=\"0\" allow=\"autoplay; fullscreen; picture-in-picture\" allowfullscreen></iframe>",
+      "player_type": "shared",
+      "availability": "available",
+      "missing_scans": 0
+    },
+    {
+      "number": 32,
+      "id": "appv",
+      "name": "Attitude PPV",
+      "callsign": "APPV",
+      "category": "eras",
+      "tagline": "WWF Attitude Era Pay-Per-Views",
+      "archived": false,
+      "now": {
+        "title": "Post WrestleMania 33 Special Episode: The Wrestling Hour #253",
+        "episode": "",
+        "start": "2026-11-17T17:23:49.509000Z",
+        "end": "2026-11-17T18:20:07.159000Z",
+        "stream_url": ""
+      },
+      "next": {
+        "title": "WWF WrestleMania XII",
+        "episode": "",
+        "start": "2026-11-17T18:20:07.159000Z",
+        "end": "2026-11-17T21:12:40.239000Z",
+        "stream_url": ""
+      },
+      "next2": {
+        "title": "Wrestle! Wrestle! - Survivor Series 2014",
+        "episode": "",
+        "start": "2026-11-17T21:12:40.239000Z",
+        "end": "2026-11-17T22:33:29.129000Z",
+        "stream_url": ""
+      },
+      "guide_slots": 3,
+      "existing_embed": false,
+      "legacy_channel_number": null,
+      "tube": "WWF / WWE Tube",
+      "embed_url": "https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=appv",
+      "embed_html": "<iframe src=\"https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=appv\" width=\"1280\" height=\"720\" frameborder=\"0\" allow=\"autoplay; fullscreen; picture-in-picture\" allowfullscreen></iframe>",
+      "player_type": "shared",
+      "availability": "available",
+      "missing_scans": 0
+    },
+    {
+      "number": 92,
+      "id": "wcw",
+      "name": "World Championship Wrestling",
+      "callsign": "WCW",
+      "category": "promotions",
+      "tagline": "Everything else from WCW: specials, rare shows and tapes without their own channel",
+      "archived": false,
+      "now": {
+        "title": "WCW QVC Special With Buff Bagwell",
+        "episode": "",
+        "start": "2026-11-17T16:54:18.436000Z",
+        "end": "2026-11-17T17:50:20.706000Z",
+        "stream_url": ""
+      },
+      "next": {
+        "title": "WCW QVC Special With Various WCW Wrestlers",
+        "episode": "Jan 1999",
+        "start": "2026-11-17T17:50:20.706000Z",
+        "end": "2026-11-17T19:33:36.676000Z",
+        "stream_url": ""
+      },
+      "next2": {
+        "title": "WCW S04 E45",
+        "episode": "Nov 5, 1988",
+        "start": "2026-11-17T19:33:36.676000Z",
+        "end": "2026-11-17T20:55:54.636000Z",
+        "stream_url": ""
+      },
+      "guide_slots": 4,
+      "existing_embed": true,
+      "legacy_channel_number": "02",
+      "tube": "WCW Tube",
+      "embed_url": "https://buttocks.github.io/suplex-baked-player/wcw-slamvision.html",
+      "embed_html": "<iframe src=\"https://buttocks.github.io/suplex-baked-player/wcw-slamvision.html\" width=\"1280\" height=\"720\" frameborder=\"0\" allow=\"autoplay; fullscreen; picture-in-picture\" allowfullscreen></iframe>",
+      "player_type": "legacy",
+      "availability": "available",
+      "missing_scans": 0
+    },
+    {
+      "number": 93,
+      "id": "wcw-cotc",
+      "name": "WCW Clash of the Champions",
+      "callsign": "WCW-CLASH",
+      "category": "shows",
+      "tagline": "Every WCW Clash of the Champions on the Archive, 24/7",
+      "archived": false,
+      "now": {
+        "title": "WCW Clash of the Champions",
+        "episode": "",
+        "start": "2026-11-17T16:02:48.814000Z",
+        "end": "2026-11-17T17:51:44.914000Z",
+        "stream_url": ""
+      },
+      "next": {
+        "title": "WCW Clash of the Champions",
+        "episode": "",
+        "start": "2026-11-17T17:51:44.914000Z",
+        "end": "2026-11-17T19:24:21.344000Z",
+        "stream_url": ""
+      },
+      "next2": {
+        "title": "WCW Clash of the Champions",
+        "episode": "",
+        "start": "2026-11-17T19:24:21.344000Z",
+        "end": "2026-11-17T20:56:03.374000Z",
+        "stream_url": ""
+      },
+      "guide_slots": 4,
+      "existing_embed": false,
+      "legacy_channel_number": null,
+      "tube": "WCW Tube",
+      "embed_url": "https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=wcw-cotc",
+      "embed_html": "<iframe src=\"https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=wcw-cotc\" width=\"1280\" height=\"720\" frameborder=\"0\" allow=\"autoplay; fullscreen; picture-in-picture\" allowfullscreen></iframe>",
+      "player_type": "shared",
+      "availability": "available",
+      "missing_scans": 0
+    },
+    {
+      "number": 94,
+      "id": "wcw-fallbrawl",
+      "name": "WCW Fall Brawl",
+      "callsign": "WCW-FALLBRAWL",
+      "category": "shows",
+      "tagline": "Every WCW Fall Brawl on the Archive, 24/7",
+      "archived": false,
+      "now": {
+        "title": "WCW Fall Brawl 1995",
+        "episode": "Sep 17, 1995",
+        "start": "2026-11-17T16:10:05.955000Z",
+        "end": "2026-11-17T18:54:49.925000Z",
+        "stream_url": ""
+      },
+      "next": {
+        "title": "WCW Fall Brawl 1997",
+        "episode": "Sep 14, 1997",
+        "start": "2026-11-17T18:54:49.925000Z",
+        "end": "2026-11-17T21:38:48.155000Z",
+        "stream_url": ""
+      },
+      "next2": null,
+      "guide_slots": 2,
+      "existing_embed": false,
+      "legacy_channel_number": null,
+      "tube": "WCW Tube",
+      "embed_url": "https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=wcw-fallbrawl",
+      "embed_html": "<iframe src=\"https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=wcw-fallbrawl\" width=\"1280\" height=\"720\" frameborder=\"0\" allow=\"autoplay; fullscreen; picture-in-picture\" allowfullscreen></iframe>",
+      "player_type": "shared",
+      "availability": "available",
+      "missing_scans": 0
+    },
+    {
+      "number": 95,
+      "id": "wcw-bash",
+      "name": "WCW Great American Bash",
+      "callsign": "WCW-BASH",
+      "category": "shows",
+      "tagline": "Every WCW Great American Bash on the Archive, 24/7",
+      "archived": false,
+      "now": {
+        "title": "WCW Great American Bash 1991",
+        "episode": "Jul 14, 1991",
+        "start": "2026-11-17T16:11:43.044000Z",
+        "end": "2026-11-17T19:01:36.144000Z",
+        "stream_url": ""
+      },
+      "next": {
+        "title": "WCW Great American Bash 1998",
+        "episode": "Jun 14, 1998",
+        "start": "2026-11-17T19:01:36.144000Z",
+        "end": "2026-11-17T21:50:09.074000Z",
+        "stream_url": ""
+      },
+      "next2": null,
+      "guide_slots": 2,
+      "existing_embed": false,
+      "legacy_channel_number": null,
+      "tube": "WCW Tube",
+      "embed_url": "https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=wcw-bash",
+      "embed_html": "<iframe src=\"https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=wcw-bash\" width=\"1280\" height=\"720\" frameborder=\"0\" allow=\"autoplay; fullscreen; picture-in-picture\" allowfullscreen></iframe>",
+      "player_type": "shared",
+      "availability": "available",
+      "missing_scans": 0
+    },
+    {
+      "number": 96,
+      "id": "wcw-halloween",
+      "name": "WCW Halloween Havoc",
+      "callsign": "WCW-HALLOWEEN",
+      "category": "shows",
+      "tagline": "Every WCW Halloween Havoc on the Archive, 24/7",
+      "archived": false,
+      "now": {
+        "title": "WCW Halloween Havoc 1998",
+        "episode": "Oct 25, 1998",
+        "start": "2026-11-17T16:22:17.343000Z",
+        "end": "2026-11-17T19:38:05.163000Z",
+        "stream_url": ""
+      },
+      "next": {
+        "title": "WCW Halloween Havoc 1994",
+        "episode": "Oct 23, 1994",
+        "start": "2026-11-17T19:38:05.163000Z",
+        "end": "2026-11-17T22:20:57.663000Z",
+        "stream_url": ""
+      },
+      "next2": null,
+      "guide_slots": 2,
+      "existing_embed": false,
+      "legacy_channel_number": null,
+      "tube": "WCW Tube",
+      "embed_url": "https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=wcw-halloween",
+      "embed_html": "<iframe src=\"https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=wcw-halloween\" width=\"1280\" height=\"720\" frameborder=\"0\" allow=\"autoplay; fullscreen; picture-in-picture\" allowfullscreen></iframe>",
+      "player_type": "shared",
+      "availability": "available",
+      "missing_scans": 0
+    },
+    {
+      "number": 97,
+      "id": "wcw-mainevent",
+      "name": "WCW Main Event",
+      "callsign": "WCW-MAINEVENT",
+      "category": "shows",
+      "tagline": "Every WCW Main Event on the Archive, 24/7",
+      "archived": false,
+      "now": {
+        "title": "WCW Main Event",
+        "episode": "Apr 1, 1990",
+        "start": "2026-11-17T17:25:25.733000Z",
+        "end": "2026-11-17T18:15:22.863000Z",
+        "stream_url": ""
+      },
+      "next": {
+        "title": "WCW Main Event",
+        "episode": "Apr 8, 1990",
+        "start": "2026-11-17T18:15:22.863000Z",
+        "end": "2026-11-17T18:54:34.983000Z",
+        "stream_url": ""
+      },
+      "next2": {
+        "title": "WCW Main Event",
+        "episode": "Nov 28, 1993",
+        "start": "2026-11-17T18:54:34.983000Z",
+        "end": "2026-11-17T19:46:44.643000Z",
+        "stream_url": ""
+      },
+      "guide_slots": 6,
+      "existing_embed": false,
+      "legacy_channel_number": null,
+      "tube": "WCW Tube",
+      "embed_url": "https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=wcw-mainevent",
+      "embed_html": "<iframe src=\"https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=wcw-mainevent\" width=\"1280\" height=\"720\" frameborder=\"0\" allow=\"autoplay; fullscreen; picture-in-picture\" allowfullscreen></iframe>",
+      "player_type": "shared",
+      "availability": "available",
+      "missing_scans": 0
+    },
+    {
+      "number": 98,
+      "id": "wcw-mn",
+      "name": "WCW Monday Nitro",
+      "callsign": "WCW-NITRO",
+      "category": "shows",
+      "tagline": "Every WCW Monday Nitro on the Archive, 24/7",
+      "archived": false,
+      "now": {
+        "title": "WCW Monday Nitro",
+        "episode": "Jan 15, 1996",
+        "start": "2026-11-17T16:51:01.831000Z",
+        "end": "2026-11-17T17:43:34.851000Z",
+        "stream_url": ""
+      },
+      "next": {
+        "title": "WCW Monday Nitro",
+        "episode": "Jan 22, 1996",
+        "start": "2026-11-17T17:43:34.851000Z",
+        "end": "2026-11-17T18:35:27.511000Z",
+        "stream_url": ""
+      },
+      "next2": {
+        "title": "WCW Monday Nitro",
+        "episode": "Jan 13, 1997",
+        "start": "2026-11-17T18:35:27.511000Z",
+        "end": "2026-11-17T20:16:20.741000Z",
+        "stream_url": ""
+      },
+      "guide_slots": 5,
+      "existing_embed": false,
+      "legacy_channel_number": null,
+      "tube": "WCW Tube",
+      "embed_url": "https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=wcw-mn",
+      "embed_html": "<iframe src=\"https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=wcw-mn\" width=\"1280\" height=\"720\" frameborder=\"0\" allow=\"autoplay; fullscreen; picture-in-picture\" allowfullscreen></iframe>",
+      "player_type": "shared",
+      "availability": "available",
+      "missing_scans": 0
+    },
+    {
+      "number": 99,
+      "id": "wcw-powerhour",
+      "name": "WCW Power Hour",
+      "callsign": "WCW-POWERHOUR",
+      "category": "shows",
+      "tagline": "Every WCW Power Hour on the Archive, 24/7",
+      "archived": false,
+      "now": {
+        "title": "WCW Power Hour",
+        "episode": "Oct 4, 1993 · Part 10",
+        "start": "2026-11-17T17:25:28.486000Z",
+        "end": "2026-11-17T18:25:05.096000Z",
+        "stream_url": ""
+      },
+      "next": {
+        "title": "WCW Power Hour",
+        "episode": "Oct 7, 1993",
+        "start": "2026-11-17T18:25:05.096000Z",
+        "end": "2026-11-17T19:24:59.226000Z",
+        "stream_url": ""
+      },
+      "next2": {
+        "title": "WCW Power Hour",
+        "episode": "Jan 19, 1990",
+        "start": "2026-11-17T19:24:59.226000Z",
+        "end": "2026-11-17T20:10:13.996000Z",
+        "stream_url": ""
+      },
+      "guide_slots": 5,
+      "existing_embed": false,
+      "legacy_channel_number": null,
+      "tube": "WCW Tube",
+      "embed_url": "https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=wcw-powerhour",
+      "embed_html": "<iframe src=\"https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=wcw-powerhour\" width=\"1280\" height=\"720\" frameborder=\"0\" allow=\"autoplay; fullscreen; picture-in-picture\" allowfullscreen></iframe>",
+      "player_type": "shared",
+      "availability": "available",
+      "missing_scans": 0
+    },
+    {
+      "number": 100,
+      "id": "wcw-prime",
+      "name": "WCW Prime",
+      "callsign": "WCW-PRIME",
+      "category": "shows",
+      "tagline": "Every WCW Prime on the Archive, 24/7",
+      "archived": false,
+      "now": {
+        "title": "WCW Prime",
+        "episode": "Jun 1995",
+        "start": "2026-11-17T17:21:04.771000Z",
+        "end": "2026-11-17T18:51:41.831000Z",
+        "stream_url": ""
+      },
+      "next": {
+        "title": "WCW Prime",
+        "episode": "Feb 13, 1995",
+        "start": "2026-11-17T18:51:41.831000Z",
+        "end": "2026-11-17T19:49:11.901000Z",
+        "stream_url": ""
+      },
+      "next2": {
+        "title": "WCW Prime",
+        "episode": "Feb 20, 1995",
+        "start": "2026-11-17T19:49:11.901000Z",
+        "end": "2026-11-17T20:51:56.981000Z",
+        "stream_url": ""
+      },
+      "guide_slots": 5,
+      "existing_embed": false,
+      "legacy_channel_number": null,
+      "tube": "WCW Tube",
+      "embed_url": "https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=wcw-prime",
+      "embed_html": "<iframe src=\"https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=wcw-prime\" width=\"1280\" height=\"720\" frameborder=\"0\" allow=\"autoplay; fullscreen; picture-in-picture\" allowfullscreen></iframe>",
+      "player_type": "shared",
+      "availability": "available",
+      "missing_scans": 0
+    },
+    {
+      "number": 101,
+      "id": "wcw-pw",
+      "name": "WCW Pro Wrestling",
+      "callsign": "WCW-PRO",
+      "category": "shows",
+      "tagline": "Every WCW Pro Wrestling on the Archive, 24/7",
+      "archived": false,
+      "now": {
+        "title": "WCW Pro Wrestling",
+        "episode": "Apr 1996",
+        "start": "2026-11-17T17:34:45.978000Z",
+        "end": "2026-11-17T18:15:56.988000Z",
+        "stream_url": ""
+      },
+      "next": {
+        "title": "WCW Pro Wrestling",
+        "episode": "Sep 1996",
+        "start": "2026-11-17T18:15:56.988000Z",
+        "end": "2026-11-17T19:30:05.498000Z",
+        "stream_url": ""
+      },
+      "next2": {
+        "title": "WCW Pro Wrestling",
+        "episode": "Nov 1997",
+        "start": "2026-11-17T19:30:05.498000Z",
+        "end": "2026-11-17T20:19:30.998000Z",
+        "stream_url": ""
+      },
+      "guide_slots": 5,
+      "existing_embed": false,
+      "legacy_channel_number": null,
+      "tube": "WCW Tube",
+      "embed_url": "https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=wcw-pw",
+      "embed_html": "<iframe src=\"https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=wcw-pw\" width=\"1280\" height=\"720\" frameborder=\"0\" allow=\"autoplay; fullscreen; picture-in-picture\" allowfullscreen></iframe>",
+      "player_type": "shared",
+      "availability": "available",
+      "missing_scans": 0
+    },
+    {
+      "number": 102,
+      "id": "wcw-sn",
+      "name": "WCW Saturday Night",
+      "callsign": "WCW-SATNIGHT",
+      "category": "shows",
+      "tagline": "Every WCW Saturday Night on the Archive, 24/7",
+      "archived": false,
+      "now": {
+        "title": "WCW Saturday Night",
+        "episode": "Jan 27, 1996",
+        "start": "2026-11-17T17:30:17.376000Z",
+        "end": "2026-11-17T19:16:12.266000Z",
+        "stream_url": ""
+      },
+      "next": {
+        "title": "WCW Saturday Night",
+        "episode": "May 9, 1992",
+        "start": "2026-11-17T19:16:12.266000Z",
+        "end": "2026-11-17T21:15:02.886000Z",
+        "stream_url": ""
+      },
+      "next2": {
+        "title": "WCW Saturday Night",
+        "episode": "Feb 3, 1996",
+        "start": "2026-11-17T21:15:02.886000Z",
+        "end": "2026-11-17T23:04:28.986000Z",
+        "stream_url": ""
+      },
+      "guide_slots": 4,
+      "existing_embed": false,
+      "legacy_channel_number": null,
+      "tube": "WCW Tube",
+      "embed_url": "https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=wcw-sn",
+      "embed_html": "<iframe src=\"https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=wcw-sn\" width=\"1280\" height=\"720\" frameborder=\"0\" allow=\"autoplay; fullscreen; picture-in-picture\" allowfullscreen></iframe>",
+      "player_type": "shared",
+      "availability": "available",
+      "missing_scans": 0
+    },
+    {
+      "number": 103,
+      "id": "wcw-starrcade",
+      "name": "WCW Starrcade in Tokyo Dome",
+      "callsign": "WCW-STARRCADE",
+      "category": "shows",
+      "tagline": "Every WCW Starrcade in Tokyo Dome on the Archive, 24/7",
+      "archived": false,
+      "now": {
+        "title": "WCW Starrcade 1991",
+        "episode": "Mar 21, 1991",
+        "start": "2026-11-17T16:39:27.579000Z",
+        "end": "2026-11-17T19:48:11.929000Z",
+        "stream_url": ""
+      },
+      "next": {
+        "title": "WCW Starrcade 1994",
+        "episode": "Dec 27, 1994",
+        "start": "2026-11-17T19:48:11.929000Z",
+        "end": "2026-11-17T22:33:09.399000Z",
+        "stream_url": ""
+      },
+      "next2": null,
+      "guide_slots": 2,
+      "existing_embed": false,
+      "legacy_channel_number": null,
+      "tube": "WCW Tube",
+      "embed_url": "https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=wcw-starrcade",
+      "embed_html": "<iframe src=\"https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=wcw-starrcade\" width=\"1280\" height=\"720\" frameborder=\"0\" allow=\"autoplay; fullscreen; picture-in-picture\" allowfullscreen></iframe>",
+      "player_type": "shared",
+      "availability": "available",
+      "missing_scans": 0
+    },
+    {
+      "number": 104,
+      "id": "wcw-superbrawl",
+      "name": "WCW SuperBrawl",
+      "callsign": "WCW-SUPERBRAWL",
+      "category": "shows",
+      "tagline": "Every WCW SuperBrawl on the Archive, 24/7",
+      "archived": false,
+      "now": {
+        "title": "WCW SuperBrawl 1994",
+        "episode": "Feb 20, 1994",
+        "start": "2026-11-17T17:07:37.736000Z",
+        "end": "2026-11-17T19:57:25.236000Z",
+        "stream_url": ""
+      },
+      "next": {
+        "title": "WCW SuperBrawl 1997",
+        "episode": "Feb 23, 1997",
+        "start": "2026-11-17T19:57:25.236000Z",
+        "end": "2026-11-17T22:42:55.366000Z",
+        "stream_url": ""
+      },
+      "next2": null,
+      "guide_slots": 2,
+      "existing_embed": false,
+      "legacy_channel_number": null,
+      "tube": "WCW Tube",
+      "embed_url": "https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=wcw-superbrawl",
+      "embed_html": "<iframe src=\"https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=wcw-superbrawl\" width=\"1280\" height=\"720\" frameborder=\"0\" allow=\"autoplay; fullscreen; picture-in-picture\" allowfullscreen></iframe>",
+      "player_type": "shared",
+      "availability": "available",
+      "missing_scans": 0
+    },
+    {
+      "number": 105,
+      "id": "wcw-worldwide",
+      "name": "WCW Worldwide",
+      "callsign": "WCW-WORLDWIDE",
+      "category": "shows",
+      "tagline": "Every WCW Worldwide on the Archive, 24/7",
+      "archived": false,
+      "now": {
+        "title": "WCW Worldwide",
+        "episode": "Sep 2000",
+        "start": "2026-11-17T17:30:13.510000Z",
+        "end": "2026-11-17T18:58:19.570000Z",
+        "stream_url": ""
+      },
+      "next": {
+        "title": "WCW Worldwide",
+        "episode": "Aug 1996",
+        "start": "2026-11-17T18:58:19.570000Z",
+        "end": "2026-11-17T20:45:25.420000Z",
+        "stream_url": ""
+      },
+      "next2": {
+        "title": "WCW Worldwide",
+        "episode": "Jan 2000",
+        "start": "2026-11-17T20:45:25.420000Z",
+        "end": "2026-11-17T21:33:23.660000Z",
+        "stream_url": ""
+      },
+      "guide_slots": 4,
+      "existing_embed": false,
+      "legacy_channel_number": null,
+      "tube": "WCW Tube",
+      "embed_url": "https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=wcw-worldwide",
+      "embed_html": "<iframe src=\"https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=wcw-worldwide\" width=\"1280\" height=\"720\" frameborder=\"0\" allow=\"autoplay; fullscreen; picture-in-picture\" allowfullscreen></iframe>",
+      "player_type": "shared",
+      "availability": "available",
+      "missing_scans": 0
+    },
+    {
+      "number": 43,
+      "id": "ecw-tv",
+      "name": "Extreme Championship Wrestling",
+      "callsign": "ECW",
+      "category": "promotions",
+      "tagline": "Everything else from ECW: specials, rare shows and tapes without their own channel",
+      "archived": false,
+      "now": {
+        "title": "ECW fancams",
+        "episode": "Fan Cam - Cookeville, TN · Dec 16, 1999",
+        "start": "2026-11-17T15:54:49.601000Z",
+        "end": "2026-11-17T18:15:41.411000Z",
+        "stream_url": ""
+      },
+      "next": {
+        "title": "ECW fancams",
+        "episode": "Fan Cam - Chattanooga, TN · Dec 18, 1999",
+        "start": "2026-11-17T18:15:41.411000Z",
+        "end": "2026-11-17T20:32:36.991000Z",
+        "stream_url": ""
+      },
+      "next2": {
+        "title": "ECW fancams",
+        "episode": "Fan Cam - Green Bay, WI · Oct 6, 2000",
+        "start": "2026-11-17T20:32:36.991000Z",
+        "end": "2026-11-17T22:41:17.841000Z",
+        "stream_url": ""
+      },
+      "guide_slots": 3,
+      "existing_embed": true,
+      "legacy_channel_number": "10",
+      "tube": "ECW Tube",
+      "embed_url": "https://buttocks.github.io/suplex-baked-player/ecw-slamvision.html",
+      "embed_html": "<iframe src=\"https://buttocks.github.io/suplex-baked-player/ecw-slamvision.html\" width=\"1280\" height=\"720\" frameborder=\"0\" allow=\"autoplay; fullscreen; picture-in-picture\" allowfullscreen></iframe>",
+      "player_type": "legacy",
+      "availability": "available",
+      "missing_scans": 0
+    },
+    {
+      "number": 44,
+      "id": "ecw-hardcoretv",
+      "name": "ECW Hardcore TV",
+      "callsign": "ECW-HARDCORE",
+      "category": "shows",
+      "tagline": "Every ECW Hardcore TV on the Archive, 24/7",
+      "archived": false,
+      "now": {
+        "title": "ECW Hardcore TV",
+        "episode": "Apr 3, 1999",
+        "start": "2026-11-17T17:31:05.866000Z",
+        "end": "2026-11-17T18:25:06.006000Z",
+        "stream_url": ""
+      },
+      "next": {
+        "title": "ECW Hardcore TV",
+        "episode": "Jan 29, 2000",
+        "start": "2026-11-17T18:25:06.006000Z",
+        "end": "2026-11-17T19:19:06.006000Z",
+        "stream_url": ""
+      },
+      "next2": {
+        "title": "ECW Hardcore TV",
+        "episode": "Feb 6, 2000",
+        "start": "2026-11-17T19:19:06.006000Z",
+        "end": "2026-11-17T20:11:32.336000Z",
+        "stream_url": ""
+      },
+      "guide_slots": 6,
+      "existing_embed": false,
+      "legacy_channel_number": null,
+      "tube": "ECW Tube",
+      "embed_url": "https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=ecw-hardcoretv",
+      "embed_html": "<iframe src=\"https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=ecw-hardcoretv\" width=\"1280\" height=\"720\" frameborder=\"0\" allow=\"autoplay; fullscreen; picture-in-picture\" allowfullscreen></iframe>",
+      "player_type": "shared",
+      "availability": "available",
+      "missing_scans": 0
+    },
+    {
+      "number": 27,
+      "id": "aew-tv",
+      "name": "All Elite Wrestling",
+      "callsign": "AEW-TV",
+      "category": "promotions",
+      "tagline": "Where the best....wrestle.",
+      "archived": false,
+      "now": {
+        "title": "AEW Dark Episode 130",
+        "episode": "Feb 15, 2022",
+        "start": "2026-11-17T17:09:48.746000Z",
+        "end": "2026-11-17T18:19:20.556000Z",
+        "stream_url": ""
+      },
+      "next": {
+        "title": "AEW Dark Eposode 106",
+        "episode": "Sep 4, 2021",
+        "start": "2026-11-17T18:19:20.556000Z",
+        "end": "2026-11-17T19:33:29.436000Z",
+        "stream_url": ""
+      },
+      "next2": {
+        "title": "AEW Dark Episode 114",
+        "episode": "Oct 26, 2021",
+        "start": "2026-11-17T19:33:29.436000Z",
+        "end": "2026-11-17T20:43:14.676000Z",
+        "stream_url": ""
+      },
+      "guide_slots": 4,
+      "existing_embed": false,
+      "legacy_channel_number": null,
+      "tube": "AEW Tube",
+      "embed_url": "https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=aew-tv",
+      "embed_html": "<iframe src=\"https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=aew-tv\" width=\"1280\" height=\"720\" frameborder=\"0\" allow=\"autoplay; fullscreen; picture-in-picture\" allowfullscreen></iframe>",
+      "player_type": "shared",
+      "availability": "available",
+      "missing_scans": 0
+    },
+    {
+      "number": 28,
+      "id": "aew2",
+      "name": "ALL ELITE WRESTLING DYNAMITE",
+      "callsign": "AEW2",
+      "category": "promotions",
+      "tagline": "24/7 ALL ELITE WRESTLING DYNAMITE",
+      "archived": false,
+      "now": {
+        "title": "AJPW Dynamite Series 2023 Day 4",
+        "episode": "Jun 26, 2023",
+        "start": "2026-11-17T16:44:33.605000Z",
+        "end": "2026-11-17T19:12:34.145000Z",
+        "stream_url": ""
+      },
+      "next": {
+        "title": "AJPW Dynamite Series 2023 Day 2",
+        "episode": "Jun 15, 2023",
+        "start": "2026-11-17T19:12:34.145000Z",
+        "end": "2026-11-17T22:00:36.215000Z",
+        "stream_url": ""
+      },
+      "next2": null,
+      "guide_slots": 2,
+      "existing_embed": false,
+      "legacy_channel_number": null,
+      "tube": "AEW Tube",
+      "embed_url": "https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=aew2",
+      "embed_html": "<iframe src=\"https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=aew2\" width=\"1280\" height=\"720\" frameborder=\"0\" allow=\"autoplay; fullscreen; picture-in-picture\" allowfullscreen></iframe>",
+      "player_type": "shared",
+      "availability": "available",
+      "missing_scans": 0
+    },
+    {
+      "number": 34,
+      "id": "aew-ai",
+      "name": "Best of All In",
+      "callsign": "AEW-AI",
+      "category": "wrestlers",
+      "tagline": "Greatest of AEW All In",
+      "archived": false,
+      "now": {
+        "title": "WCW 1999 Ppvs All - in Order",
+        "episode": "Jan 17, 1999",
+        "start": "2026-11-17T17:00:09.524000Z",
+        "end": "2026-11-17T19:54:59.224000Z",
+        "stream_url": ""
+      },
+      "next": {
+        "title": "WCW 1998 Ppvs All - in Order",
+        "episode": "Jan 24, 1998",
+        "start": "2026-11-17T19:54:59.224000Z",
+        "end": "2026-11-17T22:38:09.054000Z",
+        "stream_url": ""
+      },
+      "next2": null,
+      "guide_slots": 2,
+      "existing_embed": false,
+      "legacy_channel_number": null,
+      "tube": "AEW Tube",
+      "embed_url": "https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=aew-ai",
+      "embed_html": "<iframe src=\"https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=aew-ai\" width=\"1280\" height=\"720\" frameborder=\"0\" allow=\"autoplay; fullscreen; picture-in-picture\" allowfullscreen></iframe>",
+      "player_type": "shared",
+      "availability": "available",
+      "missing_scans": 0
+    },
+    {
+      "number": 53,
+      "id": "omega-24-7",
+      "name": "Kenny Omega",
+      "callsign": "OMEGA 24/7",
+      "category": "wrestlers",
+      "tagline": "Kenny omega 24/7",
+      "archived": false,
+      "now": {
+        "title": "Kazuchika Okada vs. Kenny Omega IV",
+        "episode": "Jun 9, 2018",
+        "start": "2026-11-17T17:28:10.365000Z",
+        "end": "2026-11-17T18:45:53.425000Z",
+        "stream_url": ""
+      },
+      "next": {
+        "title": "Kenny Omega & Ronnie Attitude vs. Memphis Raines & Ryan Wood",
+        "episode": "",
+        "start": "2026-11-17T18:45:53.425000Z",
+        "end": "2026-11-17T19:04:57.745000Z",
+        "stream_url": ""
+      },
+      "next2": {
+        "title": "DDT Ryogoku Peter Pan – Summer Vacation Naomichi Marufuji vs. Kenny Omega",
+        "episode": "Jul 25, 2010",
+        "start": "2026-11-17T19:04:57.745000Z",
+        "end": "2026-11-17T19:30:48.605000Z",
+        "stream_url": ""
+      },
+      "guide_slots": 7,
+      "existing_embed": false,
+      "legacy_channel_number": null,
+      "tube": "AEW Tube",
+      "embed_url": "https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=omega-24-7",
+      "embed_html": "<iframe src=\"https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=omega-24-7\" width=\"1280\" height=\"720\" frameborder=\"0\" allow=\"autoplay; fullscreen; picture-in-picture\" allowfullscreen></iframe>",
+      "player_type": "shared",
+      "availability": "available",
+      "missing_scans": 0
+    },
+    {
+      "number": 75,
+      "id": "croh",
+      "name": "Classic ROH",
+      "callsign": "CROH",
+      "category": "eras",
+      "tagline": "Everything else from ROH: specials, rare shows and tapes without their own channel",
+      "archived": false,
+      "now": {
+        "title": "Amazing Red & Jay Briscoe vs. Christopher Daniels & Mark Briscoe",
+        "episode": "ROH · Nov 16, 2002",
+        "start": "2026-11-17T17:37:38.337000Z",
+        "end": "2026-11-17T18:02:31.537000Z",
+        "stream_url": ""
+      },
+      "next": {
+        "title": "CM Punk vs. Colt Cabana",
+        "episode": "ROH · Dec 7, 2002",
+        "start": "2026-11-17T18:02:31.537000Z",
+        "end": "2026-11-17T18:20:37.047000Z",
+        "stream_url": ""
+      },
+      "next2": {
+        "title": "Da Hit Squad vs. SAT vs. Special K vs. Red & Jay Briscoe",
+        "episode": "ROH · Dec 7, 2002",
+        "start": "2026-11-17T18:20:37.047000Z",
+        "end": "2026-11-17T18:46:32.557000Z",
+        "stream_url": ""
+      },
+      "guide_slots": 8,
+      "existing_embed": true,
+      "legacy_channel_number": "56",
+      "tube": "ROH Tube",
+      "embed_url": "https://buttocks.github.io/suplex-baked-player/classic-roh-slamvision.html",
+      "embed_html": "<iframe src=\"https://buttocks.github.io/suplex-baked-player/classic-roh-slamvision.html\" width=\"1280\" height=\"720\" frameborder=\"0\" allow=\"autoplay; fullscreen; picture-in-picture\" allowfullscreen></iframe>",
+      "player_type": "legacy",
+      "availability": "available",
+      "missing_scans": 0
+    },
+    {
+      "number": 76,
+      "id": "roh-tv",
+      "name": "Ring of honor",
+      "callsign": "ROH",
+      "category": "promotions",
+      "tagline": "Everything else from ROH: specials, rare shows and tapes without their own channel",
+      "archived": false,
+      "now": {
+        "title": "ROH on HonorClub Episode 136",
+        "episode": "Oct 9, 2025",
+        "start": "2026-11-17T16:53:54.146000Z",
+        "end": "2026-11-17T18:11:40.426000Z",
+        "stream_url": ""
+      },
+      "next": {
+        "title": "ROH on HonorClub Episode 136",
+        "episode": "Oct 9, 2025",
+        "start": "2026-11-17T18:11:40.426000Z",
+        "end": "2026-11-17T19:29:26.706000Z",
+        "stream_url": ""
+      },
+      "next2": {
+        "title": "Samoa Joe vs. Mark Briscoe",
+        "episode": "ROH Final Battle 2003 · Dec 27, 2003",
+        "start": "2026-11-17T19:29:26.706000Z",
+        "end": "2026-11-17T19:53:37.836000Z",
+        "stream_url": ""
+      },
+      "guide_slots": 5,
+      "existing_embed": true,
+      "legacy_channel_number": "15",
+      "tube": "ROH Tube",
+      "embed_url": "https://buttocks.github.io/suplex-baked-player/roh-slamvision.html",
+      "embed_html": "<iframe src=\"https://buttocks.github.io/suplex-baked-player/roh-slamvision.html\" width=\"1280\" height=\"720\" frameborder=\"0\" allow=\"autoplay; fullscreen; picture-in-picture\" allowfullscreen></iframe>",
+      "player_type": "legacy",
+      "availability": "available",
+      "missing_scans": 0
+    },
+    {
+      "number": 77,
+      "id": "roh-wrestling",
+      "name": "ROH Wrestling",
+      "callsign": "ROH-WRESTLING",
+      "category": "shows",
+      "tagline": "Every ROH Wrestling on the Archive, 24/7",
+      "archived": false,
+      "now": {
+        "title": "ROH Wrestling",
+        "episode": "Oct 15, 2021",
+        "start": "2026-11-17T16:54:13.024000Z",
+        "end": "2026-11-17T17:45:00.344000Z",
+        "stream_url": ""
+      },
+      "next": {
+        "title": "ROH Wrestling",
+        "episode": "Oct 1, 2021",
+        "start": "2026-11-17T17:45:00.344000Z",
+        "end": "2026-11-17T18:35:44.844000Z",
+        "stream_url": ""
+      },
+      "next2": {
+        "title": "ROH Wrestling",
+        "episode": "Sep 24, 2021",
+        "start": "2026-11-17T18:35:44.844000Z",
+        "end": "2026-11-17T19:26:29.794000Z",
+        "stream_url": ""
+      },
+      "guide_slots": 6,
+      "existing_embed": false,
+      "legacy_channel_number": null,
+      "tube": "ROH Tube",
+      "embed_url": "https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=roh-wrestling",
+      "embed_html": "<iframe src=\"https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=roh-wrestling\" width=\"1280\" height=\"720\" frameborder=\"0\" allow=\"autoplay; fullscreen; picture-in-picture\" allowfullscreen></iframe>",
+      "player_type": "shared",
+      "availability": "available",
+      "missing_scans": 0
+    },
+    {
+      "number": 90,
+      "id": "iw",
+      "name": "Impact Wrestling",
+      "callsign": "IW",
+      "category": "promotions",
+      "tagline": "Impact on axs",
+      "archived": false,
+      "now": {
+        "title": "TNA Victory Road 2024",
+        "episode": "Sep 13, 2024",
+        "start": "2026-11-17T15:55:07.071000Z",
+        "end": "2026-11-17T18:48:44.411000Z",
+        "stream_url": ""
+      },
+      "next": {
+        "title": "TNA No Surrender 2024",
+        "episode": "Feb 23, 2024",
+        "start": "2026-11-17T18:48:44.411000Z",
+        "end": "2026-11-17T21:41:27.421000Z",
+        "stream_url": ""
+      },
+      "next2": null,
+      "guide_slots": 2,
+      "existing_embed": true,
+      "legacy_channel_number": "19",
+      "tube": "TNA / Impact Tube",
+      "embed_url": "https://buttocks.github.io/suplex-baked-player/impact-slamvision.html",
+      "embed_html": "<iframe src=\"https://buttocks.github.io/suplex-baked-player/impact-slamvision.html\" width=\"1280\" height=\"720\" frameborder=\"0\" allow=\"autoplay; fullscreen; picture-in-picture\" allowfullscreen></iframe>",
+      "player_type": "legacy",
+      "availability": "available",
+      "missing_scans": 0
+    },
+    {
+      "number": 91,
+      "id": "tna",
+      "name": "Total Nonstop Action Wrestling",
+      "callsign": "TNA",
+      "category": "promotions",
+      "tagline": "Cross The Line",
+      "archived": false,
+      "now": {
+        "title": "TNA Impact Wrestling",
+        "episode": "Feb 13, 2025",
+        "start": "2026-11-17T17:22:10.073000Z",
+        "end": "2026-11-17T18:57:44.563000Z",
+        "stream_url": ""
+      },
+      "next": {
+        "title": "TNA Impact!",
+        "episode": "Jan 21, 2010",
+        "start": "2026-11-17T18:57:44.563000Z",
+        "end": "2026-11-17T20:21:06.733000Z",
+        "stream_url": ""
+      },
+      "next2": {
+        "title": "TNA Impact Wrestling",
+        "episode": "Jun 27, 2024",
+        "start": "2026-11-17T20:21:06.733000Z",
+        "end": "2026-11-17T21:53:16.823000Z",
+        "stream_url": ""
+      },
+      "guide_slots": 3,
+      "existing_embed": true,
+      "legacy_channel_number": "17",
+      "tube": "TNA / Impact Tube",
+      "embed_url": "https://buttocks.github.io/suplex-baked-player/tna-slamvision.html",
+      "embed_html": "<iframe src=\"https://buttocks.github.io/suplex-baked-player/tna-slamvision.html\" width=\"1280\" height=\"720\" frameborder=\"0\" allow=\"autoplay; fullscreen; picture-in-picture\" allowfullscreen></iframe>",
+      "player_type": "legacy",
+      "availability": "available",
+      "missing_scans": 0
+    },
+    {
+      "number": 70,
+      "id": "noah-tv",
+      "name": "NOAH-TV",
+      "callsign": "NOAH-TV",
+      "category": "wrestlers",
+      "tagline": "Green Destiny",
+      "archived": false,
+      "now": {
+        "title": "NOAH Star Navigation 2022",
+        "episode": "Jul 22, 2022",
+        "start": "2026-11-17T16:49:56.251000Z",
+        "end": "2026-11-17T20:27:01.301000Z",
+        "stream_url": ""
+      },
+      "next": {
+        "title": "NOAH Jr. Tag League 2025",
+        "episode": "Feb 22, 2025",
+        "start": "2026-11-17T20:27:01.301000Z",
+        "end": "2026-11-17T22:57:48.411000Z",
+        "stream_url": ""
+      },
+      "next2": null,
+      "guide_slots": 2,
+      "existing_embed": true,
+      "legacy_channel_number": "20",
+      "tube": "NOAH Tube",
+      "embed_url": "https://buttocks.github.io/suplex-baked-player/noah-slamvision.html",
+      "embed_html": "<iframe src=\"https://buttocks.github.io/suplex-baked-player/noah-slamvision.html\" width=\"1280\" height=\"720\" frameborder=\"0\" allow=\"autoplay; fullscreen; picture-in-picture\" allowfullscreen></iframe>",
+      "player_type": "legacy",
+      "availability": "available",
+      "missing_scans": 0
+    },
+    {
+      "number": 40,
+      "id": "ddt-pro",
+      "name": "DDT Pro-Wrestling",
+      "callsign": "DDT",
+      "category": "promotions",
+      "tagline": "Dramatic Dream Team: Wrestle Peter Pan, the KO-D title, HARASHIMA, Takeshita, Ibushi and Yoshihiko",
+      "archived": false,
+      "now": {
+        "title": "BJW DDT New Years Eve Wrestling",
+        "episode": "BJW New Years Eve Wrestling · Dec 31, 2023",
+        "start": "2026-11-17T16:51:00.443000Z",
+        "end": "2026-11-17T20:38:59.933000Z",
+        "stream_url": ""
+      },
+      "next": {
+        "title": "BJW Ddt K-dojo",
+        "episode": "Dec 31, 2009 · Part 1",
+        "start": "2026-11-17T20:38:59.933000Z",
+        "end": "2026-11-17T22:05:41.233000Z",
+        "stream_url": ""
+      },
+      "next2": null,
+      "guide_slots": 2,
+      "existing_embed": false,
+      "legacy_channel_number": null,
+      "tube": "DDT Tube",
+      "embed_url": "https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=ddt-pro",
+      "embed_html": "<iframe src=\"https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=ddt-pro\" width=\"1280\" height=\"720\" frameborder=\"0\" allow=\"autoplay; fullscreen; picture-in-picture\" allowfullscreen></iframe>",
+      "player_type": "shared",
+      "availability": "available",
+      "missing_scans": 0
+    },
+    {
+      "number": 35,
+      "id": "bjw",
+      "name": "Big Japan Pro Wrestling",
+      "callsign": "BJW",
+      "category": "promotions",
+      "tagline": "BJW",
+      "archived": false,
+      "now": {
+        "title": "Big Japan · Ryuji Ito (c) vs. Masashi Takeda",
+        "episode": "Feb 8, 2010",
+        "start": "2026-11-17T16:41:45.714000Z",
+        "end": "2026-11-17T18:41:15.014000Z",
+        "stream_url": ""
+      },
+      "next": {
+        "title": "Big Japan & DDT Toshikoshi Pro-Wrestling · Toshiwasure! Shuffle Six Man Tag Team Tournament",
+        "episode": "Dec 31, 2023",
+        "start": "2026-11-17T18:41:15.014000Z",
+        "end": "2026-11-17T22:30:05.934000Z",
+        "stream_url": ""
+      },
+      "next2": null,
+      "guide_slots": 2,
+      "existing_embed": true,
+      "legacy_channel_number": "47",
+      "tube": "Other Japanese Wrestling Tube",
+      "embed_url": "https://buttocks.github.io/suplex-baked-player/bjw-slamvision.html",
+      "embed_html": "<iframe src=\"https://buttocks.github.io/suplex-baked-player/bjw-slamvision.html\" width=\"1280\" height=\"720\" frameborder=\"0\" allow=\"autoplay; fullscreen; picture-in-picture\" allowfullscreen></iframe>",
+      "player_type": "legacy",
+      "availability": "available",
+      "missing_scans": 0
+    },
+    {
+      "number": 36,
+      "id": "big-japan",
+      "name": "Big Japan Pro Wrestling",
+      "callsign": "BJW",
+      "category": "promotions",
+      "tagline": "Deathmatch kings and strong-style heavyweights: Kasai, Ito, Sekimoto, Okabayashi, the Saikyo Tag League",
+      "archived": false,
+      "now": {
+        "title": "Big Japan Shocking Fall! Construction Site Death Match",
+        "episode": "BJPW Shocking Fall! Construction Site Death Match · Jul 19, 1996",
+        "start": "2026-11-17T16:26:13.194000Z",
+        "end": "2026-11-17T19:01:48.094000Z",
+        "stream_url": ""
+      },
+      "next": {
+        "title": "Big Japan Shocking Fall! Construction Site Death Match",
+        "episode": "Jul 19, 1996",
+        "start": "2026-11-17T19:01:48.094000Z",
+        "end": "2026-11-17T20:02:06.294000Z",
+        "stream_url": ""
+      },
+      "next2": {
+        "title": "Big Japan Hara Kiri Rhapsody",
+        "episode": "Jul 25, 1995",
+        "start": "2026-11-17T20:02:06.294000Z",
+        "end": "2026-11-17T21:32:54.834000Z",
+        "stream_url": ""
+      },
+      "guide_slots": 3,
+      "existing_embed": false,
+      "legacy_channel_number": null,
+      "tube": "Other Japanese Wrestling Tube",
+      "embed_url": "https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=big-japan",
+      "embed_html": "<iframe src=\"https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=big-japan\" width=\"1280\" height=\"720\" frameborder=\"0\" allow=\"autoplay; fullscreen; picture-in-picture\" allowfullscreen></iframe>",
+      "player_type": "shared",
+      "availability": "available",
+      "missing_scans": 0
+    },
+    {
+      "number": 33,
+      "id": "battlarts",
+      "name": "BattlArts",
+      "callsign": "BATTLARTS",
+      "category": "promotions",
+      "tagline": "Yuki Ishikawa's shoot-style brawlers: Ikeda, Otsuka, Usuda, Carl Greco and the Young Battle",
+      "archived": false,
+      "now": {
+        "title": "BattlArts Let's! Mouretsu! !",
+        "episode": "Jan 6, 2000",
+        "start": "2026-11-17T16:14:35.723000Z",
+        "end": "2026-11-17T18:15:09.453000Z",
+        "stream_url": ""
+      },
+      "next": {
+        "title": "BattlArts Champ Forum -496410132 456239137",
+        "episode": "Apr 6, 1996",
+        "start": "2026-11-17T18:15:09.453000Z",
+        "end": "2026-11-17T19:14:02.943000Z",
+        "stream_url": ""
+      },
+      "next2": {
+        "title": "BattlArts STILL LIFE",
+        "episode": "Mar 1, 2001",
+        "start": "2026-11-17T19:14:02.943000Z",
+        "end": "2026-11-17T21:10:37.933000Z",
+        "stream_url": ""
+      },
+      "guide_slots": 4,
+      "existing_embed": false,
+      "legacy_channel_number": null,
+      "tube": "Other Japanese Wrestling Tube",
+      "embed_url": "https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=battlarts",
+      "embed_html": "<iframe src=\"https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=battlarts\" width=\"1280\" height=\"720\" frameborder=\"0\" allow=\"autoplay; fullscreen; picture-in-picture\" allowfullscreen></iframe>",
+      "player_type": "shared",
+      "availability": "available",
+      "missing_scans": 0
+    },
+    {
+      "number": 52,
+      "id": "kaientai-dojo",
+      "name": "Kaientai Dojo",
+      "callsign": "K-DOJO",
+      "category": "promotions",
+      "tagline": "TAKA Michinoku's Chiba dojo: Club-K, the Strongest-K title, Hi69, Kashiwa, Mashimo and Hino",
+      "archived": false,
+      "now": {
+        "title": "Kaientai Dojo",
+        "episode": "Puroresu King 37 · Jan 28, 2006",
+        "start": "2026-11-17T15:57:05.945000Z",
+        "end": "2026-11-17T17:52:05.385000Z",
+        "stream_url": ""
+      },
+      "next": {
+        "title": "@Chiba Shibata, Murakami vs. MAshimo, Chikuzen",
+        "episode": "May 4, 2006",
+        "start": "2026-11-17T17:52:05.385000Z",
+        "end": "2026-11-17T18:07:35.485000Z",
+        "stream_url": ""
+      },
+      "next2": {
+        "title": "Kaientai Dojo BJW Ddt",
+        "episode": "Dec 31, 2009 · Part 1",
+        "start": "2026-11-17T18:07:35.485000Z",
+        "end": "2026-11-17T19:34:16.785000Z",
+        "stream_url": ""
+      },
+      "guide_slots": 5,
+      "existing_embed": false,
+      "legacy_channel_number": null,
+      "tube": "Other Japanese Wrestling Tube",
+      "embed_url": "https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=kaientai-dojo",
+      "embed_html": "<iframe src=\"https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=kaientai-dojo\" width=\"1280\" height=\"720\" frameborder=\"0\" allow=\"autoplay; fullscreen; picture-in-picture\" allowfullscreen></iframe>",
+      "player_type": "shared",
+      "availability": "available",
+      "missing_scans": 0
+    },
+    {
+      "number": 60,
+      "id": "michinoku-pro",
+      "name": "Michinoku Pro Wrestling",
+      "callsign": "MICHI-PRO",
+      "category": "promotions",
+      "tagline": "The Great Sasuke's Tohoku lucha: Super Delfin, Shinzaki, Kaientai, the Fukumen World League",
+      "archived": false,
+      "now": {
+        "title": "Michinoku Pro Komachi Shinzaki ASARI vs. Orihara Shimoda Pump",
+        "episode": "Mar 30, 2003",
+        "start": "2026-11-17T17:37:25.240000Z",
+        "end": "2026-11-17T17:57:39.130000Z",
+        "stream_url": ""
+      },
+      "next": {
+        "title": "Michinoku Pro Champ Forum",
+        "episode": "Dec 15, 1994",
+        "start": "2026-11-17T17:57:39.130000Z",
+        "end": "2026-11-17T18:58:00.020000Z",
+        "stream_url": ""
+      },
+      "next2": {
+        "title": "Michinoku Pro 20",
+        "episode": "Dec 17, 1996",
+        "start": "2026-11-17T18:58:00.020000Z",
+        "end": "2026-11-17T20:52:05.570000Z",
+        "stream_url": ""
+      },
+      "guide_slots": 5,
+      "existing_embed": false,
+      "legacy_channel_number": null,
+      "tube": "Other Japanese Wrestling Tube",
+      "embed_url": "https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=michinoku-pro",
+      "embed_html": "<iframe src=\"https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=michinoku-pro\" width=\"1280\" height=\"720\" frameborder=\"0\" allow=\"autoplay; fullscreen; picture-in-picture\" allowfullscreen></iframe>",
+      "player_type": "shared",
+      "availability": "available",
+      "missing_scans": 0
+    },
+    {
+      "number": 71,
+      "id": "osaka-pro",
+      "name": "Osaka Pro Wrestling",
+      "callsign": "OSAKA-PRO",
+      "category": "promotions",
+      "tagline": "Super Delfin's Osaka promotion: Ebessan, Kuishinbo Kamen, Billy Ken Kid, Black Buffalo and Tennozan",
+      "archived": false,
+      "now": {
+        "title": "Osaka Pro Super J Cup",
+        "episode": "",
+        "start": "2026-11-17T14:34:41.781000Z",
+        "end": "2026-11-17T18:35:55.781000Z",
+        "stream_url": ""
+      },
+      "next": {
+        "title": "Osaka Pro Osaka Castle Pro Wrestling : Day 2",
+        "episode": "OsakaPro · Apr 9, 2023",
+        "start": "2026-11-17T18:35:55.781000Z",
+        "end": "2026-11-17T20:25:19.901000Z",
+        "stream_url": ""
+      },
+      "next2": {
+        "title": "Osaka Pro Osaka Castle Pro Wrestling : Day 1",
+        "episode": "OsakaPro · Apr 8, 2023",
+        "start": "2026-11-17T20:25:19.901000Z",
+        "end": "2026-11-17T22:02:00.661000Z",
+        "stream_url": ""
+      },
+      "guide_slots": 3,
+      "existing_embed": false,
+      "legacy_channel_number": null,
+      "tube": "Other Japanese Wrestling Tube",
+      "embed_url": "https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=osaka-pro",
+      "embed_html": "<iframe src=\"https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=osaka-pro\" width=\"1280\" height=\"720\" frameborder=\"0\" allow=\"autoplay; fullscreen; picture-in-picture\" allowfullscreen></iframe>",
+      "player_type": "shared",
+      "availability": "available",
+      "missing_scans": 0
+    },
+    {
+      "number": 42,
+      "id": "dgtv",
+      "name": "Dragongate",
+      "callsign": "DGTV",
+      "category": "wrestlers",
+      "tagline": "The Future Flies Here",
+      "archived": false,
+      "now": {
+        "title": "Dragon Gate 2025",
+        "episode": "DRAGONGATE The Gate of Bayside Infinity 611 · Jan 27, 2024",
+        "start": "2026-11-17T14:59:48.566000Z",
+        "end": "2026-11-17T19:14:48.616000Z",
+        "stream_url": ""
+      },
+      "next": {
+        "title": "Dragon Gate 2025",
+        "episode": "DRAGONGATE Kobe Pro Wrestling Festival - Tag 1 · Jul 31, 2021",
+        "start": "2026-11-17T19:14:48.616000Z",
+        "end": "2026-11-17T23:14:47.636000Z",
+        "stream_url": ""
+      },
+      "next2": null,
+      "guide_slots": 2,
+      "existing_embed": true,
+      "legacy_channel_number": "37",
+      "tube": "Other Japanese Wrestling Tube",
+      "embed_url": "https://buttocks.github.io/suplex-baked-player/dragongate-slamvision.html",
+      "embed_html": "<iframe src=\"https://buttocks.github.io/suplex-baked-player/dragongate-slamvision.html\" width=\"1280\" height=\"720\" frameborder=\"0\" allow=\"autoplay; fullscreen; picture-in-picture\" allowfullscreen></iframe>",
+      "player_type": "legacy",
+      "availability": "available",
+      "missing_scans": 0
+    },
+    {
+      "number": 82,
+      "id": "muta",
+      "name": "The Great Muta",
+      "callsign": "MUTA",
+      "category": "wrestlers",
+      "tagline": "The Greatest of The Japanese Legend",
+      "archived": false,
+      "now": {
+        "title": "THE WORLD OF DARKMEN-Great Muta vs. Masahiro Chono",
+        "episode": "Apr 12, 1997",
+        "start": "2026-11-17T17:39:19.684000Z",
+        "end": "2026-11-17T17:58:53.804000Z",
+        "stream_url": ""
+      },
+      "next": {
+        "title": "2-4 Great Muta vs. Hiroshi Hase",
+        "episode": "Dec 14, 1992",
+        "start": "2026-11-17T17:58:53.804000Z",
+        "end": "2026-11-17T18:25:51.484000Z",
+        "stream_url": ""
+      },
+      "next2": {
+        "title": "2-3 Great Muta vs. Shinya Hashimoto",
+        "episode": "Sep 23, 1992",
+        "start": "2026-11-17T18:25:51.484000Z",
+        "end": "2026-11-17T18:45:57.004000Z",
+        "stream_url": ""
+      },
+      "guide_slots": 9,
+      "existing_embed": false,
+      "legacy_channel_number": null,
+      "tube": "Other Japanese Wrestling Tube",
+      "embed_url": "https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=muta",
+      "embed_html": "<iframe src=\"https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=muta\" width=\"1280\" height=\"720\" frameborder=\"0\" allow=\"autoplay; fullscreen; picture-in-picture\" allowfullscreen></iframe>",
+      "player_type": "shared",
+      "availability": "available",
+      "missing_scans": 0
+    },
+    {
+      "number": 46,
+      "id": "fmw",
+      "name": "Frontier Martial-Arts Wrestling",
+      "callsign": "FMW",
+      "category": "promotions",
+      "tagline": "24/7 Frontier Martial-Arts Wrestling",
+      "archived": false,
+      "now": {
+        "title": "Jinsei Shinzaki vs. Mr Gannosuke",
+        "episode": "Apr 21, 1998",
+        "start": "2026-11-17T17:40:39.379000Z",
+        "end": "2026-11-17T17:59:13.059000Z",
+        "stream_url": ""
+      },
+      "next": {
+        "title": "FMW Summer Spectacular 1993",
+        "episode": "Aug 22, 1993",
+        "start": "2026-11-17T17:59:13.059000Z",
+        "end": "2026-11-17T19:59:31.099000Z",
+        "stream_url": ""
+      },
+      "next2": {
+        "title": "''Hayabusa'' vs. H with Special Referee Shawn Michaels FMW 10th Anniversary Show",
+        "episode": "Nov 23, 1999",
+        "start": "2026-11-17T19:59:31.099000Z",
+        "end": "2026-11-17T20:41:03.279000Z",
+        "stream_url": ""
+      },
+      "guide_slots": 7,
+      "existing_embed": false,
+      "legacy_channel_number": null,
+      "tube": "Other Japanese Wrestling Tube",
+      "embed_url": "https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=fmw",
+      "embed_html": "<iframe src=\"https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=fmw\" width=\"1280\" height=\"720\" frameborder=\"0\" allow=\"autoplay; fullscreen; picture-in-picture\" allowfullscreen></iframe>",
+      "player_type": "shared",
+      "availability": "available",
+      "missing_scans": 0
+    },
+    {
+      "number": 39,
+      "id": "czw-tv",
+      "name": "Combat Zone Wrestling",
+      "callsign": "CZW-TV",
+      "category": "promotions",
+      "tagline": "Violence Is Our Tradition",
+      "archived": false,
+      "now": {
+        "title": "CZW",
+        "episode": "CZW GenZ The Transfusion · Jan 8, 2005",
+        "start": "2026-11-17T16:09:10.152000Z",
+        "end": "2026-11-17T19:11:25.102000Z",
+        "stream_url": ""
+      },
+      "next": {
+        "title": "CZW",
+        "episode": "CZW Nine F'N Years · Feb 9, 2008",
+        "start": "2026-11-17T19:11:25.102000Z",
+        "end": "2026-11-17T23:09:17.332000Z",
+        "stream_url": ""
+      },
+      "next2": null,
+      "guide_slots": 2,
+      "existing_embed": true,
+      "legacy_channel_number": "49",
+      "tube": "Indies / Hardcore Tube",
+      "embed_url": "https://buttocks.github.io/suplex-baked-player/czw-slamvision.html",
+      "embed_html": "<iframe src=\"https://buttocks.github.io/suplex-baked-player/czw-slamvision.html\" width=\"1280\" height=\"720\" frameborder=\"0\" allow=\"autoplay; fullscreen; picture-in-picture\" allowfullscreen></iframe>",
+      "player_type": "legacy",
+      "availability": "available",
+      "missing_scans": 0
+    },
+    {
+      "number": 41,
+      "id": "death",
+      "name": "Deathmatch",
+      "callsign": "DEATH",
+      "category": "wrestlers",
+      "tagline": "Deathmatch and Extreme",
+      "archived": false,
+      "now": {
+        "title": "BJW",
+        "episode": "Feb 8, 2010",
+        "start": "2026-11-17T15:59:02.808000Z",
+        "end": "2026-11-17T17:58:32.108000Z",
+        "stream_url": ""
+      },
+      "next": {
+        "title": "BJW & DDT Toshikoshi Pro-Wrestling 2023 – Toshiwasure! Shuffle Six Man Tag Team Tournament",
+        "episode": "Dec 31, 2023",
+        "start": "2026-11-17T17:58:32.108000Z",
+        "end": "2026-11-17T21:47:23.028000Z",
+        "stream_url": ""
+      },
+      "next2": null,
+      "guide_slots": 2,
+      "existing_embed": true,
+      "legacy_channel_number": "48",
+      "tube": "Indies / Hardcore Tube",
+      "embed_url": "https://buttocks.github.io/suplex-baked-player/deathmatch-slamvision.html",
+      "embed_html": "<iframe src=\"https://buttocks.github.io/suplex-baked-player/deathmatch-slamvision.html\" width=\"1280\" height=\"720\" frameborder=\"0\" allow=\"autoplay; fullscreen; picture-in-picture\" allowfullscreen></iframe>",
+      "player_type": "legacy",
+      "availability": "available",
+      "missing_scans": 0
+    },
+    {
+      "number": 47,
+      "id": "gcw-tv",
+      "name": "Game Changer Wrestling",
+      "callsign": "GCW-TV",
+      "category": "promotions",
+      "tagline": "LONG LIVE GCW",
+      "archived": false,
+      "now": {
+        "title": "GCW - Jimmy Lloyd's Jersey Shore",
+        "episode": "Aug 23, 2020",
+        "start": "2026-11-17T14:01:24.879000Z",
+        "end": "2026-11-17T17:51:17.189000Z",
+        "stream_url": ""
+      },
+      "next": {
+        "title": "GCW - Orange Cassidy Is Doing Something Or Whatever, Who Knows?",
+        "episode": "Apr 6, 2019",
+        "start": "2026-11-17T17:51:17.189000Z",
+        "end": "2026-11-17T20:35:35.969000Z",
+        "stream_url": ""
+      },
+      "next2": {
+        "title": "GCW - Tournament Of Survival 8",
+        "episode": "Jun 3, 2023",
+        "start": "2026-11-17T20:35:35.969000Z",
+        "end": "2026-11-18T00:10:48.079000Z",
+        "stream_url": ""
+      },
+      "guide_slots": 3,
+      "existing_embed": true,
+      "legacy_channel_number": "22",
+      "tube": "Indies / Hardcore Tube",
+      "embed_url": "https://buttocks.github.io/suplex-baked-player/gcw-slamvision.html",
+      "embed_html": "<iframe src=\"https://buttocks.github.io/suplex-baked-player/gcw-slamvision.html\" width=\"1280\" height=\"720\" frameborder=\"0\" allow=\"autoplay; fullscreen; picture-in-picture\" allowfullscreen></iframe>",
+      "player_type": "legacy",
+      "availability": "available",
+      "missing_scans": 0
+    },
+    {
+      "number": 51,
+      "id": "jcw",
+      "name": "Juggalo Championship Wrestling",
+      "callsign": "JCW",
+      "category": "promotions",
+      "tagline": "Where the Wicked Wrestle",
+      "archived": false,
+      "now": {
+        "title": "GCW vs. Jcw; 2",
+        "episode": "Aug 14, 2025",
+        "start": "2026-11-17T16:41:30.109000Z",
+        "end": "2026-11-17T19:33:30.749000Z",
+        "stream_url": ""
+      },
+      "next": {
+        "title": "GCW vs. Jcw; 2",
+        "episode": "Aug 15, 2025",
+        "start": "2026-11-17T19:33:30.749000Z",
+        "end": "2026-11-17T22:13:05.919000Z",
+        "stream_url": ""
+      },
+      "next2": null,
+      "guide_slots": 2,
+      "existing_embed": false,
+      "legacy_channel_number": null,
+      "tube": "Indies / Hardcore Tube",
+      "embed_url": "https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=jcw",
+      "embed_html": "<iframe src=\"https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=jcw\" width=\"1280\" height=\"720\" frameborder=\"0\" allow=\"autoplay; fullscreen; picture-in-picture\" allowfullscreen></iframe>",
+      "player_type": "shared",
+      "availability": "available",
+      "missing_scans": 0
+    },
+    {
+      "number": 56,
+      "id": "mlw",
+      "name": "Major League Wrestling",
+      "callsign": "MLW",
+      "category": "promotions",
+      "tagline": "24/7 Major League Wrestling",
+      "archived": false,
+      "now": {
+        "title": "CMLL vs. MLW",
+        "episode": "May 1, 2026",
+        "start": "2026-11-17T17:21:25.510000Z",
+        "end": "2026-11-17T19:51:55.710000Z",
+        "stream_url": ""
+      },
+      "next": {
+        "title": "MLW Underground TV Episodes 01-30",
+        "episode": "MLW Underground TV #1 · Apr 7, 2003",
+        "start": "2026-11-17T19:51:55.710000Z",
+        "end": "2026-11-17T20:39:59.230000Z",
+        "stream_url": ""
+      },
+      "next2": {
+        "title": "MLW Underground TV Episodes 01-30",
+        "episode": "MLW Underground TV #2 · Apr 14, 2003",
+        "start": "2026-11-17T20:39:59.230000Z",
+        "end": "2026-11-17T21:28:51.120000Z",
+        "stream_url": ""
+      },
+      "guide_slots": 4,
+      "existing_embed": false,
+      "legacy_channel_number": null,
+      "tube": "Indies / Hardcore Tube",
+      "embed_url": "https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=mlw",
+      "embed_html": "<iframe src=\"https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=mlw\" width=\"1280\" height=\"720\" frameborder=\"0\" allow=\"autoplay; fullscreen; picture-in-picture\" allowfullscreen></iframe>",
+      "player_type": "shared",
+      "availability": "available",
+      "missing_scans": 0
+    },
+    {
+      "number": 57,
+      "id": "mlp",
+      "name": "Maple leaf pro",
+      "callsign": "MLP",
+      "category": "promotions",
+      "tagline": "24/7 Maple leaf pro",
+      "archived": false,
+      "now": {
+        "title": "MLP Mayhem Episode 5",
+        "episode": "Aug 12, 2026",
+        "start": "2026-11-17T17:00:53.006000Z",
+        "end": "2026-11-17T17:45:47.926000Z",
+        "stream_url": ""
+      },
+      "next": {
+        "title": "MLP Sacred Ground",
+        "episode": "Sep 6, 2025",
+        "start": "2026-11-17T17:45:47.926000Z",
+        "end": "2026-11-17T20:25:51.216000Z",
+        "stream_url": ""
+      },
+      "next2": {
+        "title": "MLP Mayhem on MyAEW Episode 4",
+        "episode": "Aug 6, 2026",
+        "start": "2026-11-17T20:25:51.216000Z",
+        "end": "2026-11-17T21:10:33.756000Z",
+        "stream_url": ""
+      },
+      "guide_slots": 4,
+      "existing_embed": false,
+      "legacy_channel_number": null,
+      "tube": "Indies / Hardcore Tube",
+      "embed_url": "https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=mlp",
+      "embed_html": "<iframe src=\"https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=mlp\" width=\"1280\" height=\"720\" frameborder=\"0\" allow=\"autoplay; fullscreen; picture-in-picture\" allowfullscreen></iframe>",
+      "player_type": "shared",
+      "availability": "available",
+      "missing_scans": 0
+    },
+    {
+      "number": 72,
+      "id": "pwg",
+      "name": "Pro Wrestling Guerrilla",
+      "callsign": "PWG",
+      "category": "promotions",
+      "tagline": "Indie Darlings All Day, Every Day",
+      "archived": false,
+      "now": {
+        "title": "Gwp 2008",
+        "episode": "PWG All Star Weekend 6 Night Two · Jan 6, 2008",
+        "start": "2026-11-17T16:17:30.161000Z",
+        "end": "2026-11-17T19:02:21.271000Z",
+        "stream_url": ""
+      },
+      "next": {
+        "title": "Gwp 2007",
+        "episode": "PWG Holy Diver Down · Feb 24, 2007",
+        "start": "2026-11-17T19:02:21.271000Z",
+        "end": "2026-11-17T21:11:53.071000Z",
+        "stream_url": ""
+      },
+      "next2": {
+        "title": "Gwp 2006",
+        "episode": "PWG Hollywood Globetrotters · Mar 4, 2006",
+        "start": "2026-11-17T21:11:53.071000Z",
+        "end": "2026-11-18T00:05:57.041000Z",
+        "stream_url": ""
+      },
+      "guide_slots": 3,
+      "existing_embed": true,
+      "legacy_channel_number": "72",
+      "tube": "Indies / Hardcore Tube",
+      "embed_url": "https://buttocks.github.io/suplex-baked-player/pwg-slamvision.html",
+      "embed_html": "<iframe src=\"https://buttocks.github.io/suplex-baked-player/pwg-slamvision.html\" width=\"1280\" height=\"720\" frameborder=\"0\" allow=\"autoplay; fullscreen; picture-in-picture\" allowfullscreen></iframe>",
+      "player_type": "legacy",
+      "availability": "available",
+      "missing_scans": 0
+    },
+    {
+      "number": 106,
+      "id": "wcpw",
+      "name": "What Culture Pro Wrestling",
+      "callsign": "WCPW",
+      "category": "promotions",
+      "tagline": "Internet wrestling show",
+      "archived": false,
+      "now": {
+        "title": "WCPW No Regrets 2017",
+        "episode": "",
+        "start": "2026-11-17T16:41:32.614000Z",
+        "end": "2026-11-17T19:17:11.624000Z",
+        "stream_url": ""
+      },
+      "next": {
+        "title": "WCPW Loaded Episode 7",
+        "episode": "",
+        "start": "2026-11-17T19:17:11.624000Z",
+        "end": "2026-11-17T21:08:35.824000Z",
+        "stream_url": ""
+      },
+      "next2": {
+        "title": "WCPW Refuse To Lose 2016",
+        "episode": "",
+        "start": "2026-11-17T21:08:35.824000Z",
+        "end": "2026-11-17T23:56:44.674000Z",
+        "stream_url": ""
+      },
+      "guide_slots": 3,
+      "existing_embed": false,
+      "legacy_channel_number": null,
+      "tube": "Indies / Hardcore Tube",
+      "embed_url": "https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=wcpw",
+      "embed_html": "<iframe src=\"https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=wcpw\" width=\"1280\" height=\"720\" frameborder=\"0\" allow=\"autoplay; fullscreen; picture-in-picture\" allowfullscreen></iframe>",
+      "player_type": "shared",
+      "availability": "available",
+      "missing_scans": 0
+    },
+    {
+      "number": 108,
+      "id": "wsx",
+      "name": "Wrestling Society X",
+      "callsign": "WSX",
+      "category": "promotions",
+      "tagline": "Wrestling Society X",
+      "archived": false,
+      "now": {
+        "title": "Mtv - WSX",
+        "episode": "Episode 2 + WSXtra",
+        "start": "2026-11-17T17:14:14.610000Z",
+        "end": "2026-11-17T17:58:59.950000Z",
+        "stream_url": ""
+      },
+      "next": {
+        "title": "Mtv - WSX",
+        "episode": "Episode 3 + WSXtra",
+        "start": "2026-11-17T17:58:59.950000Z",
+        "end": "2026-11-17T18:35:47.310000Z",
+        "stream_url": ""
+      },
+      "next2": {
+        "title": "Mtv - WSX",
+        "episode": "Episode 4 + WSXtra",
+        "start": "2026-11-17T18:35:47.310000Z",
+        "end": "2026-11-17T19:17:23.340000Z",
+        "stream_url": ""
+      },
+      "guide_slots": 7,
+      "existing_embed": false,
+      "legacy_channel_number": null,
+      "tube": "Indies / Hardcore Tube",
+      "embed_url": "https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=wsx",
+      "embed_html": "<iframe src=\"https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=wsx\" width=\"1280\" height=\"720\" frameborder=\"0\" allow=\"autoplay; fullscreen; picture-in-picture\" allowfullscreen></iframe>",
+      "player_type": "shared",
+      "availability": "available",
+      "missing_scans": 0
+    },
+    {
+      "number": 38,
+      "id": "chi",
+      "name": "Chikara",
+      "callsign": "CHI",
+      "category": "wrestlers",
+      "tagline": "Where Wrestling Meets Comedy",
+      "archived": false,
+      "now": {
+        "title": "Team Hero vs. Team Quackenbush",
+        "episode": "Oct 22, 2005",
+        "start": "2026-11-17T16:37:48.203000Z",
+        "end": "2026-11-17T18:33:34.303000Z",
+        "stream_url": ""
+      },
+      "next": {
+        "title": "CHIKARA Aniversario",
+        "episode": "May 24, 2003",
+        "start": "2026-11-17T18:33:34.303000Z",
+        "end": "2026-11-17T20:28:57.403000Z",
+        "stream_url": ""
+      },
+      "next2": {
+        "title": "CHIKARA Tag World Grand Prix 2003 Tag 1 & 2",
+        "episode": "Jul 5, 2003",
+        "start": "2026-11-17T20:28:57.403000Z",
+        "end": "2026-11-17T22:42:49.513000Z",
+        "stream_url": ""
+      },
+      "guide_slots": 3,
+      "existing_embed": false,
+      "legacy_channel_number": null,
+      "tube": "Indies / Hardcore Tube",
+      "embed_url": "https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=chi",
+      "embed_html": "<iframe src=\"https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=chi\" width=\"1280\" height=\"720\" frameborder=\"0\" allow=\"autoplay; fullscreen; picture-in-picture\" allowfullscreen></iframe>",
+      "player_type": "shared",
+      "availability": "available",
+      "missing_scans": 0
+    },
+    {
+      "number": 45,
+      "id": "euromat",
+      "name": "EuroMat",
+      "callsign": "EUROMAT",
+      "category": "wrestlers",
+      "tagline": "Where Europe's Independent Wrestling Lives",
+      "archived": false,
+      "now": {
+        "title": "PWÖ Kaiser Von Österreich",
+        "episode": "Sep 11, 2021",
+        "start": "2026-11-17T15:21:46.742000Z",
+        "end": "2026-11-17T17:53:52.162000Z",
+        "stream_url": ""
+      },
+      "next": {
+        "title": "PWÖ Kapitel 8 Critical Damage",
+        "episode": "Sep 28, 2024",
+        "start": "2026-11-17T17:53:52.162000Z",
+        "end": "2026-11-17T20:22:24.402000Z",
+        "stream_url": ""
+      },
+      "next2": {
+        "title": "Pac vs. AJ Styles",
+        "episode": "Oct 14, 2006",
+        "start": "2026-11-17T20:22:24.402000Z",
+        "end": "2026-11-17T20:45:16.412000Z",
+        "stream_url": ""
+      },
+      "guide_slots": 5,
+      "existing_embed": false,
+      "legacy_channel_number": null,
+      "tube": "Indies / Hardcore Tube",
+      "embed_url": "https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=euromat",
+      "embed_html": "<iframe src=\"https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=euromat\" width=\"1280\" height=\"720\" frameborder=\"0\" allow=\"autoplay; fullscreen; picture-in-picture\" allowfullscreen></iframe>",
+      "player_type": "shared",
+      "availability": "available",
+      "missing_scans": 0
+    },
+    {
+      "number": 61,
+      "id": "mma-tv",
+      "name": "MMA",
+      "callsign": "MMA-TV",
+      "category": "wrestlers",
+      "tagline": "It's not a work brother",
+      "archived": false,
+      "now": {
+        "title": "Nobuhiko Takada, Keiji Muto vs. Ken Shamrock, Don Frye",
+        "episode": "Dec 31, 2000",
+        "start": "2026-11-17T17:40:06.581000Z",
+        "end": "2026-11-17T18:27:49.601000Z",
+        "stream_url": ""
+      },
+      "next": {
+        "title": "INOKI Antonio Inoki Presents Millennium Fighting Arts – Inoki Bom-Ba-Ye",
+        "episode": "End of the Century Fighting Legend-inoki's Ambition · Dec 31, 2000",
+        "start": "2026-11-17T18:27:49.601000Z",
+        "end": "2026-11-17T18:53:57.841000Z",
+        "stream_url": ""
+      },
+      "next2": {
+        "title": "Yoshiaki Fujiwara vs. Justin McCully",
+        "episode": "Dec 31, 2000",
+        "start": "2026-11-17T18:53:57.841000Z",
+        "end": "2026-11-17T19:10:43.771000Z",
+        "stream_url": ""
+      },
+      "guide_slots": 10,
+      "existing_embed": true,
+      "legacy_channel_number": "32",
+      "tube": "Shoot / MMA Tube",
+      "embed_url": "https://buttocks.github.io/suplex-baked-player/mma-slamvision.html",
+      "embed_html": "<iframe src=\"https://buttocks.github.io/suplex-baked-player/mma-slamvision.html\" width=\"1280\" height=\"720\" frameborder=\"0\" allow=\"autoplay; fullscreen; picture-in-picture\" allowfullscreen></iframe>",
+      "player_type": "legacy",
+      "availability": "available",
+      "missing_scans": 0
+    },
+    {
+      "number": 86,
+      "id": "tsn",
+      "name": "The Shoot Network",
+      "callsign": "TSN",
+      "category": "wrestlers",
+      "tagline": "Watch a Shoot While You Work",
+      "archived": false,
+      "now": {
+        "title": "Hiromitsu Kanehara vs. Greg Bobchuck",
+        "episode": "Dec 5, 1993",
+        "start": "2026-11-17T17:38:13.352000Z",
+        "end": "2026-11-17T17:49:17.472000Z",
+        "stream_url": ""
+      },
+      "next": {
+        "title": "Yoshihiro Takayama vs. Tommy Cairo",
+        "episode": "Dec 5, 1993",
+        "start": "2026-11-17T17:49:17.472000Z",
+        "end": "2026-11-17T17:57:14.392000Z",
+        "stream_url": ""
+      },
+      "next2": {
+        "title": "Tatsuo Nakano vs. Masahito Kakihara",
+        "episode": "Dec 5, 1993",
+        "start": "2026-11-17T17:57:14.392000Z",
+        "end": "2026-11-17T18:13:26.272000Z",
+        "stream_url": ""
+      },
+      "guide_slots": 18,
+      "existing_embed": true,
+      "legacy_channel_number": "29",
+      "tube": "Shoot / MMA Tube",
+      "embed_url": "https://buttocks.github.io/suplex-baked-player/shoot-network-slamvision.html",
+      "embed_html": "<iframe src=\"https://buttocks.github.io/suplex-baked-player/shoot-network-slamvision.html\" width=\"1280\" height=\"720\" frameborder=\"0\" allow=\"autoplay; fullscreen; picture-in-picture\" allowfullscreen></iframe>",
+      "player_type": "legacy",
+      "availability": "available",
+      "missing_scans": 0
+    },
+    {
+      "number": 37,
+      "id": "bsn",
+      "name": "Bloodsport Network",
+      "callsign": "BSN",
+      "category": "wrestlers",
+      "tagline": "NO GIMMICKS. JUST COMBAT",
+      "archived": false,
+      "now": {
+        "title": "GCW Josh Barnett’s Bloodsport XIII",
+        "episode": "Apr 17, 2025",
+        "start": "2026-11-17T15:48:57.998000Z",
+        "end": "2026-11-17T18:42:46.068000Z",
+        "stream_url": ""
+      },
+      "next": {
+        "title": "Hideki Suzuki vs. Timothy Thatcher",
+        "episode": "Apr 4, 2019",
+        "start": "2026-11-17T18:42:46.068000Z",
+        "end": "2026-11-17T18:59:36.048000Z",
+        "stream_url": ""
+      },
+      "next2": {
+        "title": "CW Anderson vs. Tommy Dreamer",
+        "episode": "2001",
+        "start": "2026-11-17T18:59:36.048000Z",
+        "end": "2026-11-17T19:18:58.368000Z",
+        "stream_url": ""
+      },
+      "guide_slots": 5,
+      "existing_embed": false,
+      "legacy_channel_number": null,
+      "tube": "Shoot / MMA Tube",
+      "embed_url": "https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=bsn",
+      "embed_html": "<iframe src=\"https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=bsn\" width=\"1280\" height=\"720\" frameborder=\"0\" allow=\"autoplay; fullscreen; picture-in-picture\" allowfullscreen></iframe>",
+      "player_type": "shared",
+      "availability": "available",
+      "missing_scans": 0
+    },
+    {
+      "number": 29,
+      "id": "awa",
+      "name": "American Wrestling Association",
+      "callsign": "AWA",
+      "category": "promotions",
+      "tagline": "Hogan, Piper, Slaughter, Gagne, Bockwinkle",
+      "archived": false,
+      "now": {
+        "title": "Awmericn Wrestling Association Assorted",
+        "episode": "Aug 8, 1981",
+        "start": "2026-11-17T17:17:01.988000Z",
+        "end": "2026-11-17T17:58:27.338000Z",
+        "stream_url": ""
+      },
+      "next": {
+        "title": "The Fabulous Ones vs. Nick Bockwinkel & Masa Saito AWA",
+        "episode": "Sep 30, 1984",
+        "start": "2026-11-17T17:58:27.338000Z",
+        "end": "2026-11-17T18:13:35.308000Z",
+        "stream_url": ""
+      },
+      "next2": {
+        "title": "NWA AWA Nite of Champions II",
+        "episode": "Dec 29, 1985",
+        "start": "2026-11-17T18:13:35.308000Z",
+        "end": "2026-11-17T20:40:39.878000Z",
+        "stream_url": ""
+      },
+      "guide_slots": 5,
+      "existing_embed": false,
+      "legacy_channel_number": null,
+      "tube": "Territories / Classic US Tube",
+      "embed_url": "https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=awa",
+      "embed_html": "<iframe src=\"https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=awa\" width=\"1280\" height=\"720\" frameborder=\"0\" allow=\"autoplay; fullscreen; picture-in-picture\" allowfullscreen></iframe>",
+      "player_type": "shared",
+      "availability": "available",
+      "missing_scans": 0
+    },
+    {
+      "number": 59,
+      "id": "memphis",
+      "name": "Memphis Wrestling",
+      "callsign": "MEMPHIS",
+      "category": "shows",
+      "tagline": "Saturday morning from WMC-TV Channel 5",
+      "archived": false,
+      "now": {
+        "title": "Memphis Wrestling",
+        "episode": "Feb 26, 1983",
+        "start": "2026-11-17T17:22:18.816000Z",
+        "end": "2026-11-17T18:16:54.316000Z",
+        "stream_url": ""
+      },
+      "next": {
+        "title": "Memphis Wrestling",
+        "episode": "Mar 12, 1983",
+        "start": "2026-11-17T18:16:54.316000Z",
+        "end": "2026-11-17T18:37:33.476000Z",
+        "stream_url": ""
+      },
+      "next2": {
+        "title": "Memphis Wrestling",
+        "episode": "Feb 4, 1989 · Part 1",
+        "start": "2026-11-17T18:37:33.476000Z",
+        "end": "2026-11-17T19:25:16.286000Z",
+        "stream_url": ""
+      },
+      "guide_slots": 7,
+      "existing_embed": false,
+      "legacy_channel_number": null,
+      "tube": "Territories / Classic US Tube",
+      "embed_url": "https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=memphis",
+      "embed_html": "<iframe src=\"https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=memphis\" width=\"1280\" height=\"720\" frameborder=\"0\" allow=\"autoplay; fullscreen; picture-in-picture\" allowfullscreen></iframe>",
+      "player_type": "shared",
+      "availability": "available",
+      "missing_scans": 0
+    },
+    {
+      "number": 87,
+      "id": "territories",
+      "name": "The Territories",
+      "callsign": "TERRITORY",
+      "category": "eras",
+      "tagline": "Mid-South, World Class, Memphis, AWA, Mid-Atlantic & beyond",
+      "archived": false,
+      "now": {
+        "title": "Mid-South Mid South in Houston Wrestling Tapes",
+        "episode": "MSW.Houston · Part 27",
+        "start": "2026-11-17T17:10:54.148000Z",
+        "end": "2026-11-17T17:54:52.098000Z",
+        "stream_url": ""
+      },
+      "next": {
+        "title": "Mid-South Mid South in Houston Wrestling Tapes",
+        "episode": "MSW.Houston · Part 28",
+        "start": "2026-11-17T17:54:52.098000Z",
+        "end": "2026-11-17T19:57:14.368000Z",
+        "stream_url": ""
+      },
+      "next2": {
+        "title": "Mid-South Mid South in Houston Wrestling Tapes",
+        "episode": "MSW.Houston · Part 29",
+        "start": "2026-11-17T19:57:14.368000Z",
+        "end": "2026-11-17T21:59:37.398000Z",
+        "stream_url": ""
+      },
+      "guide_slots": 3,
+      "existing_embed": false,
+      "legacy_channel_number": null,
+      "tube": "Territories / Classic US Tube",
+      "embed_url": "https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=territories",
+      "embed_html": "<iframe src=\"https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=territories\" width=\"1280\" height=\"720\" frameborder=\"0\" allow=\"autoplay; fullscreen; picture-in-picture\" allowfullscreen></iframe>",
+      "player_type": "shared",
+      "availability": "available",
+      "missing_scans": 0
+    },
+    {
+      "number": 62,
+      "id": "mnw",
+      "name": "Monday night wars",
+      "callsign": "MNW",
+      "category": "eras",
+      "tagline": "Monday night wars",
+      "archived": false,
+      "now": {
+        "title": "WCW Monday Nitro",
+        "episode": "Oct 27, 1997",
+        "start": "2026-11-17T17:00:38.314000Z",
+        "end": "2026-11-17T19:13:10.544000Z",
+        "stream_url": ""
+      },
+      "next": {
+        "title": "WCW Monday Nitro",
+        "episode": "Oct 27, 1997",
+        "start": "2026-11-17T19:13:10.544000Z",
+        "end": "2026-11-17T21:25:42.774000Z",
+        "stream_url": ""
+      },
+      "next2": {
+        "title": "WCW Monday Nitro",
+        "episode": "Oct 2, 1995",
+        "start": "2026-11-17T21:25:42.774000Z",
+        "end": "2026-11-17T22:11:01.344000Z",
+        "stream_url": ""
+      },
+      "guide_slots": 3,
+      "existing_embed": false,
+      "legacy_channel_number": null,
+      "tube": "Years / Mixed Wrestling Tube",
+      "embed_url": "https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=mnw",
+      "embed_html": "<iframe src=\"https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=mnw\" width=\"1280\" height=\"720\" frameborder=\"0\" allow=\"autoplay; fullscreen; picture-in-picture\" allowfullscreen></iframe>",
+      "player_type": "shared",
+      "availability": "available",
+      "missing_scans": 0
+    },
+    {
+      "number": 73,
+      "id": "rndm",
+      "name": "Random wrestling",
+      "callsign": "RNDM",
+      "category": "promotions",
+      "tagline": "You never know what you'll see!",
+      "archived": false,
+      "now": {
+        "title": "NOAH NOAH Navigation 2000 Tag 1",
+        "episode": "Sep 20, 2026",
+        "start": "2026-11-17T17:16:54.372000Z",
+        "end": "2026-11-17T19:11:49.272000Z",
+        "stream_url": ""
+      },
+      "next": {
+        "title": "NOAH N-1 Victory 2021 Special Prologue",
+        "episode": "Sep 6, 2021",
+        "start": "2026-11-17T19:11:49.272000Z",
+        "end": "2026-11-17T21:49:27.392000Z",
+        "stream_url": ""
+      },
+      "next2": null,
+      "guide_slots": 2,
+      "existing_embed": false,
+      "legacy_channel_number": null,
+      "tube": "Years / Mixed Wrestling Tube",
+      "embed_url": "https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=rndm",
+      "embed_html": "<iframe src=\"https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=rndm\" width=\"1280\" height=\"720\" frameborder=\"0\" allow=\"autoplay; fullscreen; picture-in-picture\" allowfullscreen></iframe>",
+      "player_type": "shared",
+      "availability": "available",
+      "missing_scans": 0
+    },
+    {
+      "number": 80,
+      "id": "tag",
+      "name": "Tag Team",
+      "callsign": "TAG",
+      "category": "wrestlers",
+      "tagline": "Perfect Partnerships",
+      "archived": false,
+      "now": {
+        "title": "WXW World Tag Team Tournament 2015 Night 3",
+        "episode": "Apr 10, 2015",
+        "start": "2026-11-17T16:41:25.172000Z",
+        "end": "2026-11-17T19:20:36.452000Z",
+        "stream_url": ""
+      },
+      "next": {
+        "title": "BJW & DDT Toshikoshi Pro-Wrestling 2023 – Toshiwasure! Shuffle Six Man Tag Team Tournament",
+        "episode": "Dec 31, 2023",
+        "start": "2026-11-17T19:20:36.452000Z",
+        "end": "2026-11-17T23:09:27.372000Z",
+        "stream_url": ""
+      },
+      "next2": null,
+      "guide_slots": 2,
+      "existing_embed": false,
+      "legacy_channel_number": null,
+      "tube": "Years / Mixed Wrestling Tube",
+      "embed_url": "https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=tag",
+      "embed_html": "<iframe src=\"https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=tag\" width=\"1280\" height=\"720\" frameborder=\"0\" allow=\"autoplay; fullscreen; picture-in-picture\" allowfullscreen></iframe>",
+      "player_type": "shared",
+      "availability": "available",
+      "missing_scans": 0
+    },
+    {
+      "number": 1,
+      "id": "year-1985",
+      "name": "Wrestling in 1985",
+      "callsign": "YR-1985",
+      "category": "eras",
+      "tagline": "Every promotion, every show that aired in 1985",
+      "archived": false,
+      "now": {
+        "title": "Antonio Inoki vs. Bruiser Brody",
+        "episode": "Aug 1, 1985",
+        "start": "2026-11-17T17:09:50.900000Z",
+        "end": "2026-11-17T17:41:26.710000Z",
+        "stream_url": ""
+      },
+      "next": {
+        "title": "NJPW-Bruiser Brody vs. Dick Murdoch",
+        "episode": "NJPW World Pro-Wrestling · Nov 22, 1985",
+        "start": "2026-11-17T17:41:26.710000Z",
+        "end": "2026-11-17T18:03:16.390000Z",
+        "stream_url": ""
+      },
+      "next2": {
+        "title": "TV - WWF Wrestling - CITY TV Donahue - WKBW TV Buffalo",
+        "episode": "Apr 18, 1985",
+        "start": "2026-11-17T18:03:16.390000Z",
+        "end": "2026-11-17T19:04:11.280000Z",
+        "stream_url": ""
+      },
+      "guide_slots": 7,
+      "existing_embed": false,
+      "legacy_channel_number": null,
+      "tube": "Years / Mixed Wrestling Tube",
+      "embed_url": "https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=year-1985",
+      "embed_html": "<iframe src=\"https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=year-1985\" width=\"1280\" height=\"720\" frameborder=\"0\" allow=\"autoplay; fullscreen; picture-in-picture\" allowfullscreen></iframe>",
+      "player_type": "shared",
+      "availability": "available",
+      "missing_scans": 0
+    },
+    {
+      "number": 2,
+      "id": "year-1986",
+      "name": "Wrestling in 1986",
+      "callsign": "YR-1986",
+      "category": "eras",
+      "tagline": "Every promotion, every show that aired in 1986",
+      "archived": false,
+      "now": {
+        "title": "WWF The Big Event 1986",
+        "episode": "",
+        "start": "2026-11-17T16:56:09.523000Z",
+        "end": "2026-11-17T18:51:28.623000Z",
+        "stream_url": ""
+      },
+      "next": {
+        "title": "WWF Wrestling",
+        "episode": "Sep 1986",
+        "start": "2026-11-17T18:51:28.623000Z",
+        "end": "2026-11-17T20:17:19.323000Z",
+        "stream_url": ""
+      },
+      "next2": {
+        "title": "Akira Maeda vs. Yoshiaki Fujiwara",
+        "episode": "NJPW · Feb 5, 1986",
+        "start": "2026-11-17T20:17:19.323000Z",
+        "end": "2026-11-17T20:42:22.003000Z",
+        "stream_url": ""
+      },
+      "guide_slots": 5,
+      "existing_embed": false,
+      "legacy_channel_number": null,
+      "tube": "Years / Mixed Wrestling Tube",
+      "embed_url": "https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=year-1986",
+      "embed_html": "<iframe src=\"https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=year-1986\" width=\"1280\" height=\"720\" frameborder=\"0\" allow=\"autoplay; fullscreen; picture-in-picture\" allowfullscreen></iframe>",
+      "player_type": "shared",
+      "availability": "available",
+      "missing_scans": 0
+    },
+    {
+      "number": 3,
+      "id": "year-1987",
+      "name": "Wrestling in 1987",
+      "callsign": "YR-1987",
+      "category": "eras",
+      "tagline": "Every promotion, every show that aired in 1987",
+      "archived": false,
+      "now": {
+        "title": "Yoshiaki Fujiwara, Osamu Kido, Nobuhiko Takada vs. Riki Choshu, Super Strong Machine,…",
+        "episode": "NJPW · Jun 12, 1987",
+        "start": "2026-11-17T17:29:47.570000Z",
+        "end": "2026-11-17T17:45:33.830000Z",
+        "stream_url": ""
+      },
+      "next": {
+        "title": "Antonio Inoki, Masa Saito, Kantaro Hoshino vs. Akira Maeda, Kengo Kimura, Osamu Kido",
+        "episode": "NJPW · Jul 7, 1987",
+        "start": "2026-11-17T17:45:33.830000Z",
+        "end": "2026-11-17T18:02:31.770000Z",
+        "stream_url": ""
+      },
+      "next2": {
+        "title": "Akira Maeda, Nobuhiko Takada vs. Super Strong Machine, Kuniaki Kobayashi",
+        "episode": "NJPW · Aug 2, 1987",
+        "start": "2026-11-17T18:02:31.770000Z",
+        "end": "2026-11-17T18:22:55.790000Z",
+        "stream_url": ""
+      },
+      "guide_slots": 8,
+      "existing_embed": false,
+      "legacy_channel_number": null,
+      "tube": "Years / Mixed Wrestling Tube",
+      "embed_url": "https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=year-1987",
+      "embed_html": "<iframe src=\"https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=year-1987\" width=\"1280\" height=\"720\" frameborder=\"0\" allow=\"autoplay; fullscreen; picture-in-picture\" allowfullscreen></iframe>",
+      "player_type": "shared",
+      "availability": "available",
+      "missing_scans": 0
+    },
+    {
+      "number": 4,
+      "id": "year-1988",
+      "name": "Wrestling in 1988",
+      "callsign": "YR-1988",
+      "category": "eras",
+      "tagline": "Every promotion, every show that aired in 1988",
+      "archived": false,
+      "now": {
+        "title": "NWA Great American Bash 1988",
+        "episode": "Jul 16, 1988",
+        "start": "2026-11-17T15:33:21.914000Z",
+        "end": "2026-11-17T17:41:04.614000Z",
+        "stream_url": ""
+      },
+      "next": {
+        "title": "Tenryu vs. Hansen",
+        "episode": "AJPW · Mar 27, 1988",
+        "start": "2026-11-17T17:41:04.614000Z",
+        "end": "2026-11-17T18:00:02.674000Z",
+        "stream_url": ""
+      },
+      "next2": {
+        "title": "TenryuHara vs. HansenGordy",
+        "episode": "AJPW · Mar 5, 1988",
+        "start": "2026-11-17T18:00:02.674000Z",
+        "end": "2026-11-17T18:19:11.164000Z",
+        "stream_url": ""
+      },
+      "guide_slots": 6,
+      "existing_embed": false,
+      "legacy_channel_number": null,
+      "tube": "Years / Mixed Wrestling Tube",
+      "embed_url": "https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=year-1988",
+      "embed_html": "<iframe src=\"https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=year-1988\" width=\"1280\" height=\"720\" frameborder=\"0\" allow=\"autoplay; fullscreen; picture-in-picture\" allowfullscreen></iframe>",
+      "player_type": "shared",
+      "availability": "available",
+      "missing_scans": 0
+    },
+    {
+      "number": 5,
+      "id": "year-1989",
+      "name": "Wrestling in 1989",
+      "callsign": "YR-1989",
+      "category": "eras",
+      "tagline": "Every promotion, every show that aired in 1989",
+      "archived": false,
+      "now": {
+        "title": "Survivor Series 1989 Part 1",
+        "episode": "Part 1",
+        "start": "2026-11-17T16:57:14.189000Z",
+        "end": "2026-11-17T19:10:29.029000Z",
+        "stream_url": ""
+      },
+      "next": {
+        "title": "Survivor Series 1989 Part 2",
+        "episode": "Part 2",
+        "start": "2026-11-17T19:10:29.029000Z",
+        "end": "2026-11-17T20:04:07.359000Z",
+        "stream_url": ""
+      },
+      "next2": {
+        "title": "WWF All American Wrestling",
+        "episode": "Dec 31, 1989",
+        "start": "2026-11-17T20:04:07.359000Z",
+        "end": "2026-11-17T20:44:42.399000Z",
+        "stream_url": ""
+      },
+      "guide_slots": 4,
+      "existing_embed": false,
+      "legacy_channel_number": null,
+      "tube": "Years / Mixed Wrestling Tube",
+      "embed_url": "https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=year-1989",
+      "embed_html": "<iframe src=\"https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=year-1989\" width=\"1280\" height=\"720\" frameborder=\"0\" allow=\"autoplay; fullscreen; picture-in-picture\" allowfullscreen></iframe>",
+      "player_type": "shared",
+      "availability": "available",
+      "missing_scans": 0
+    },
+    {
+      "number": 6,
+      "id": "year-1990",
+      "name": "Wrestling in 1990",
+      "callsign": "YR-1990",
+      "category": "eras",
+      "tagline": "Every promotion, every show that aired in 1990",
+      "archived": false,
+      "now": {
+        "title": "WWF Superstars of Wrestling",
+        "episode": "Jun 9, 1990",
+        "start": "2026-11-17T17:27:25.125000Z",
+        "end": "2026-11-17T18:12:44.335000Z",
+        "stream_url": ""
+      },
+      "next": {
+        "title": "WWF Superstars of Wrestling",
+        "episode": "Mar 3, 1990",
+        "start": "2026-11-17T18:12:44.335000Z",
+        "end": "2026-11-17T18:58:40.725000Z",
+        "stream_url": ""
+      },
+      "next2": {
+        "title": "WWF Superstars of Wrestling",
+        "episode": "Apr 7, 1990",
+        "start": "2026-11-17T18:58:40.725000Z",
+        "end": "2026-11-17T19:28:15.955000Z",
+        "stream_url": ""
+      },
+      "guide_slots": 7,
+      "existing_embed": false,
+      "legacy_channel_number": null,
+      "tube": "Years / Mixed Wrestling Tube",
+      "embed_url": "https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=year-1990",
+      "embed_html": "<iframe src=\"https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=year-1990\" width=\"1280\" height=\"720\" frameborder=\"0\" allow=\"autoplay; fullscreen; picture-in-picture\" allowfullscreen></iframe>",
+      "player_type": "shared",
+      "availability": "available",
+      "missing_scans": 0
+    },
+    {
+      "number": 7,
+      "id": "year-1991",
+      "name": "Wrestling in 1991",
+      "callsign": "YR-1991",
+      "category": "eras",
+      "tagline": "Every promotion, every show that aired in 1991",
+      "archived": false,
+      "now": {
+        "title": "WWF Prime Time Wrestling",
+        "episode": "May 7, 1991",
+        "start": "2026-11-17T17:05:03.857000Z",
+        "end": "2026-11-17T18:57:18.177000Z",
+        "stream_url": ""
+      },
+      "next": {
+        "title": "WWF Prime Time Wrestling",
+        "episode": "May 14, 1991",
+        "start": "2026-11-17T18:57:18.177000Z",
+        "end": "2026-11-17T20:34:11.177000Z",
+        "stream_url": ""
+      },
+      "next2": {
+        "title": "WWF Prime Time Wrestling",
+        "episode": "May 21, 1991",
+        "start": "2026-11-17T20:34:11.177000Z",
+        "end": "2026-11-17T22:10:51.697000Z",
+        "stream_url": ""
+      },
+      "guide_slots": 3,
+      "existing_embed": false,
+      "legacy_channel_number": null,
+      "tube": "Years / Mixed Wrestling Tube",
+      "embed_url": "https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=year-1991",
+      "embed_html": "<iframe src=\"https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=year-1991\" width=\"1280\" height=\"720\" frameborder=\"0\" allow=\"autoplay; fullscreen; picture-in-picture\" allowfullscreen></iframe>",
+      "player_type": "shared",
+      "availability": "available",
+      "missing_scans": 0
+    },
+    {
+      "number": 8,
+      "id": "year-1992",
+      "name": "Wrestling in 1992",
+      "callsign": "YR-1992",
+      "category": "eras",
+      "tagline": "Every promotion, every show that aired in 1992",
+      "archived": false,
+      "now": {
+        "title": "Riki Choshu, Akira Nogami vs. Masahiro Chono, Keiji Muto",
+        "episode": "NJPW World Pro-Wrestling · Jun 2, 1992",
+        "start": "2026-11-17T17:34:55.585000Z",
+        "end": "2026-11-17T17:52:57.465000Z",
+        "stream_url": ""
+      },
+      "next": {
+        "title": "Riki Choshu, Takayuki Iizuka vs. Kengo Kimura, Keiji Muto",
+        "episode": "NJPW World Pro-Wrestling · Jun 18, 1992",
+        "start": "2026-11-17T17:52:57.465000Z",
+        "end": "2026-11-17T18:09:57.395000Z",
+        "stream_url": ""
+      },
+      "next2": {
+        "title": "Hiroshi Hase vs. Kensuke Sasaki",
+        "episode": "NJPW World Pro-Wrestling · Jun 26, 1992",
+        "start": "2026-11-17T18:09:57.395000Z",
+        "end": "2026-11-17T18:38:56.195000Z",
+        "stream_url": ""
+      },
+      "guide_slots": 10,
+      "existing_embed": false,
+      "legacy_channel_number": null,
+      "tube": "Years / Mixed Wrestling Tube",
+      "embed_url": "https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=year-1992",
+      "embed_html": "<iframe src=\"https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=year-1992\" width=\"1280\" height=\"720\" frameborder=\"0\" allow=\"autoplay; fullscreen; picture-in-picture\" allowfullscreen></iframe>",
+      "player_type": "shared",
+      "availability": "available",
+      "missing_scans": 0
+    },
+    {
+      "number": 9,
+      "id": "year-1993",
+      "name": "Wrestling in 1993",
+      "callsign": "YR-1993",
+      "category": "eras",
+      "tagline": "Every promotion, every show that aired in 1993",
+      "archived": false,
+      "now": {
+        "title": "WCW Main Event",
+        "episode": "Oct 24, 1993",
+        "start": "2026-11-17T17:16:50.385000Z",
+        "end": "2026-11-17T18:13:33.325000Z",
+        "stream_url": ""
+      },
+      "next": {
+        "title": "WCW Power Hour",
+        "episode": "1993",
+        "start": "2026-11-17T18:13:33.325000Z",
+        "end": "2026-11-17T19:13:38.395000Z",
+        "stream_url": ""
+      },
+      "next2": {
+        "title": "WCW Main Event",
+        "episode": "Oct 3, 1993",
+        "start": "2026-11-17T19:13:38.395000Z",
+        "end": "2026-11-17T19:37:34.865000Z",
+        "stream_url": ""
+      },
+      "guide_slots": 6,
+      "existing_embed": false,
+      "legacy_channel_number": null,
+      "tube": "Years / Mixed Wrestling Tube",
+      "embed_url": "https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=year-1993",
+      "embed_html": "<iframe src=\"https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=year-1993\" width=\"1280\" height=\"720\" frameborder=\"0\" allow=\"autoplay; fullscreen; picture-in-picture\" allowfullscreen></iframe>",
+      "player_type": "shared",
+      "availability": "available",
+      "missing_scans": 0
+    },
+    {
+      "number": 10,
+      "id": "year-1994",
+      "name": "Wrestling in 1994",
+      "callsign": "YR-1994",
+      "category": "eras",
+      "tagline": "Every promotion, every show that aired in 1994",
+      "archived": false,
+      "now": {
+        "title": "WCW Power Hour",
+        "episode": "Jan 15, 1994",
+        "start": "2026-11-17T17:25:41.220000Z",
+        "end": "2026-11-17T18:11:03.270000Z",
+        "stream_url": ""
+      },
+      "next": {
+        "title": "WCW Power Hour",
+        "episode": "Jan 22, 1994",
+        "start": "2026-11-17T18:11:03.270000Z",
+        "end": "2026-11-17T18:56:22.320000Z",
+        "stream_url": ""
+      },
+      "next2": {
+        "title": "WCW Worldwide",
+        "episode": "Jan 15, 1994",
+        "start": "2026-11-17T18:56:22.320000Z",
+        "end": "2026-11-17T19:54:41.370000Z",
+        "stream_url": ""
+      },
+      "guide_slots": 5,
+      "existing_embed": false,
+      "legacy_channel_number": null,
+      "tube": "Years / Mixed Wrestling Tube",
+      "embed_url": "https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=year-1994",
+      "embed_html": "<iframe src=\"https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=year-1994\" width=\"1280\" height=\"720\" frameborder=\"0\" allow=\"autoplay; fullscreen; picture-in-picture\" allowfullscreen></iframe>",
+      "player_type": "shared",
+      "availability": "available",
+      "missing_scans": 0
+    },
+    {
+      "number": 11,
+      "id": "year-1995",
+      "name": "Wrestling in 1995",
+      "callsign": "YR-1995",
+      "category": "eras",
+      "tagline": "Every promotion, every show that aired in 1995",
+      "archived": false,
+      "now": {
+        "title": "WCW Prime",
+        "episode": "Aug 1995",
+        "start": "2026-11-17T17:02:54.863000Z",
+        "end": "2026-11-17T17:52:20.223000Z",
+        "stream_url": ""
+      },
+      "next": {
+        "title": "WCW Prime",
+        "episode": "Nov 1995",
+        "start": "2026-11-17T17:52:20.223000Z",
+        "end": "2026-11-17T18:49:59.933000Z",
+        "stream_url": ""
+      },
+      "next2": {
+        "title": "WCW Prime",
+        "episode": "Oct 1995",
+        "start": "2026-11-17T18:49:59.933000Z",
+        "end": "2026-11-17T19:31:11.053000Z",
+        "stream_url": ""
+      },
+      "guide_slots": 6,
+      "existing_embed": false,
+      "legacy_channel_number": null,
+      "tube": "Years / Mixed Wrestling Tube",
+      "embed_url": "https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=year-1995",
+      "embed_html": "<iframe src=\"https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=year-1995\" width=\"1280\" height=\"720\" frameborder=\"0\" allow=\"autoplay; fullscreen; picture-in-picture\" allowfullscreen></iframe>",
+      "player_type": "shared",
+      "availability": "available",
+      "missing_scans": 0
+    },
+    {
+      "number": 12,
+      "id": "year-1996",
+      "name": "Wrestling in 1996",
+      "callsign": "YR-1996",
+      "category": "eras",
+      "tagline": "Every promotion, every show that aired in 1996",
+      "archived": false,
+      "now": {
+        "title": "WCW Prime",
+        "episode": "Feb 1996",
+        "start": "2026-11-17T17:18:16.363000Z",
+        "end": "2026-11-17T18:24:10.713000Z",
+        "stream_url": ""
+      },
+      "next": {
+        "title": "WCW Pro Wrestling",
+        "episode": "Nov 1996",
+        "start": "2026-11-17T18:24:10.713000Z",
+        "end": "2026-11-17T19:21:50.633000Z",
+        "stream_url": ""
+      },
+      "next2": {
+        "title": "WCW Saturday Night",
+        "episode": "Jan 20, 1996",
+        "start": "2026-11-17T19:21:50.633000Z",
+        "end": "2026-11-17T21:14:33.933000Z",
+        "stream_url": ""
+      },
+      "guide_slots": 4,
+      "existing_embed": false,
+      "legacy_channel_number": null,
+      "tube": "Years / Mixed Wrestling Tube",
+      "embed_url": "https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=year-1996",
+      "embed_html": "<iframe src=\"https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=year-1996\" width=\"1280\" height=\"720\" frameborder=\"0\" allow=\"autoplay; fullscreen; picture-in-picture\" allowfullscreen></iframe>",
+      "player_type": "shared",
+      "availability": "available",
+      "missing_scans": 0
+    },
+    {
+      "number": 13,
+      "id": "year-1997",
+      "name": "Wrestling in 1997",
+      "callsign": "YR-1997",
+      "category": "eras",
+      "tagline": "Every promotion, every show that aired in 1997",
+      "archived": false,
+      "now": {
+        "title": "WCW Monday Nitro",
+        "episode": "Oct 20, 1997",
+        "start": "2026-11-17T16:45:20.758000Z",
+        "end": "2026-11-17T18:36:51.358000Z",
+        "stream_url": ""
+      },
+      "next": {
+        "title": "WCW Monday Nitro",
+        "episode": "Oct 27, 1997",
+        "start": "2026-11-17T18:36:51.358000Z",
+        "end": "2026-11-17T20:49:23.588000Z",
+        "stream_url": ""
+      },
+      "next2": {
+        "title": "WWF War",
+        "episode": "Jan 6, 1997",
+        "start": "2026-11-17T20:49:23.588000Z",
+        "end": "2026-11-17T21:37:31.188000Z",
+        "stream_url": ""
+      },
+      "guide_slots": 3,
+      "existing_embed": false,
+      "legacy_channel_number": null,
+      "tube": "Years / Mixed Wrestling Tube",
+      "embed_url": "https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=year-1997",
+      "embed_html": "<iframe src=\"https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=year-1997\" width=\"1280\" height=\"720\" frameborder=\"0\" allow=\"autoplay; fullscreen; picture-in-picture\" allowfullscreen></iframe>",
+      "player_type": "shared",
+      "availability": "available",
+      "missing_scans": 0
+    },
+    {
+      "number": 14,
+      "id": "year-1998",
+      "name": "Wrestling in 1998",
+      "callsign": "YR-1998",
+      "category": "eras",
+      "tagline": "Every promotion, every show that aired in 1998",
+      "archived": false,
+      "now": {
+        "title": "WWF War",
+        "episode": "Jul 27, 1998",
+        "start": "2026-11-17T16:46:42.882000Z",
+        "end": "2026-11-17T18:24:46.512000Z",
+        "stream_url": ""
+      },
+      "next": {
+        "title": "WWF War",
+        "episode": "Aug 3, 1998",
+        "start": "2026-11-17T18:24:46.512000Z",
+        "end": "2026-11-17T19:50:25.382000Z",
+        "stream_url": ""
+      },
+      "next2": {
+        "title": "WWF War",
+        "episode": "Aug 10, 1998",
+        "start": "2026-11-17T19:50:25.382000Z",
+        "end": "2026-11-17T21:24:51.712000Z",
+        "stream_url": ""
+      },
+      "guide_slots": 4,
+      "existing_embed": false,
+      "legacy_channel_number": null,
+      "tube": "Years / Mixed Wrestling Tube",
+      "embed_url": "https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=year-1998",
+      "embed_html": "<iframe src=\"https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=year-1998\" width=\"1280\" height=\"720\" frameborder=\"0\" allow=\"autoplay; fullscreen; picture-in-picture\" allowfullscreen></iframe>",
+      "player_type": "shared",
+      "availability": "available",
+      "missing_scans": 0
+    },
+    {
+      "number": 15,
+      "id": "year-1999",
+      "name": "Wrestling in 1999",
+      "callsign": "YR-1999",
+      "category": "eras",
+      "tagline": "Every promotion, every show that aired in 1999",
+      "archived": false,
+      "now": {
+        "title": "ECW fancams",
+        "episode": "Fan Cam - Atlanta, GA · Dec 2, 1999",
+        "start": "2026-11-17T15:18:43.050000Z",
+        "end": "2026-11-17T17:46:37.860000Z",
+        "stream_url": ""
+      },
+      "next": {
+        "title": "ECW fancams",
+        "episode": "Fan Cam - Nashville, TN · Dec 17, 1999",
+        "start": "2026-11-17T17:46:37.860000Z",
+        "end": "2026-11-17T20:04:21.320000Z",
+        "stream_url": ""
+      },
+      "next2": {
+        "title": "ECW fancams",
+        "episode": "Fan Cam - White Plains, NY · Dec 23, 1999",
+        "start": "2026-11-17T20:04:21.320000Z",
+        "end": "2026-11-17T23:16:00.100000Z",
+        "stream_url": ""
+      },
+      "guide_slots": 3,
+      "existing_embed": false,
+      "legacy_channel_number": null,
+      "tube": "Years / Mixed Wrestling Tube",
+      "embed_url": "https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=year-1999",
+      "embed_html": "<iframe src=\"https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=year-1999\" width=\"1280\" height=\"720\" frameborder=\"0\" allow=\"autoplay; fullscreen; picture-in-picture\" allowfullscreen></iframe>",
+      "player_type": "shared",
+      "availability": "available",
+      "missing_scans": 0
+    },
+    {
+      "number": 16,
+      "id": "year-2000",
+      "name": "Wrestling in 2000",
+      "callsign": "YR-2000",
+      "category": "eras",
+      "tagline": "Every promotion, every show that aired in 2000",
+      "archived": false,
+      "now": {
+        "title": "ECW fancams",
+        "episode": "Fan Cam - Toronto, Ontario · Sep 9, 2000",
+        "start": "2026-11-17T16:13:48.392000Z",
+        "end": "2026-11-17T18:33:58.612000Z",
+        "stream_url": ""
+      },
+      "next": {
+        "title": "ECW fancams",
+        "episode": "Fan Cam - Salem, NH · Sep 22, 2000",
+        "start": "2026-11-17T18:33:58.612000Z",
+        "end": "2026-11-17T20:43:03.952000Z",
+        "stream_url": ""
+      },
+      "next2": {
+        "title": "ECW fancams",
+        "episode": "Fan Cam - Milwaukee, WI · Oct 7, 2000",
+        "start": "2026-11-17T20:43:03.952000Z",
+        "end": "2026-11-17T22:51:12.232000Z",
+        "stream_url": ""
+      },
+      "guide_slots": 3,
+      "existing_embed": false,
+      "legacy_channel_number": null,
+      "tube": "Years / Mixed Wrestling Tube",
+      "embed_url": "https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=year-2000",
+      "embed_html": "<iframe src=\"https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=year-2000\" width=\"1280\" height=\"720\" frameborder=\"0\" allow=\"autoplay; fullscreen; picture-in-picture\" allowfullscreen></iframe>",
+      "player_type": "shared",
+      "availability": "available",
+      "missing_scans": 0
+    },
+    {
+      "number": 17,
+      "id": "year-2001",
+      "name": "Wrestling in 2001",
+      "callsign": "YR-2001",
+      "category": "eras",
+      "tagline": "Every promotion, every show that aired in 2001",
+      "archived": false,
+      "now": {
+        "title": "WWF War",
+        "episode": "Feb 26, 2001",
+        "start": "2026-11-17T16:31:46.510000Z",
+        "end": "2026-11-17T18:03:10.910000Z",
+        "stream_url": ""
+      },
+      "next": {
+        "title": "WWF War",
+        "episode": "Mar 5, 2001",
+        "start": "2026-11-17T18:03:10.910000Z",
+        "end": "2026-11-17T19:37:51.110000Z",
+        "stream_url": ""
+      },
+      "next2": {
+        "title": "WWF War",
+        "episode": "Mar 12, 2001",
+        "start": "2026-11-17T19:37:51.110000Z",
+        "end": "2026-11-17T21:16:08.280000Z",
+        "stream_url": ""
+      },
+      "guide_slots": 4,
+      "existing_embed": false,
+      "legacy_channel_number": null,
+      "tube": "Years / Mixed Wrestling Tube",
+      "embed_url": "https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=year-2001",
+      "embed_html": "<iframe src=\"https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=year-2001\" width=\"1280\" height=\"720\" frameborder=\"0\" allow=\"autoplay; fullscreen; picture-in-picture\" allowfullscreen></iframe>",
+      "player_type": "shared",
+      "availability": "available",
+      "missing_scans": 0
+    }
+  ],
+  "embed_ready_count": 116,
+  "legacy_embed_count": 24,
+  "new_shared_player_count": 92,
+  "player_page": "https://buttocks.github.io/suplex-baked-player/slamvision-feed.html",
+  "last_updated_utc": "2026-11-17T17:40:53.687172+00:00",
+  "tracked_total": 116,
+  "change_report": {}
+}
