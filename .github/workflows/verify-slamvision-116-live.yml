@@ -1,0 +1,78 @@
+name: Verify deployed SlamVision 116-feed embeds
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - verify/slamvision-all-116-browser
+    paths:
+      - .github/workflows/verify-slamvision-116-live.yml
+permissions:
+  contents: read
+jobs:
+  live:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - name: Check public published catalog and iframe URL
+        run: |
+          python - <<'PY'
+          import urllib.request,json
+          base='https://buttocks.github.io/suplex-baked-player/'
+          for path in ('slamvision-feed.html','slamvision-direct-fallback.js','research/slamvision-tube-catalog.html','research/slamvision-by-tube-2026-11-17.json','research/slamvision-iframes-by-tube.txt'):
+              q=urllib.request.Request(base+path+'?verify=116',headers={'User-Agent':'Mozilla/5.0'})
+              with urllib.request.urlopen(q,timeout=25) as r:
+                  blob=r.read()
+                  print('DEPLOYED',path,'HTTP',r.status,'BYTES',len(blob),flush=True)
+                  assert r.status==200 and len(blob)>1000
+                  if path.endswith('.json'):
+                      j=json.loads(blob)
+                      assert len(j['channels'])==116 and all(x.get('embed_url') for x in j['channels'])
+                  if path=='slamvision-feed.html':assert b"sourceId:channel" in blob
+          print('PASS: all public release files reachable with 116 copy-ready embeds')
+          PY
+      - name: Install real browser
+        run: |
+          pip install playwright
+          python -m playwright install --with-deps chromium
+      - name: Verify NJPW, WCW, TJPW and year feeds in deployed browser
+        run: |
+          python - <<'PY'
+          import asyncio,json
+          from playwright.async_api import async_playwright
+          async def main():
+              async with async_playwright() as p:
+                  browser=await p.chromium.launch(headless=True,args=['--autoplay-policy=no-user-gesture-required'])
+                  for feed in ('njpw-g1climax','wcw-mn','year-1985','tjpw-tv'):
+                      page=await browser.new_page()
+                      errors=[]
+                      api=[]
+                      page.on('pageerror',lambda err:errors.append(str(err)))
+                      page.on('response',lambda r:api.append((r.status,r.url)) if '/api/channels/' in r.url else None)
+                      page.on('requestfailed',lambda q:errors.append(str(q.failure)) if '/api/channels/' in q.url else None)
+                      url='https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id='+feed
+                      await page.goto(url,wait_until='domcontentloaded',timeout=25000)
+                      try:
+                          await page.wait_for_function("() => document.getElementById('guide-refresh')?.textContent?.startsWith('Live schedule')",timeout=24000)
+                      except Exception:
+                          state=await page.evaluate("""() => ({status:document.getElementById('status')?.textContent,loaded:!!window.SlamVisionDirect,refresh:document.getElementById('guide-refresh')?.textContent})""")
+                          print('BROKEN',feed,json.dumps(state),'API',api,'ERRORS',errors,flush=True)
+                          raise
+                      state=await page.evaluate("""() => ({status:document.getElementById('status')?.textContent,src:document.getElementById('video')?.currentSrc,loaded:!!window.SlamVisionDirect,guide:document.getElementById('guide-title')?.textContent})""")
+                      print('FEED',feed,json.dumps(state),'API',api,'ERRORS',errors[:2],flush=True)
+                      assert state['loaded']
+                      assert state['src'].startswith('https://archive.org/download/'),feed
+                      assert any(status==200 and '/'+feed+'/now' in path for status,path in api),feed
+                      assert not errors,errors
+                      await page.close()
+                  page=await browser.new_page()
+                  await page.goto('https://buttocks.github.io/suplex-baked-player/research/slamvision-tube-catalog.html',wait_until='domcontentloaded',timeout=25000)
+                  await page.wait_for_function("() => document.getElementById('shown').textContent.includes('116 matching feeds')",timeout=18000)
+                  await page.select_option('#tube','NJPW Tube')
+                  await page.wait_for_function("() => document.getElementById('shown').textContent.includes('8 matching feeds')",timeout=6000)
+                  assert await page.locator('.card').count()==8
+                  assert await page.get_by_role('button',name='Copy iframe').count()==8
+                  print('PASS: Catalog loads 116 records, NJPW filter shows 8 copy-ready iframes',flush=True)
+                  await browser.close()
+          asyncio.run(main())
+          PY
