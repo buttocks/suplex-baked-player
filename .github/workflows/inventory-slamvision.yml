@@ -1,0 +1,52 @@
+name: Inventory current SlamVision channel lineup
+on:
+  workflow_dispatch:
+  push:
+    branches: [investigate/slamvision-related-feed-discovery]
+    paths: [.github/workflows/inventory-slamvision.yml]
+permissions:
+  contents: read
+jobs:
+  inventory:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Retrieve live lineup and four-hour guide
+        run: |
+          python - <<'PY'
+          import urllib.request,json,datetime
+          from collections import Counter
+          BASE='https://ring-channel-tv.emergent.host/api/'
+          def read(endpoint):
+              q=urllib.request.Request(BASE+endpoint,headers={'User-Agent':'Mozilla/5.0','Accept':'application/json'})
+              with urllib.request.urlopen(q,timeout=45) as r:return json.load(r)
+          channels=read('channels')
+          guide=read('guide?hours=4')
+          rows={}
+          for r in guide.get('rows',[]):
+              c=r.get('channel') or {}
+              if c.get('id'):rows[c['id']]=r.get('slots') or []
+          def parse(t):
+              try:return datetime.datetime.fromisoformat(t.replace('Z','+00:00'))
+              except:return None
+          now=datetime.datetime.now(datetime.timezone.utc)
+          inventory=[]
+          for c in sorted(channels,key=lambda c:(c.get('number') or 9999,c.get('name') or '')):
+              slots=rows.get(c.get('id'),[])
+              showing=next((s for s in slots if parse(s.get('start','')) and parse(s.get('end','')) and parse(s['start'])<=now<parse(s['end'])),None)
+              upcoming=[s for s in slots if parse(s.get('start','')) and parse(s['start'])>now]
+              upcoming.sort(key=lambda s:s['start'])
+              def summary(s):
+                  if not s:return None
+                  p=s.get('program') or {}
+                  return {'title':p.get('title') or '', 'episode':p.get('episode') or '', 'start':s.get('start'), 'end':s.get('end'), 'stream_url':p.get('stream_url') or ''}
+              inventory.append({
+                  'number':c.get('number'),'id':c.get('id'),'name':c.get('name'),
+                  'callsign':c.get('callsign'),'category':c.get('category'),
+                  'tagline':c.get('tagline'),'archived':c.get('archived'),
+                  'now':summary(showing),'next':summary(upcoming[0]) if upcoming else None,
+                  'next2':summary(upcoming[1]) if len(upcoming)>1 else None,
+                  'guide_slots':len(slots)
+              })
+          print('INVENTORY_META='+json.dumps({'sampled_utc':now.isoformat(),'channels':len(inventory),'guide_rows':len(rows),'categories':dict(Counter(c.get('category') for c in channels))},separators=(',',':')),flush=True)
+          print('INVENTORY_JSON='+json.dumps(inventory,separators=(',',':'),ensure_ascii=False),flush=True)
+          PY
