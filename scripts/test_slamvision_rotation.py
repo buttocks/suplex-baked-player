@@ -50,7 +50,12 @@ def check():
         mod.read=original_read
     dup=mod.build_index([{'id':'njpw','number':1},{'id':'njpw','number':99}])
     assert 'njpw' not in dup,'Duplicate stable ID must be rejected'
-    assert len(mod.GROUPS)==14 and sum(map(len,mod.GROUPS.values()))==35
+    assert len(mod.GROUPS)==14 and sum(map(len,mod.GROUPS.values()))==42
+    assert mod.GROUPS['njpw']=={
+        '01':'njpw','12':'njpw-tv','64':'njpw-destructi','65':'njpw-g1climax',
+        '66':'njpw-starrcade','67':'njpw-wp','68':'njpw-wk',
+        '69':'njpw-wrestling','31':'ain'
+    }
     print('PASS: rotated dial numbers preserve old embeds; wrong, missing, and duplicate IDs rejected')
 
 if __name__=='__main__':check()
