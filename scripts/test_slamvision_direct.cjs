@@ -42,7 +42,7 @@ async function trial(page, live, expectApi) {
  assert.equal(x.result.channels["52"].current.stream_url,"https://archive.org/download/example/show.mp4");
  x=await trial(cached(60000),upstream(),0);
  assert.equal(x.result.channels["52"].current.id,"saved","Fresh Pages data should take priority");
- x=await trial(cached(12*3600000),upstream("wrong-feed"),1).then(()=>null,err=>err);
+ x=await trial(cached(12*3600000,-3600000,-120000),upstream("wrong-feed"),1).then(()=>null,err=>err);
  assert.ok(x && /Unexpected channel/.test(x.message), "Wrong upstream identity must fail");
  x=await trial(cached(12*3600000,-60000,3600000),new Error("network offline"),1);
  assert.equal(x.result.channels["52"].current.id,"saved","Current saved broadcast should survive API outage");
