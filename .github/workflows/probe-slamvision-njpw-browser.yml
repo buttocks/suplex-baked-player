@@ -1,0 +1,65 @@
+name: Diagnose SlamVision NJPW browser loading
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - diagnose/slamvision-njpw-browser
+    paths:
+      - .github/workflows/probe-slamvision-njpw-browser.yml
+permissions:
+  contents: read
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Check NJPW upstream current program and CORS headers
+        run: |
+          python - <<'PY'
+          import urllib.request, json, time
+          for id in ('njpw','wwf-90-00','njpw-tv'):
+              req=urllib.request.Request('https://ring-channel-tv.emergent.host/api/channels/'+id+'/now',
+                 headers={'Origin':'https://buttocks.github.io','Accept':'application/json','User-Agent':'Mozilla/5.0'})
+              try:
+                  with urllib.request.urlopen(req, timeout=18) as response:
+                      j=json.load(response)
+                      curr=j.get('current') or {}
+                      p=curr.get('program') or {}
+                      print(json.dumps({'id':id,'status':response.status,'origin':response.headers.get('Access-Control-Allow-Origin'),
+                          'real_id':(j.get('channel') or {}).get('id'),'dial':(j.get('channel') or {}).get('number'),
+                          'title':p.get('title'),'url':p.get('stream_url'),'start':curr.get('start'),
+                          'end':curr.get('end'),'now':time.time()},ensure_ascii=False),flush=True)
+              except Exception as e: print('ERROR',id,type(e).__name__,str(e),flush=True)
+          PY
+      - name: Install browser for real GitHub Pages test
+        run: |
+          pip install playwright
+          python -m playwright install --with-deps chromium
+      - name: Test NJPW and WWF page startup in browser
+        run: |
+          python - <<'PY'
+          import asyncio,json
+          from playwright.async_api import async_playwright
+          async def main():
+              async with async_playwright() as p:
+                  browser=await p.chromium.launch(headless=True,args=['--autoplay-policy=no-user-gesture-required'])
+                  for channel,url in [('njpw01','https://buttocks.github.io/suplex-baked-player/njpw-slamvision.html?channel=01'),
+                                       ('wwf52','https://buttocks.github.io/suplex-baked-player/wwf-90-00-slamvision.html'),
+                                       ('njpw12','https://buttocks.github.io/suplex-baked-player/njpw-slamvision.html?channel=12')]:
+                      page=await browser.new_page()
+                      page.on('pageerror',lambda err:print('PAGEERROR',channel,str(err),flush=True))
+                      page.on('console',lambda m: print('CONSOLE',channel,m.type,m.text[:300],flush=True) if m.type=='error' else None)
+                      page.on('requestfailed',lambda req:print('REQUESTFAILED',channel,req.url,req.failure,flush=True))
+                      page.on('response',lambda r:print('RESPONSE',channel,r.status,r.url,flush=True) if 'ring-channel-tv.emergent.host/api/' in r.url or r.url.endswith('/slamvision-direct-fallback.js') else None)
+                      await page.goto(url,wait_until='domcontentloaded',timeout=25000)
+                      await page.wait_for_timeout(11000)
+                      state=await page.evaluate("""() => ({status:document.getElementById('status')?.textContent,helper:!!window.SlamVisionDirect,guide:document.getElementById('guide-refresh')?.textContent,src:document.getElementById('video')?.currentSrc,videoError:document.getElementById('video')?.error?.message,origin:location.origin,ready:document.readyState})""")
+                      print('STATE',channel,json.dumps(state),flush=True)
+                      await page.close()
+                  await browser.close()
+          asyncio.run(main())
+          PY
