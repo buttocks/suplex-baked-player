@@ -15,7 +15,9 @@ BASE = "https://ring-channel-tv.emergent.host/api/"
 TIMEOUT = 15
 ATTEMPTS = 3
 GROUPS = {
-    "njpw": {"01": "njpw", "12": "njpw-tv"},
+    "njpw": {"01": "njpw", "12": "njpw-tv",
+             "64": "njpw-destructi", "65": "njpw-g1climax", "66": "njpw-starrcade",
+             "67": "njpw-wp", "68": "njpw-wk", "69": "njpw-wrestling", "31": "ain"},
     "ajpw": {"05": "ajpw"},
     "joshi": {"11": "joshi"},
     "lucha": {"16": "100-lucha", "54": "lu-tv", "60": "cmll", "62": "aaa", "93": "universal-lucha-libre"},
