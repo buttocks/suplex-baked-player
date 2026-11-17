@@ -1,0 +1,384 @@
+SlamVision Baked.live iframe codes — 116 feeds, categorized by tube (2026-11-17)
+Original 24 URLs preserved. New 92 embed URLs use the stable feed IDs.
+
+=== NJPW Tube (8) ===
+New Japan Pro-Wrestling (njpw)
+<iframe src="https://buttocks.github.io/suplex-baked-player/njpw-slamvision.html?channel=01" width="1280" height="720" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+
+NJPW Destruction (njpw-destructi)
+<iframe src="https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=njpw-destructi" width="1280" height="720" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+
+NJPW G1 Climax (njpw-g1climax)
+<iframe src="https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=njpw-g1climax" width="1280" height="720" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+
+NJPW Starrcade in Tokyo Dome (njpw-starrcade)
+<iframe src="https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=njpw-starrcade" width="1280" height="720" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+
+NJPW World Pro-Wrestling (njpw-wp)
+<iframe src="https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=njpw-wp" width="1280" height="720" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+
+NJPW Wrestle Kingdom (njpw-wk)
+<iframe src="https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=njpw-wk" width="1280" height="720" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+
+NJPW Wrestling Dontaku (njpw-wrestling)
+<iframe src="https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=njpw-wrestling" width="1280" height="720" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+
+Antonio Inoki Network (ain)
+<iframe src="https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=ain" width="1280" height="720" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+
+
+=== AJPW Tube (10) ===
+All Japan Pro-Wrestling (ajpw)
+<iframe src="https://buttocks.github.io/suplex-baked-player/ajpw-slamvision.html" width="1280" height="720" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+
+AJPW Champion Carnival (ajpw-carnival)
+<iframe src="https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=ajpw-carnival" width="1280" height="720" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+
+AJPW Dynamite Series (ajpw-dynamite)
+<iframe src="https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=ajpw-dynamite" width="1280" height="720" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+
+AJPW Excite Series (ajpw-excite)
+<iframe src="https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=ajpw-excite" width="1280" height="720" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+
+AJPW New Year Giant Series (ajpw-series)
+<iframe src="https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=ajpw-series" width="1280" height="720" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+
+AJPW Real World Tag League (ajpw-tagleague)
+<iframe src="https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=ajpw-tagleague" width="1280" height="720" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+
+AJPW Summer Action Series (ajpw-summer)
+<iframe src="https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=ajpw-summer" width="1280" height="720" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+
+Stan Hansen (sh-tv)
+<iframe src="https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=sh-tv" width="1280" height="720" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+
+The Baba Network (tbn)
+<iframe src="https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=tbn" width="1280" height="720" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+
+The Three Pillars (krt)
+<iframe src="https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=krt" width="1280" height="720" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+
+
+=== Lucha Tube (3) ===
+Lucha Libre (100-lucha)
+<iframe src="https://buttocks.github.io/suplex-baked-player/lucha-slamvision.html" width="1280" height="720" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+
+Lucha Underground (lu-tv)
+<iframe src="https://buttocks.github.io/suplex-baked-player/lucha-underground-slamvision.html" width="1280" height="720" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+
+Rey Mysterio Greatest Hits (619)
+<iframe src="https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=619" width="1280" height="720" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+
+
+=== Joshi Tube (5) ===
+Joshi Puroresu (joshi)
+<iframe src="https://buttocks.github.io/suplex-baked-player/joshi-slamvision.html" width="1280" height="720" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+
+Marigold (marigold)
+<iframe src="https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=marigold" width="1280" height="720" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+
+Stardom (star)
+<iframe src="https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=star" width="1280" height="720" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+
+TJPW (tjpw-tv)
+<iframe src="https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=tjpw-tv" width="1280" height="720" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+
+Io Shirai (io)
+<iframe src="https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=io" width="1280" height="720" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+
+
+=== WWF / WWE Tube (17) ===
+Wwe (wwe)
+<iframe src="https://buttocks.github.io/suplex-baked-player/wwe-slamvision.html" width="1280" height="720" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+
+wwf (wwf)
+<iframe src="https://buttocks.github.io/suplex-baked-player/wwf-slamvision.html" width="1280" height="720" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+
+WWWF (wwwf)
+<iframe src="https://buttocks.github.io/suplex-baked-player/wwwf-slamvision.html" width="1280" height="720" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+
+WWF 1990-2000 (wwf-90-00)
+<iframe src="https://buttocks.github.io/suplex-baked-player/wwf-90-00-slamvision.html" width="1280" height="720" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+
+WWF All American Wrestling (wwf-wrestling)
+<iframe src="https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=wwf-wrestling" width="1280" height="720" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+
+WWF Prime Time Wrestling (wwf-ptw)
+<iframe src="https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=wwf-ptw" width="1280" height="720" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+
+WWF Sunday Night Heat (wwf-heat)
+<iframe src="https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=wwf-heat" width="1280" height="720" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+
+WWF Superstars of Wrestling (wwf-sow)
+<iframe src="https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=wwf-sow" width="1280" height="720" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+
+WWF WrestleMania (wwf-mania)
+<iframe src="https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=wwf-mania" width="1280" height="720" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+
+WWF Wrestling Challenge (wwf-challenge)
+<iframe src="https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=wwf-challenge" width="1280" height="720" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+
+Wrestlemania (wm)
+<iframe src="https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=wm" width="1280" height="720" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+
+John Cena (cena)
+<iframe src="https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=cena" width="1280" height="720" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+
+The Hulk Hogan Network (hhn)
+<iframe src="https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=hhn" width="1280" height="720" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+
+The Hart Family (hart)
+<iframe src="https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=hart" width="1280" height="720" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+
+The OTC (otc)
+<iframe src="https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=otc" width="1280" height="720" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+
+Andre The Giant (atg)
+<iframe src="https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=atg" width="1280" height="720" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+
+Attitude PPV (appv)
+<iframe src="https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=appv" width="1280" height="720" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+
+
+=== WCW Tube (14) ===
+World Championship Wrestling (wcw)
+<iframe src="https://buttocks.github.io/suplex-baked-player/wcw-slamvision.html" width="1280" height="720" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+
+WCW Clash of the Champions (wcw-cotc)
+<iframe src="https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=wcw-cotc" width="1280" height="720" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+
+WCW Fall Brawl (wcw-fallbrawl)
+<iframe src="https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=wcw-fallbrawl" width="1280" height="720" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+
+WCW Great American Bash (wcw-bash)
+<iframe src="https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=wcw-bash" width="1280" height="720" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+
+WCW Halloween Havoc (wcw-halloween)
+<iframe src="https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=wcw-halloween" width="1280" height="720" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+
+WCW Main Event (wcw-mainevent)
+<iframe src="https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=wcw-mainevent" width="1280" height="720" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+
+WCW Monday Nitro (wcw-mn)
+<iframe src="https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=wcw-mn" width="1280" height="720" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+
+WCW Power Hour (wcw-powerhour)
+<iframe src="https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=wcw-powerhour" width="1280" height="720" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+
+WCW Prime (wcw-prime)
+<iframe src="https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=wcw-prime" width="1280" height="720" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+
+WCW Pro Wrestling (wcw-pw)
+<iframe src="https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=wcw-pw" width="1280" height="720" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+
+WCW Saturday Night (wcw-sn)
+<iframe src="https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=wcw-sn" width="1280" height="720" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+
+WCW Starrcade in Tokyo Dome (wcw-starrcade)
+<iframe src="https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=wcw-starrcade" width="1280" height="720" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+
+WCW SuperBrawl (wcw-superbrawl)
+<iframe src="https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=wcw-superbrawl" width="1280" height="720" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+
+WCW Worldwide (wcw-worldwide)
+<iframe src="https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=wcw-worldwide" width="1280" height="720" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+
+
+=== ECW Tube (2) ===
+Extreme Championship Wrestling (ecw-tv)
+<iframe src="https://buttocks.github.io/suplex-baked-player/ecw-slamvision.html" width="1280" height="720" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+
+ECW Hardcore TV (ecw-hardcoretv)
+<iframe src="https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=ecw-hardcoretv" width="1280" height="720" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+
+
+=== AEW Tube (4) ===
+All Elite Wrestling (aew-tv)
+<iframe src="https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=aew-tv" width="1280" height="720" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+
+ALL ELITE WRESTLING DYNAMITE (aew2)
+<iframe src="https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=aew2" width="1280" height="720" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+
+Best of All In (aew-ai)
+<iframe src="https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=aew-ai" width="1280" height="720" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+
+Kenny Omega (omega-24-7)
+<iframe src="https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=omega-24-7" width="1280" height="720" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+
+
+=== ROH Tube (3) ===
+Classic ROH (croh)
+<iframe src="https://buttocks.github.io/suplex-baked-player/classic-roh-slamvision.html" width="1280" height="720" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+
+Ring of honor (roh-tv)
+<iframe src="https://buttocks.github.io/suplex-baked-player/roh-slamvision.html" width="1280" height="720" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+
+ROH Wrestling (roh-wrestling)
+<iframe src="https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=roh-wrestling" width="1280" height="720" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+
+
+=== TNA / Impact Tube (2) ===
+Impact Wrestling (iw)
+<iframe src="https://buttocks.github.io/suplex-baked-player/impact-slamvision.html" width="1280" height="720" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+
+Total Nonstop Action Wrestling (tna)
+<iframe src="https://buttocks.github.io/suplex-baked-player/tna-slamvision.html" width="1280" height="720" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+
+
+=== NOAH Tube (1) ===
+NOAH-TV (noah-tv)
+<iframe src="https://buttocks.github.io/suplex-baked-player/noah-slamvision.html" width="1280" height="720" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+
+
+=== DDT Tube (1) ===
+DDT Pro-Wrestling (ddt-pro)
+<iframe src="https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=ddt-pro" width="1280" height="720" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+
+
+=== Other Japanese Wrestling Tube (9) ===
+Big Japan Pro Wrestling (bjw)
+<iframe src="https://buttocks.github.io/suplex-baked-player/bjw-slamvision.html" width="1280" height="720" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+
+Big Japan Pro Wrestling (big-japan)
+<iframe src="https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=big-japan" width="1280" height="720" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+
+BattlArts (battlarts)
+<iframe src="https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=battlarts" width="1280" height="720" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+
+Kaientai Dojo (kaientai-dojo)
+<iframe src="https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=kaientai-dojo" width="1280" height="720" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+
+Michinoku Pro Wrestling (michinoku-pro)
+<iframe src="https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=michinoku-pro" width="1280" height="720" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+
+Osaka Pro Wrestling (osaka-pro)
+<iframe src="https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=osaka-pro" width="1280" height="720" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+
+Dragongate (dgtv)
+<iframe src="https://buttocks.github.io/suplex-baked-player/dragongate-slamvision.html" width="1280" height="720" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+
+The Great Muta (muta)
+<iframe src="https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=muta" width="1280" height="720" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+
+Frontier Martial-Arts Wrestling (fmw)
+<iframe src="https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=fmw" width="1280" height="720" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+
+
+=== Indies / Hardcore Tube (11) ===
+Combat Zone Wrestling (czw-tv)
+<iframe src="https://buttocks.github.io/suplex-baked-player/czw-slamvision.html" width="1280" height="720" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+
+Deathmatch (death)
+<iframe src="https://buttocks.github.io/suplex-baked-player/deathmatch-slamvision.html" width="1280" height="720" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+
+Game Changer Wrestling (gcw-tv)
+<iframe src="https://buttocks.github.io/suplex-baked-player/gcw-slamvision.html" width="1280" height="720" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+
+Juggalo Championship Wrestling (jcw)
+<iframe src="https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=jcw" width="1280" height="720" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+
+Major League Wrestling (mlw)
+<iframe src="https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=mlw" width="1280" height="720" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+
+Maple leaf pro (mlp)
+<iframe src="https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=mlp" width="1280" height="720" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+
+Pro Wrestling Guerrilla (pwg)
+<iframe src="https://buttocks.github.io/suplex-baked-player/pwg-slamvision.html" width="1280" height="720" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+
+What Culture Pro Wrestling (wcpw)
+<iframe src="https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=wcpw" width="1280" height="720" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+
+Wrestling Society X (wsx)
+<iframe src="https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=wsx" width="1280" height="720" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+
+Chikara (chi)
+<iframe src="https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=chi" width="1280" height="720" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+
+EuroMat (euromat)
+<iframe src="https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=euromat" width="1280" height="720" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+
+
+=== Shoot / MMA Tube (3) ===
+MMA (mma-tv)
+<iframe src="https://buttocks.github.io/suplex-baked-player/mma-slamvision.html" width="1280" height="720" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+
+The Shoot Network (tsn)
+<iframe src="https://buttocks.github.io/suplex-baked-player/shoot-network-slamvision.html" width="1280" height="720" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+
+Bloodsport Network (bsn)
+<iframe src="https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=bsn" width="1280" height="720" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+
+
+=== Territories / Classic US Tube (3) ===
+American Wrestling Association (awa)
+<iframe src="https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=awa" width="1280" height="720" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+
+Memphis Wrestling (memphis)
+<iframe src="https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=memphis" width="1280" height="720" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+
+The Territories (territories)
+<iframe src="https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=territories" width="1280" height="720" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+
+
+=== Years / Mixed Wrestling Tube (20) ===
+Monday night wars (mnw)
+<iframe src="https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=mnw" width="1280" height="720" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+
+Random wrestling (rndm)
+<iframe src="https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=rndm" width="1280" height="720" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+
+Tag Team (tag)
+<iframe src="https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=tag" width="1280" height="720" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+
+Wrestling in 1985 (year-1985)
+<iframe src="https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=year-1985" width="1280" height="720" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+
+Wrestling in 1986 (year-1986)
+<iframe src="https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=year-1986" width="1280" height="720" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+
+Wrestling in 1987 (year-1987)
+<iframe src="https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=year-1987" width="1280" height="720" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+
+Wrestling in 1988 (year-1988)
+<iframe src="https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=year-1988" width="1280" height="720" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+
+Wrestling in 1989 (year-1989)
+<iframe src="https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=year-1989" width="1280" height="720" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+
+Wrestling in 1990 (year-1990)
+<iframe src="https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=year-1990" width="1280" height="720" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+
+Wrestling in 1991 (year-1991)
+<iframe src="https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=year-1991" width="1280" height="720" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+
+Wrestling in 1992 (year-1992)
+<iframe src="https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=year-1992" width="1280" height="720" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+
+Wrestling in 1993 (year-1993)
+<iframe src="https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=year-1993" width="1280" height="720" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+
+Wrestling in 1994 (year-1994)
+<iframe src="https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=year-1994" width="1280" height="720" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+
+Wrestling in 1995 (year-1995)
+<iframe src="https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=year-1995" width="1280" height="720" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+
+Wrestling in 1996 (year-1996)
+<iframe src="https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=year-1996" width="1280" height="720" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+
+Wrestling in 1997 (year-1997)
+<iframe src="https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=year-1997" width="1280" height="720" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+
+Wrestling in 1998 (year-1998)
+<iframe src="https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=year-1998" width="1280" height="720" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+
+Wrestling in 1999 (year-1999)
+<iframe src="https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=year-1999" width="1280" height="720" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+
+Wrestling in 2000 (year-2000)
+<iframe src="https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=year-2000" width="1280" height="720" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+
+Wrestling in 2001 (year-2001)
+<iframe src="https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=year-2001" width="1280" height="720" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+
