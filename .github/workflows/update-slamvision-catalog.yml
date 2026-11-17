@@ -51,9 +51,8 @@ jobs:
             git fetch --no-tags origin refs/heads/main
             git reset --hard FETCH_HEAD
             python scripts/update_slamvision_catalog.py --scan
-            git add -A -- research/slamvision-current.json research/slamvision-current.csv \
-              research/slamvision-current.md research/slamvision-current-iframes.txt \
-              research/slamvision-change-log.json research/slamvision-snapshots
+            # The research directory always exists; snapshots are created only on changes.
+            git add -A -- research/
             if git diff --cached --quiet; then
               echo "No lineup changes: nothing to commit or deploy."
               exit 0
