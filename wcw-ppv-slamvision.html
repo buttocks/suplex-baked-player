@@ -34,6 +34,7 @@ button:hover{background:#252c3c}
 <div id="status">Tuning WCW PPVs…</div>
 <div id="controls"><div><button id="guide-toggle" type="button" aria-expanded="false">☷ TV Guide</button></div><div><button id="sound-toggle" type="button">🔇 Unmute</button></div></div>
 <aside id="guide" hidden aria-label="Live WCW PPVs program schedule"><header><strong id="guide-title">WCW PPVs SCHEDULE</strong><div><small id="guide-refresh">Loading…</small></div></header><ol id="guide-rows"></ol><footer>Schedule: SlamVision · Videos: Internet Archive · Times shown locally</footer></aside>
+<script src="./slamvision-direct-fallback.js"></script>
 <script>
 (()=>{
 'use strict';
@@ -104,10 +105,12 @@ function choose(){
 }
 async function refreshData(){
  try{
-  // Same-origin cached API data avoids cross-site CORS restrictions.
-  const response=await fetch('./slamvision/wcw-live.json?t='+Date.now(),{cache:'no-store'});
-  if(!response.ok)throw Error('Schedule returned '+response.status);
-  const next=await response.json();
+  // Use cached Pages schedule while fresh; otherwise query the feed by stable ID.
+  const next=await window.SlamVisionDirect.resolve({
+    cachedUrl:'./slamvision/wcw-live.json?t='+Date.now(),
+    channel:channel,
+    sourceId:'wcw-ppv'
+  });
   if(!next.channels?.[channel])throw Error('No WCW PPVs channel '+channel);
   schedule=next;renderGuide();choose();
  }catch(e){if(!schedule)setStatus('Unable to reach WCW PPVs schedule.\nRetrying automatically…')}

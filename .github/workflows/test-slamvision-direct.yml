@@ -1,0 +1,27 @@
+name: Validate SlamVision browser fallback
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+      - fix/slamvision-direct-browser-fallback
+    paths:
+      - .github/workflows/test-slamvision-direct.yml
+      - slamvision-direct-fallback.js
+      - scripts/patch_slamvision_pages.py
+      - scripts/test_slamvision_direct.cjs
+      - '*-slamvision.html'
+permissions:
+  contents: read
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Validate all 34 original embed pages and scripts
+        run: python scripts/patch_slamvision_pages.py --check
+      - name: Test six schedule fallback cases offline
+        run: node scripts/test_slamvision_direct.cjs
