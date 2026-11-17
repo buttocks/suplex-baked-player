@@ -1,0 +1,41 @@
+name: Probe SlamVision browser direct API access
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - investigate/slamvision-direct-api-fallback
+    paths:
+      - .github/workflows/probe-slamvision-cors.yml
+permissions:
+  contents: read
+jobs:
+  test-cors:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Probe upstream API CORS and media source headers
+        run: |
+          python - <<'PY'
+          import urllib.request, urllib.error, json
+          targets = [
+              'https://ring-channel-tv.emergent.host/api/channels',
+              'https://ring-channel-tv.emergent.host/api/guide?hours=4',
+              'https://ring-channel-tv.emergent.host/api/channels/wwf-90-00/now',
+              'https://buttocks.github.io/suplex-baked-player/slamvision/wwf-live.json'
+          ]
+          for url in targets:
+              print('TARGET',url,flush=True)
+              for method in ('GET','OPTIONS'):
+                  headers={'Origin':'https://buttocks.github.io','User-Agent':'Mozilla/5.0','Accept':'application/json'}
+                  if method=='OPTIONS':
+                      headers.update({'Access-Control-Request-Method':'GET','Access-Control-Request-Headers':'content-type'})
+                  try:
+                      req=urllib.request.Request(url,method=method,headers=headers)
+                      with urllib.request.urlopen(req,timeout=18) as r:
+                          print('METHOD',method,'STATUS',r.status,'ACAO',repr(r.headers.get('Access-Control-Allow-Origin')),'ACAM',repr(r.headers.get('Access-Control-Allow-Methods')),'CACHE',repr(r.headers.get('Cache-Control')),'MIME',repr(r.headers.get('Content-Type')))
+                          if method=='GET':
+                              payload=r.read(4096)
+                              print('BYTES',len(payload),'JSON_START',payload[:280])
+                  except Exception as e:
+                      print('METHOD',method,'ERROR',repr(e),flush=True)
+          PY
