@@ -55,7 +55,8 @@
       "legacy_channel_number": "01",
       "tube": "NJPW Tube",
       "embed_url": "https://buttocks.github.io/suplex-baked-player/njpw-slamvision.html?channel=01",
-      "embed_html": "<iframe src=\"https://buttocks.github.io/suplex-baked-player/njpw-slamvision.html?channel=01\" width=\"1280\" height=\"720\" frameborder=\"0\" allow=\"autoplay; fullscreen; picture-in-picture\" allowfullscreen></iframe>"
+      "embed_html": "<iframe src=\"https://buttocks.github.io/suplex-baked-player/njpw-slamvision.html?channel=01\" width=\"1280\" height=\"720\" frameborder=\"0\" allow=\"autoplay; fullscreen; picture-in-picture\" allowfullscreen></iframe>",
+      "player_type": "legacy"
     },
     {
       "number": 64,
@@ -84,8 +85,9 @@
       "existing_embed": false,
       "legacy_channel_number": null,
       "tube": "NJPW Tube",
-      "embed_url": null,
-      "embed_html": null
+      "embed_url": "https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=njpw-destructi",
+      "embed_html": "<iframe src=\"https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=njpw-destructi\" width=\"1280\" height=\"720\" frameborder=\"0\" allow=\"autoplay; fullscreen; picture-in-picture\" allowfullscreen></iframe>",
+      "player_type": "shared"
     },
     {
       "number": 65,
@@ -114,8 +116,9 @@
       "existing_embed": false,
       "legacy_channel_number": null,
       "tube": "NJPW Tube",
-      "embed_url": null,
-      "embed_html": null
+      "embed_url": "https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=njpw-g1climax",
+      "embed_html": "<iframe src=\"https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=njpw-g1climax\" width=\"1280\" height=\"720\" frameborder=\"0\" allow=\"autoplay; fullscreen; picture-in-picture\" allowfullscreen></iframe>",
+      "player_type": "shared"
     },
     {
       "number": 66,
@@ -150,8 +153,9 @@
       "existing_embed": false,
       "legacy_channel_number": null,
       "tube": "NJPW Tube",
-      "embed_url": null,
-      "embed_html": null
+      "embed_url": "https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=njpw-starrcade",
+      "embed_html": "<iframe src=\"https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=njpw-starrcade\" width=\"1280\" height=\"720\" frameborder=\"0\" allow=\"autoplay; fullscreen; picture-in-picture\" allowfullscreen></iframe>",
+      "player_type": "shared"
     },
     {
       "number": 67,
@@ -186,8 +190,9 @@
       "existing_embed": false,
       "legacy_channel_number": null,
       "tube": "NJPW Tube",
-      "embed_url": null,
-      "embed_html": null
+      "embed_url": "https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=njpw-wp",
+      "embed_html": "<iframe src=\"https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=njpw-wp\" width=\"1280\" height=\"720\" frameborder=\"0\" allow=\"autoplay; fullscreen; picture-in-picture\" allowfullscreen></iframe>",
+      "player_type": "shared"
     },
     {
       "number": 68,
@@ -210,8 +215,9 @@
       "existing_embed": false,
       "legacy_channel_number": null,
       "tube": "NJPW Tube",
-      "embed_url": null,
-      "embed_html": null
+      "embed_url": "https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=njpw-wk",
+      "embed_html": "<iframe src=\"https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=njpw-wk\" width=\"1280\" height=\"720\" frameborder=\"0\" allow=\"autoplay; fullscreen; picture-in-picture\" allowfullscreen></iframe>",
+      "player_type": "shared"
     },
     {
       "number": 69,
@@ -246,8 +252,9 @@
       "existing_embed": false,
       "legacy_channel_number": null,
       "tube": "NJPW Tube",
-      "embed_url": null,
-      "embed_html": null
+      "embed_url": "https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=njpw-wrestling",
+      "embed_html": "<iframe src=\"https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=njpw-wrestling\" width=\"1280\" height=\"720\" frameborder=\"0\" allow=\"autoplay; fullscreen; picture-in-picture\" allowfullscreen></iframe>",
+      "player_type": "shared"
     },
     {
       "number": 31,
@@ -282,8 +289,9 @@
       "existing_embed": false,
       "legacy_channel_number": null,
       "tube": "NJPW Tube",
-      "embed_url": null,
-      "embed_html": null
+      "embed_url": "https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=ain",
+      "embed_html": "<iframe src=\"https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=ain\" width=\"1280\" height=\"720\" frameborder=\"0\" allow=\"autoplay; fullscreen; picture-in-picture\" allowfullscreen></iframe>",
+      "player_type": "shared"
     },
     {
       "number": 20,
@@ -319,7 +327,8 @@
       "legacy_channel_number": "05",
       "tube": "AJPW Tube",
       "embed_url": "https://buttocks.github.io/suplex-baked-player/ajpw-slamvision.html",
-      "embed_html": "<iframe src=\"https://buttocks.github.io/suplex-baked-player/ajpw-slamvision.html\" width=\"1280\" height=\"720\" frameborder=\"0\" allow=\"autoplay; fullscreen; picture-in-picture\" allowfullscreen></iframe>"
+      "embed_html": "<iframe src=\"https://buttocks.github.io/suplex-baked-player/ajpw-slamvision.html\" width=\"1280\" height=\"720\" frameborder=\"0\" allow=\"autoplay; fullscreen; picture-in-picture\" allowfullscreen></iframe>",
+      "player_type": "legacy"
     },
     {
       "number": 21,
@@ -354,8 +363,9 @@
       "existing_embed": false,
       "legacy_channel_number": null,
       "tube": "AJPW Tube",
-      "embed_url": null,
-      "embed_html": null
+      "embed_url": "https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=ajpw-carnival",
+      "embed_html": "<iframe src=\"https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=ajpw-carnival\" width=\"1280\" height=\"720\" frameborder=\"0\" allow=\"autoplay; fullscreen; picture-in-picture\" allowfullscreen></iframe>",
+      "player_type": "shared"
     },
     {
       "number": 22,
@@ -390,8 +400,9 @@
       "existing_embed": false,
       "legacy_channel_number": null,
       "tube": "AJPW Tube",
-      "embed_url": null,
-      "embed_html": null
+      "embed_url": "https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=ajpw-dynamite",
+      "embed_html": "<iframe src=\"https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=ajpw-dynamite\" width=\"1280\" height=\"720\" frameborder=\"0\" allow=\"autoplay; fullscreen; picture-in-picture\" allowfullscreen></iframe>",
+      "player_type": "shared"
     },
     {
       "number": 23,
@@ -426,8 +437,9 @@
       "existing_embed": false,
       "legacy_channel_number": null,
       "tube": "AJPW Tube",
-      "embed_url": null,
-      "embed_html": null
+      "embed_url": "https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=ajpw-excite",
+      "embed_html": "<iframe src=\"https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=ajpw-excite\" width=\"1280\" height=\"720\" frameborder=\"0\" allow=\"autoplay; fullscreen; picture-in-picture\" allowfullscreen></iframe>",
+      "player_type": "shared"
     },
     {
       "number": 24,
@@ -456,8 +468,9 @@
       "existing_embed": false,
       "legacy_channel_number": null,
       "tube": "AJPW Tube",
-      "embed_url": null,
-      "embed_html": null
+      "embed_url": "https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=ajpw-series",
+      "embed_html": "<iframe src=\"https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=ajpw-series\" width=\"1280\" height=\"720\" frameborder=\"0\" allow=\"autoplay; fullscreen; picture-in-picture\" allowfullscreen></iframe>",
+      "player_type": "shared"
     },
     {
       "number": 25,
@@ -486,8 +499,9 @@
       "existing_embed": false,
       "legacy_channel_number": null,
       "tube": "AJPW Tube",
-      "embed_url": null,
-      "embed_html": null
+      "embed_url": "https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=ajpw-tagleague",
+      "embed_html": "<iframe src=\"https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=ajpw-tagleague\" width=\"1280\" height=\"720\" frameborder=\"0\" allow=\"autoplay; fullscreen; picture-in-picture\" allowfullscreen></iframe>",
+      "player_type": "shared"
     },
     {
       "number": 26,
@@ -516,8 +530,9 @@
       "existing_embed": false,
       "legacy_channel_number": null,
       "tube": "AJPW Tube",
-      "embed_url": null,
-      "embed_html": null
+      "embed_url": "https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=ajpw-summer",
+      "embed_html": "<iframe src=\"https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=ajpw-summer\" width=\"1280\" height=\"720\" frameborder=\"0\" allow=\"autoplay; fullscreen; picture-in-picture\" allowfullscreen></iframe>",
+      "player_type": "shared"
     },
     {
       "number": 78,
@@ -552,8 +567,9 @@
       "existing_embed": false,
       "legacy_channel_number": null,
       "tube": "AJPW Tube",
-      "embed_url": null,
-      "embed_html": null
+      "embed_url": "https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=sh-tv",
+      "embed_html": "<iframe src=\"https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=sh-tv\" width=\"1280\" height=\"720\" frameborder=\"0\" allow=\"autoplay; fullscreen; picture-in-picture\" allowfullscreen></iframe>",
+      "player_type": "shared"
     },
     {
       "number": 81,
@@ -588,8 +604,9 @@
       "existing_embed": false,
       "legacy_channel_number": null,
       "tube": "AJPW Tube",
-      "embed_url": null,
-      "embed_html": null
+      "embed_url": "https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=tbn",
+      "embed_html": "<iframe src=\"https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=tbn\" width=\"1280\" height=\"720\" frameborder=\"0\" allow=\"autoplay; fullscreen; picture-in-picture\" allowfullscreen></iframe>",
+      "player_type": "shared"
     },
     {
       "number": 88,
@@ -624,8 +641,9 @@
       "existing_embed": false,
       "legacy_channel_number": null,
       "tube": "AJPW Tube",
-      "embed_url": null,
-      "embed_html": null
+      "embed_url": "https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=krt",
+      "embed_html": "<iframe src=\"https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=krt\" width=\"1280\" height=\"720\" frameborder=\"0\" allow=\"autoplay; fullscreen; picture-in-picture\" allowfullscreen></iframe>",
+      "player_type": "shared"
     },
     {
       "number": 54,
@@ -655,7 +673,8 @@
       "legacy_channel_number": "16",
       "tube": "Lucha Tube",
       "embed_url": "https://buttocks.github.io/suplex-baked-player/lucha-slamvision.html",
-      "embed_html": "<iframe src=\"https://buttocks.github.io/suplex-baked-player/lucha-slamvision.html\" width=\"1280\" height=\"720\" frameborder=\"0\" allow=\"autoplay; fullscreen; picture-in-picture\" allowfullscreen></iframe>"
+      "embed_html": "<iframe src=\"https://buttocks.github.io/suplex-baked-player/lucha-slamvision.html\" width=\"1280\" height=\"720\" frameborder=\"0\" allow=\"autoplay; fullscreen; picture-in-picture\" allowfullscreen></iframe>",
+      "player_type": "legacy"
     },
     {
       "number": 55,
@@ -691,7 +710,8 @@
       "legacy_channel_number": "54",
       "tube": "Lucha Tube",
       "embed_url": "https://buttocks.github.io/suplex-baked-player/lucha-underground-slamvision.html",
-      "embed_html": "<iframe src=\"https://buttocks.github.io/suplex-baked-player/lucha-underground-slamvision.html\" width=\"1280\" height=\"720\" frameborder=\"0\" allow=\"autoplay; fullscreen; picture-in-picture\" allowfullscreen></iframe>"
+      "embed_html": "<iframe src=\"https://buttocks.github.io/suplex-baked-player/lucha-underground-slamvision.html\" width=\"1280\" height=\"720\" frameborder=\"0\" allow=\"autoplay; fullscreen; picture-in-picture\" allowfullscreen></iframe>",
+      "player_type": "legacy"
     },
     {
       "number": 74,
@@ -726,8 +746,9 @@
       "existing_embed": false,
       "legacy_channel_number": null,
       "tube": "Lucha Tube",
-      "embed_url": null,
-      "embed_html": null
+      "embed_url": "https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=619",
+      "embed_html": "<iframe src=\"https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=619\" width=\"1280\" height=\"720\" frameborder=\"0\" allow=\"autoplay; fullscreen; picture-in-picture\" allowfullscreen></iframe>",
+      "player_type": "shared"
     },
     {
       "number": 50,
@@ -763,7 +784,8 @@
       "legacy_channel_number": "11",
       "tube": "Joshi Tube",
       "embed_url": "https://buttocks.github.io/suplex-baked-player/joshi-slamvision.html",
-      "embed_html": "<iframe src=\"https://buttocks.github.io/suplex-baked-player/joshi-slamvision.html\" width=\"1280\" height=\"720\" frameborder=\"0\" allow=\"autoplay; fullscreen; picture-in-picture\" allowfullscreen></iframe>"
+      "embed_html": "<iframe src=\"https://buttocks.github.io/suplex-baked-player/joshi-slamvision.html\" width=\"1280\" height=\"720\" frameborder=\"0\" allow=\"autoplay; fullscreen; picture-in-picture\" allowfullscreen></iframe>",
+      "player_type": "legacy"
     },
     {
       "number": 58,
@@ -798,8 +820,9 @@
       "existing_embed": false,
       "legacy_channel_number": null,
       "tube": "Joshi Tube",
-      "embed_url": null,
-      "embed_html": null
+      "embed_url": "https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=marigold",
+      "embed_html": "<iframe src=\"https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=marigold\" width=\"1280\" height=\"720\" frameborder=\"0\" allow=\"autoplay; fullscreen; picture-in-picture\" allowfullscreen></iframe>",
+      "player_type": "shared"
     },
     {
       "number": 79,
@@ -834,8 +857,9 @@
       "existing_embed": false,
       "legacy_channel_number": null,
       "tube": "Joshi Tube",
-      "embed_url": null,
-      "embed_html": null
+      "embed_url": "https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=star",
+      "embed_html": "<iframe src=\"https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=star\" width=\"1280\" height=\"720\" frameborder=\"0\" allow=\"autoplay; fullscreen; picture-in-picture\" allowfullscreen></iframe>",
+      "player_type": "shared"
     },
     {
       "number": 89,
@@ -870,8 +894,9 @@
       "existing_embed": false,
       "legacy_channel_number": null,
       "tube": "Joshi Tube",
-      "embed_url": null,
-      "embed_html": null
+      "embed_url": "https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=tjpw-tv",
+      "embed_html": "<iframe src=\"https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=tjpw-tv\" width=\"1280\" height=\"720\" frameborder=\"0\" allow=\"autoplay; fullscreen; picture-in-picture\" allowfullscreen></iframe>",
+      "player_type": "shared"
     },
     {
       "number": 48,
@@ -906,8 +931,9 @@
       "existing_embed": false,
       "legacy_channel_number": null,
       "tube": "Joshi Tube",
-      "embed_url": null,
-      "embed_html": null
+      "embed_url": "https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=io",
+      "embed_html": "<iframe src=\"https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=io\" width=\"1280\" height=\"720\" frameborder=\"0\" allow=\"autoplay; fullscreen; picture-in-picture\" allowfullscreen></iframe>",
+      "player_type": "shared"
     },
     {
       "number": 109,
@@ -943,7 +969,8 @@
       "legacy_channel_number": "25",
       "tube": "WWF / WWE Tube",
       "embed_url": "https://buttocks.github.io/suplex-baked-player/wwe-slamvision.html",
-      "embed_html": "<iframe src=\"https://buttocks.github.io/suplex-baked-player/wwe-slamvision.html\" width=\"1280\" height=\"720\" frameborder=\"0\" allow=\"autoplay; fullscreen; picture-in-picture\" allowfullscreen></iframe>"
+      "embed_html": "<iframe src=\"https://buttocks.github.io/suplex-baked-player/wwe-slamvision.html\" width=\"1280\" height=\"720\" frameborder=\"0\" allow=\"autoplay; fullscreen; picture-in-picture\" allowfullscreen></iframe>",
+      "player_type": "legacy"
     },
     {
       "number": 110,
@@ -979,7 +1006,8 @@
       "legacy_channel_number": "14",
       "tube": "WWF / WWE Tube",
       "embed_url": "https://buttocks.github.io/suplex-baked-player/wwf-slamvision.html",
-      "embed_html": "<iframe src=\"https://buttocks.github.io/suplex-baked-player/wwf-slamvision.html\" width=\"1280\" height=\"720\" frameborder=\"0\" allow=\"autoplay; fullscreen; picture-in-picture\" allowfullscreen></iframe>"
+      "embed_html": "<iframe src=\"https://buttocks.github.io/suplex-baked-player/wwf-slamvision.html\" width=\"1280\" height=\"720\" frameborder=\"0\" allow=\"autoplay; fullscreen; picture-in-picture\" allowfullscreen></iframe>",
+      "player_type": "legacy"
     },
     {
       "number": 111,
@@ -1015,7 +1043,8 @@
       "legacy_channel_number": "64",
       "tube": "WWF / WWE Tube",
       "embed_url": "https://buttocks.github.io/suplex-baked-player/wwwf-slamvision.html",
-      "embed_html": "<iframe src=\"https://buttocks.github.io/suplex-baked-player/wwwf-slamvision.html\" width=\"1280\" height=\"720\" frameborder=\"0\" allow=\"autoplay; fullscreen; picture-in-picture\" allowfullscreen></iframe>"
+      "embed_html": "<iframe src=\"https://buttocks.github.io/suplex-baked-player/wwwf-slamvision.html\" width=\"1280\" height=\"720\" frameborder=\"0\" allow=\"autoplay; fullscreen; picture-in-picture\" allowfullscreen></iframe>",
+      "player_type": "legacy"
     },
     {
       "number": 112,
@@ -1051,7 +1080,8 @@
       "legacy_channel_number": "52",
       "tube": "WWF / WWE Tube",
       "embed_url": "https://buttocks.github.io/suplex-baked-player/wwf-90-00-slamvision.html",
-      "embed_html": "<iframe src=\"https://buttocks.github.io/suplex-baked-player/wwf-90-00-slamvision.html\" width=\"1280\" height=\"720\" frameborder=\"0\" allow=\"autoplay; fullscreen; picture-in-picture\" allowfullscreen></iframe>"
+      "embed_html": "<iframe src=\"https://buttocks.github.io/suplex-baked-player/wwf-90-00-slamvision.html\" width=\"1280\" height=\"720\" frameborder=\"0\" allow=\"autoplay; fullscreen; picture-in-picture\" allowfullscreen></iframe>",
+      "player_type": "legacy"
     },
     {
       "number": 113,
@@ -1086,8 +1116,9 @@
       "existing_embed": false,
       "legacy_channel_number": null,
       "tube": "WWF / WWE Tube",
-      "embed_url": null,
-      "embed_html": null
+      "embed_url": "https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=wwf-wrestling",
+      "embed_html": "<iframe src=\"https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=wwf-wrestling\" width=\"1280\" height=\"720\" frameborder=\"0\" allow=\"autoplay; fullscreen; picture-in-picture\" allowfullscreen></iframe>",
+      "player_type": "shared"
     },
     {
       "number": 114,
@@ -1122,8 +1153,9 @@
       "existing_embed": false,
       "legacy_channel_number": null,
       "tube": "WWF / WWE Tube",
-      "embed_url": null,
-      "embed_html": null
+      "embed_url": "https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=wwf-ptw",
+      "embed_html": "<iframe src=\"https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=wwf-ptw\" width=\"1280\" height=\"720\" frameborder=\"0\" allow=\"autoplay; fullscreen; picture-in-picture\" allowfullscreen></iframe>",
+      "player_type": "shared"
     },
     {
       "number": 115,
@@ -1158,8 +1190,9 @@
       "existing_embed": false,
       "legacy_channel_number": null,
       "tube": "WWF / WWE Tube",
-      "embed_url": null,
-      "embed_html": null
+      "embed_url": "https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=wwf-heat",
+      "embed_html": "<iframe src=\"https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=wwf-heat\" width=\"1280\" height=\"720\" frameborder=\"0\" allow=\"autoplay; fullscreen; picture-in-picture\" allowfullscreen></iframe>",
+      "player_type": "shared"
     },
     {
       "number": 116,
@@ -1194,8 +1227,9 @@
       "existing_embed": false,
       "legacy_channel_number": null,
       "tube": "WWF / WWE Tube",
-      "embed_url": null,
-      "embed_html": null
+      "embed_url": "https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=wwf-sow",
+      "embed_html": "<iframe src=\"https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=wwf-sow\" width=\"1280\" height=\"720\" frameborder=\"0\" allow=\"autoplay; fullscreen; picture-in-picture\" allowfullscreen></iframe>",
+      "player_type": "shared"
     },
     {
       "number": 117,
@@ -1224,8 +1258,9 @@
       "existing_embed": false,
       "legacy_channel_number": null,
       "tube": "WWF / WWE Tube",
-      "embed_url": null,
-      "embed_html": null
+      "embed_url": "https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=wwf-mania",
+      "embed_html": "<iframe src=\"https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=wwf-mania\" width=\"1280\" height=\"720\" frameborder=\"0\" allow=\"autoplay; fullscreen; picture-in-picture\" allowfullscreen></iframe>",
+      "player_type": "shared"
     },
     {
       "number": 118,
@@ -1260,8 +1295,9 @@
       "existing_embed": false,
       "legacy_channel_number": null,
       "tube": "WWF / WWE Tube",
-      "embed_url": null,
-      "embed_html": null
+      "embed_url": "https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=wwf-challenge",
+      "embed_html": "<iframe src=\"https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=wwf-challenge\" width=\"1280\" height=\"720\" frameborder=\"0\" allow=\"autoplay; fullscreen; picture-in-picture\" allowfullscreen></iframe>",
+      "player_type": "shared"
     },
     {
       "number": 107,
@@ -1296,8 +1332,9 @@
       "existing_embed": false,
       "legacy_channel_number": null,
       "tube": "WWF / WWE Tube",
-      "embed_url": null,
-      "embed_html": null
+      "embed_url": "https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=wm",
+      "embed_html": "<iframe src=\"https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=wm\" width=\"1280\" height=\"720\" frameborder=\"0\" allow=\"autoplay; fullscreen; picture-in-picture\" allowfullscreen></iframe>",
+      "player_type": "shared"
     },
     {
       "number": 49,
@@ -1332,8 +1369,9 @@
       "existing_embed": false,
       "legacy_channel_number": null,
       "tube": "WWF / WWE Tube",
-      "embed_url": null,
-      "embed_html": null
+      "embed_url": "https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=cena",
+      "embed_html": "<iframe src=\"https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=cena\" width=\"1280\" height=\"720\" frameborder=\"0\" allow=\"autoplay; fullscreen; picture-in-picture\" allowfullscreen></iframe>",
+      "player_type": "shared"
     },
     {
       "number": 84,
@@ -1368,8 +1406,9 @@
       "existing_embed": false,
       "legacy_channel_number": null,
       "tube": "WWF / WWE Tube",
-      "embed_url": null,
-      "embed_html": null
+      "embed_url": "https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=hhn",
+      "embed_html": "<iframe src=\"https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=hhn\" width=\"1280\" height=\"720\" frameborder=\"0\" allow=\"autoplay; fullscreen; picture-in-picture\" allowfullscreen></iframe>",
+      "player_type": "shared"
     },
     {
       "number": 83,
@@ -1404,8 +1443,9 @@
       "existing_embed": false,
       "legacy_channel_number": null,
       "tube": "WWF / WWE Tube",
-      "embed_url": null,
-      "embed_html": null
+      "embed_url": "https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=hart",
+      "embed_html": "<iframe src=\"https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=hart\" width=\"1280\" height=\"720\" frameborder=\"0\" allow=\"autoplay; fullscreen; picture-in-picture\" allowfullscreen></iframe>",
+      "player_type": "shared"
     },
     {
       "number": 85,
@@ -1440,8 +1480,9 @@
       "existing_embed": false,
       "legacy_channel_number": null,
       "tube": "WWF / WWE Tube",
-      "embed_url": null,
-      "embed_html": null
+      "embed_url": "https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=otc",
+      "embed_html": "<iframe src=\"https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=otc\" width=\"1280\" height=\"720\" frameborder=\"0\" allow=\"autoplay; fullscreen; picture-in-picture\" allowfullscreen></iframe>",
+      "player_type": "shared"
     },
     {
       "number": 30,
@@ -1476,8 +1517,9 @@
       "existing_embed": false,
       "legacy_channel_number": null,
       "tube": "WWF / WWE Tube",
-      "embed_url": null,
-      "embed_html": null
+      "embed_url": "https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=atg",
+      "embed_html": "<iframe src=\"https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=atg\" width=\"1280\" height=\"720\" frameborder=\"0\" allow=\"autoplay; fullscreen; picture-in-picture\" allowfullscreen></iframe>",
+      "player_type": "shared"
     },
     {
       "number": 32,
@@ -1512,8 +1554,9 @@
       "existing_embed": false,
       "legacy_channel_number": null,
       "tube": "WWF / WWE Tube",
-      "embed_url": null,
-      "embed_html": null
+      "embed_url": "https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=appv",
+      "embed_html": "<iframe src=\"https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=appv\" width=\"1280\" height=\"720\" frameborder=\"0\" allow=\"autoplay; fullscreen; picture-in-picture\" allowfullscreen></iframe>",
+      "player_type": "shared"
     },
     {
       "number": 92,
@@ -1549,7 +1592,8 @@
       "legacy_channel_number": "02",
       "tube": "WCW Tube",
       "embed_url": "https://buttocks.github.io/suplex-baked-player/wcw-slamvision.html",
-      "embed_html": "<iframe src=\"https://buttocks.github.io/suplex-baked-player/wcw-slamvision.html\" width=\"1280\" height=\"720\" frameborder=\"0\" allow=\"autoplay; fullscreen; picture-in-picture\" allowfullscreen></iframe>"
+      "embed_html": "<iframe src=\"https://buttocks.github.io/suplex-baked-player/wcw-slamvision.html\" width=\"1280\" height=\"720\" frameborder=\"0\" allow=\"autoplay; fullscreen; picture-in-picture\" allowfullscreen></iframe>",
+      "player_type": "legacy"
     },
     {
       "number": 93,
@@ -1584,8 +1628,9 @@
       "existing_embed": false,
       "legacy_channel_number": null,
       "tube": "WCW Tube",
-      "embed_url": null,
-      "embed_html": null
+      "embed_url": "https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=wcw-cotc",
+      "embed_html": "<iframe src=\"https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=wcw-cotc\" width=\"1280\" height=\"720\" frameborder=\"0\" allow=\"autoplay; fullscreen; picture-in-picture\" allowfullscreen></iframe>",
+      "player_type": "shared"
     },
     {
       "number": 94,
@@ -1614,8 +1659,9 @@
       "existing_embed": false,
       "legacy_channel_number": null,
       "tube": "WCW Tube",
-      "embed_url": null,
-      "embed_html": null
+      "embed_url": "https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=wcw-fallbrawl",
+      "embed_html": "<iframe src=\"https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=wcw-fallbrawl\" width=\"1280\" height=\"720\" frameborder=\"0\" allow=\"autoplay; fullscreen; picture-in-picture\" allowfullscreen></iframe>",
+      "player_type": "shared"
     },
     {
       "number": 95,
@@ -1644,8 +1690,9 @@
       "existing_embed": false,
       "legacy_channel_number": null,
       "tube": "WCW Tube",
-      "embed_url": null,
-      "embed_html": null
+      "embed_url": "https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=wcw-bash",
+      "embed_html": "<iframe src=\"https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=wcw-bash\" width=\"1280\" height=\"720\" frameborder=\"0\" allow=\"autoplay; fullscreen; picture-in-picture\" allowfullscreen></iframe>",
+      "player_type": "shared"
     },
     {
       "number": 96,
@@ -1674,8 +1721,9 @@
       "existing_embed": false,
       "legacy_channel_number": null,
       "tube": "WCW Tube",
-      "embed_url": null,
-      "embed_html": null
+      "embed_url": "https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=wcw-halloween",
+      "embed_html": "<iframe src=\"https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=wcw-halloween\" width=\"1280\" height=\"720\" frameborder=\"0\" allow=\"autoplay; fullscreen; picture-in-picture\" allowfullscreen></iframe>",
+      "player_type": "shared"
     },
     {
       "number": 97,
@@ -1710,8 +1758,9 @@
       "existing_embed": false,
       "legacy_channel_number": null,
       "tube": "WCW Tube",
-      "embed_url": null,
-      "embed_html": null
+      "embed_url": "https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=wcw-mainevent",
+      "embed_html": "<iframe src=\"https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=wcw-mainevent\" width=\"1280\" height=\"720\" frameborder=\"0\" allow=\"autoplay; fullscreen; picture-in-picture\" allowfullscreen></iframe>",
+      "player_type": "shared"
     },
     {
       "number": 98,
@@ -1746,8 +1795,9 @@
       "existing_embed": false,
       "legacy_channel_number": null,
       "tube": "WCW Tube",
-      "embed_url": null,
-      "embed_html": null
+      "embed_url": "https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=wcw-mn",
+      "embed_html": "<iframe src=\"https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=wcw-mn\" width=\"1280\" height=\"720\" frameborder=\"0\" allow=\"autoplay; fullscreen; picture-in-picture\" allowfullscreen></iframe>",
+      "player_type": "shared"
     },
     {
       "number": 99,
@@ -1782,8 +1832,9 @@
       "existing_embed": false,
       "legacy_channel_number": null,
       "tube": "WCW Tube",
-      "embed_url": null,
-      "embed_html": null
+      "embed_url": "https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=wcw-powerhour",
+      "embed_html": "<iframe src=\"https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=wcw-powerhour\" width=\"1280\" height=\"720\" frameborder=\"0\" allow=\"autoplay; fullscreen; picture-in-picture\" allowfullscreen></iframe>",
+      "player_type": "shared"
     },
     {
       "number": 100,
@@ -1818,8 +1869,9 @@
       "existing_embed": false,
       "legacy_channel_number": null,
       "tube": "WCW Tube",
-      "embed_url": null,
-      "embed_html": null
+      "embed_url": "https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=wcw-prime",
+      "embed_html": "<iframe src=\"https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=wcw-prime\" width=\"1280\" height=\"720\" frameborder=\"0\" allow=\"autoplay; fullscreen; picture-in-picture\" allowfullscreen></iframe>",
+      "player_type": "shared"
     },
     {
       "number": 101,
@@ -1854,8 +1906,9 @@
       "existing_embed": false,
       "legacy_channel_number": null,
       "tube": "WCW Tube",
-      "embed_url": null,
-      "embed_html": null
+      "embed_url": "https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=wcw-pw",
+      "embed_html": "<iframe src=\"https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=wcw-pw\" width=\"1280\" height=\"720\" frameborder=\"0\" allow=\"autoplay; fullscreen; picture-in-picture\" allowfullscreen></iframe>",
+      "player_type": "shared"
     },
     {
       "number": 102,
@@ -1890,8 +1943,9 @@
       "existing_embed": false,
       "legacy_channel_number": null,
       "tube": "WCW Tube",
-      "embed_url": null,
-      "embed_html": null
+      "embed_url": "https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=wcw-sn",
+      "embed_html": "<iframe src=\"https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=wcw-sn\" width=\"1280\" height=\"720\" frameborder=\"0\" allow=\"autoplay; fullscreen; picture-in-picture\" allowfullscreen></iframe>",
+      "player_type": "shared"
     },
     {
       "number": 103,
@@ -1920,8 +1974,9 @@
       "existing_embed": false,
       "legacy_channel_number": null,
       "tube": "WCW Tube",
-      "embed_url": null,
-      "embed_html": null
+      "embed_url": "https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=wcw-starrcade",
+      "embed_html": "<iframe src=\"https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=wcw-starrcade\" width=\"1280\" height=\"720\" frameborder=\"0\" allow=\"autoplay; fullscreen; picture-in-picture\" allowfullscreen></iframe>",
+      "player_type": "shared"
     },
     {
       "number": 104,
@@ -1950,8 +2005,9 @@
       "existing_embed": false,
       "legacy_channel_number": null,
       "tube": "WCW Tube",
-      "embed_url": null,
-      "embed_html": null
+      "embed_url": "https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=wcw-superbrawl",
+      "embed_html": "<iframe src=\"https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=wcw-superbrawl\" width=\"1280\" height=\"720\" frameborder=\"0\" allow=\"autoplay; fullscreen; picture-in-picture\" allowfullscreen></iframe>",
+      "player_type": "shared"
     },
     {
       "number": 105,
@@ -1986,8 +2042,9 @@
       "existing_embed": false,
       "legacy_channel_number": null,
       "tube": "WCW Tube",
-      "embed_url": null,
-      "embed_html": null
+      "embed_url": "https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=wcw-worldwide",
+      "embed_html": "<iframe src=\"https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=wcw-worldwide\" width=\"1280\" height=\"720\" frameborder=\"0\" allow=\"autoplay; fullscreen; picture-in-picture\" allowfullscreen></iframe>",
+      "player_type": "shared"
     },
     {
       "number": 43,
@@ -2023,7 +2080,8 @@
       "legacy_channel_number": "10",
       "tube": "ECW Tube",
       "embed_url": "https://buttocks.github.io/suplex-baked-player/ecw-slamvision.html",
-      "embed_html": "<iframe src=\"https://buttocks.github.io/suplex-baked-player/ecw-slamvision.html\" width=\"1280\" height=\"720\" frameborder=\"0\" allow=\"autoplay; fullscreen; picture-in-picture\" allowfullscreen></iframe>"
+      "embed_html": "<iframe src=\"https://buttocks.github.io/suplex-baked-player/ecw-slamvision.html\" width=\"1280\" height=\"720\" frameborder=\"0\" allow=\"autoplay; fullscreen; picture-in-picture\" allowfullscreen></iframe>",
+      "player_type": "legacy"
     },
     {
       "number": 44,
@@ -2058,8 +2116,9 @@
       "existing_embed": false,
       "legacy_channel_number": null,
       "tube": "ECW Tube",
-      "embed_url": null,
-      "embed_html": null
+      "embed_url": "https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=ecw-hardcoretv",
+      "embed_html": "<iframe src=\"https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=ecw-hardcoretv\" width=\"1280\" height=\"720\" frameborder=\"0\" allow=\"autoplay; fullscreen; picture-in-picture\" allowfullscreen></iframe>",
+      "player_type": "shared"
     },
     {
       "number": 27,
@@ -2094,8 +2153,9 @@
       "existing_embed": false,
       "legacy_channel_number": null,
       "tube": "AEW Tube",
-      "embed_url": null,
-      "embed_html": null
+      "embed_url": "https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=aew-tv",
+      "embed_html": "<iframe src=\"https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=aew-tv\" width=\"1280\" height=\"720\" frameborder=\"0\" allow=\"autoplay; fullscreen; picture-in-picture\" allowfullscreen></iframe>",
+      "player_type": "shared"
     },
     {
       "number": 28,
@@ -2124,8 +2184,9 @@
       "existing_embed": false,
       "legacy_channel_number": null,
       "tube": "AEW Tube",
-      "embed_url": null,
-      "embed_html": null
+      "embed_url": "https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=aew2",
+      "embed_html": "<iframe src=\"https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=aew2\" width=\"1280\" height=\"720\" frameborder=\"0\" allow=\"autoplay; fullscreen; picture-in-picture\" allowfullscreen></iframe>",
+      "player_type": "shared"
     },
     {
       "number": 34,
@@ -2154,8 +2215,9 @@
       "existing_embed": false,
       "legacy_channel_number": null,
       "tube": "AEW Tube",
-      "embed_url": null,
-      "embed_html": null
+      "embed_url": "https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=aew-ai",
+      "embed_html": "<iframe src=\"https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=aew-ai\" width=\"1280\" height=\"720\" frameborder=\"0\" allow=\"autoplay; fullscreen; picture-in-picture\" allowfullscreen></iframe>",
+      "player_type": "shared"
     },
     {
       "number": 53,
@@ -2190,8 +2252,9 @@
       "existing_embed": false,
       "legacy_channel_number": null,
       "tube": "AEW Tube",
-      "embed_url": null,
-      "embed_html": null
+      "embed_url": "https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=omega-24-7",
+      "embed_html": "<iframe src=\"https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=omega-24-7\" width=\"1280\" height=\"720\" frameborder=\"0\" allow=\"autoplay; fullscreen; picture-in-picture\" allowfullscreen></iframe>",
+      "player_type": "shared"
     },
     {
       "number": 75,
@@ -2227,7 +2290,8 @@
       "legacy_channel_number": "56",
       "tube": "ROH Tube",
       "embed_url": "https://buttocks.github.io/suplex-baked-player/classic-roh-slamvision.html",
-      "embed_html": "<iframe src=\"https://buttocks.github.io/suplex-baked-player/classic-roh-slamvision.html\" width=\"1280\" height=\"720\" frameborder=\"0\" allow=\"autoplay; fullscreen; picture-in-picture\" allowfullscreen></iframe>"
+      "embed_html": "<iframe src=\"https://buttocks.github.io/suplex-baked-player/classic-roh-slamvision.html\" width=\"1280\" height=\"720\" frameborder=\"0\" allow=\"autoplay; fullscreen; picture-in-picture\" allowfullscreen></iframe>",
+      "player_type": "legacy"
     },
     {
       "number": 76,
@@ -2263,7 +2327,8 @@
       "legacy_channel_number": "15",
       "tube": "ROH Tube",
       "embed_url": "https://buttocks.github.io/suplex-baked-player/roh-slamvision.html",
-      "embed_html": "<iframe src=\"https://buttocks.github.io/suplex-baked-player/roh-slamvision.html\" width=\"1280\" height=\"720\" frameborder=\"0\" allow=\"autoplay; fullscreen; picture-in-picture\" allowfullscreen></iframe>"
+      "embed_html": "<iframe src=\"https://buttocks.github.io/suplex-baked-player/roh-slamvision.html\" width=\"1280\" height=\"720\" frameborder=\"0\" allow=\"autoplay; fullscreen; picture-in-picture\" allowfullscreen></iframe>",
+      "player_type": "legacy"
     },
     {
       "number": 77,
@@ -2298,8 +2363,9 @@
       "existing_embed": false,
       "legacy_channel_number": null,
       "tube": "ROH Tube",
-      "embed_url": null,
-      "embed_html": null
+      "embed_url": "https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=roh-wrestling",
+      "embed_html": "<iframe src=\"https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=roh-wrestling\" width=\"1280\" height=\"720\" frameborder=\"0\" allow=\"autoplay; fullscreen; picture-in-picture\" allowfullscreen></iframe>",
+      "player_type": "shared"
     },
     {
       "number": 90,
@@ -2329,7 +2395,8 @@
       "legacy_channel_number": "19",
       "tube": "TNA / Impact Tube",
       "embed_url": "https://buttocks.github.io/suplex-baked-player/impact-slamvision.html",
-      "embed_html": "<iframe src=\"https://buttocks.github.io/suplex-baked-player/impact-slamvision.html\" width=\"1280\" height=\"720\" frameborder=\"0\" allow=\"autoplay; fullscreen; picture-in-picture\" allowfullscreen></iframe>"
+      "embed_html": "<iframe src=\"https://buttocks.github.io/suplex-baked-player/impact-slamvision.html\" width=\"1280\" height=\"720\" frameborder=\"0\" allow=\"autoplay; fullscreen; picture-in-picture\" allowfullscreen></iframe>",
+      "player_type": "legacy"
     },
     {
       "number": 91,
@@ -2365,7 +2432,8 @@
       "legacy_channel_number": "17",
       "tube": "TNA / Impact Tube",
       "embed_url": "https://buttocks.github.io/suplex-baked-player/tna-slamvision.html",
-      "embed_html": "<iframe src=\"https://buttocks.github.io/suplex-baked-player/tna-slamvision.html\" width=\"1280\" height=\"720\" frameborder=\"0\" allow=\"autoplay; fullscreen; picture-in-picture\" allowfullscreen></iframe>"
+      "embed_html": "<iframe src=\"https://buttocks.github.io/suplex-baked-player/tna-slamvision.html\" width=\"1280\" height=\"720\" frameborder=\"0\" allow=\"autoplay; fullscreen; picture-in-picture\" allowfullscreen></iframe>",
+      "player_type": "legacy"
     },
     {
       "number": 70,
@@ -2395,7 +2463,8 @@
       "legacy_channel_number": "20",
       "tube": "NOAH Tube",
       "embed_url": "https://buttocks.github.io/suplex-baked-player/noah-slamvision.html",
-      "embed_html": "<iframe src=\"https://buttocks.github.io/suplex-baked-player/noah-slamvision.html\" width=\"1280\" height=\"720\" frameborder=\"0\" allow=\"autoplay; fullscreen; picture-in-picture\" allowfullscreen></iframe>"
+      "embed_html": "<iframe src=\"https://buttocks.github.io/suplex-baked-player/noah-slamvision.html\" width=\"1280\" height=\"720\" frameborder=\"0\" allow=\"autoplay; fullscreen; picture-in-picture\" allowfullscreen></iframe>",
+      "player_type": "legacy"
     },
     {
       "number": 40,
@@ -2424,8 +2493,9 @@
       "existing_embed": false,
       "legacy_channel_number": null,
       "tube": "DDT Tube",
-      "embed_url": null,
-      "embed_html": null
+      "embed_url": "https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=ddt-pro",
+      "embed_html": "<iframe src=\"https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=ddt-pro\" width=\"1280\" height=\"720\" frameborder=\"0\" allow=\"autoplay; fullscreen; picture-in-picture\" allowfullscreen></iframe>",
+      "player_type": "shared"
     },
     {
       "number": 35,
@@ -2455,7 +2525,8 @@
       "legacy_channel_number": "47",
       "tube": "Other Japanese Wrestling Tube",
       "embed_url": "https://buttocks.github.io/suplex-baked-player/bjw-slamvision.html",
-      "embed_html": "<iframe src=\"https://buttocks.github.io/suplex-baked-player/bjw-slamvision.html\" width=\"1280\" height=\"720\" frameborder=\"0\" allow=\"autoplay; fullscreen; picture-in-picture\" allowfullscreen></iframe>"
+      "embed_html": "<iframe src=\"https://buttocks.github.io/suplex-baked-player/bjw-slamvision.html\" width=\"1280\" height=\"720\" frameborder=\"0\" allow=\"autoplay; fullscreen; picture-in-picture\" allowfullscreen></iframe>",
+      "player_type": "legacy"
     },
     {
       "number": 36,
@@ -2490,8 +2561,9 @@
       "existing_embed": false,
       "legacy_channel_number": null,
       "tube": "Other Japanese Wrestling Tube",
-      "embed_url": null,
-      "embed_html": null
+      "embed_url": "https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=big-japan",
+      "embed_html": "<iframe src=\"https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=big-japan\" width=\"1280\" height=\"720\" frameborder=\"0\" allow=\"autoplay; fullscreen; picture-in-picture\" allowfullscreen></iframe>",
+      "player_type": "shared"
     },
     {
       "number": 33,
@@ -2526,8 +2598,9 @@
       "existing_embed": false,
       "legacy_channel_number": null,
       "tube": "Other Japanese Wrestling Tube",
-      "embed_url": null,
-      "embed_html": null
+      "embed_url": "https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=battlarts",
+      "embed_html": "<iframe src=\"https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=battlarts\" width=\"1280\" height=\"720\" frameborder=\"0\" allow=\"autoplay; fullscreen; picture-in-picture\" allowfullscreen></iframe>",
+      "player_type": "shared"
     },
     {
       "number": 52,
@@ -2562,8 +2635,9 @@
       "existing_embed": false,
       "legacy_channel_number": null,
       "tube": "Other Japanese Wrestling Tube",
-      "embed_url": null,
-      "embed_html": null
+      "embed_url": "https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=kaientai-dojo",
+      "embed_html": "<iframe src=\"https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=kaientai-dojo\" width=\"1280\" height=\"720\" frameborder=\"0\" allow=\"autoplay; fullscreen; picture-in-picture\" allowfullscreen></iframe>",
+      "player_type": "shared"
     },
     {
       "number": 60,
@@ -2598,8 +2672,9 @@
       "existing_embed": false,
       "legacy_channel_number": null,
       "tube": "Other Japanese Wrestling Tube",
-      "embed_url": null,
-      "embed_html": null
+      "embed_url": "https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=michinoku-pro",
+      "embed_html": "<iframe src=\"https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=michinoku-pro\" width=\"1280\" height=\"720\" frameborder=\"0\" allow=\"autoplay; fullscreen; picture-in-picture\" allowfullscreen></iframe>",
+      "player_type": "shared"
     },
     {
       "number": 71,
@@ -2634,8 +2709,9 @@
       "existing_embed": false,
       "legacy_channel_number": null,
       "tube": "Other Japanese Wrestling Tube",
-      "embed_url": null,
-      "embed_html": null
+      "embed_url": "https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=osaka-pro",
+      "embed_html": "<iframe src=\"https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=osaka-pro\" width=\"1280\" height=\"720\" frameborder=\"0\" allow=\"autoplay; fullscreen; picture-in-picture\" allowfullscreen></iframe>",
+      "player_type": "shared"
     },
     {
       "number": 42,
@@ -2665,7 +2741,8 @@
       "legacy_channel_number": "37",
       "tube": "Other Japanese Wrestling Tube",
       "embed_url": "https://buttocks.github.io/suplex-baked-player/dragongate-slamvision.html",
-      "embed_html": "<iframe src=\"https://buttocks.github.io/suplex-baked-player/dragongate-slamvision.html\" width=\"1280\" height=\"720\" frameborder=\"0\" allow=\"autoplay; fullscreen; picture-in-picture\" allowfullscreen></iframe>"
+      "embed_html": "<iframe src=\"https://buttocks.github.io/suplex-baked-player/dragongate-slamvision.html\" width=\"1280\" height=\"720\" frameborder=\"0\" allow=\"autoplay; fullscreen; picture-in-picture\" allowfullscreen></iframe>",
+      "player_type": "legacy"
     },
     {
       "number": 82,
@@ -2700,8 +2777,9 @@
       "existing_embed": false,
       "legacy_channel_number": null,
       "tube": "Other Japanese Wrestling Tube",
-      "embed_url": null,
-      "embed_html": null
+      "embed_url": "https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=muta",
+      "embed_html": "<iframe src=\"https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=muta\" width=\"1280\" height=\"720\" frameborder=\"0\" allow=\"autoplay; fullscreen; picture-in-picture\" allowfullscreen></iframe>",
+      "player_type": "shared"
     },
     {
       "number": 46,
@@ -2736,8 +2814,9 @@
       "existing_embed": false,
       "legacy_channel_number": null,
       "tube": "Other Japanese Wrestling Tube",
-      "embed_url": null,
-      "embed_html": null
+      "embed_url": "https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=fmw",
+      "embed_html": "<iframe src=\"https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=fmw\" width=\"1280\" height=\"720\" frameborder=\"0\" allow=\"autoplay; fullscreen; picture-in-picture\" allowfullscreen></iframe>",
+      "player_type": "shared"
     },
     {
       "number": 39,
@@ -2767,7 +2846,8 @@
       "legacy_channel_number": "49",
       "tube": "Indies / Hardcore Tube",
       "embed_url": "https://buttocks.github.io/suplex-baked-player/czw-slamvision.html",
-      "embed_html": "<iframe src=\"https://buttocks.github.io/suplex-baked-player/czw-slamvision.html\" width=\"1280\" height=\"720\" frameborder=\"0\" allow=\"autoplay; fullscreen; picture-in-picture\" allowfullscreen></iframe>"
+      "embed_html": "<iframe src=\"https://buttocks.github.io/suplex-baked-player/czw-slamvision.html\" width=\"1280\" height=\"720\" frameborder=\"0\" allow=\"autoplay; fullscreen; picture-in-picture\" allowfullscreen></iframe>",
+      "player_type": "legacy"
     },
     {
       "number": 41,
@@ -2797,7 +2877,8 @@
       "legacy_channel_number": "48",
       "tube": "Indies / Hardcore Tube",
       "embed_url": "https://buttocks.github.io/suplex-baked-player/deathmatch-slamvision.html",
-      "embed_html": "<iframe src=\"https://buttocks.github.io/suplex-baked-player/deathmatch-slamvision.html\" width=\"1280\" height=\"720\" frameborder=\"0\" allow=\"autoplay; fullscreen; picture-in-picture\" allowfullscreen></iframe>"
+      "embed_html": "<iframe src=\"https://buttocks.github.io/suplex-baked-player/deathmatch-slamvision.html\" width=\"1280\" height=\"720\" frameborder=\"0\" allow=\"autoplay; fullscreen; picture-in-picture\" allowfullscreen></iframe>",
+      "player_type": "legacy"
     },
     {
       "number": 47,
@@ -2833,7 +2914,8 @@
       "legacy_channel_number": "22",
       "tube": "Indies / Hardcore Tube",
       "embed_url": "https://buttocks.github.io/suplex-baked-player/gcw-slamvision.html",
-      "embed_html": "<iframe src=\"https://buttocks.github.io/suplex-baked-player/gcw-slamvision.html\" width=\"1280\" height=\"720\" frameborder=\"0\" allow=\"autoplay; fullscreen; picture-in-picture\" allowfullscreen></iframe>"
+      "embed_html": "<iframe src=\"https://buttocks.github.io/suplex-baked-player/gcw-slamvision.html\" width=\"1280\" height=\"720\" frameborder=\"0\" allow=\"autoplay; fullscreen; picture-in-picture\" allowfullscreen></iframe>",
+      "player_type": "legacy"
     },
     {
       "number": 51,
@@ -2862,8 +2944,9 @@
       "existing_embed": false,
       "legacy_channel_number": null,
       "tube": "Indies / Hardcore Tube",
-      "embed_url": null,
-      "embed_html": null
+      "embed_url": "https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=jcw",
+      "embed_html": "<iframe src=\"https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=jcw\" width=\"1280\" height=\"720\" frameborder=\"0\" allow=\"autoplay; fullscreen; picture-in-picture\" allowfullscreen></iframe>",
+      "player_type": "shared"
     },
     {
       "number": 56,
@@ -2898,8 +2981,9 @@
       "existing_embed": false,
       "legacy_channel_number": null,
       "tube": "Indies / Hardcore Tube",
-      "embed_url": null,
-      "embed_html": null
+      "embed_url": "https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=mlw",
+      "embed_html": "<iframe src=\"https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=mlw\" width=\"1280\" height=\"720\" frameborder=\"0\" allow=\"autoplay; fullscreen; picture-in-picture\" allowfullscreen></iframe>",
+      "player_type": "shared"
     },
     {
       "number": 57,
@@ -2934,8 +3018,9 @@
       "existing_embed": false,
       "legacy_channel_number": null,
       "tube": "Indies / Hardcore Tube",
-      "embed_url": null,
-      "embed_html": null
+      "embed_url": "https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=mlp",
+      "embed_html": "<iframe src=\"https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=mlp\" width=\"1280\" height=\"720\" frameborder=\"0\" allow=\"autoplay; fullscreen; picture-in-picture\" allowfullscreen></iframe>",
+      "player_type": "shared"
     },
     {
       "number": 72,
@@ -2971,7 +3056,8 @@
       "legacy_channel_number": "72",
       "tube": "Indies / Hardcore Tube",
       "embed_url": "https://buttocks.github.io/suplex-baked-player/pwg-slamvision.html",
-      "embed_html": "<iframe src=\"https://buttocks.github.io/suplex-baked-player/pwg-slamvision.html\" width=\"1280\" height=\"720\" frameborder=\"0\" allow=\"autoplay; fullscreen; picture-in-picture\" allowfullscreen></iframe>"
+      "embed_html": "<iframe src=\"https://buttocks.github.io/suplex-baked-player/pwg-slamvision.html\" width=\"1280\" height=\"720\" frameborder=\"0\" allow=\"autoplay; fullscreen; picture-in-picture\" allowfullscreen></iframe>",
+      "player_type": "legacy"
     },
     {
       "number": 106,
@@ -3006,8 +3092,9 @@
       "existing_embed": false,
       "legacy_channel_number": null,
       "tube": "Indies / Hardcore Tube",
-      "embed_url": null,
-      "embed_html": null
+      "embed_url": "https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=wcpw",
+      "embed_html": "<iframe src=\"https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=wcpw\" width=\"1280\" height=\"720\" frameborder=\"0\" allow=\"autoplay; fullscreen; picture-in-picture\" allowfullscreen></iframe>",
+      "player_type": "shared"
     },
     {
       "number": 108,
@@ -3042,8 +3129,9 @@
       "existing_embed": false,
       "legacy_channel_number": null,
       "tube": "Indies / Hardcore Tube",
-      "embed_url": null,
-      "embed_html": null
+      "embed_url": "https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=wsx",
+      "embed_html": "<iframe src=\"https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=wsx\" width=\"1280\" height=\"720\" frameborder=\"0\" allow=\"autoplay; fullscreen; picture-in-picture\" allowfullscreen></iframe>",
+      "player_type": "shared"
     },
     {
       "number": 38,
@@ -3078,8 +3166,9 @@
       "existing_embed": false,
       "legacy_channel_number": null,
       "tube": "Indies / Hardcore Tube",
-      "embed_url": null,
-      "embed_html": null
+      "embed_url": "https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=chi",
+      "embed_html": "<iframe src=\"https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=chi\" width=\"1280\" height=\"720\" frameborder=\"0\" allow=\"autoplay; fullscreen; picture-in-picture\" allowfullscreen></iframe>",
+      "player_type": "shared"
     },
     {
       "number": 45,
@@ -3114,8 +3203,9 @@
       "existing_embed": false,
       "legacy_channel_number": null,
       "tube": "Indies / Hardcore Tube",
-      "embed_url": null,
-      "embed_html": null
+      "embed_url": "https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=euromat",
+      "embed_html": "<iframe src=\"https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=euromat\" width=\"1280\" height=\"720\" frameborder=\"0\" allow=\"autoplay; fullscreen; picture-in-picture\" allowfullscreen></iframe>",
+      "player_type": "shared"
     },
     {
       "number": 61,
@@ -3151,7 +3241,8 @@
       "legacy_channel_number": "32",
       "tube": "Shoot / MMA Tube",
       "embed_url": "https://buttocks.github.io/suplex-baked-player/mma-slamvision.html",
-      "embed_html": "<iframe src=\"https://buttocks.github.io/suplex-baked-player/mma-slamvision.html\" width=\"1280\" height=\"720\" frameborder=\"0\" allow=\"autoplay; fullscreen; picture-in-picture\" allowfullscreen></iframe>"
+      "embed_html": "<iframe src=\"https://buttocks.github.io/suplex-baked-player/mma-slamvision.html\" width=\"1280\" height=\"720\" frameborder=\"0\" allow=\"autoplay; fullscreen; picture-in-picture\" allowfullscreen></iframe>",
+      "player_type": "legacy"
     },
     {
       "number": 86,
@@ -3187,7 +3278,8 @@
       "legacy_channel_number": "29",
       "tube": "Shoot / MMA Tube",
       "embed_url": "https://buttocks.github.io/suplex-baked-player/shoot-network-slamvision.html",
-      "embed_html": "<iframe src=\"https://buttocks.github.io/suplex-baked-player/shoot-network-slamvision.html\" width=\"1280\" height=\"720\" frameborder=\"0\" allow=\"autoplay; fullscreen; picture-in-picture\" allowfullscreen></iframe>"
+      "embed_html": "<iframe src=\"https://buttocks.github.io/suplex-baked-player/shoot-network-slamvision.html\" width=\"1280\" height=\"720\" frameborder=\"0\" allow=\"autoplay; fullscreen; picture-in-picture\" allowfullscreen></iframe>",
+      "player_type": "legacy"
     },
     {
       "number": 37,
@@ -3222,8 +3314,9 @@
       "existing_embed": false,
       "legacy_channel_number": null,
       "tube": "Shoot / MMA Tube",
-      "embed_url": null,
-      "embed_html": null
+      "embed_url": "https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=bsn",
+      "embed_html": "<iframe src=\"https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=bsn\" width=\"1280\" height=\"720\" frameborder=\"0\" allow=\"autoplay; fullscreen; picture-in-picture\" allowfullscreen></iframe>",
+      "player_type": "shared"
     },
     {
       "number": 29,
@@ -3258,8 +3351,9 @@
       "existing_embed": false,
       "legacy_channel_number": null,
       "tube": "Territories / Classic US Tube",
-      "embed_url": null,
-      "embed_html": null
+      "embed_url": "https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=awa",
+      "embed_html": "<iframe src=\"https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=awa\" width=\"1280\" height=\"720\" frameborder=\"0\" allow=\"autoplay; fullscreen; picture-in-picture\" allowfullscreen></iframe>",
+      "player_type": "shared"
     },
     {
       "number": 59,
@@ -3294,8 +3388,9 @@
       "existing_embed": false,
       "legacy_channel_number": null,
       "tube": "Territories / Classic US Tube",
-      "embed_url": null,
-      "embed_html": null
+      "embed_url": "https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=memphis",
+      "embed_html": "<iframe src=\"https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=memphis\" width=\"1280\" height=\"720\" frameborder=\"0\" allow=\"autoplay; fullscreen; picture-in-picture\" allowfullscreen></iframe>",
+      "player_type": "shared"
     },
     {
       "number": 87,
@@ -3330,8 +3425,9 @@
       "existing_embed": false,
       "legacy_channel_number": null,
       "tube": "Territories / Classic US Tube",
-      "embed_url": null,
-      "embed_html": null
+      "embed_url": "https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=territories",
+      "embed_html": "<iframe src=\"https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=territories\" width=\"1280\" height=\"720\" frameborder=\"0\" allow=\"autoplay; fullscreen; picture-in-picture\" allowfullscreen></iframe>",
+      "player_type": "shared"
     },
     {
       "number": 62,
@@ -3366,8 +3462,9 @@
       "existing_embed": false,
       "legacy_channel_number": null,
       "tube": "Years / Mixed Wrestling Tube",
-      "embed_url": null,
-      "embed_html": null
+      "embed_url": "https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=mnw",
+      "embed_html": "<iframe src=\"https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=mnw\" width=\"1280\" height=\"720\" frameborder=\"0\" allow=\"autoplay; fullscreen; picture-in-picture\" allowfullscreen></iframe>",
+      "player_type": "shared"
     },
     {
       "number": 73,
@@ -3396,8 +3493,9 @@
       "existing_embed": false,
       "legacy_channel_number": null,
       "tube": "Years / Mixed Wrestling Tube",
-      "embed_url": null,
-      "embed_html": null
+      "embed_url": "https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=rndm",
+      "embed_html": "<iframe src=\"https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=rndm\" width=\"1280\" height=\"720\" frameborder=\"0\" allow=\"autoplay; fullscreen; picture-in-picture\" allowfullscreen></iframe>",
+      "player_type": "shared"
     },
     {
       "number": 80,
@@ -3426,8 +3524,9 @@
       "existing_embed": false,
       "legacy_channel_number": null,
       "tube": "Years / Mixed Wrestling Tube",
-      "embed_url": null,
-      "embed_html": null
+      "embed_url": "https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=tag",
+      "embed_html": "<iframe src=\"https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=tag\" width=\"1280\" height=\"720\" frameborder=\"0\" allow=\"autoplay; fullscreen; picture-in-picture\" allowfullscreen></iframe>",
+      "player_type": "shared"
     },
     {
       "number": 1,
@@ -3462,8 +3561,9 @@
       "existing_embed": false,
       "legacy_channel_number": null,
       "tube": "Years / Mixed Wrestling Tube",
-      "embed_url": null,
-      "embed_html": null
+      "embed_url": "https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=year-1985",
+      "embed_html": "<iframe src=\"https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=year-1985\" width=\"1280\" height=\"720\" frameborder=\"0\" allow=\"autoplay; fullscreen; picture-in-picture\" allowfullscreen></iframe>",
+      "player_type": "shared"
     },
     {
       "number": 2,
@@ -3498,8 +3598,9 @@
       "existing_embed": false,
       "legacy_channel_number": null,
       "tube": "Years / Mixed Wrestling Tube",
-      "embed_url": null,
-      "embed_html": null
+      "embed_url": "https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=year-1986",
+      "embed_html": "<iframe src=\"https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=year-1986\" width=\"1280\" height=\"720\" frameborder=\"0\" allow=\"autoplay; fullscreen; picture-in-picture\" allowfullscreen></iframe>",
+      "player_type": "shared"
     },
     {
       "number": 3,
@@ -3534,8 +3635,9 @@
       "existing_embed": false,
       "legacy_channel_number": null,
       "tube": "Years / Mixed Wrestling Tube",
-      "embed_url": null,
-      "embed_html": null
+      "embed_url": "https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=year-1987",
+      "embed_html": "<iframe src=\"https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=year-1987\" width=\"1280\" height=\"720\" frameborder=\"0\" allow=\"autoplay; fullscreen; picture-in-picture\" allowfullscreen></iframe>",
+      "player_type": "shared"
     },
     {
       "number": 4,
@@ -3570,8 +3672,9 @@
       "existing_embed": false,
       "legacy_channel_number": null,
       "tube": "Years / Mixed Wrestling Tube",
-      "embed_url": null,
-      "embed_html": null
+      "embed_url": "https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=year-1988",
+      "embed_html": "<iframe src=\"https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=year-1988\" width=\"1280\" height=\"720\" frameborder=\"0\" allow=\"autoplay; fullscreen; picture-in-picture\" allowfullscreen></iframe>",
+      "player_type": "shared"
     },
     {
       "number": 5,
@@ -3606,8 +3709,9 @@
       "existing_embed": false,
       "legacy_channel_number": null,
       "tube": "Years / Mixed Wrestling Tube",
-      "embed_url": null,
-      "embed_html": null
+      "embed_url": "https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=year-1989",
+      "embed_html": "<iframe src=\"https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=year-1989\" width=\"1280\" height=\"720\" frameborder=\"0\" allow=\"autoplay; fullscreen; picture-in-picture\" allowfullscreen></iframe>",
+      "player_type": "shared"
     },
     {
       "number": 6,
@@ -3642,8 +3746,9 @@
       "existing_embed": false,
       "legacy_channel_number": null,
       "tube": "Years / Mixed Wrestling Tube",
-      "embed_url": null,
-      "embed_html": null
+      "embed_url": "https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=year-1990",
+      "embed_html": "<iframe src=\"https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=year-1990\" width=\"1280\" height=\"720\" frameborder=\"0\" allow=\"autoplay; fullscreen; picture-in-picture\" allowfullscreen></iframe>",
+      "player_type": "shared"
     },
     {
       "number": 7,
@@ -3678,8 +3783,9 @@
       "existing_embed": false,
       "legacy_channel_number": null,
       "tube": "Years / Mixed Wrestling Tube",
-      "embed_url": null,
-      "embed_html": null
+      "embed_url": "https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=year-1991",
+      "embed_html": "<iframe src=\"https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=year-1991\" width=\"1280\" height=\"720\" frameborder=\"0\" allow=\"autoplay; fullscreen; picture-in-picture\" allowfullscreen></iframe>",
+      "player_type": "shared"
     },
     {
       "number": 8,
@@ -3714,8 +3820,9 @@
       "existing_embed": false,
       "legacy_channel_number": null,
       "tube": "Years / Mixed Wrestling Tube",
-      "embed_url": null,
-      "embed_html": null
+      "embed_url": "https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=year-1992",
+      "embed_html": "<iframe src=\"https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=year-1992\" width=\"1280\" height=\"720\" frameborder=\"0\" allow=\"autoplay; fullscreen; picture-in-picture\" allowfullscreen></iframe>",
+      "player_type": "shared"
     },
     {
       "number": 9,
@@ -3750,8 +3857,9 @@
       "existing_embed": false,
       "legacy_channel_number": null,
       "tube": "Years / Mixed Wrestling Tube",
-      "embed_url": null,
-      "embed_html": null
+      "embed_url": "https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=year-1993",
+      "embed_html": "<iframe src=\"https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=year-1993\" width=\"1280\" height=\"720\" frameborder=\"0\" allow=\"autoplay; fullscreen; picture-in-picture\" allowfullscreen></iframe>",
+      "player_type": "shared"
     },
     {
       "number": 10,
@@ -3786,8 +3894,9 @@
       "existing_embed": false,
       "legacy_channel_number": null,
       "tube": "Years / Mixed Wrestling Tube",
-      "embed_url": null,
-      "embed_html": null
+      "embed_url": "https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=year-1994",
+      "embed_html": "<iframe src=\"https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=year-1994\" width=\"1280\" height=\"720\" frameborder=\"0\" allow=\"autoplay; fullscreen; picture-in-picture\" allowfullscreen></iframe>",
+      "player_type": "shared"
     },
     {
       "number": 11,
@@ -3822,8 +3931,9 @@
       "existing_embed": false,
       "legacy_channel_number": null,
       "tube": "Years / Mixed Wrestling Tube",
-      "embed_url": null,
-      "embed_html": null
+      "embed_url": "https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=year-1995",
+      "embed_html": "<iframe src=\"https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=year-1995\" width=\"1280\" height=\"720\" frameborder=\"0\" allow=\"autoplay; fullscreen; picture-in-picture\" allowfullscreen></iframe>",
+      "player_type": "shared"
     },
     {
       "number": 12,
@@ -3858,8 +3968,9 @@
       "existing_embed": false,
       "legacy_channel_number": null,
       "tube": "Years / Mixed Wrestling Tube",
-      "embed_url": null,
-      "embed_html": null
+      "embed_url": "https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=year-1996",
+      "embed_html": "<iframe src=\"https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=year-1996\" width=\"1280\" height=\"720\" frameborder=\"0\" allow=\"autoplay; fullscreen; picture-in-picture\" allowfullscreen></iframe>",
+      "player_type": "shared"
     },
     {
       "number": 13,
@@ -3894,8 +4005,9 @@
       "existing_embed": false,
       "legacy_channel_number": null,
       "tube": "Years / Mixed Wrestling Tube",
-      "embed_url": null,
-      "embed_html": null
+      "embed_url": "https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=year-1997",
+      "embed_html": "<iframe src=\"https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=year-1997\" width=\"1280\" height=\"720\" frameborder=\"0\" allow=\"autoplay; fullscreen; picture-in-picture\" allowfullscreen></iframe>",
+      "player_type": "shared"
     },
     {
       "number": 14,
@@ -3930,8 +4042,9 @@
       "existing_embed": false,
       "legacy_channel_number": null,
       "tube": "Years / Mixed Wrestling Tube",
-      "embed_url": null,
-      "embed_html": null
+      "embed_url": "https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=year-1998",
+      "embed_html": "<iframe src=\"https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=year-1998\" width=\"1280\" height=\"720\" frameborder=\"0\" allow=\"autoplay; fullscreen; picture-in-picture\" allowfullscreen></iframe>",
+      "player_type": "shared"
     },
     {
       "number": 15,
@@ -3966,8 +4079,9 @@
       "existing_embed": false,
       "legacy_channel_number": null,
       "tube": "Years / Mixed Wrestling Tube",
-      "embed_url": null,
-      "embed_html": null
+      "embed_url": "https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=year-1999",
+      "embed_html": "<iframe src=\"https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=year-1999\" width=\"1280\" height=\"720\" frameborder=\"0\" allow=\"autoplay; fullscreen; picture-in-picture\" allowfullscreen></iframe>",
+      "player_type": "shared"
     },
     {
       "number": 16,
@@ -4002,8 +4116,9 @@
       "existing_embed": false,
       "legacy_channel_number": null,
       "tube": "Years / Mixed Wrestling Tube",
-      "embed_url": null,
-      "embed_html": null
+      "embed_url": "https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=year-2000",
+      "embed_html": "<iframe src=\"https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=year-2000\" width=\"1280\" height=\"720\" frameborder=\"0\" allow=\"autoplay; fullscreen; picture-in-picture\" allowfullscreen></iframe>",
+      "player_type": "shared"
     },
     {
       "number": 17,
@@ -4038,8 +4153,13 @@
       "existing_embed": false,
       "legacy_channel_number": null,
       "tube": "Years / Mixed Wrestling Tube",
-      "embed_url": null,
-      "embed_html": null
+      "embed_url": "https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=year-2001",
+      "embed_html": "<iframe src=\"https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=year-2001\" width=\"1280\" height=\"720\" frameborder=\"0\" allow=\"autoplay; fullscreen; picture-in-picture\" allowfullscreen></iframe>",
+      "player_type": "shared"
     }
-  ]
+  ],
+  "embed_ready_count": 116,
+  "legacy_embed_count": 24,
+  "new_shared_player_count": 92,
+  "player_page": "https://buttocks.github.io/suplex-baked-player/slamvision-feed.html"
 }
