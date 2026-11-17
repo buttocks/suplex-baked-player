@@ -15,7 +15,7 @@ import tempfile
 import time
 
 ROOT = Path(__file__).resolve().parent.parent
-FILES = ("slamvision/njpw-live.json", "slamvision/ajpw-live.json", "slamvision/joshi-live.json", "slamvision/lucha-live.json", "slamvision/roh-live.json", "slamvision/noah-live.json", "slamvision/independent-live.json", "slamvision/dragongate-live.json", "slamvision/puro-live.json", "slamvision/shoot-live.json", "slamvision/ecw-live.json", "slamvision/wwf-live.json", "slamvision/tna-live.json", "slamvision/wcw-live.json")
+FILES = ("slamvision/njpw-live.json", "slamvision/ajpw-live.json", "slamvision/joshi-live.json", "slamvision/lucha-live.json", "slamvision/roh-live.json", "slamvision/noah-live.json", "slamvision/independent-live.json", "slamvision/dragongate-live.json", "slamvision/puro-live.json", "slamvision/shoot-live.json", "slamvision/ecw-live.json", "slamvision/wwf-live.json", "slamvision/tna-live.json", "slamvision/wcw-live.json", "slamvision/shared-live.json")
 
 
 def timestamp(blob, label):
