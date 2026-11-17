@@ -43,12 +43,12 @@ async function trial(page, live, expectApi) {
  x=await trial(cached(60000),upstream(),0);
  assert.equal(x.result.channels["52"].current.id,"saved","Fresh Pages data should take priority");
  x=await trial(cached(12*3600000),upstream("wrong-feed"),1).then(()=>null,err=>err);
- assert.ok(x instanceof Error, "Wrong upstream identity must fail");
+ assert.ok(x && /Unexpected channel/.test(x.message), "Wrong upstream identity must fail");
  x=await trial(cached(12*3600000,-60000,3600000),new Error("network offline"),1);
  assert.equal(x.result.channels["52"].current.id,"saved","Current saved broadcast should survive API outage");
  x=await trial(cached(12*3600000,-3600000,-120000),new Error("network offline"),1)
  .then(()=>null,err=>err);
- assert.ok(x instanceof Error,"Expired saved broadcast must not be represented as live");
+ assert.ok(x && /network offline/.test(x.message),"Expired saved broadcast must not be represented as live");
  x=await trial(new Error("pages 404"),upstream(),1);
  assert.equal(x.result.channels["52"].current.id,"show-1","Pages outage should use direct API");
  console.log("PASS: 6 direct API fallback scenarios, including channel renumbering and outages");
