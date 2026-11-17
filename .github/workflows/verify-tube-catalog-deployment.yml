@@ -1,0 +1,34 @@
+name: Verify deployed SlamVision tube catalog
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - investigate/slamvision-related-feed-discovery
+    paths:
+      - .github/workflows/verify-tube-catalog-deployment.yml
+permissions:
+  contents: read
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check GitHub Pages interactive catalog and channel data
+        run: |
+          python - <<'PY'
+          import urllib.request,json
+          base='https://buttocks.github.io/suplex-baked-player/research/'
+          for part in ('slamvision-tube-catalog.html','slamvision-by-tube-2026-11-17.json'):
+              req=urllib.request.Request(base+part+'?verify=20261117',headers={'User-Agent':'Mozilla/5.0'})
+              with urllib.request.urlopen(req,timeout=25) as r:
+                  content=r.read()
+                  print('PAGE',part,r.status,'bytes',len(content),'type',r.headers.get('Content-Type'),flush=True)
+                  assert r.status==200
+                  if part.endswith('.html'):
+                      assert b'SlamVision' in content and b'Copy iframe' in content and b'slamvision-by-tube-2026-11-17.json' in content
+                  else:
+                      j=json.loads(content)
+                      assert len(j['channels'])==116
+                      assert len(j['destination_tubes'])==17
+                      assert sum(bool(x.get('embed_url')) for x in j['channels'])==24
+          print('PASS: Deployed searchable catalog and all 116 categorized feeds are publicly reachable',flush=True)
+          PY
