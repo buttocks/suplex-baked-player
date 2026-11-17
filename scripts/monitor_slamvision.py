@@ -102,6 +102,131 @@ def covered_until(channel, now):
     return until
 
 
+
+def fetch_direct_coverage(source_id, now):
+    """Check the same browser-accessible upstream endpoint used by the player."""
+    from urllib.parse import quote
+    url = ("https://ring-channel-tv.emergent.host/api/channels/" +
+           quote(source_id, safe="") + "/now")
+    last = None
+    for attempt in range(2):
+        try:
+            req = urllib.request.Request(url, headers={
+                "Origin": "https://buttocks.github.io",
+                "Accept": "application/json",
+                "User-Agent": USER_AGENT,
+            })
+            with urllib.request.urlopen(req, timeout=12) as response:
+                allow = response.headers.get("Access-Control-Allow-Origin")
+                if allow not in ("*", "https://buttocks.github.io"):
+                    raise RuntimeError("Upstream browser CORS access is unavailable")
+                raw = json.load(response)
+            if raw.get("channel", {}).get("id") != source_id:
+                raise RuntimeError("Upstream returned the wrong feed")
+            def program(slot):
+                if not isinstance(slot, dict):
+                    return None
+                p = slot.get("program") or {}
+                return {"start": slot.get("start"), "end": slot.get("end"),
+                        "stream_url": p.get("stream_url") or ""}
+            candidate = {
+                "current": program(raw.get("current")),
+                "up_next": [program(slot) for slot in (raw.get("up_next") or [])[:8]],
+            }
+            until = covered_until(candidate, now)
+            if until is None:
+                raise RuntimeError("No playable program from live upstream")
+            return until
+        except (OSError, ValueError, RuntimeError) as exc:
+            last = exc
+            if isinstance(exc, urllib.error.HTTPError) and exc.code == 404:
+                break
+            if attempt == 0:
+                time.sleep(1.5)
+    raise RuntimeError(str(last))
+
+
+def inspect_with_browser_fallback(snapshots, now, fetch_live=None):
+    """Alert only if both Pages and the real browser fallback are insufficient.
+
+    The original inspect() is retained for baseline regression tests. The
+    production monitor uses this full availability check after the player
+    acquired direct browser fallback support.
+    """
+    live = fetch_live or fetch_direct_coverage
+    watched = [(group, dial, source_id)
+               for group, channels in EXPECTED.items()
+               for dial, source_id in channels.items()]
+    cached = {}
+    tasks = []
+    stale_groups = 0
+    for group in EXPECTED:
+        group_data = snapshots.get(group) or {}
+        stamp = iso_to_seconds(group_data.get("generated_at"))
+        age = now - stamp if stamp is not None else float("inf")
+        if age > STALE_AFTER_SECONDS or age < -180:
+            stale_groups += 1
+        entries = group_data.get("channels") or {}
+        for dial, source_id in EXPECTED[group].items():
+            item = entries.get(dial) if isinstance(entries, dict) else None
+            if not isinstance(item, dict) or item.get("id") != source_id:
+                item = None
+            until = covered_until(item, now) if item else None
+            cached[(group, dial)] = (until, age)
+            # A recently refreshed, fully current Pages show needs no probe.
+            if until is None or age > STALE_AFTER_SECONDS or age < -180 or until - now < EARLY_RISK_HORIZON_SECONDS:
+                tasks.append((group, dial, source_id))
+    live_results = {}
+    if tasks:
+        with concurrent.futures.ThreadPoolExecutor(max_workers=7) as pool:
+            futures = {pool.submit(live, source_id, now): (group, dial)
+                       for group, dial, source_id in tasks}
+            for future in concurrent.futures.as_completed(futures):
+                key = futures[future]
+                try:
+                    live_results[key] = (future.result(), None)
+                except Exception as exc:
+                    live_results[key] = (None, str(exc))
+    errors, warnings = [], []
+    playable = 0
+    direct_count = 0
+    shortest = None
+    for group, dial, source_id in watched:
+        until, age = cached[(group, dial)]
+        upstream_until, upstream_error = live_results.get((group, dial), (None, None))
+        coverage = max(x for x in (until, upstream_until) if x is not None) if (
+            until is not None or upstream_until is not None) else None
+        if upstream_until is not None:
+            direct_count += 1
+        if coverage is None:
+            errors.append("CH " + dial + " (" + source_id +
+                          "): no playable Pages slot AND direct upstream failed" +
+                          (": " + upstream_error if upstream_error else ""))
+            continue
+        playable += 1
+        remaining = coverage - now
+        shortest = remaining if shortest is None else min(shortest, remaining)
+        if upstream_error:
+            if remaining < EARLY_RISK_HORIZON_SECONDS:
+                errors.append("CH " + dial + " (" + source_id +
+                              "): live upstream unreachable and cached show ends in " +
+                              str(round(remaining / 60, 1)) + "m")
+            else:
+                warnings.append("CH " + dial + " (" + source_id +
+                                "): live upstream unavailable; saved program still covers " +
+                                str(round(remaining / 60, 1)) + "m")
+    if len(watched) != EXPECTED_COUNT:
+        errors.append("Monitor watchlist count changed unexpectedly")
+    summary = ("Playable channels " + str(playable) + "/" + str(EXPECTED_COUNT) +
+               " | verified via direct API " + str(direct_count) +
+               " | stale Pages groups " + str(stale_groups) + "/" + str(len(EXPECTED)) +
+               " | shortest remaining " +
+               ("unknown" if shortest is None else str(round(shortest / 60, 1)) + "m"))
+    if stale_groups and not errors:
+        warnings.append("GitHub Pages JSON is delayed, but the client-side live API fallback is playable.")
+    return errors, warnings, summary
+
+
 def inspect(snapshots, now):
     """Return (problems, warnings, summary) from already-loaded channel snapshots."""
     errors, warnings = [], []
@@ -336,7 +461,20 @@ def self_test():
     assert should_dispatch([fake_run(180)], now) == (False, False, False)
     assert should_dispatch([fake_run(700)], now)[0]
     assert should_dispatch([fake_run(300, "workflow_dispatch")], now)[1]
-    print("PASS: 11 offline health-monitor scenarios")
+    # Browser-aware tests: old Pages data is not an outage if direct API works.
+    stale = fixture(age=3600, coverage=-60)
+    def live_ok(source_id, at):
+        return at + 3600
+    def live_down(source_id, at):
+        raise RuntimeError("API offline")
+    assert not inspect_with_browser_fallback(stale, now, live_ok)[0], "Live API should recover stale Pages"
+    assert len(inspect_with_browser_fallback(stale, now, live_down)[0]) == EXPECTED_COUNT, "Both sources unavailable must alert"
+    current_stale = fixture(age=3600, coverage=3600)
+    assert not inspect_with_browser_fallback(current_stale, now, live_down)[0], "Cached current shows are still playable"
+    nearly_ended = fixture(age=3600, coverage=240)
+    assert any("ends in" in x for x in inspect_with_browser_fallback(nearly_ended, now, live_down)[0]), "Warn before losing last playable cached show"
+    assert not inspect_with_browser_fallback(fixture(age=60), now, live_down)[0], "Fresh Pages should not require live API"
+    print("PASS: 16 offline health-monitor scenarios")
 
 
 def main():
@@ -362,8 +500,10 @@ def main():
                 errors.append(category + ": invalid JSON response")
             else:
                 snapshots[category] = data
-    problems, warnings, summary = inspect(snapshots, time.time())
-    errors.extend(problems)
+    problems, warnings, summary = inspect_with_browser_fallback(snapshots, time.time())
+    # Pages outages are informational when direct fallback proves playable.
+    warnings.extend('Pages fetch: ' + error for error in errors)
+    errors = problems
     print("MONITOR: " + summary)
     for warning in warnings:
         print("NOTICE: " + warning)
