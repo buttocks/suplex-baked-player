@@ -109,10 +109,14 @@ async function refreshData(){
  try{
   // Use cached Pages schedule while fresh; otherwise query the feed by stable ID.
   const next=await window.SlamVisionDirect.resolve({
-    // Seven new NJPW feeds have a GitHub-hosted backup if direct upstream fails.
+    // Exact stable IDs select published backups; live API remains fallback.
+    // The original player URLs, channel names, and IDs do not change.
     cachedUrl: new Set(['njpw-destructi','njpw-g1climax','njpw-starrcade',
                         'njpw-wp','njpw-wk','njpw-wrestling','ain']).has(channel)
-      ? './slamvision/njpw-live.json?t='+Date.now() : null,
+      ? './slamvision/njpw-live.json?t='+Date.now()
+      : new Set(['battlarts','big-japan','kaientai-dojo','michinoku-pro',
+                 'osaka-pro','muta','fmw']).has(channel)
+        ? './slamvision/puro-live.json?t='+Date.now() : null,
     channel:channel,
     sourceId:channel
   });
