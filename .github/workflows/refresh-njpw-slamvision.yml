@@ -10,6 +10,9 @@ on:
       - '.github/workflows/refresh-njpw-slamvision.yml'
       - 'scripts/sync_slamvision.py'
       - 'scripts/test_slamvision_rotation.py'
+      - 'scripts/test_slamvision_njpw_cache.cjs'
+      - 'slamvision-direct-fallback.js'
+      - 'slamvision-feed.html'
       - 'scripts/publish_slamvision.py'
 permissions:
   contents: write
@@ -28,6 +31,8 @@ jobs:
           python-version: '3.12'
       - name: Verify stable-ID rotation safeguards
         run: python scripts/test_slamvision_rotation.py
+      - name: Verify NJPW backup feed safety
+        run: node scripts/test_slamvision_njpw_cache.cjs
       - name: Fetch live wrestling channel data
         run: python scripts/sync_slamvision.py
       - name: Test safe snapshot publisher
