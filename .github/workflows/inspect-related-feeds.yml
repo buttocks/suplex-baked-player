@@ -1,0 +1,39 @@
+name: Inspect related SlamVision channels
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - investigate/slamvision-related-feed-discovery
+    paths:
+      - .github/workflows/inspect-related-feeds.yml
+permissions:
+  contents: read
+jobs:
+  inspect:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Find actual NJPW and alternative feeds in upstream lineup
+        run: |
+          python - <<'PY'
+          import urllib.request,json,re
+          url='https://ring-channel-tv.emergent.host/api/channels'
+          req=urllib.request.Request(url,headers={'User-Agent':'Mozilla/5.0','Accept':'application/json'})
+          with urllib.request.urlopen(req,timeout=20) as r:
+              channels=json.load(r)
+          print('TOTAL FEEDS',len(channels),flush=True)
+          relevant=[]
+          for c in channels:
+              text=' '.join(str(c.get(k,'') or '') for k in ['id','name','callsign','tagline','category','category_override'])
+              if re.search(r'njpw|new japan|strong|puro|japan wrestling|japan pro|fantastica|best of super|pro wrestling world|stardom|tokyo dome',text,re.I):
+                  relevant.append({k:c.get(k) for k in ('number','id','name','callsign','tagline','category','category_override','archived')})
+          print('NJPW AND CLOSELY RELATED CANDIDATES',json.dumps(relevant,indent=2,ensure_ascii=False),flush=True)
+          for id in ('njpw-tv','njpw','njpw-world','njpw-strong'):
+              try:
+                  req=urllib.request.Request('https://ring-channel-tv.emergent.host/api/channels/'+id+'/now',headers={'User-Agent':'Mozilla/5.0','Accept':'application/json'})
+                  with urllib.request.urlopen(req,timeout=15) as r:
+                      o=json.load(r)
+                  p=(o.get('current') or {}).get('program') or {}
+                  print('PROBE',id,'status',r.status,'actual_id',(o.get('channel') or {}).get('id'),'title',p.get('title'),'url',str(p.get('stream_url',''))[:150],flush=True)
+              except Exception as e:print('PROBE',id,'ERROR',str(e),flush=True)
+          PY
