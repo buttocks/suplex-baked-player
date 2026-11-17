@@ -116,7 +116,8 @@ async function refreshData(){
       ? './slamvision/njpw-live.json?t='+Date.now()
       : new Set(['battlarts','big-japan','kaientai-dojo','michinoku-pro',
                  'osaka-pro','muta','fmw']).has(channel)
-        ? './slamvision/puro-live.json?t='+Date.now() : null,
+        ? './slamvision/puro-live.json?t='+Date.now()
+        : './slamvision/shared-live.json?t='+Date.now(),
     channel:channel,
     sourceId:channel
   });
