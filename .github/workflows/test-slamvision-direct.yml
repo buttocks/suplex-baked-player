@@ -1,0 +1,53 @@
+name: Test SlamVision direct schedule fallback
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - fix/slamvision-direct-browser-fallback
+    paths:
+      - .github/workflows/test-slamvision-direct.yml
+      - slamvision-direct-fallback.js
+      - scripts/patch_slamvision_pages.py
+      - scripts/test_slamvision_direct.cjs
+
+permissions:
+  contents: write
+
+jobs:
+  test-fallback:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Apply guarded fallback to all original embeds
+        run: python scripts/patch_slamvision_pages.py --apply
+      - name: Validate all 34 inline browser scripts
+        run: python scripts/patch_slamvision_pages.py --check
+      - name: Test live fallback and outage cases
+        run: node scripts/test_slamvision_direct.cjs
+      - name: Verify upstream CORS and current program
+        run: |
+          python - <<'PY'
+          import json, urllib.request
+          url='https://ring-channel-tv.emergent.host/api/channels/wwf-90-00/now'
+          req=urllib.request.Request(url,headers={'Origin':'https://buttocks.github.io','Accept':'application/json'})
+          with urllib.request.urlopen(req,timeout=20) as response:
+              assert response.headers.get('Access-Control-Allow-Origin') in ('https://buttocks.github.io','*'), 'CORS not enabled for GitHub Pages'
+              data=json.load(response)
+          assert data['channel']['id']=='wwf-90-00'
+          assert data.get('current',{}).get('program',{}).get('stream_url','').startswith('https://archive.org/')
+          print('PASS: upstream accepts browser origin and provides a real current program')
+          PY
+      - name: Commit tested embed changes to this branch only
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -- '*-slamvision.html'
+          if ! git diff --cached --quiet; then
+            git commit -m "Enable direct schedule fallback in 34 existing SlamVision embeds"
+            git push origin "HEAD:${GITHUB_REF_NAME}"
+          fi
