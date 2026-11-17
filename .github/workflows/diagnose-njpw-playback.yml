@@ -74,3 +74,41 @@ jobs:
                   await browser.close()
           asyncio.run(main())
           PY
+
+      - name: Inspect actual Baked.live NJPW channel embed
+        run: |
+          python - <<'PY'
+          import asyncio,json
+          from playwright.async_api import async_playwright
+          async def main():
+              async with async_playwright() as p:
+                  browser=await p.chromium.launch(headless=True,args=['--autoplay-policy=no-user-gesture-required'])
+                  page=await browser.new_page()
+                  failed=[];iframes=[];errors=[]
+                  page.on('requestfailed',lambda q:failed.append(q.url[:160]+' '+str(q.failure)) if ('archive.org' in q.url or 'slamvision' in q.url or 'emergent.host' in q.url) else None)
+                  page.on('pageerror',lambda e:errors.append(str(e)[:250]))
+                  page.on('framenavigated',lambda frame:iframes.append(frame.url[:250]))
+                  try:
+                      await page.goto('https://baked.live/tv/NJPW',wait_until='domcontentloaded',timeout=30000)
+                      await page.wait_for_timeout(23000)
+                      state=await page.evaluate("""() => ({
+                        title:document.title,iframes:[...document.querySelectorAll('iframe')].map(x=>({src:x.src,allow:x.allow,sandbox:x.sandbox?.value,outer:x.outerHTML.slice(0,550)})),
+                        videoTags:[...document.querySelectorAll('video')].map(v=>({src:v.currentSrc,paused:v.paused,ready:v.readyState,error:v.error?.code})),
+                        body:document.body.innerText.slice(0,2100),
+                        player:document.querySelector('#ytapiplayer,#videowrap,#player')?.outerHTML.slice(0,1400),
+                        scriptCount:document.scripts.length,
+                      })""")
+                      print('BAKED_STATE',json.dumps(state,ensure_ascii=False),flush=True)
+                      print('BAKED_FRAMES',json.dumps(iframes),flush=True)
+                      print('BAKED_FAILED',json.dumps(failed[:25]),flush=True)
+                      print('BAKED_JSERRORS',json.dumps(errors[:20]),flush=True)
+                      for fr in page.frames[1:10]:
+                          if 'suplex-baked-player' in fr.url:
+                              try:
+                                  v=await fr.evaluate("""() => {let v=document.querySelector('video');return {src:v?.currentSrc,paused:v?.paused,ready:v?.readyState,network:v?.networkState,error:v?.error?.message,status:document.querySelector('#status')?.textContent,statusHidden:document.querySelector('#status')?.hidden}}""")
+                                  print('BAKED_SLAMVISION_VIDEO',fr.url,json.dumps(v),flush=True)
+                              except Exception as e:print('BAKED_FRAME_ERROR',str(e),flush=True)
+                  except Exception as e:print('BAKED_ERROR',str(e),flush=True)
+                  await browser.close()
+          asyncio.run(main())
+          PY
