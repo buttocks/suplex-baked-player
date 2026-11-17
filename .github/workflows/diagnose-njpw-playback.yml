@@ -1,0 +1,76 @@
+name: Diagnose all NJPW player failures
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - diagnose/njpw-playback-20261117
+    paths:
+      - .github/workflows/diagnose-njpw-playback.yml
+permissions:
+  contents: read
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - name: Check all eight NJPW API feeds and Archive URLs
+        run: |
+          python - <<'PY'
+          import urllib.request,urllib.error,json,datetime,concurrent.futures
+          ids=['njpw','njpw-destructi','njpw-g1climax','njpw-starrcade','njpw-wp','njpw-wk','njpw-wrestling','ain']
+          def inspect(id):
+              out={'id':id}
+              try:
+                  req=urllib.request.Request('https://ring-channel-tv.emergent.host/api/channels/'+id+'/now',headers={'Origin':'https://buttocks.github.io','User-Agent':'Mozilla/5.0'})
+                  with urllib.request.urlopen(req,timeout=18) as r:
+                      d=json.load(r)
+                      out.update({'api':r.status,'cors':r.headers.get('Access-Control-Allow-Origin'),'actual':d.get('channel',{}).get('id')})
+                  curr=d.get('current') or {};p=curr.get('program') or {}
+                  out.update({'program':p.get('title'),'start':curr.get('start'),'end':curr.get('end'),'media':p.get('stream_url')})
+                  url=p.get('stream_url')
+                  if url:
+                      q=urllib.request.Request(url,headers={'User-Agent':'Mozilla/5.0','Range':'bytes=0-4095'})
+                      with urllib.request.urlopen(q,timeout=28) as r:
+                          out.update({'mediaHttp':r.status,'contentType':r.headers.get('Content-Type'),'mediaRedirect':r.url,'length':r.headers.get('Content-Length'),'acceptRanges':r.headers.get('Accept-Ranges')})
+                          out['initialBytes']=r.read(32).hex()
+              except Exception as e:out['error']=str(e)
+              return out
+          with concurrent.futures.ThreadPoolExecutor(max_workers=6) as pool:
+              for x in pool.map(inspect,ids):print('FEED_CHECK',json.dumps(x,ensure_ascii=False),flush=True)
+          PY
+      - name: Install Chromium browser
+        run: |
+          pip install playwright
+          python -m playwright install --with-deps chromium
+      - name: Test all eight actual deployed player URLs
+        run: |
+          python - <<'PY'
+          import asyncio,json
+          from playwright.async_api import async_playwright
+          ids=['njpw','njpw-destructi','njpw-g1climax','njpw-starrcade','njpw-wp','njpw-wk','njpw-wrestling','ain']
+          base='https://buttocks.github.io/suplex-baked-player/'
+          async def main():
+              async with async_playwright() as p:
+                  browser=await p.chromium.launch(headless=True,args=['--autoplay-policy=no-user-gesture-required'])
+                  sem=asyncio.Semaphore(3)
+                  async def test(id):
+                      async with sem:
+                          page=await browser.new_page()
+                          errors=[];api=[]
+                          page.on('pageerror',lambda e: errors.append('JS '+str(e)[:180]))
+                          page.on('response',lambda r:api.append((r.status,r.url)) if '/api/channels/' in r.url else None)
+                          page.on('requestfailed',lambda r:errors.append('FAILED '+r.url[:180]+' '+str(r.failure)) if ('api/channels' in r.url or 'archive.org' in r.url) else None)
+                          url=base+('njpw-slamvision.html?channel=01' if id=='njpw' else 'slamvision-feed.html?id='+id)
+                          try:
+                              await page.goto(url,wait_until='domcontentloaded',timeout=24000)
+                              await page.wait_for_timeout(17000)
+                              state=await page.evaluate("""() => {let v=document.querySelector('video');return {status:document.querySelector('#status')?.textContent,statusHidden:document.querySelector('#status')?.hidden,videoSrc:v?.currentSrc,readyState:v?.readyState,networkState:v?.networkState,videoError:v?.error?{code:v.error.code,message:v.error.message}:null,paused:v?.paused,currentTime:v?.currentTime,duration:v?.duration,helper:!!window.SlamVisionDirect,guide:document.querySelector('#guide-title')?.textContent,mediaCanPlay:v?.canPlayType('video/mp4')}}""")
+                              print('PLAYER_CHECK',id,json.dumps({'state':state,'api':api,'errors':errors[:8]},ensure_ascii=False),flush=True)
+                          except Exception as e:
+                              print('PLAYER_ERROR',id,str(e),'api',api,'errors',errors,flush=True)
+                          finally:await page.close()
+                  await asyncio.gather(*(test(id) for id in ids))
+                  await browser.close()
+          asyncio.run(main())
+          PY
