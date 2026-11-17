@@ -87,7 +87,17 @@
     let saved = null;
     if (cachedUrl) try {
       saved = await requestJson(cachedUrl, 7500);
-      if (saved?.channels?.[channel]?.id !== sourceId) saved = null;
+      // Shared pages select by stable ID; legacy snapshots are keyed by dial.
+      // Normalize only an EXACT identity match. Never redirect to a similar feed.
+      if (saved?.channels?.[channel]?.id !== sourceId) {
+        const matching = Object.entries(saved?.channels || {})
+          .filter(([, entry]) => entry && entry.id === sourceId);
+        if (matching.length === 1) {
+          saved = {...saved, channels: {...saved.channels, [channel]: matching[0][1]}};
+        } else {
+          saved = null;
+        }
+      }
     } catch (_) {
       saved = null;
     }
