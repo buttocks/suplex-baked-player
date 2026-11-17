@@ -12,6 +12,7 @@ on:
     paths:
       - .github/workflows/update-slamvision-catalog.yml
       - scripts/update_slamvision_catalog.py
+      - scripts/test_slamvision_catalog.py
       - research/slamvision-tube-catalog.html
 
 permissions:
@@ -37,6 +38,7 @@ jobs:
         run: |
           python -m py_compile scripts/update_slamvision_catalog.py
           python scripts/update_slamvision_catalog.py --self-test
+          python scripts/test_slamvision_catalog.py
       - name: Stage-only live scan, no repository changes
         if: github.ref_name != 'main'
         run: python scripts/update_slamvision_catalog.py --scan --dry-run
