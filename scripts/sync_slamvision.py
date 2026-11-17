@@ -81,14 +81,19 @@ def cached_if_active(category, dial, now):
         pass
     return None
 
-def fetch_one(category, dial, expected, by_dial, by_guide):
-    channel = by_dial.get(int(dial))
-    if not channel or not channel.get("id"):
-        raise RuntimeError("Upstream dial " + dial + " is missing")
+def fetch_one(category, dial, expected, by_id, by_guide):
+    # The stable feed ID identifies a broadcast. Upstream dial numbers are
+    # presentation details and can be reassigned at any time.
+    channel = by_id.get(expected)
+    if not channel:
+        raise RuntimeError("Original feed ID " + expected + " is missing upstream; cannot safely guess a replacement")
     actual = channel["id"]
-    if actual != expected:
-        raise RuntimeError("Channel " + dial + " belongs to " + actual + ", not " + expected + "; refusing wrong feed")
     response = read("channels/" + urllib.parse.quote(str(actual), safe="") + "/now")
+    # Never accept a different feed under a reused endpoint or alias.
+    returned_id = (response.get("channel") or {}).get("id")
+    if returned_id != expected:
+        raise RuntimeError("Upstream returned " + str(returned_id) +
+                           " instead of original feed " + expected)
     current = program(response.get("current"))
     if not current or not current["stream_url"]:
         raise RuntimeError("No playable current program for dial " + dial)
@@ -104,18 +109,32 @@ def fetch_one(category, dial, expected, by_dial, by_guide):
         "server_time": response.get("server_time"),
     }
 
-def main():
-    # The dial number is authoritative: upstream can rename an ID without
-    # breaking every other channel's scheduled refresh.
-    channels = read("channels")
+def build_index(channels):
+    # Exact stable IDs only. A title/name resemblance must never silently
+    # substitute an unrelated wrestling feed.
     if not isinstance(channels, list):
         raise RuntimeError("Invalid upstream channel list")
-    by_dial = {}
+    result = {}
+    duplicates = set()
     for channel in channels:
-        try:
-            by_dial.setdefault(int(channel["number"]), channel)
-        except (KeyError, ValueError, TypeError):
+        if not isinstance(channel, dict):
             continue
+        ident = channel.get("id")
+        if not isinstance(ident, str) or not ident:
+            continue
+        if ident in result:
+            duplicates.add(ident)
+        else:
+            result[ident] = channel
+    # Ambiguous IDs cannot be trusted.
+    for ident in duplicates:
+        result.pop(ident, None)
+    return result
+
+
+def main():
+    channels = read("channels")
+    by_id = build_index(channels)
     try:
         guide = read("guide?hours=4")
         by_guide = {x["channel"]["id"]: x for x in guide.get("rows", [])
@@ -131,7 +150,7 @@ def main():
     problems = []
     fresh = 0
     with concurrent.futures.ThreadPoolExecutor(max_workers=5) as pool:
-        pending = {pool.submit(fetch_one, group, dial, expected, by_dial, by_guide):
+        pending = {pool.submit(fetch_one, group, dial, expected, by_id, by_guide):
                    (group, dial, expected)
                    for group, dial, expected in tasks}
         for future in concurrent.futures.as_completed(pending):
@@ -140,8 +159,9 @@ def main():
                 result = future.result()
                 snapshots[group][dial] = result
                 fresh += 1
-                alias = " (upstream renamed " + expected + ")" if result["id"] != expected else ""
-                print("OK CH " + dial + " " + result["id"] + alias, flush=True)
+                upstream = by_id.get(expected, {}).get("number")
+                moved = (" (upstream dial " + str(upstream) + ")") if upstream is not None and str(upstream).zfill(2) != dial else ""
+                print("OK CH " + dial + " " + result["id"] + moved, flush=True)
             except Exception as exc:
                 problems.append("CH " + dial + " (" + expected + "): " + str(exc))
 
