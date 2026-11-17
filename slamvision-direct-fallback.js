@@ -83,9 +83,9 @@
   }
 
   async function resolve({cachedUrl, channel, sourceId}) {
-    if (!cachedUrl || !channel || !sourceId) throw new Error("Missing feed configuration");
+    if (!channel || !sourceId) throw new Error("Missing feed configuration");
     let saved = null;
-    try {
+    if (cachedUrl) try {
       saved = await requestJson(cachedUrl, 7500);
       if (saved?.channels?.[channel]?.id !== sourceId) saved = null;
     } catch (_) {
