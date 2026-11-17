@@ -44,17 +44,17 @@ button.primary{background:#2063a4;border-color:#4588c8}button.primary:hover{back
 <h1>SlamVision — Tube Embed Catalog</h1>
 <p class="intro">Find the right wrestling feeds for each Baked.live tube. This list is organized by <b>where to embed</b>, not the upstream provider's categories. Channel numbers may rotate; feed IDs remain the correct reference.</p>
 </header>
-<div class="summary" id="summary"><div><strong>116</strong><span>Live feeds inventoried</span></div><div><strong>17</strong><span>Destination tube categories</span></div><div><strong>24</strong><span>Existing embed pages</span></div><div><strong>92</strong><span>New pages needed</span></div></div>
-<div class="notice"><b>Snapshot: November 17, 2026, 12:40 PM Eastern.</b> The “On at snapshot” program is historical and changes over time. Source video availability is not guaranteed. Only the <b>Existing embed</b> entries have tested player-page URLs; for other feeds, copy their stable ID when building a new embed page. No existing Baked.live channel settings are modified here.</div>
+<div class="summary" id="summary"><div><strong>116</strong><span>Live feeds inventoried</span></div><div><strong>17</strong><span>Destination tube categories</span></div><div><strong>24</strong><span>Original player URLs preserved</span></div><div><strong>92</strong><span>New embed URLs ready</span></div></div>
+<div class="notice"><b>Snapshot: November 17, 2026, 12:40 PM Eastern.</b> The “On at snapshot” program is historical and changes over time. Source video availability is not guaranteed. All <b>116 current feeds have copy-ready iframe URLs</b>. The original 24 player URLs are unchanged; the other 92 use a shared player identified by stable feed ID. No existing Baked.live channel settings are modified here.</div>
 <div class="filters">
 <label>Destination tube<select id="tube"><option value="">All tubes</option></select></label>
 <label>Find a feed<input id="query" type="search" autocomplete="off" placeholder="NJPW, lucha, G1, WCW, ID..."></label>
-<label>Embed readiness<select id="ready"><option value="">Show all</option><option value="yes">Existing embed ready</option><option value="no">Needs new player page</option></select></label>
+<label>Player type<select id="ready"><option value="">All 116 ready</option><option value="legacy">Original pages (24)</option><option value="shared">New shared player (92)</option></select></label><button id="bulk" type="button">Copy all iframes in selected tube</button>
 <span id="shown" class="note">Loading…</span>
 </div>
 <p id="message" aria-live="polite"></p>
 <div id="catalog"></div>
-<footer>Source: public SlamVision channel API and four-hour guide. Original iframe URLs remain intact. Some program titles may be inaccurately cataloged by the upstream provider. For each newly built page, pin the <b>stable feed ID</b>, not its changing upstream channel number.</footer>
+<footer>Source: public SlamVision channel API and four-hour guide. Original iframe URLs remain intact. Some program titles may be inaccurately cataloged by the upstream provider. For every new embed, the player follows the <b>stable feed ID</b> instead of its changing upstream channel number.</footer>
 </main>
 <script>
 (()=>{
@@ -62,7 +62,7 @@ button.primary{background:#2063a4;border-color:#4588c8}button.primary:hover{back
 const dataUrl="./slamvision-by-tube-2026-11-17.json";
 const $=id=>document.getElementById(id);
 const list=$("catalog"),sel=$("tube"),search=$("query"),ready=$("ready"),shown=$("shown"),msg=$("message");
-let channels=[];
+let channels=[];const bulk=$("bulk");
 function element(tag,cls,txt){const e=document.createElement(tag);if(cls)e.className=cls;if(txt!==undefined)e.textContent=txt;return e}
 function button(label,fn,primary=false){const b=element("button",primary?"primary":"",label);b.type="button";b.addEventListener("click",fn);return b}
 function link(label,href){const a=element("a","actionlink",label);a.href=href;a.rel="noopener noreferrer";a.target="_blank";return a}
@@ -75,7 +75,7 @@ async function copy(text,label){
 }
 function fill(){
  const group=sel.value,q=search.value.trim().toLowerCase(),status=ready.value;
- const visible=channels.filter(x=>(!group||x.tube===group)&&(!status||(status==="yes"===Boolean(x.embed_url)))&&(!q||[x.name,x.id,x.tagline,x.category,x.now?.title,x.tube].join(" ").toLowerCase().includes(q)));
+ const visible=channels.filter(x=>(!group||x.tube===group)&&(!status||x.player_type===status)&&(!q||[x.name,x.id,x.tagline,x.category,x.now?.title,x.tube].join(" ").toLowerCase().includes(q)));
  shown.textContent=visible.length+" matching feeds";
  list.replaceChildren();
  if(!visible.length){list.append(element("p","muted","No feeds match those filters."));return}
@@ -91,7 +91,7 @@ function fill(){
    const head=element("header"),labels=element("div");
    labels.append(element("h3","",x.name||x.id));
    labels.append(element("div","meta","Upstream CH "+String(x.number).padStart(2,"0")+" · Stable ID: "+x.id+(x.existing_embed?" · Legacy CH "+x.legacy_channel_number:"")));
-   head.append(labels,element("span","pill "+(x.embed_url?"ready":""),x.embed_url?"Existing embed":"Needs new page"));
+   head.append(labels,element("span","pill "+(x.embed_url?"ready":""),x.player_type==="legacy"?"Original page":"New embed ready"));
    card.append(head);
    if(x.tagline)card.append(element("p","desc",x.tagline));
    card.append(element("p","now","On at snapshot: "+(x.now?.title||"Not available")));
@@ -100,8 +100,6 @@ function fill(){
     actions.append(button("Copy iframe",()=>copy(codeFor(x),x.name+" iframe"),true));
     actions.append(button("Copy URL",()=>copy(x.embed_url,x.name+" URL")));
     actions.append(link("Open player",x.embed_url));
-   }else{
-    actions.append(button("Copy feed ID",()=>copy(x.id,x.name+" feed ID"),true));
    }
    actions.append(link("Upstream feed","https://ring-channel-tv.emergent.host/api/channels/"+encodeURIComponent(x.id)+"/now"));
    card.append(actions);grid.append(card);
@@ -121,6 +119,12 @@ async function init(){
   const urlGroup=new URLSearchParams(location.search).get("tube");
   if(urlGroup&&seen.has(urlGroup))sel.value=urlGroup;
   sel.addEventListener("change",fill);search.addEventListener("input",fill);ready.addEventListener("change",fill);
+  bulk.addEventListener("click",()=>{
+    const group=sel.value;
+    if(!group){msg.textContent="Select a destination tube first.";return;}
+    const items=channels.filter(x=>x.tube===group);
+    copy(items.map(x=>x.embed_html).join("\n"),group+" ("+items.length+" iframes)");
+  });
   fill();
  }catch(err){shown.textContent="Unable to load catalog";msg.textContent="Catalog error: "+err.message+" — try the Markdown or CSV version."}
 }
