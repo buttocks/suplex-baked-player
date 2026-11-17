@@ -1,0 +1,73 @@
+name: Verify deployed NJPW cached playback without upstream
+on:
+  workflow_dispatch:
+  push:
+    branches: [verify/njpw-cache-live-20261117]
+    paths: [.github/workflows/verify-njpw-cache-live.yml]
+permissions:
+  contents: read
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - name: Check public Pages NJPW cache freshness and feed IDs
+        run: |
+          python - <<'PY'
+          import urllib.request,json,datetime
+          base='https://buttocks.github.io/suplex-baked-player/'
+          for path in ('slamvision-direct-fallback.js','slamvision-feed.html','slamvision/njpw-live.json'):
+              req=urllib.request.Request(base+path+'?check=20261117-1845',headers={'User-Agent':'Mozilla/5.0'})
+              with urllib.request.urlopen(req,timeout=30) as r:
+                  body=r.read()
+                  print('PUBLIC',path,'http',r.status,'size',len(body),flush=True)
+                  assert r.status==200 and len(body)>500
+                  if path=='slamvision/njpw-live.json':
+                      j=json.loads(body);found={v['id'] for v in j['channels'].values()}
+                      ids={'njpw','njpw-destructi','njpw-g1climax','njpw-starrcade',
+                           'njpw-wp','njpw-wk','njpw-wrestling','ain'}
+                      assert ids.issubset(found),(ids-found)
+                      print('VERIFIED_NJPW',sorted(ids),'generated',j['generated_at'],flush=True)
+                  if path=='slamvision-feed.html':
+                      assert b'njpw-live.json' in body and b'njpw-wk' in body
+          PY
+      - name: Install browser
+        run: |
+          pip install playwright
+          python -m playwright install --with-deps chromium
+      - name: Simulate upstream outage on public player pages
+        run: |
+          python - <<'PY'
+          import asyncio,json
+          from playwright.async_api import async_playwright
+          ids=['njpw-destructi','njpw-g1climax','njpw-starrcade',
+               'njpw-wp','njpw-wk','njpw-wrestling','ain']
+          async def main():
+              async with async_playwright() as p:
+                  browser=await p.chromium.launch(headless=True,args=['--autoplay-policy=no-user-gesture-required'])
+                  sem=asyncio.Semaphore(4)
+                  async def test(id):
+                      async with sem:
+                          page=await browser.new_page()
+                          api=[]
+                          page.on('request',lambda r:api.append(r.url) if 'ring-channel-tv.emergent.host' in r.url else None)
+                          await page.route('https://ring-channel-tv.emergent.host/api/**',lambda r:r.abort('failed'))
+                          await page.goto('https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id='+id,
+                                          wait_until='domcontentloaded',timeout=25000)
+                          await page.wait_for_function("""() => (document.querySelector('video')?.currentSrc||'').startsWith('https://archive.org/download/')""",timeout=22000)
+                          await page.wait_for_timeout(1400)
+                          state=await page.evaluate("""() => ({src:document.querySelector('video')?.currentSrc,
+                            status:document.getElementById('status')?.textContent,
+                            ready:document.querySelector('video')?.readyState,
+                            paused:document.querySelector('video')?.paused,
+                            time:document.querySelector('video')?.currentTime,
+                            guide:document.getElementById('guide-title')?.textContent})""")
+                          assert 'archive.org/download/' in state['src']
+                          print('PUBLIC_OFFLINE_PLAYER',id,json.dumps(state),'API_ATTEMPTS',len(api),flush=True)
+                          await page.close()
+                  await asyncio.gather(*(test(id) for id in ids))
+                  await browser.close()
+                  print('PASS: all seven deployed NJPW pages tune correct archived video with upstream API forcibly blocked',flush=True)
+          asyncio.run(main())
+          PY
