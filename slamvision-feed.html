@@ -109,7 +109,10 @@ async function refreshData(){
  try{
   // Use cached Pages schedule while fresh; otherwise query the feed by stable ID.
   const next=await window.SlamVisionDirect.resolve({
-    cachedUrl:null,
+    // Seven new NJPW feeds have a GitHub-hosted backup if direct upstream fails.
+    cachedUrl: new Set(['njpw-destructi','njpw-g1climax','njpw-starrcade',
+                        'njpw-wp','njpw-wk','njpw-wrestling','ain']).has(channel)
+      ? './slamvision/njpw-live.json?t='+Date.now() : null,
     channel:channel,
     sourceId:channel
   });
