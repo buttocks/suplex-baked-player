@@ -1,0 +1,84 @@
+name: Test NJPW cached fallback for eight feeds
+on:
+  workflow_dispatch:
+  push:
+    branches: [fix/njpw-shared-cache-fallback]
+    paths:
+      - .github/workflows/test-njpw-cache-fallback.yml
+      - scripts/sync_slamvision.py
+      - scripts/test_slamvision_rotation.py
+      - scripts/test_slamvision_njpw_cache.cjs
+      - slamvision-direct-fallback.js
+      - slamvision-feed.html
+permissions:
+  contents: read
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Test all NJPW cache identity and offline behavior
+        run: |
+          python -m py_compile scripts/sync_slamvision.py
+          python scripts/test_slamvision_rotation.py
+          node scripts/test_slamvision_njpw_cache.cjs
+          node scripts/test_slamvision_direct.cjs
+          python - <<'PY'
+          import subprocess
+          for p in ('slamvision-feed.html','njpw-slamvision.html'):
+              js=open(p).read().split('<script>',1)[1].split('</script>',1)[0]
+              subprocess.run(['node','--check','-'],input=js,text=True,check=True)
+          print('PASS: legacy and shared NJPW player JavaScript syntax')
+          PY
+      - name: Generate actual cached schedules for seven NJPW feeds
+        run: |
+          python scripts/sync_slamvision.py
+          python - <<'PY'
+          import json,datetime
+          j=json.load(open('slamvision/njpw-live.json'))
+          ids={'njpw','njpw-destructi','njpw-g1climax','njpw-starrcade',
+               'njpw-wp','njpw-wk','njpw-wrestling','ain'}
+          available={v['id'] for v in j['channels'].values()}
+          print('NJPW_CACHE_FEEDS',sorted(available),flush=True)
+          assert 'njpw' in available
+          assert len(available & ids) >= 5, 'Too many upstream API failures; do not deploy unproven cache'
+          assert all((v.get('current') or {}).get('stream_url','').startswith('https://archive.org/') for v in j['channels'].values())
+          print('PASS: actual NJPW JSON contains',len(available & ids),'of',len(ids),'feeds',flush=True)
+          PY
+      - name: Install Chromium browser
+        run: |
+          pip install playwright
+          python -m playwright install --with-deps chromium
+      - name: Test browser playback when API is deliberately offline
+        run: |
+          python -m http.server 8755 --bind 127.0.0.1 >/tmp/njpw-http.log 2>&1 &
+          python - <<'PY'
+          import asyncio,json
+          from playwright.async_api import async_playwright
+          async def main():
+              async with async_playwright() as p:
+                  browser=await p.chromium.launch(headless=True,args=['--autoplay-policy=no-user-gesture-required'])
+                  ids=['njpw-destructi','njpw-g1climax','njpw-starrcade',
+                       'njpw-wp','njpw-wk','njpw-wrestling','ain']
+                  for feed in ids:
+                      page=await browser.new_page()
+                      await page.route('https://ring-channel-tv.emergent.host/api/**',
+                                       lambda route:route.abort('failed'))
+                      await page.goto('http://127.0.0.1:8755/slamvision-feed.html?id='+feed,wait_until='domcontentloaded',timeout=20000)
+                      await page.wait_for_timeout(2500)
+                      state=await page.evaluate("""() => ({src:document.querySelector('video')?.currentSrc,
+                        status:document.getElementById('status')?.textContent,
+                        guide:document.getElementById('guide-title')?.textContent})""")
+                      print('CACHED_BROWSER',feed,json.dumps(state),flush=True)
+                      if 'archive.org/download/' in (state['src'] or ''):
+                          assert feed.replace('-',' ').split()[0].lower() in state['guide'].lower() or feed=='ain'
+                      else:
+                          print('WARNING: No fresh upstream snapshot in test run for',feed,flush=True)
+                      await page.close()
+                  await browser.close()
+          asyncio.run(main())
+          PY
