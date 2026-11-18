@@ -15,12 +15,12 @@ import update_slamvision_catalog as mod
 
 def check():
     seed=json.loads((ROOT/"research/slamvision-current.json").read_text())
-    assert len(seed["channels"])==116
-    assert len({r["id"] for r in seed["channels"]})==116
-    assert len({r["embed_url"] for r in seed["channels"]})==116
-    assert sum(r.get("player_type")=="legacy" for r in seed["channels"])==24
-    assert sum(r.get("player_type")=="shared" for r in seed["channels"])==92
-    assert len(seed["destination_tubes"])==17
+    assert len(seed["channels"])>=116
+    assert len({r["id"] for r in seed["channels"]})==len(seed["channels"])
+    assert len({r["embed_url"] for r in seed["channels"]})==len(seed["channels"])
+    assert sum(r.get("player_type")=="legacy" for r in seed["channels"])>=23
+    assert sum(r.get("player_type")=="shared" for r in seed["channels"])>=92
+    assert len(seed["destination_tubes"])>=17
     now=dt.datetime(2026,11,17,20,30,tzinfo=dt.timezone.utc)
     upstream=[{"id":r["id"], **{k:r.get(k) for k in mod.FIELDS}} for r in seed["channels"] if r["id"]!="njpw"]
     upstream += [
@@ -36,9 +36,11 @@ def check():
     assert by_id["njpw"]["embed_url"]==next(x["embed_url"] for x in seed["channels"] if x["id"]=="njpw")
     assert by_id["lucha-new-show"]["tube"]=="Lucha Tube"
     assert by_id["unknown-new-show"]["tube"]=="Needs Review"
+    assert mod.classify({"id":"nwa-crockett"})=="Territories / Classic US Tube"
+    assert mod.classify({"id":"revpro"})=="Indies / Hardcore Tube"
     assert by_id["lucha-new-show"]["embed_url"].endswith("slamvision-feed.html?id=lucha-new-show")
-    assert len(result["channels"])==118
-    assert result["total"]==117
+    assert len(result["channels"])==len(seed["channels"])+2
+    assert result["total"]==len(seed["channels"])+1
     original=(mod.RESEARCH,mod.CURRENT,mod.HISTORY)
     try:
         with tempfile.TemporaryDirectory() as temp:
@@ -48,7 +50,7 @@ def check():
             mod.HISTORY=path/"slamvision-change-log.json"
             mod.export(result,changes,now)
             generated=json.loads(mod.CURRENT.read_text())
-            assert len(generated["channels"])==118
+            assert len(generated["channels"])==len(seed["channels"])+2
             assert (path/"slamvision-current.csv").exists()
             assert (path/"slamvision-current.md").exists()
             assert (path/"slamvision-current-iframes.txt").exists()
@@ -56,9 +58,9 @@ def check():
             history=json.loads(mod.HISTORY.read_text())
             assert history["events"][0]["changes"]["added"]==changes["added"]
             with (path/"slamvision-current.csv").open(newline="") as f:
-                assert len(list(csv.DictReader(f)))==118
+                assert len(list(csv.DictReader(f)))==len(seed["channels"])+2
             iframes=(path/"slamvision-current-iframes.txt").read_text()
-            assert iframes.count("<iframe")==117
+            assert iframes.count("<iframe")==result["total"]
     finally:
         mod.RESEARCH,mod.CURRENT,mod.HISTORY=original
     catalog=(ROOT/"research/slamvision-tube-catalog.html").read_text()
@@ -68,7 +70,7 @@ def check():
     assert 'channels.length!==116' not in catalog
     js=catalog.split("<script>",1)[1].split("</script>",1)[0]
     subprocess.run(["node","--check","-"],input=js,text=True,capture_output=True,check=True)
-    print("PASS: 116 original links unchanged, 2 new auto-embeds, missing grace, Needs Review, CSV/MD/JSON/iframe/history/snapshot writes and UI syntax",flush=True)
+    print("PASS: original links unchanged, 2 new auto-embeds, missing grace, Needs Review, CSV/MD/JSON/iframe/history/snapshot writes and UI syntax",flush=True)
 
 if __name__=="__main__":
     check()

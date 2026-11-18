@@ -309,6 +309,9 @@ Major League Wrestling (mlw)
 Pro Wrestling Guerrilla (pwg)
 <iframe src="https://buttocks.github.io/suplex-baked-player/pwg-slamvision.html" width="1280" height="720" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
 
+Revolution Pro Wrestling (revpro)
+<iframe src="https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=revpro" width="1280" height="720" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+
 What Culture Pro Wrestling (wcpw)
 <iframe src="https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=wcpw" width="1280" height="720" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
 
@@ -336,6 +339,9 @@ Memphis Wrestling (memphis)
 
 Mid-South Wrestling (midsouth)
 <iframe src="https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=midsouth" width="1280" height="720" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+
+NWA Crockett (nwa-crockett)
+<iframe src="https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=nwa-crockett" width="1280" height="720" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
 
 The Territories (territories)
 <iframe src="https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=territories" width="1280" height="720" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
@@ -401,13 +407,5 @@ Random wrestling (rndm)
 
 Tag Team (tag)
 <iframe src="https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=tag" width="1280" height="720" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
-
-
-=== Needs Review ===
-NWA Crockett (nwa-crockett)
-<iframe src="https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=nwa-crockett" width="1280" height="720" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
-
-Revolution Pro Wrestling (revpro)
-<iframe src="https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=revpro" width="1280" height="720" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
 
 
