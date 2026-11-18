@@ -1,0 +1,77 @@
+name: Track SlamVision channel number and ID rotations
+
+on:
+  workflow_dispatch:
+  schedule:
+    # Half-hourly UTC checks; Actions schedule can be delayed or skipped.
+    - cron: '11,41 * * * *'
+  push:
+    branches:
+      - main
+      - feature/slamvision-rotation-history
+    paths:
+      - .github/workflows/track-slamvision-rotations.yml
+      - scripts/track_slamvision_rotations.py
+      - research/slamvision-rotation-report.html
+
+permissions:
+  contents: write
+
+concurrency:
+  group: slamvision-rotation-observer
+  cancel-in-progress: false
+
+jobs:
+  observe:
+    runs-on: ubuntu-latest
+    timeout-minutes: 9
+    steps:
+      - name: Checkout production tracker code
+        uses: actions/checkout@v4
+        with:
+          path: source
+          persist-credentials: true
+      - name: Checkout isolated durable observation history
+        uses: actions/checkout@v4
+        with:
+          ref: tracking/slamvision-history
+          path: tracking
+          persist-credentials: true
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Regression tests for movement, reassignment and timestamps
+        run: |
+          python -m py_compile source/scripts/track_slamvision_rotations.py
+          python source/scripts/track_slamvision_rotations.py --self-test
+      - name: Staging branch check (never writes observations)
+        if: github.ref_name != 'main'
+        run: python source/scripts/track_slamvision_rotations.py --scan --state-dir tracking/tracking-state --dry-run
+      - name: Observe lineup and store each sampled time on separate history branch
+        if: github.ref_name == 'main'
+        shell: bash
+        run: |
+          set -euo pipefail
+          cd tracking
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          cd ..
+          for attempt in 1 2 3; do
+            git -C tracking fetch --no-tags origin refs/heads/tracking/slamvision-history
+            git -C tracking reset --hard FETCH_HEAD
+            python source/scripts/track_slamvision_rotations.py --scan --state-dir tracking/tracking-state
+            git -C tracking add -- tracking-state/state.json tracking-state/events.json
+            if git -C tracking diff --cached --quiet; then
+              echo "No state change to publish"
+              exit 0
+            fi
+            git -C tracking commit -m "Observe SlamVision lineup and record detected mapping changes"
+            if git -C tracking push origin HEAD:refs/heads/tracking/slamvision-history; then
+              echo "Saved timestamped channel mapping observation without rebuilding GitHub Pages."
+              exit 0
+            fi
+            echo "History branch changed during publish; retrying from latest observations ($attempt/3)."
+          done
+          echo "Couldn't publish rotation observation after three retries" >&2
+          exit 1
