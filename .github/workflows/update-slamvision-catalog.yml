@@ -9,6 +9,7 @@ on:
     branches:
       - main
       - automation/slamvision-six-hour-lineup
+      - fix/slamvision-classify-crockett-revpro
     paths:
       - .github/workflows/update-slamvision-catalog.yml
       - scripts/update_slamvision_catalog.py
