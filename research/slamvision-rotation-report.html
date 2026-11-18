@@ -1,0 +1,212 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="color-scheme" content="dark">
+<title>SlamVision · Channel Rotation History</title>
+<style>
+:root{color-scheme:dark;background:#0b101a;color:#ecf1f9;font:14px/1.5 system-ui,-apple-system,Segoe UI,sans-serif}
+*{box-sizing:border-box}body{margin:0}main{max-width:1300px;margin:0 auto;padding:24px 18px 90px}
+h1{font-size:clamp(25px,3.6vw,38px);margin:0 0 6px}h2{font-size:20px;margin:30px 0 12px}
+p{margin:8px 0;color:#cad5e5}a{color:#9fcbff}small,.muted{color:#a6b6cb}
+.topline{display:flex;gap:12px;justify-content:space-between;flex-wrap:wrap;align-items:center}
+.kicker{color:#83b4f0;font-size:12px;text-transform:uppercase;letter-spacing:.1em;font-weight:700}
+.metrics{display:grid;grid-template-columns:repeat(auto-fit,minmax(155px,1fr));gap:10px;margin:21px 0}
+.metric{border:1px solid #31435d;background:#141e2e;padding:14px 16px;border-radius:10px}
+.metric strong{font-size:26px;display:block;line-height:1.3}.metric span{color:#a9bad3;font-size:12px}
+.notice{border-left:3px solid #93a9ca;background:#152239;padding:13px 15px;border-radius:5px;margin:15px 0}
+.note{color:#c6d4e7;font-size:12px}
+.panel{background:#131c2c;border:1px solid #344158;border-radius:10px;padding:16px;margin:14px 0}
+.controls{display:flex;flex-wrap:wrap;gap:12px;margin:14px 0}
+label{font-size:12px;color:#b7c6db;display:flex;flex:1 1 175px;flex-direction:column;gap:4px}
+select,input,button{background:#08111f;color:#e9f3ff;border:1px solid #52617b;border-radius:7px;padding:9px;font:inherit}
+button{cursor:pointer;background:#28456e;font-weight:600}button:hover{background:#365d91}
+.tablebox{overflow-x:auto;border:1px solid #344158;border-radius:9px}
+table{width:100%;border-collapse:collapse;min-width:760px}th,td{padding:10px 11px;text-align:left;border-bottom:1px solid #2b374c;vertical-align:top}
+th{background:#17243a;color:#abc9f1;font-size:12px;position:sticky;top:0}tr:last-child td{border-bottom:0}
+td{color:#d8e3f3;font-size:13px}code{font-size:12px;color:#a7d4ff}strong{color:#f2f5fb}
+.pill{display:inline-block;white-space:nowrap;border:1px solid #6f86a5;padding:2px 7px;border-radius:99px;font-size:11px}
+.pill.alert{color:#ffbdb7;border-color:#a56d75}
+.pill.move{color:#bce4ff;border-color:#4b8fc2}
+.pill.other{color:#ead5a2;border-color:#9b875b}
+.patterns{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,370px),1fr));gap:12px}
+.pattern-list{padding:0;margin:0;list-style:none}.pattern-list li{display:flex;align-items:center;gap:10px;border-bottom:1px solid #2b364b;padding:8px 0}
+.pattern-list li:last-child{border:0}.pattern-label{flex:0 0 150px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.bar-track{height:8px;background:#263650;flex:1;border-radius:99px}.bar-fill{display:block;height:100%;background:#7fa7dc;border-radius:99px}
+.count{min-width:24px;text-align:right;color:#c7d7eb;font-variant-numeric:tabular-nums}
+.legend{display:flex;gap:16px;flex-wrap:wrap;font-size:12px;color:#9cabc0}
+footer{border-top:1px solid #344158;margin-top:28px;padding-top:18px;color:#a5b7cd;font-size:12px}
+@media(max-width:640px){main{padding:16px 11px 65px}.pattern-label{flex-basis:120px}.panel{padding:12px}}
+</style>
+</head>
+<body>
+<main>
+<div class="topline">
+  <div><div class="kicker">SlamVision Diagnostics</div><h1>Channel Rotation History</h1></div>
+  <div><a href="./slamvision-tube-catalog.html">Embed catalog</a> · <a id="raw-events" href="#">Raw event history</a> · <a id="raw-state" href="#">Current dial map</a></div>
+</div>
+<p>Follow which upstream channel numbers change occupants, where known feed IDs move, and when changes are first noticed.</p>
+<div id="loading" class="notice">Loading the independent GitHub rotation history…</div>
+<div id="metrics" class="metrics">
+  <div class="metric"><strong>—</strong><span>Feed IDs watched</span></div>
+  <div class="metric"><strong>—</strong><span>Successful scans</span></div>
+  <div class="metric"><strong>—</strong><span>Change events</span></div>
+  <div class="metric"><strong>—</strong><span>Dial reassignments</span></div>
+</div>
+<div class="notice">
+  <strong>How to read the timestamps:</strong> a switch happened <em>sometime between</em> the last successful scan showing the old mapping and the first scan showing the new mapping. We record both times in Eastern time; we cannot claim the provider's exact switch minute. GitHub's scheduled checks can also be delayed.
+</div>
+<h2>Change log</h2>
+<div class="controls">
+  <label>Filter by type<select id="type">
+    <option value="">All changes</option>
+    <option value="dial_changed">Channel number changed occupant</option>
+    <option value="feed_moved">Feed moved to another number</option>
+    <option value="feed_disappeared">Feed ID disappeared</option>
+    <option value="feed_appeared">New feed ID</option>
+    <option value="feed_renamed">Feed renamed</option>
+  </select></label>
+  <label>Find a feed / channel number<input id="search" type="search" placeholder="njpw, cmll, 12, 63, etc."></label>
+  <label>Rows<select id="limit"><option value="100">Latest 100</option><option value="250">Latest 250</option><option value="999999">All matching events</option></select></label>
+</div>
+<p id="result-count" class="muted">Loading…</p>
+<div class="tablebox"><table>
+<thead><tr><th>Observed (Eastern)</th><th>Previous confirmed (Eastern)</th><th>Change</th><th>From → To</th><th>Related details</th></tr></thead>
+<tbody id="event-rows"><tr><td colspan="5">Loading history…</td></tr></tbody>
+</table></div>
+<h2>Patterns in the observed changes</h2>
+<p class="note">Counts show detections, not necessarily separate upstream incidents. A large simultaneous reshuffle can create multiple feed-move and dial-change records.</p>
+<div class="patterns">
+  <div class="panel"><strong>Most frequently reassigned channel numbers</strong><ol class="pattern-list" id="top-dials"></ol></div>
+  <div class="panel"><strong>Feeds that moved most often</strong><ol class="pattern-list" id="top-feeds"></ol></div>
+  <div class="panel"><strong>Detected changes by Eastern hour</strong><ol class="pattern-list" id="hourly"></ol><p class="note">Normalized to scan count per hour where possible; hourly comparisons are approximate.</p></div>
+</div>
+<h2>Latest verified upstream channel map</h2>
+<p class="note">This shows the last successful observation, not a guarantee of current availability. Filter by dial or feed name.</p>
+<div class="controls"><label>Search current mapping<input id="map-filter" type="search" placeholder="Number, feed ID, name"></label></div>
+<div class="tablebox"><table>
+<thead><tr><th>Upstream channel #</th><th>Stable feed ID</th><th>Feed name</th><th>Calls﻿ign</th></tr></thead>
+<tbody id="map-rows"><tr><td colspan="4">Loading…</td></tr></tbody>
+</table></div>
+<footer>Thirty-minute best-effort GitHub Actions observations, stored separately from production. This tracker never edits existing Baked.live iframe URLs or reassigns feeds automatically. Potential ID replacements are unverified suggestions only.</footer>
+</main>
+<script>
+(()=>{
+"use strict";
+// The history branch is independent from GitHub Pages / main, preventing a site
+// deployment every 30 minutes while still retaining each successful observation.
+const BASE="https://raw.githubusercontent.com/buttocks/suplex-baked-player/tracking/slamvision-history/tracking-state/";
+const $=id=>document.getElementById(id);
+$("raw-events").href=BASE+"events.json";
+$("raw-state").href=BASE+"state.json";
+const local=new Intl.DateTimeFormat("en-CA",{timeZone:"America/Toronto",year:"numeric",month:"short",day:"2-digit",
+ hour:"2-digit",minute:"2-digit",hour12:true,timeZoneName:"short"});
+const when=value=>value?local.format(new Date(value)):"—";
+const make=(tag,text)=>{const e=document.createElement(tag);e.textContent=text??"";return e};
+let events=[],state=null;
+function metric(value,label){const e=make("div");e.className="metric";e.append(make("strong",String(value)),make("span",label));return e}
+function brief(e){
+ switch(e.type){
+ case "dial_changed":return ["CH "+e.number,""+(e.old_id||"empty")+" → "+(e.new_id||"empty"),
+   (e.old_name||"empty")+" → "+(e.new_name||"empty")+
+    (e.old_id_new_number?" · Old feed now CH "+e.old_id_new_number:"")];
+ case "feed_moved":return [e.id,"CH "+e.old_number+" → CH "+e.new_number,
+    "At old number now: "+(e.new_occupant_at_old_number||"unassigned")];
+ case "feed_renamed":return [e.id,e.old_name+" → "+e.new_name,
+    "Stable ID unchanged, CH "+e.number];
+ case "feed_disappeared":return [e.id,"CH "+e.old_number+" → missing",
+    (e.possible_new_ids?.length?"Possible related IDs (NOT verified): "+e.possible_new_ids.map(x=>x.id+" (CH "+x.number+")").join(", "):"No verified replacement")];
+ case "feed_appeared":return [e.id,"New on CH "+e.number,
+    e.dial_previously_held?"Former occupant: "+e.dial_previously_held:"Previously unassigned number"];
+ default:return [e.type,e.id||"",JSON.stringify(e)];
+ }
+}
+function pill(type){const p=make("span",{
+ "dial_changed":"Number reassigned","feed_moved":"Feed moved",
+ "feed_renamed":"Renamed","feed_disappeared":"ID missing",
+ "feed_appeared":"ID appeared"}[type]||type);
+ p.className="pill "+(type==="feed_disappeared"?"alert":type==="feed_moved"?"move":"other");return p}
+function renderEvents(){
+ const type=$("type").value,term=$("search").value.trim().toLowerCase(),limit=Number($("limit").value);
+ const matching=events.filter(e=>(!type||e.type===type)&&(!term||JSON.stringify(e).toLowerCase().includes(term)));
+ $("result-count").textContent=matching.length+" matching change records · "+events.length+" total";
+ const body=$("event-rows");body.replaceChildren();
+ if(!matching.length){const r=make("tr");const c=make("td","No changes match this filter. The tracker will populate this after it observes a rotation.");c.colSpan=5;r.append(c);body.append(r);return}
+ for(const e of matching.slice(-limit).reverse()){
+   const r=make("tr"),info=brief(e);
+   const c1=make("td",when(e.first_detected_utc)),c2=make("td",when(e.last_confirmed_prior_utc));
+   const c3=make("td");c3.append(pill(e.type),make("div",info[0]));
+   const c4=make("td",info[1]);const c5=make("td",info[2]);r.append(c1,c2,c3,c4,c5);body.append(r);
+ }
+}
+function barList(target,items,labelFn,max=8){
+ const el=$(target);el.replaceChildren();
+ if(!items.length){el.append(make("li","No observed changes yet"));return}
+ const biggest=Math.max(1,...items.map(x=>x[1]));
+ for(const item of items.slice(0,max)){
+   const li=make("li"),name=make("span",labelFn(item)),track=make("span"),fill=make("span"),count=make("span",String(item[1]));
+   name.className="pattern-label";track.className="bar-track";fill.className="bar-fill";fill.style.width=Math.round(item[1]/biggest*100)+"%";count.className="count";
+   track.append(fill);li.append(name,track,count);el.append(li)
+ }
+}
+function summarize(){
+ const counts=(items,key)=>{const m=new Map();for(const e of items){const id=key(e);m.set(id,(m.get(id)||0)+1)}return [...m].sort((a,b)=>b[1]-a[1])};
+ barList("top-dials",counts(events.filter(x=>x.type==="dial_changed"),x=>String(x.number)),x=>"CH "+x[0]);
+ barList("top-feeds",counts(events.filter(x=>x.type==="feed_moved"),x=>x.id),x=>x[0]);
+ const checks=state.checks_by_local_hour||{};
+ const hourCount=Array.from({length:24},(_,h)=>[h,0,0]);
+ for(const [key,value]of Object.entries(checks)){
+   const h=Number(key.split(":")[1]);if(Number.isInteger(h)&&h>=0&&h<24)hourCount[h][2]+=value;
+ }
+ for(const event of events){
+   const h=Number(new Intl.DateTimeFormat("en-US",{timeZone:"America/Toronto",hour:"numeric",hourCycle:"h23"}).format(new Date(event.first_detected_utc)));
+   if(Number.isInteger(h)&&h>=0&&h<24)hourCount[h][1]++;
+ }
+ const rated=hourCount.filter(x=>x[2]>0).map(x=>[x[0],Math.round(x[1]/x[2]*100)/100,x[1],x[2]]).sort((a,b)=>b[1]-a[1]);
+ barList("hourly",rated,x=>String(x[0]).padStart(2,"0")+":00 ("+x[2]+" events / "+x[3]+" checks)",10);
+}
+function renderMap(){
+ const term=$("map-filter").value.trim().toLowerCase();
+ const rows=Object.values(state.channels_by_id||{}).filter(x=>[x.id,x.name,x.number,x.callsign].join(" ").toLowerCase().includes(term))
+ .sort((a,b)=>a.number-b.number);
+ const el=$("map-rows");el.replaceChildren();
+ for(const entry of rows){
+   const row=make("tr");
+   for(const value of [entry.number,entry.id,entry.name,entry.callsign])row.append(make("td",String(value??"")));
+   el.append(row)
+ }
+ if(!rows.length){const row=make("tr"),cell=make("td","No channels match");cell.colSpan=4;row.append(cell);el.append(row)}
+}
+async function fetchJson(name){
+ const response=await fetch(BASE+name+"?t="+Date.now(),{cache:"no-store"});
+ if(!response.ok)throw Error(name+" returned HTTP "+response.status);
+ return response.json()
+}
+async function init(){
+ try{
+  const result=await Promise.all([fetchJson("state.json"),fetchJson("events.json")]);
+  state=result[0];events=result[1].events||[];
+  if(!state.last_successful_scan_utc||!Array.isArray(events))throw Error("History data malformed");
+  const date=when(state.last_successful_scan_utc);
+  const baseline=state.baseline_source?" Imported baseline: "+state.baseline_source+".":"";
+  $("loading").textContent="Last successful check: "+date+" · Checks every ~30 minutes (best effort)."+
+    " "+state.total_feeds+" upstream feeds observed. "+(state.last_scan_change_count||0)+" changes detected on latest check."+baseline;
+  $("metrics").replaceChildren(
+    metric(state.total_feeds,"Current upstream feed IDs"),
+    metric(state.successful_scan_count,"Tracker scans since activation"),
+    metric(events.length,"Recorded change events"),
+    metric(events.filter(e=>e.type==="dial_changed"&&e.old_id&&e.new_id).length,"Reassigned dial numbers"));
+  renderEvents();summarize();renderMap();
+  $("type").addEventListener("change",renderEvents);
+  $("search").addEventListener("input",renderEvents);
+  $("limit").addEventListener("change",renderEvents);
+  $("map-filter").addEventListener("input",renderMap);
+ }catch(e){$("loading").textContent="Couldn't load the rotation history: "+e.message+
+   ". Open the raw data links above or try refreshing. The monitor may be collecting its first observation."}
+}
+init();
+})();
+</script>
+</body>
+</html>
