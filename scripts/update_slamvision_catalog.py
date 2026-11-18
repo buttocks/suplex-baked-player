@@ -83,7 +83,17 @@ def guide_programs(slots, now):
     return brief(live) if live else None, [brief(s) for s in future[:2]]
 
 
+# Explicit destination choices: these stable IDs should never fall into Needs Review.
+TUBE_BY_STABLE_ID = {
+    "nwa-crockett": "Territories / Classic US Tube",
+    "revpro": "Indies / Hardcore Tube",
+}
+
+
 def classify(channel):
+    chosen = TUBE_BY_STABLE_ID.get(channel.get("id"))
+    if chosen:
+        return chosen
     haystack = " ".join(str(channel.get(k) or "") for k in ("id", "name", "callsign", "tagline"))
     for tube, regex in RULES:
         if re.search(regex, haystack, re.I):
@@ -149,6 +159,12 @@ def rebuild(prev, upstream, guide, now):
             if any(c.get(k) != new.get(k) for k in ("tagline", "category", "archived")):
                 changes["details_changed"].append(c["id"])
             c.update({k: new.get(k) for k in FIELDS})
+            # Promote previously unclassified feeds without changing stable IDs or embeds.
+            if c.get("tube") == "Needs Review":
+                proposed = classify(c)
+                if proposed != "Needs Review":
+                    c["tube"] = proposed
+                    changes["recategorized"].append(c["id"])
             c["availability"], c["missing_scans"] = "available", 0
             if c["id"] in guide_by_id:
                 now_show, upcoming = guide_programs(guide_by_id[c["id"]], now)
@@ -277,6 +293,8 @@ def self_test():
     assert {x["id"]: x for x in d["channels"]}["wcw"]["embed_url"] == base["channels"][1]["embed_url"]
     for feed, expected in [("njpw-wk", "NJPW Tube"), ("ajpw-summer", "AJPW Tube"),
                            ("cmll-new", "Lucha Tube"), ("marigold", "Joshi Tube"),
+                           ("nwa-crockett", "Territories / Classic US Tube"),
+                           ("revpro", "Indies / Hardcore Tube"),
                            ("mystery-show", "Needs Review")]:
         assert classify({"id": feed, "name": feed}) == expected
     try:
@@ -285,7 +303,7 @@ def self_test():
         pass
     else:
         raise AssertionError("Duplicate feed ID not rejected")
-    print("PASS: stable ID rotation, 2-scan removal, recovery, preserve legacy URL, unknown review, 5 category tests")
+    print("PASS: stable ID rotation, 2-scan removal, recovery, preserve legacy URL, unknown review, 7 category tests")
 
 
 def scan(dry_run):
