@@ -14,7 +14,6 @@ on:
       - main
       - monitor/slamvision-schedule-health
       - fix/slamvision-schedule-and-single-alert
-      - monitor/all-active-slamvision-125
     paths:
       - .github/workflows/monitor-slamvision.yml
       - scripts/monitor_slamvision.py
