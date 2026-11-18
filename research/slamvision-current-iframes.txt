@@ -207,6 +207,12 @@ ECW Hardcore TV (ecw-hardcoretv)
 All Elite Wrestling (aew-tv)
 <iframe src="https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=aew-tv" width="1280" height="720" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
 
+AEW Dark Elevation (aew-elevation)
+<iframe src="https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=aew-elevation" width="1280" height="720" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+
+AEW Rampage (aew-rampage)
+<iframe src="https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=aew-rampage" width="1280" height="720" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+
 ALL ELITE WRESTLING DYNAMITE (aew2)
 <iframe src="https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=aew2" width="1280" height="720" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
 
