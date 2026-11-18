@@ -157,7 +157,7 @@ Provider dials change; iframe URLs use stable feed IDs.
 | Osaka Pro Wrestling (osaka-pro) | 77 | available | [Open](https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=osaka-pro) |
 | The Great Muta (muta) | 91 | available | [Open](https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=muta) |
 
-## Indies / Hardcore Tube (11 active)
+## Indies / Hardcore Tube (12 active)
 
 | Feed · Stable ID | Upstream # | Availability | Player |
 |---|---:|---|---|
@@ -170,6 +170,7 @@ Provider dials change; iframe URLs use stable feed IDs.
 | Maple leaf pro (mlp) | 57 | available | [Open](https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=mlp) |
 | Major League Wrestling (mlw) | 62 | available | [Open](https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=mlw) |
 | Pro Wrestling Guerrilla (pwg) | 78 | available | [Open](https://buttocks.github.io/suplex-baked-player/pwg-slamvision.html) |
+| Revolution Pro Wrestling (revpro) | 80 | available | [Open](https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=revpro) |
 | What Culture Pro Wrestling (wcpw) | 100 | available | [Open](https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=wcpw) |
 | Wrestling Society X (wsx) | 116 | available | [Open](https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=wsx) |
 
@@ -181,13 +182,14 @@ Provider dials change; iframe URLs use stable feed IDs.
 | MMA (mma-tv) | 63 | available | [Open](https://buttocks.github.io/suplex-baked-player/mma-slamvision.html) |
 | The Shoot Network (tsn) | 95 | available | [Open](https://buttocks.github.io/suplex-baked-player/shoot-network-slamvision.html) |
 
-## Territories / Classic US Tube (4 active)
+## Territories / Classic US Tube (5 active)
 
 | Feed · Stable ID | Upstream # | Availability | Player |
 |---|---:|---|---|
 | American Wrestling Association (awa) | 33 | available | [Open](https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=awa) |
 | Memphis Wrestling (memphis) | 59 | available | [Open](https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=memphis) |
 | Mid-South Wrestling (midsouth) | 61 | available | [Open](https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=midsouth) |
+| NWA Crockett (nwa-crockett) | 76 | available | [Open](https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=nwa-crockett) |
 | The Territories (territories) | 96 | available | [Open](https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=territories) |
 
 ## Years / Mixed Wrestling Tube (20 active)
@@ -214,11 +216,4 @@ Provider dials change; iframe URLs use stable feed IDs.
 | Monday night wars (mnw) | 64 | available | [Open](https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=mnw) |
 | Random wrestling (rndm) | 79 | available | [Open](https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=rndm) |
 | Tag Team (tag) | 89 | available | [Open](https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=tag) |
-
-## Needs Review (2 active)
-
-| Feed · Stable ID | Upstream # | Availability | Player |
-|---|---:|---|---|
-| NWA Crockett (nwa-crockett) | 76 | available | [Open](https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=nwa-crockett) |
-| Revolution Pro Wrestling (revpro) | 80 | available | [Open](https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=revpro) |
 
