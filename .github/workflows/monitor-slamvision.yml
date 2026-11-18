@@ -17,6 +17,7 @@ on:
     paths:
       - .github/workflows/monitor-slamvision.yml
       - scripts/monitor_slamvision.py
+      - research/slamvision-current.json
 
 permissions:
   contents: read

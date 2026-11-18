@@ -1,9 +1,8 @@
 #!/usr/bin/env python3
-"""Read-only SlamVision Pages health monitor, with one GitHub issue per outage.
+"""Read-only health monitor for every active SlamVision feed in the rolling catalog.
 
-Check the live GitHub Pages JSON, not merely the repo's newest commit.
-Expected channels are the 24 independently verified working on 2026-11-16.
-The 11 legacy missing/reassigned channels are excluded until deliberately restored.
+All channel IDs are handled equally. Stable IDs, not changing upstream dials,
+identify the feed; legacy player pages and shared embeds use the same checks.
 """
 import argparse
 import concurrent.futures
@@ -15,30 +14,19 @@ import time
 import urllib.error
 import urllib.request
 
-PAGE_ROOT = "https://buttocks.github.io/suplex-baked-player/slamvision/"
+PAGES_ROOT = "https://buttocks.github.io/suplex-baked-player/"
+PAGE_ROOT = PAGES_ROOT + "slamvision/"
+CATALOG_URL = PAGES_ROOT + "research/slamvision-current.json"
+LOCAL_CATALOG = os.path.join(os.path.dirname(os.path.dirname(__file__)),
+                             "research", "slamvision-current.json")
 REPO = "buttocks/suplex-baked-player"
 ISSUE_TITLE = "[SlamVision] Published schedules need attention"
 EARLY_RISK_AFTER_SECONDS = 7 * 60
 EARLY_RISK_HORIZON_SECONDS = 10 * 60
 STALE_AFTER_SECONDS = 12 * 60
-USER_AGENT = "SlamVision-Health-Monitor/1.0"
-EXPECTED = {
-    "njpw": {"01": "njpw"},
-    "ajpw": {"05": "ajpw"},
-    "joshi": {"11": "joshi"},
-    "lucha": {"16": "100-lucha", "54": "lu-tv"},
-    "roh": {"15": "roh-tv", "56": "croh"},
-    "noah": {"20": "noah-tv"},
-    "independent": {"22": "gcw-tv", "48": "death", "49": "czw-tv", "72": "pwg"},
-    "dragongate": {"37": "dgtv"},
-    "puro": {"47": "bjw"},
-    "shoot": {"29": "tsn", "32": "mma-tv"},
-    "ecw": {"10": "ecw-tv"},
-    "wwf": {"14": "wwf", "25": "wwe", "52": "wwf-90-00", "64": "wwwf"},
-    "tna": {"17": "tna", "19": "iw"},
-    "wcw": {"02": "wcw"},
-}
-EXPECTED_COUNT = 24
+USER_AGENT = "SlamVision-Health-Monitor/2.0"
+GROUPS = ("njpw", "ajpw", "joshi", "lucha", "roh", "noah", "independent",
+          "dragongate", "puro", "shoot", "ecw", "wwf", "tna", "wcw", "shared")
 
 
 def iso_to_seconds(value):
@@ -146,61 +134,130 @@ def fetch_direct_coverage(source_id, now):
     raise RuntimeError(str(last))
 
 
-def inspect_with_browser_fallback(snapshots, now, fetch_live=None):
-    """Alert only if both Pages and the real browser fallback are insufficient.
 
-    The original inspect() is retained for baseline regression tests. The
-    production monitor uses this full availability check after the player
-    acquired direct browser fallback support.
-    """
+def active_catalog(raw):
+    """Validate and return ALL currently active stable IDs, without player tiers."""
+    import re
+    if not isinstance(raw, dict) or not isinstance(raw.get("channels"), list):
+        raise ValueError("Malformed channel catalog")
+    active = []
+    seen = set()
+    for row in raw["channels"]:
+        if not isinstance(row, dict):
+            raise ValueError("Malformed catalog channel")
+        if row.get("availability", "available") != "available":
+            continue
+        ident = row.get("id")
+        url = row.get("embed_url")
+        if not isinstance(ident, str) or not re.fullmatch(r"[a-z0-9][a-z0-9-]{0,90}", ident):
+            raise ValueError("Unsafe active channel ID: " + str(ident))
+        if ident in seen:
+            raise ValueError("Duplicate active channel ID: " + ident)
+        if not isinstance(url, str) or not url.startswith(PAGES_ROOT):
+            raise ValueError("Missing or invalid embed URL: " + ident)
+        seen.add(ident)
+        active.append({"id": ident, "name": str(row.get("name") or ident),
+                       "embed_url": url})
+    if len(active) < 35:
+        raise ValueError("Suspicious active channel count: " + str(len(active)))
+    if raw.get("total") is not None and int(raw["total"]) != len(active):
+        raise ValueError("Active catalog total disagrees with channel list")
+    return active
+
+
+def load_active_catalog():
+    """Prefer the published catalog; preserve local inventory during a Pages outage."""
+    local = None
+    local_error = None
+    try:
+        with open(LOCAL_CATALOG, encoding="utf-8") as fh:
+            local = active_catalog(json.load(fh))
+    except (OSError, ValueError, TypeError) as exc:
+        local_error = str(exc)
+    try:
+        published = active_catalog(get_json(CATALOG_URL + "?check=" + str(int(time.time()))))
+        # Guard against a temporarily partial Pages deployment dropping monitoring.
+        if local is not None and len(published) < int(len(local) * 0.65):
+            raise ValueError("Published catalog unexpectedly shrank to " +
+                             str(len(published)) + " active feeds")
+        return published, []
+    except (OSError, ValueError, TypeError) as exc:
+        if local is None:
+            raise RuntimeError("No valid published or local channel catalog: " +
+                               str(exc) + "; local: " + str(local_error)) from exc
+        return local, ["Published catalog unavailable or incomplete; using checked-out " +
+                       "active inventory (" + str(len(local)) + " feeds): " + str(exc)]
+
+
+def inspect_all(snapshots, active, now, fetch_live=None):
+    """Every active ID gets identical cache/fallback/coverage validation."""
     live = fetch_live or fetch_direct_coverage
-    watched = [(group, dial, source_id)
-               for group, channels in EXPECTED.items()
-               for dial, source_id in channels.items()]
-    cached = {}
-    tasks = []
+    ids = {item["id"] for item in active}
+    by_id = {}
+    duplicate_ids = set()
     stale_groups = 0
-    for group in EXPECTED:
-        group_data = snapshots.get(group) or {}
-        stamp = iso_to_seconds(group_data.get("generated_at"))
+    for group in GROUPS:
+        snapshot = snapshots.get(group)
+        if not isinstance(snapshot, dict):
+            stale_groups += 1
+            continue
+        stamp = iso_to_seconds(snapshot.get("generated_at"))
         age = now - stamp if stamp is not None else float("inf")
         if age > STALE_AFTER_SECONDS or age < -180:
             stale_groups += 1
-        entries = group_data.get("channels") or {}
-        for dial, source_id in EXPECTED[group].items():
-            item = entries.get(dial) if isinstance(entries, dict) else None
-            if not isinstance(item, dict) or item.get("id") != source_id:
-                item = None
-            until = covered_until(item, now) if item else None
-            cached[(group, dial)] = (until, age)
-            # A recently refreshed, fully current Pages show needs no probe.
-            if until is None or age > STALE_AFTER_SECONDS or age < -180 or until - now < EARLY_RISK_HORIZON_SECONDS:
-                tasks.append((group, dial, source_id))
+        entries = snapshot.get("channels")
+        if not isinstance(entries, dict):
+            continue
+        for dial, item in entries.items():
+            if not isinstance(item, dict) or item.get("id") not in ids:
+                continue
+            ident = item["id"]
+            previous = by_id.get(ident)
+            if previous is not None:
+                duplicate_ids.add(ident)
+            # Prefer the latest matching ID snapshot, not a potentially reassigned dial.
+            if previous is None or age < previous[1]:
+                by_id[ident] = (item, age)
+
+    tasks = []
+    cached = {}
+    for channel in active:
+        ident = channel["id"]
+        item, age = by_id.get(ident, (None, float("inf")))
+        until = covered_until(item, now) if item else None
+        cached[ident] = until
+        if (until is None or age > STALE_AFTER_SECONDS or age < -180 or
+                until - now < EARLY_RISK_HORIZON_SECONDS):
+            tasks.append(ident)
+
     live_results = {}
     if tasks:
-        with concurrent.futures.ThreadPoolExecutor(max_workers=7) as pool:
-            futures = {pool.submit(live, source_id, now): (group, dial)
-                       for group, dial, source_id in tasks}
+        with concurrent.futures.ThreadPoolExecutor(max_workers=12) as pool:
+            futures = {pool.submit(live, ident, now): ident for ident in tasks}
             for future in concurrent.futures.as_completed(futures):
-                key = futures[future]
+                ident = futures[future]
                 try:
-                    live_results[key] = (future.result(), None)
+                    live_results[ident] = (future.result(), None)
                 except Exception as exc:
-                    live_results[key] = (None, str(exc))
+                    live_results[ident] = (None, str(exc))
+
     errors, warnings = [], []
-    playable = 0
-    direct_count = 0
-    shortest = None
-    for group, dial, source_id in watched:
-        until, age = cached[(group, dial)]
-        upstream_until, upstream_error = live_results.get((group, dial), (None, None))
-        coverage = max(x for x in (until, upstream_until) if x is not None) if (
-            until is not None or upstream_until is not None) else None
+    if duplicate_ids:
+        warnings.append("Duplicate cache snapshots for " +
+                        ", ".join(sorted(duplicate_ids)[:10]) +
+                        "; selected latest matching stable IDs")
+    playable, direct_count, shortest = 0, 0, None
+    for channel in active:
+        ident, name = channel["id"], channel["name"]
+        until = cached[ident]
+        upstream_until, upstream_error = live_results.get(ident, (None, None))
         if upstream_until is not None:
             direct_count += 1
+        coverage = max((value for value in (until, upstream_until) if value is not None),
+                       default=None)
         if coverage is None:
-            errors.append("CH " + dial + " (" + source_id +
-                          "): no playable Pages slot AND direct upstream failed" +
+            errors.append(name + " (" + ident +
+                          "): no playable published schedule or direct upstream" +
                           (": " + upstream_error if upstream_error else ""))
             continue
         playable += 1
@@ -208,81 +265,23 @@ def inspect_with_browser_fallback(snapshots, now, fetch_live=None):
         shortest = remaining if shortest is None else min(shortest, remaining)
         if upstream_error:
             if remaining < EARLY_RISK_HORIZON_SECONDS:
-                errors.append("CH " + dial + " (" + source_id +
+                errors.append(name + " (" + ident +
                               "): live upstream unreachable and cached show ends in " +
                               str(round(remaining / 60, 1)) + "m")
             else:
-                warnings.append("CH " + dial + " (" + source_id +
-                                "): live upstream unavailable; saved program still covers " +
+                warnings.append(name + " (" + ident +
+                                "): live upstream unavailable; cached program covers " +
                                 str(round(remaining / 60, 1)) + "m")
-    if len(watched) != EXPECTED_COUNT:
-        errors.append("Monitor watchlist count changed unexpectedly")
-    summary = ("Playable channels " + str(playable) + "/" + str(EXPECTED_COUNT) +
-               " | verified via direct API " + str(direct_count) +
-               " | stale Pages groups " + str(stale_groups) + "/" + str(len(EXPECTED)) +
-               " | shortest remaining " +
-               ("unknown" if shortest is None else str(round(shortest / 60, 1)) + "m"))
+
+    if playable != len(active) and not errors:
+        errors.append("Channel coverage count mismatch")
     if stale_groups and not errors:
-        warnings.append("GitHub Pages JSON is delayed, but the client-side live API fallback is playable.")
-    return errors, warnings, summary
-
-
-def inspect(snapshots, now):
-    """Return (problems, warnings, summary) from already-loaded channel snapshots."""
-    errors, warnings = [], []
-    fresh = 0
-    youngest = None
-    shortest = None
-    for category, watched in EXPECTED.items():
-        data = snapshots.get(category)
-        if not isinstance(data, dict):
-            errors.append(category + ": no published JSON / network failure")
-            continue
-        gen = iso_to_seconds(data.get("generated_at"))
-        if gen is None:
-            errors.append(category + ": missing/invalid generated_at")
-            continue
-        age = now - gen
-        if age < -180:
-            errors.append(category + ": schedule timestamp is in the future")
-        if age > STALE_AFTER_SECONDS:
-            errors.append(category + ": published schedule " + str(round(age / 60, 1)) + "m old (threshold 12m)")
-        if youngest is None or age > youngest:
-            youngest = age
-        channels = data.get("channels")
-        if not isinstance(channels, dict):
-            errors.append(category + ": malformed channels object")
-            continue
-        for dial, expected_id in watched.items():
-            item = channels.get(dial)
-            if not isinstance(item, dict):
-                errors.append("CH " + dial + " (" + expected_id + ") missing from " + category)
-                continue
-            if item.get("id") != expected_id:
-                errors.append("CH " + dial + " changed from " + expected_id + " to " + str(item.get("id")))
-                continue
-            until = covered_until(item, now)
-            if until is None:
-                errors.append("CH " + dial + " (" + expected_id + ") has no playable program RIGHT NOW")
-                continue
-            fresh += 1
-            remaining = until - now
-            shortest = remaining if shortest is None else min(shortest, remaining)
-            # Short windows are normal *if the refresh is fresh*.
-            if remaining < EARLY_RISK_HORIZON_SECONDS:
-                if age >= EARLY_RISK_AFTER_SECONDS:
-                    errors.append("CH " + dial + " (" + expected_id + ") expires in " +
-                                  str(round(remaining / 60, 1)) + "m; update already " +
-                                  str(round(age / 60, 1)) + "m old")
-                else:
-                    warnings.append("CH " + dial + " (" + expected_id + ") only " +
-                                    str(round(remaining / 60, 1)) + "m covered; upstream refresh expected")
-    if sum(map(len, EXPECTED.values())) != EXPECTED_COUNT:
-        errors.append("Monitor configuration count changed unexpectedly")
-    summary = ("Playable channels " + str(fresh) + "/" + str(EXPECTED_COUNT) +
-               " | oldest snapshot " +
-               ("unknown" if youngest is None else str(round(youngest / 60, 1)) + "m") +
-               " | shortest remaining " +
+        warnings.append("Some published schedule files are delayed; checked upstream " +
+                        "where required.")
+    summary = ("Playable channels " + str(playable) + "/" + str(len(active)) +
+               " | direct API verified " + str(direct_count) + "/" + str(len(tasks)) +
+               " probed | stale/missing Pages groups " + str(stale_groups) +
+               "/" + str(len(GROUPS)) + " | shortest remaining " +
                ("unknown" if shortest is None else str(round(shortest / 60, 1)) + "m"))
     return errors, warnings, summary
 
@@ -394,9 +393,8 @@ def reconcile_alert(errors, warnings, summary, token):
             return 0
 
         body = (
-            "The published GitHub Pages JSON needs attention. This monitor watches "
-            "24 working SlamVision channels, excluding 11 known missing or reassigned "
-            "upstream feeds.\n\n"
+            "The published GitHub Pages JSON needs attention. This monitor watches every feed marked active in the rolling "
+            "SlamVision catalog, without distinguishing old and new embeds.\n\n"
             + "**Detected:** " + dt.datetime.now(dt.timezone.utc).isoformat() + "\n\n"
             + "**Summary:** " + summary + "\n\n"
             + "**Problems:**\n" +
@@ -423,87 +421,109 @@ def reconcile_alert(errors, warnings, summary, token):
 
 
 def self_test():
-    # Deterministic fixture cases, no network and no GitHub writes.
+    """Offline regression tests, including 125 equal-priority live channels."""
     now = 1_800_000_000
-    def fmt(sec):
-        return dt.datetime.fromtimestamp(sec, dt.timezone.utc).isoformat()
-    def fixture(age=120, coverage=3600):
-        return {group: {
-            "generated_at": fmt(now - age),
-            "channels": {dial: {"id": ident, "current": {
-                "stream_url": "https://archive.org/test.mp4",
-                "start": fmt(now - 100), "end": fmt(now + coverage)},
+    def stamp(value):
+        return dt.datetime.fromtimestamp(value, dt.timezone.utc).isoformat()
+    active = [{"id": "test-feed-" + str(i), "name": "Channel " + str(i),
+               "embed_url": PAGES_ROOT + "slamvision-feed.html?id=test-feed-" + str(i)}
+              for i in range(125)]
+    doc = {"total": len(active), "channels": [
+        {"id": x["id"], "name": x["name"], "embed_url": x["embed_url"],
+         "availability": "available"} for x in active]}
+    assert len(active_catalog(doc)) == 125
+    doc["channels"].append({"id": "offline", "availability": "temporarily_missing"})
+    assert len(active_catalog(doc)) == 125
+    try:
+        active_catalog({"total": 125, "channels": doc["channels"] + [doc["channels"][0]]})
+    except ValueError as exc:
+        assert "Duplicate" in str(exc)
+    else:
+        raise AssertionError("Duplicate active ID accepted")
+    def fixture(age=120, duration=3600):
+        data = {g: {"generated_at": stamp(now-age), "channels": {}} for g in GROUPS}
+        for index, channel in enumerate(active):
+            group = GROUPS[index % len(GROUPS)]
+            data[group]["channels"][str(index)] = {
+                "id": channel["id"],
+                "current": {"start": stamp(now-100), "end": stamp(now+duration),
+                            "stream_url": "https://archive.org/stream.mp4"},
                 "up_next": []}
-                for dial, ident in watches.items()}
-            } for group, watches in EXPECTED.items()}
+        return data
+    calls = []
+    def live_ok(ident, at):
+        calls.append(ident)
+        return at+3600
+    def live_down(ident, at):
+        calls.append(ident)
+        raise RuntimeError("upstream unavailable")
+    errors, _, summary = inspect_all(fixture(), active, now, live_down)
+    assert not errors and "125/125" in summary and not calls
+    stale = fixture(age=3600, duration=-1)
+    calls.clear()
+    assert not inspect_all(stale, active, now, live_ok)[0] and len(calls) == 125
+    calls.clear()
+    assert len(inspect_all(stale, active, now, live_down)[0]) == 125
     data = fixture()
-    assert not inspect(data, now)[0], "Healthy snapshots should pass"
-    data = fixture(age=900)
-    assert any("12m" in p for p in inspect(data, now)[0]), "Stale data must alert"
-    data = fixture(age=480, coverage=360)
-    assert any("expires" in p for p in inspect(data, now)[0]), "Early expiry must alert"
-    data = fixture(age=120, coverage=360)
-    assert not inspect(data, now)[0], "Fresh short schedules should not alarm"
+    data[GROUPS[0]]["channels"].pop("0")
+    calls.clear()
+    assert not inspect_all(data, active, now, live_ok)[0] and calls == [active[0]["id"]]
     data = fixture()
-    data["wwf"]["channels"].pop("52")
-    assert any("CH 52" in p for p in inspect(data, now)[0]), "Missing working channel must alert"
-    data = fixture()
-    data["wwf"]["channels"]["52"]["id"] = "wrong-feed"
-    assert any("changed" in p for p in inspect(data, now)[0]), "Misassigned channel must alert"
-    data = fixture()
-    data["wwf"]["channels"]["52"]["current"]["end"] = fmt(now - 1)
-    assert any("RIGHT NOW" in p for p in inspect(data, now)[0]), "No current slot must alert"
-    # Avoid false silence when refresh itself succeeds but GitHub Pages stays stale.
+    data[GROUPS[0]]["channels"]["0"]["id"] = "wrong-channel"
+    calls.clear()
+    assert not inspect_all(data, active, now, live_ok)[0] and calls == [active[0]["id"]]
+    data = fixture(age=3600, duration=240)
+    assert len(inspect_all(data, active, now, live_down)[0]) == 125
+    data = fixture(age=3600, duration=3600)
+    assert not inspect_all(data, active, now, live_down)[0]
     def fake_run(age, event="schedule", status="completed", conclusion="success"):
-        return {"created_at": fmt(now - age), "event": event,
+        return {"created_at": stamp(now - age), "event": event,
                 "status": status, "conclusion": conclusion}
     assert should_dispatch([fake_run(40)], now) == (False, False, True)
     assert should_dispatch([fake_run(180)], now) == (False, False, False)
     assert should_dispatch([fake_run(700)], now)[0]
     assert should_dispatch([fake_run(300, "workflow_dispatch")], now)[1]
-    # Browser-aware tests: old Pages data is not an outage if direct API works.
-    stale = fixture(age=3600, coverage=-60)
-    def live_ok(source_id, at):
-        return at + 3600
-    def live_down(source_id, at):
-        raise RuntimeError("API offline")
-    assert not inspect_with_browser_fallback(stale, now, live_ok)[0], "Live API should recover stale Pages"
-    assert len(inspect_with_browser_fallback(stale, now, live_down)[0]) == EXPECTED_COUNT, "Both sources unavailable must alert"
-    current_stale = fixture(age=3600, coverage=3600)
-    assert not inspect_with_browser_fallback(current_stale, now, live_down)[0], "Cached current shows are still playable"
-    nearly_ended = fixture(age=3600, coverage=240)
-    assert any("ends in" in x for x in inspect_with_browser_fallback(nearly_ended, now, live_down)[0]), "Warn before losing last playable cached show"
-    assert not inspect_with_browser_fallback(fixture(age=60), now, live_down)[0], "Fresh Pages should not require live API"
-    print("PASS: 16 offline health-monitor scenarios")
+    print("PASS: 125 equal-priority channels, dynamic catalog, stable IDs, "
+          "missing caches, upstream recovery, expiration and alert dedupe")
 
 
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--self-test", action="store_true")
     parser.add_argument("--dry-run", action="store_true",
-                        help="Read live Pages and report only; never mutate GitHub")
+                        help="Inspect live sources; never mutate GitHub")
     parser.add_argument("--alert", action="store_true",
-                        help="Open/close one issue per incident; fail on first alert only")
+                        help="Open/close one incident for all active feeds")
     args = parser.parse_args()
     if args.self_test:
         self_test()
         return 0
     if not (args.dry_run or args.alert):
         parser.error("Use --dry-run or --alert")
+    try:
+        active, catalog_warnings = load_active_catalog()
+    except Exception as exc:
+        active, catalog_warnings = [], []
+        errors = ["Catalog cannot be verified: " + str(exc)]
+    else:
+        errors = []
     snapshots = {}
-    errors = []
-    with concurrent.futures.ThreadPoolExecutor(max_workers=7) as pool:
-        for category, data, error in pool.map(fetch_group, EXPECTED):
-            if error:
-                errors.append(category + ": " + error)
-            elif not isinstance(data, dict):
-                errors.append(category + ": invalid JSON response")
-            else:
-                snapshots[category] = data
-    problems, warnings, summary = inspect_with_browser_fallback(snapshots, time.time())
-    # Pages outages are informational when direct fallback proves playable.
-    warnings.extend('Pages fetch: ' + error for error in errors)
-    errors = problems
+    fetch_errors = []
+    if active:
+        with concurrent.futures.ThreadPoolExecutor(max_workers=8) as pool:
+            for category, data, error in pool.map(fetch_group, GROUPS):
+                if error:
+                    fetch_errors.append(category + ": " + error)
+                elif not isinstance(data, dict):
+                    fetch_errors.append(category + ": invalid JSON response")
+                else:
+                    snapshots[category] = data
+        problems, warnings, summary = inspect_all(snapshots, active, time.time())
+        errors.extend(problems)
+    else:
+        warnings, summary = [], "Playable channels 0/unknown; catalog unavailable"
+    warnings.extend(catalog_warnings)
+    warnings.extend("Pages fetch: " + issue for issue in fetch_errors)
     print("MONITOR: " + summary)
     for warning in warnings:
         print("NOTICE: " + warning)
@@ -513,10 +533,12 @@ def main():
     step_summary = os.environ.get("GITHUB_STEP_SUMMARY")
     if step_summary:
         with open(step_summary, "a", encoding="utf-8") as handle:
-            handle.write("## SlamVision published schedule check\n\n" + summary + "\n\n")
+            handle.write("## SlamVision all-active-feed monitor\n\n" + summary + "\n\n")
             handle.write("**Status:** " + ("UNHEALTHY" if errors else "HEALTHY") + "\n\n")
-            handle.write("\n".join("- " + e for e in errors[:50]) + "\n\n" if errors else "")
-            handle.write("\n".join("- Note: " + w for w in warnings[:30]) + "\n" if warnings else "")
+            if errors:
+                handle.write("\n".join("- " + e for e in errors[:80]) + "\n\n")
+            if warnings:
+                handle.write("\n".join("- Note: " + w for w in warnings[:30]) + "\n")
     if args.dry_run:
         print("DRY RUN: No issues created or modified.")
         return 0
