@@ -17,11 +17,10 @@
     "NOAH Tube": 4,
     "DDT Tube": 1,
     "Other Japanese Wrestling Tube": 9,
-    "Indies / Hardcore Tube": 11,
+    "Indies / Hardcore Tube": 12,
     "Shoot / MMA Tube": 3,
-    "Territories / Classic US Tube": 4,
-    "Years / Mixed Wrestling Tube": 20,
-    "Needs Review": 2
+    "Territories / Classic US Tube": 5,
+    "Years / Mixed Wrestling Tube": 20
   },
   "channels": [
     {
@@ -3629,6 +3628,45 @@
       "missing_scans": 0
     },
     {
+      "number": 80,
+      "name": "Revolution Pro Wrestling",
+      "callsign": "REVPRO",
+      "category": "promotions",
+      "tagline": "RevPro: British wrestling from York Hall and beyond",
+      "archived": false,
+      "id": "revpro",
+      "tube": "Indies / Hardcore Tube",
+      "now": {
+        "title": "RevPro Live in London 86",
+        "episode": "Jun 2, 2024",
+        "start": "2026-11-18T02:50:50.122000Z",
+        "end": "2026-11-18T06:15:58.242000Z",
+        "stream_url": ""
+      },
+      "next": {
+        "title": "RevPro Live In Eastbourne",
+        "episode": "Nov 8, 2026",
+        "start": "2026-11-18T06:15:58.242000Z",
+        "end": "2026-11-18T08:34:54.682000Z",
+        "stream_url": ""
+      },
+      "next2": {
+        "title": "RevPro Live In London 113",
+        "episode": "Nov 1, 2026",
+        "start": "2026-11-18T08:34:54.682000Z",
+        "end": "2026-11-18T11:29:35.812000Z",
+        "stream_url": ""
+      },
+      "guide_slots": 3,
+      "existing_embed": false,
+      "legacy_channel_number": null,
+      "player_type": "shared",
+      "embed_url": "https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=revpro",
+      "embed_html": "<iframe src=\"https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=revpro\" width=\"1280\" height=\"720\" frameborder=\"0\" allow=\"autoplay; fullscreen; picture-in-picture\" allowfullscreen></iframe>",
+      "availability": "available",
+      "missing_scans": 0
+    },
+    {
       "number": 100,
       "id": "wcpw",
       "name": "What Culture Pro Wrestling",
@@ -3931,6 +3969,45 @@
       "player_type": "shared",
       "embed_url": "https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=midsouth",
       "embed_html": "<iframe src=\"https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=midsouth\" width=\"1280\" height=\"720\" frameborder=\"0\" allow=\"autoplay; fullscreen; picture-in-picture\" allowfullscreen></iframe>",
+      "availability": "available",
+      "missing_scans": 0
+    },
+    {
+      "number": 76,
+      "name": "NWA Crockett",
+      "callsign": "NWA-JCP",
+      "category": "wrestlers",
+      "tagline": "Jim Crockett Promotions and classic NWA: Clash, Starrcade, Mid-Atlantic",
+      "archived": false,
+      "id": "nwa-crockett",
+      "tube": "Territories / Classic US Tube",
+      "now": {
+        "title": "WCW Clash Of The Champions 19 NWA World Tag Team Title Tournament",
+        "episode": "Jun 16, 1992",
+        "start": "2026-11-18T04:49:21.297000Z",
+        "end": "2026-11-18T06:42:43.127000Z",
+        "stream_url": ""
+      },
+      "next": {
+        "title": "Daniels vs. Sabin vs. Styles vs. Petey Williams",
+        "episode": "Oct 21, 2004",
+        "start": "2026-11-18T06:42:43.127000Z",
+        "end": "2026-11-18T07:16:36.567000Z",
+        "stream_url": ""
+      },
+      "next2": {
+        "title": "NWA-TNA 2002",
+        "episode": "NWA-TNA PPV 01 · Jun 19, 2002",
+        "start": "2026-11-18T07:16:36.567000Z",
+        "end": "2026-11-18T09:03:13.557000Z",
+        "stream_url": ""
+      },
+      "guide_slots": 6,
+      "existing_embed": false,
+      "legacy_channel_number": null,
+      "player_type": "shared",
+      "embed_url": "https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=nwa-crockett",
+      "embed_html": "<iframe src=\"https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=nwa-crockett\" width=\"1280\" height=\"720\" frameborder=\"0\" allow=\"autoplay; fullscreen; picture-in-picture\" allowfullscreen></iframe>",
       "availability": "available",
       "missing_scans": 0
     },
@@ -4752,84 +4829,6 @@
       "player_type": "shared",
       "availability": "available",
       "missing_scans": 0
-    },
-    {
-      "number": 76,
-      "name": "NWA Crockett",
-      "callsign": "NWA-JCP",
-      "category": "wrestlers",
-      "tagline": "Jim Crockett Promotions and classic NWA: Clash, Starrcade, Mid-Atlantic",
-      "archived": false,
-      "id": "nwa-crockett",
-      "tube": "Needs Review",
-      "now": {
-        "title": "WCW Clash Of The Champions 19 NWA World Tag Team Title Tournament",
-        "episode": "Jun 16, 1992",
-        "start": "2026-11-18T04:49:21.297000Z",
-        "end": "2026-11-18T06:42:43.127000Z",
-        "stream_url": ""
-      },
-      "next": {
-        "title": "Daniels vs. Sabin vs. Styles vs. Petey Williams",
-        "episode": "Oct 21, 2004",
-        "start": "2026-11-18T06:42:43.127000Z",
-        "end": "2026-11-18T07:16:36.567000Z",
-        "stream_url": ""
-      },
-      "next2": {
-        "title": "NWA-TNA 2002",
-        "episode": "NWA-TNA PPV 01 · Jun 19, 2002",
-        "start": "2026-11-18T07:16:36.567000Z",
-        "end": "2026-11-18T09:03:13.557000Z",
-        "stream_url": ""
-      },
-      "guide_slots": 6,
-      "existing_embed": false,
-      "legacy_channel_number": null,
-      "player_type": "shared",
-      "embed_url": "https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=nwa-crockett",
-      "embed_html": "<iframe src=\"https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=nwa-crockett\" width=\"1280\" height=\"720\" frameborder=\"0\" allow=\"autoplay; fullscreen; picture-in-picture\" allowfullscreen></iframe>",
-      "availability": "available",
-      "missing_scans": 0
-    },
-    {
-      "number": 80,
-      "name": "Revolution Pro Wrestling",
-      "callsign": "REVPRO",
-      "category": "promotions",
-      "tagline": "RevPro: British wrestling from York Hall and beyond",
-      "archived": false,
-      "id": "revpro",
-      "tube": "Needs Review",
-      "now": {
-        "title": "RevPro Live in London 86",
-        "episode": "Jun 2, 2024",
-        "start": "2026-11-18T02:50:50.122000Z",
-        "end": "2026-11-18T06:15:58.242000Z",
-        "stream_url": ""
-      },
-      "next": {
-        "title": "RevPro Live In Eastbourne",
-        "episode": "Nov 8, 2026",
-        "start": "2026-11-18T06:15:58.242000Z",
-        "end": "2026-11-18T08:34:54.682000Z",
-        "stream_url": ""
-      },
-      "next2": {
-        "title": "RevPro Live In London 113",
-        "episode": "Nov 1, 2026",
-        "start": "2026-11-18T08:34:54.682000Z",
-        "end": "2026-11-18T11:29:35.812000Z",
-        "stream_url": ""
-      },
-      "guide_slots": 3,
-      "existing_embed": false,
-      "legacy_channel_number": null,
-      "player_type": "shared",
-      "embed_url": "https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=revpro",
-      "embed_html": "<iframe src=\"https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=revpro\" width=\"1280\" height=\"720\" frameborder=\"0\" allow=\"autoplay; fullscreen; picture-in-picture\" allowfullscreen></iframe>",
-      "availability": "available",
-      "missing_scans": 0
     }
   ],
   "embed_ready_count": 125,
@@ -4957,7 +4956,8 @@
       "memphis",
       "rndm"
     ],
-    "review": [
+    "review": [],
+    "recategorized": [
       "nwa-crockett",
       "revpro"
     ]
