@@ -55,7 +55,7 @@ jobs:
                   await page.wait_for_timeout(300)
                   content=await page.locator('#result-count').inner_text()
                   assert 'matching change records' in content and not content.startswith('0 matching'),content
-                  await page.fill('#search','njpw')
+                  await page.fill('#search','wcw')
                   assert await page.locator('#event-rows tr').count()>=1
                   await page.select_option('#limit','999999')
                   await page.select_option('#type','')
