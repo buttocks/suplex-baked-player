@@ -1,0 +1,70 @@
+name: Verify populated SlamVision rotation history report
+on:
+  push:
+    branches: [verify/slamvision-rotation-live-report]
+    paths: [.github/workflows/verify-slamvision-rotation-live.yml]
+permissions:
+  contents: read
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 7
+    steps:
+      - name: Verify public first observation and source report
+        run: |
+          python - <<'PY'
+          import urllib.request,json
+          base='https://raw.githubusercontent.com/buttocks/suplex-baked-player/tracking/slamvision-history/tracking-state/'
+          for filename in ('state.json','events.json'):
+              with urllib.request.urlopen(urllib.request.Request(base+filename+'?check=20261118',headers={'User-Agent':'Mozilla/5.0'}),timeout=22) as r:
+                  j=json.load(r)
+                  if filename=='state.json':
+                      assert j['successful_scan_count']>=1
+                      assert j['total_feeds']>=100
+                      print('STATE',j['last_successful_scan_utc'],j['successful_scan_count'],j['total_feeds'])
+                  else:
+                      assert len(j['events'])>=100
+                      print('EVENTS',len(j['events']))
+          with urllib.request.urlopen('https://buttocks.github.io/suplex-baked-player/research/slamvision-rotation-report.html?verify=1',timeout=22) as r:
+              content=r.read()
+              assert b'Channel Rotation History' in content and b'Common number shifts' in content
+              print('PUBLIC REPORT',r.status,len(content))
+          PY
+      - name: Install Chromium
+        run: |
+          pip install playwright
+          python -m playwright install --with-deps chromium
+      - name: Verify populated change timeline, filters and offset analysis
+        run: |
+          python - <<'PY'
+          import asyncio,json
+          from playwright.async_api import async_playwright
+          async def main():
+              async with async_playwright() as p:
+                  browser=await p.chromium.launch(headless=True)
+                  page=await browser.new_page()
+                  errors=[];failed=[]
+                  page.on('pageerror',lambda e:errors.append(str(e)))
+                  page.on('requestfailed',lambda r:failed.append(r.url+' '+str(r.failure)) if 'raw.githubusercontent.com' in r.url else None)
+                  await page.goto('https://buttocks.github.io/suplex-baked-player/research/slamvision-rotation-report.html',wait_until='domcontentloaded',timeout=25000)
+                  await page.wait_for_function("() => document.querySelector('#result-count')?.textContent.includes('total')",timeout=20000)
+                  count=await page.locator('#event-rows tr').count()
+                  assert count==100,count
+                  assert await page.locator('#offsets li').count()>=1
+                  await page.select_option('#type','feed_moved')
+                  await page.wait_for_timeout(300)
+                  content=await page.locator('#result-count').inner_text()
+                  assert 'matching change records' in content and not content.startswith('0 matching'),content
+                  await page.fill('#search','njpw')
+                  assert await page.locator('#event-rows tr').count()>=1
+                  await page.select_option('#limit','999999')
+                  await page.select_option('#type','')
+                  await page.fill('#search','')
+                  all_count=await page.locator('#event-rows tr').count()
+                  assert all_count>=150,all_count
+                  assert not errors,(errors,failed)
+                  print('PASS: live report loaded',all_count,'timestamped records with working filters and shift-pattern analysis',flush=True)
+                  print('TIMESTAMP',await page.locator('#loading').inner_text(),flush=True)
+                  await browser.close()
+          asyncio.run(main())
+          PY
