@@ -54,25 +54,13 @@ Stan Hansen (sh-tv)
 The Baba Network (tbn)
 <iframe src="https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=tbn" width="1280" height="720" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
 
-The Three Pillars (krt)
-<iframe src="https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=krt" width="1280" height="720" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
-
 
 === Lucha Tube ===
 Lucha Libre (100-lucha)
 <iframe src="https://buttocks.github.io/suplex-baked-player/lucha-slamvision.html" width="1280" height="720" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
 
-Lucha Underground (lu-tv)
-<iframe src="https://buttocks.github.io/suplex-baked-player/lucha-underground-slamvision.html" width="1280" height="720" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
-
-Rey Mysterio Greatest Hits (619)
-<iframe src="https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=619" width="1280" height="720" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
-
 
 === Joshi Tube ===
-Io Shirai (io)
-<iframe src="https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=io" width="1280" height="720" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
-
 Joshi Indies (joshi-indies)
 <iframe src="https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=joshi-indies" width="1280" height="720" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
 
@@ -99,9 +87,6 @@ TJPW (tjpw-tv)
 Andre The Giant (atg)
 <iframe src="https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=atg" width="1280" height="720" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
 
-Attitude PPV (appv)
-<iframe src="https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=appv" width="1280" height="720" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
-
 John Cena (cena)
 <iframe src="https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=cena" width="1280" height="720" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
 
@@ -110,9 +95,6 @@ The Hart Family (hart)
 
 The Hulk Hogan Network (hhn)
 <iframe src="https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=hhn" width="1280" height="720" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
-
-The OTC (otc)
-<iframe src="https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=otc" width="1280" height="720" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
 
 Wrestlemania (wm)
 <iframe src="https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=wm" width="1280" height="720" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
@@ -125,9 +107,6 @@ WWE Velocity (wwe-velocity)
 
 wwf (wwf)
 <iframe src="https://buttocks.github.io/suplex-baked-player/wwf-slamvision.html" width="1280" height="720" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
-
-WWWF (wwwf)
-<iframe src="https://buttocks.github.io/suplex-baked-player/wwwf-slamvision.html" width="1280" height="720" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
 
 WWF 1990-2000 (wwf-90-00)
 <iframe src="https://buttocks.github.io/suplex-baked-player/wwf-90-00-slamvision.html" width="1280" height="720" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
@@ -216,9 +195,6 @@ AEW Rampage (aew-rampage)
 ALL ELITE WRESTLING DYNAMITE (aew2)
 <iframe src="https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=aew2" width="1280" height="720" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
 
-Best of All In (aew-ai)
-<iframe src="https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=aew-ai" width="1280" height="720" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
-
 Kenny Omega (omega-24-7)
 <iframe src="https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=omega-24-7" width="1280" height="720" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
 
@@ -226,9 +202,6 @@ Kenny Omega (omega-24-7)
 === ROH Tube ===
 Classic ROH (croh)
 <iframe src="https://buttocks.github.io/suplex-baked-player/classic-roh-slamvision.html" width="1280" height="720" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
-
-Ring of honor (roh-tv)
-<iframe src="https://buttocks.github.io/suplex-baked-player/roh-slamvision.html" width="1280" height="720" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
 
 ROH Wrestling (roh-wrestling)
 <iframe src="https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=roh-wrestling" width="1280" height="720" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
@@ -261,9 +234,6 @@ DDT Pro-Wrestling (ddt-pro)
 === Other Japanese Wrestling Tube ===
 BattlArts (battlarts)
 <iframe src="https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=battlarts" width="1280" height="720" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
-
-Big Japan Pro Wrestling (bjw)
-<iframe src="https://buttocks.github.io/suplex-baked-player/bjw-slamvision.html" width="1280" height="720" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
 
 Big Japan Pro Wrestling (big-japan)
 <iframe src="https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=big-japan" width="1280" height="720" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
@@ -303,12 +273,6 @@ EuroMat (euromat)
 Game Changer Wrestling (gcw-tv)
 <iframe src="https://buttocks.github.io/suplex-baked-player/gcw-slamvision.html" width="1280" height="720" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
 
-Juggalo Championship Wrestling (jcw)
-<iframe src="https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=jcw" width="1280" height="720" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
-
-Maple leaf pro (mlp)
-<iframe src="https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=mlp" width="1280" height="720" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
-
 Major League Wrestling (mlw)
 <iframe src="https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=mlw" width="1280" height="720" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
 
@@ -321,16 +285,13 @@ Revolution Pro Wrestling (revpro)
 What Culture Pro Wrestling (wcpw)
 <iframe src="https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=wcpw" width="1280" height="720" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
 
-Wrestling Society X (wsx)
-<iframe src="https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=wsx" width="1280" height="720" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
-
 
 === Shoot / MMA Tube ===
 Bloodsport Network (bsn)
 <iframe src="https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=bsn" width="1280" height="720" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
 
-MMA (mma-tv)
-<iframe src="https://buttocks.github.io/suplex-baked-player/mma-slamvision.html" width="1280" height="720" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+Shoot Interviews (si-tv)
+<iframe src="https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=si-tv" width="1280" height="720" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
 
 The Shoot Network (tsn)
 <iframe src="https://buttocks.github.io/suplex-baked-player/shoot-network-slamvision.html" width="1280" height="720" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
@@ -348,9 +309,6 @@ Mid-South Wrestling (midsouth)
 
 NWA Crockett (nwa-crockett)
 <iframe src="https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=nwa-crockett" width="1280" height="720" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
-
-The Territories (territories)
-<iframe src="https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=territories" width="1280" height="720" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
 
 
 === Years / Mixed Wrestling Tube ===
@@ -411,7 +369,18 @@ Monday night wars (mnw)
 Random wrestling (rndm)
 <iframe src="https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=rndm" width="1280" height="720" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
 
-Tag Team (tag)
-<iframe src="https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=tag" width="1280" height="720" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+
+=== Needs Review ===
+Roddy Piper (piper)
+<iframe src="https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=piper" width="1280" height="720" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+
+SMW TV (st-tv)
+<iframe src="https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=st-tv" width="1280" height="720" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+
+USWA TV (ut-tv)
+<iframe src="https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=ut-tv" width="1280" height="720" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+
+Von Erich (ve-tv)
+<iframe src="https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=ve-tv" width="1280" height="720" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
 
 
