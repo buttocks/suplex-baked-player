@@ -76,6 +76,9 @@ Stardom (star)
 Stardom 5Star Grand Prix (stardom-5star)
 <iframe src="https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=stardom-5star" width="1280" height="720" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
 
+Stardom Cinderella Tournament (stardom-cinder)
+<iframe src="https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=stardom-cinder" width="1280" height="720" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+
 Stardom Goddesses of Stardom (stardom-goddes)
 <iframe src="https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=stardom-goddes" width="1280" height="720" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
 

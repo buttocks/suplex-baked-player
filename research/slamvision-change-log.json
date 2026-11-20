@@ -1,6 +1,77 @@
 {
   "events": [
     {
+      "at": "2026-11-20T00:52:12.210429+00:00",
+      "changes": {
+        "added": [
+          "stardom-cinder"
+        ],
+        "missing": [],
+        "removed": [
+          "krt",
+          "lu-tv",
+          "619",
+          "io",
+          "appv",
+          "otc",
+          "wwwf",
+          "aew-ai",
+          "roh-tv",
+          "bjw",
+          "jcw",
+          "mlp",
+          "wsx",
+          "mma-tv",
+          "territories",
+          "tag"
+        ],
+        "restored": [],
+        "renamed": [],
+        "renumbered": [
+          "tbn",
+          "stardom-goddes",
+          "tjpw-tv",
+          "hart",
+          "hhn",
+          "wm",
+          "wwe",
+          "wwe-velocity",
+          "wwf",
+          "wwf-90-00",
+          "wwf-wrestling",
+          "wwf-ptw",
+          "wwf-heat",
+          "wwf-sow",
+          "wwf-mania",
+          "wwf-challenge",
+          "wcw",
+          "wcw-cotc",
+          "wcw-fallbrawl",
+          "wcw-bash",
+          "wcw-halloween",
+          "wcw-mainevent",
+          "wcw-mn",
+          "wcw-powerhour",
+          "wcw-prime",
+          "wcw-pw",
+          "wcw-sn",
+          "wcw-starrcade",
+          "wcw-superbrawl",
+          "wcw-worldwide",
+          "tna",
+          "muta",
+          "wcpw",
+          "tsn",
+          "ut-tv",
+          "ve-tv"
+        ],
+        "details_changed": [],
+        "review": []
+      },
+      "active": 117,
+      "tracked": 134
+    },
+    {
       "at": "2026-11-19T16:00:04.203786+00:00",
       "changes": {
         "added": [
