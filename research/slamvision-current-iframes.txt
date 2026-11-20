@@ -10,8 +10,14 @@ New Japan Pro-Wrestling (njpw)
 NJPW Destruction (njpw-destructi)
 <iframe src="https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=njpw-destructi" width="1280" height="720" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
 
+NJPW Fighting Spirit (njpw-fighting)
+<iframe src="https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=njpw-fighting" width="1280" height="720" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+
 NJPW G1 Climax (njpw-g1climax)
 <iframe src="https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=njpw-g1climax" width="1280" height="720" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+
+NJPW New Japan Cup (njpw-japan)
+<iframe src="https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=njpw-japan" width="1280" height="720" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
 
 NJPW Starrcade in Tokyo Dome (njpw-starrcade)
 <iframe src="https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=njpw-starrcade" width="1280" height="720" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
@@ -275,6 +281,9 @@ EuroMat (euromat)
 
 Game Changer Wrestling (gcw-tv)
 <iframe src="https://buttocks.github.io/suplex-baked-player/gcw-slamvision.html" width="1280" height="720" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+
+Juggalo Championship Wrestling (jcw)
+<iframe src="https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=jcw" width="1280" height="720" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
 
 Major League Wrestling (mlw)
 <iframe src="https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=mlw" width="1280" height="720" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
