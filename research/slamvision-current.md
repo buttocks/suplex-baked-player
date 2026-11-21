@@ -1,12 +1,12 @@
 # SlamVision channel embeds by Baked.live tube
 
-Last catalog update: 2026-11-20T15:43:13.485381+00:00
+Last catalog update: 2026-11-21T19:43:03.312500+00:00
 
-Active: 120 · Tracked: 136
+Active: 121 · Tracked: 137
 
 Provider dials change; iframe URLs use stable feed IDs.
 
-## NJPW Tube (10 active)
+## NJPW Tube (11 active)
 
 | Feed · Stable ID | Upstream # | Availability | Player |
 |---|---:|---|---|
@@ -17,9 +17,10 @@ Provider dials change; iframe URLs use stable feed IDs.
 | NJPW G1 Climax (njpw-g1climax) | 63 | available | [Open](https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=njpw-g1climax) |
 | NJPW New Japan Cup (njpw-japan) | 64 | available | [Open](https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=njpw-japan) |
 | NJPW Starrcade in Tokyo Dome (njpw-starrcade) | 65 | available | [Open](https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=njpw-starrcade) |
-| NJPW World Pro-Wrestling (njpw-wp) | 66 | available | [Open](https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=njpw-wp) |
-| NJPW Wrestle Kingdom (njpw-wk) | 67 | available | [Open](https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=njpw-wk) |
-| NJPW Wrestling Dontaku (njpw-wrestling) | 68 | available | [Open](https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=njpw-wrestling) |
+| NJPW The New Beginning (njpw-beginning) | 66 | available | [Open](https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=njpw-beginning) |
+| NJPW World Pro-Wrestling (njpw-wp) | 67 | available | [Open](https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=njpw-wp) |
+| NJPW Wrestle Kingdom (njpw-wk) | 68 | available | [Open](https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=njpw-wk) |
+| NJPW Wrestling Dontaku (njpw-wrestling) | 69 | available | [Open](https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=njpw-wrestling) |
 
 ## AJPW Tube (9 active)
 
@@ -32,8 +33,8 @@ Provider dials change; iframe URLs use stable feed IDs.
 | AJPW New Year Giant Series (ajpw-series) | 28 | available | [Open](https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=ajpw-series) |
 | AJPW Real World Tag League (ajpw-tagleague) | 29 | available | [Open](https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=ajpw-tagleague) |
 | AJPW Summer Action Series (ajpw-summer) | 30 | available | [Open](https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=ajpw-summer) |
-| Stan Hansen (sh-tv) | 83 | available | [Open](https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=sh-tv) |
-| The Baba Network (tbn) | 88 | available | [Open](https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=tbn) |
+| Stan Hansen (sh-tv) | 84 | available | [Open](https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=sh-tv) |
+| The Baba Network (tbn) | 89 | available | [Open](https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=tbn) |
 | The Three Pillars (krt) | 99 | unavailable | [Open](https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=krt) |
 
 ## Lucha Tube (1 active)
@@ -51,11 +52,11 @@ Provider dials change; iframe URLs use stable feed IDs.
 | Joshi Indies (joshi-indies) | 49 | available | [Open](https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=joshi-indies) |
 | Joshi Puroresu (joshi) | 50 | available | [Open](https://buttocks.github.io/suplex-baked-player/joshi-slamvision.html) |
 | Marigold (marigold) | 54 | available | [Open](https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=marigold) |
-| Stardom (star) | 84 | available | [Open](https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=star) |
-| Stardom 5Star Grand Prix (stardom-5star) | 85 | available | [Open](https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=stardom-5star) |
-| Stardom Cinderella Tournament (stardom-cinder) | 86 | available | [Open](https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=stardom-cinder) |
-| Stardom Goddesses of Stardom (stardom-goddes) | 87 | available | [Open](https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=stardom-goddes) |
-| TJPW (tjpw-tv) | 93 | available | [Open](https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=tjpw-tv) |
+| Stardom (star) | 85 | available | [Open](https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=star) |
+| Stardom 5Star Grand Prix (stardom-5star) | 86 | available | [Open](https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=stardom-5star) |
+| Stardom Cinderella Tournament (stardom-cinder) | 87 | available | [Open](https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=stardom-cinder) |
+| Stardom Goddesses of Stardom (stardom-goddes) | 88 | available | [Open](https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=stardom-goddes) |
+| TJPW (tjpw-tv) | 94 | available | [Open](https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=tjpw-tv) |
 | Io Shirai (io) | 50 | unavailable | [Open](https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=io) |
 
 ## WWF / WWE Tube (15 active)
@@ -64,19 +65,19 @@ Provider dials change; iframe URLs use stable feed IDs.
 |---|---:|---|---|
 | Andre The Giant (atg) | 31 | available | [Open](https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=atg) |
 | John Cena (cena) | 48 | available | [Open](https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=cena) |
-| The Hart Family (hart) | 90 | available | [Open](https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=hart) |
-| The Hulk Hogan Network (hhn) | 91 | available | [Open](https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=hhn) |
-| Wrestlemania (wm) | 112 | available | [Open](https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=wm) |
-| Wwe (wwe) | 113 | available | [Open](https://buttocks.github.io/suplex-baked-player/wwe-slamvision.html) |
-| WWE Velocity (wwe-velocity) | 114 | available | [Open](https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=wwe-velocity) |
-| wwf (wwf) | 115 | available | [Open](https://buttocks.github.io/suplex-baked-player/wwf-slamvision.html) |
-| WWF 1990-2000 (wwf-90-00) | 116 | available | [Open](https://buttocks.github.io/suplex-baked-player/wwf-90-00-slamvision.html) |
-| WWF All American Wrestling (wwf-wrestling) | 117 | available | [Open](https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=wwf-wrestling) |
-| WWF Prime Time Wrestling (wwf-ptw) | 118 | available | [Open](https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=wwf-ptw) |
-| WWF Sunday Night Heat (wwf-heat) | 119 | available | [Open](https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=wwf-heat) |
-| WWF Superstars of Wrestling (wwf-sow) | 120 | available | [Open](https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=wwf-sow) |
-| WWF WrestleMania (wwf-mania) | 121 | available | [Open](https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=wwf-mania) |
-| WWF Wrestling Challenge (wwf-challenge) | 122 | available | [Open](https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=wwf-challenge) |
+| The Hart Family (hart) | 91 | available | [Open](https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=hart) |
+| The Hulk Hogan Network (hhn) | 92 | available | [Open](https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=hhn) |
+| Wrestlemania (wm) | 113 | available | [Open](https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=wm) |
+| Wwe (wwe) | 114 | available | [Open](https://buttocks.github.io/suplex-baked-player/wwe-slamvision.html) |
+| WWE Velocity (wwe-velocity) | 115 | available | [Open](https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=wwe-velocity) |
+| wwf (wwf) | 116 | available | [Open](https://buttocks.github.io/suplex-baked-player/wwf-slamvision.html) |
+| WWF 1990-2000 (wwf-90-00) | 117 | available | [Open](https://buttocks.github.io/suplex-baked-player/wwf-90-00-slamvision.html) |
+| WWF All American Wrestling (wwf-wrestling) | 118 | available | [Open](https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=wwf-wrestling) |
+| WWF Prime Time Wrestling (wwf-ptw) | 119 | available | [Open](https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=wwf-ptw) |
+| WWF Sunday Night Heat (wwf-heat) | 120 | available | [Open](https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=wwf-heat) |
+| WWF Superstars of Wrestling (wwf-sow) | 121 | available | [Open](https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=wwf-sow) |
+| WWF WrestleMania (wwf-mania) | 122 | available | [Open](https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=wwf-mania) |
+| WWF Wrestling Challenge (wwf-challenge) | 123 | available | [Open](https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=wwf-challenge) |
 | Attitude PPV (appv) | 34 | unavailable | [Open](https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=appv) |
 | The OTC (otc) | 96 | unavailable | [Open](https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=otc) |
 | WWWF (wwwf) | 122 | unavailable | [Open](https://buttocks.github.io/suplex-baked-player/wwwf-slamvision.html) |
@@ -85,20 +86,20 @@ Provider dials change; iframe URLs use stable feed IDs.
 
 | Feed · Stable ID | Upstream # | Availability | Player |
 |---|---:|---|---|
-| World Championship Wrestling (wcw) | 98 | available | [Open](https://buttocks.github.io/suplex-baked-player/wcw-slamvision.html) |
-| WCW Clash of the Champions (wcw-cotc) | 99 | available | [Open](https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=wcw-cotc) |
-| WCW Fall Brawl (wcw-fallbrawl) | 100 | available | [Open](https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=wcw-fallbrawl) |
-| WCW Great American Bash (wcw-bash) | 101 | available | [Open](https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=wcw-bash) |
-| WCW Halloween Havoc (wcw-halloween) | 102 | available | [Open](https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=wcw-halloween) |
-| WCW Main Event (wcw-mainevent) | 103 | available | [Open](https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=wcw-mainevent) |
-| WCW Monday Nitro (wcw-mn) | 104 | available | [Open](https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=wcw-mn) |
-| WCW Power Hour (wcw-powerhour) | 105 | available | [Open](https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=wcw-powerhour) |
-| WCW Prime (wcw-prime) | 106 | available | [Open](https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=wcw-prime) |
-| WCW Pro Wrestling (wcw-pw) | 107 | available | [Open](https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=wcw-pw) |
-| WCW Saturday Night (wcw-sn) | 108 | available | [Open](https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=wcw-sn) |
-| WCW Starrcade in Tokyo Dome (wcw-starrcade) | 109 | available | [Open](https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=wcw-starrcade) |
-| WCW SuperBrawl (wcw-superbrawl) | 110 | available | [Open](https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=wcw-superbrawl) |
-| WCW Worldwide (wcw-worldwide) | 111 | available | [Open](https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=wcw-worldwide) |
+| World Championship Wrestling (wcw) | 99 | available | [Open](https://buttocks.github.io/suplex-baked-player/wcw-slamvision.html) |
+| WCW Clash of the Champions (wcw-cotc) | 100 | available | [Open](https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=wcw-cotc) |
+| WCW Fall Brawl (wcw-fallbrawl) | 101 | available | [Open](https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=wcw-fallbrawl) |
+| WCW Great American Bash (wcw-bash) | 102 | available | [Open](https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=wcw-bash) |
+| WCW Halloween Havoc (wcw-halloween) | 103 | available | [Open](https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=wcw-halloween) |
+| WCW Main Event (wcw-mainevent) | 104 | available | [Open](https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=wcw-mainevent) |
+| WCW Monday Nitro (wcw-mn) | 105 | available | [Open](https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=wcw-mn) |
+| WCW Power Hour (wcw-powerhour) | 106 | available | [Open](https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=wcw-powerhour) |
+| WCW Prime (wcw-prime) | 107 | available | [Open](https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=wcw-prime) |
+| WCW Pro Wrestling (wcw-pw) | 108 | available | [Open](https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=wcw-pw) |
+| WCW Saturday Night (wcw-sn) | 109 | available | [Open](https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=wcw-sn) |
+| WCW Starrcade in Tokyo Dome (wcw-starrcade) | 110 | available | [Open](https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=wcw-starrcade) |
+| WCW SuperBrawl (wcw-superbrawl) | 111 | available | [Open](https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=wcw-superbrawl) |
+| WCW Worldwide (wcw-worldwide) | 112 | available | [Open](https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=wcw-worldwide) |
 
 ## ECW Tube (2 active)
 
@@ -122,25 +123,25 @@ Provider dials change; iframe URLs use stable feed IDs.
 
 | Feed · Stable ID | Upstream # | Availability | Player |
 |---|---:|---|---|
-| Classic ROH (croh) | 79 | available | [Open](https://buttocks.github.io/suplex-baked-player/classic-roh-slamvision.html) |
-| ROH Wrestling (roh-wrestling) | 80 | available | [Open](https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=roh-wrestling) |
+| Classic ROH (croh) | 80 | available | [Open](https://buttocks.github.io/suplex-baked-player/classic-roh-slamvision.html) |
+| ROH Wrestling (roh-wrestling) | 81 | available | [Open](https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=roh-wrestling) |
 | Ring of honor (roh-tv) | 85 | unavailable | [Open](https://buttocks.github.io/suplex-baked-player/roh-slamvision.html) |
 
 ## TNA / Impact Tube (1 active)
 
 | Feed · Stable ID | Upstream # | Availability | Player |
 |---|---:|---|---|
-| Total Nonstop Action Wrestling (tna) | 94 | available | [Open](https://buttocks.github.io/suplex-baked-player/tna-slamvision.html) |
+| Total Nonstop Action Wrestling (tna) | 95 | available | [Open](https://buttocks.github.io/suplex-baked-player/tna-slamvision.html) |
 | Impact Wrestling (iw) | 90 | unavailable | [Open](https://buttocks.github.io/suplex-baked-player/impact-slamvision.html) |
 
 ## NOAH Tube (4 active)
 
 | Feed · Stable ID | Upstream # | Availability | Player |
 |---|---:|---|---|
-| NOAH-TV (noah-tv) | 69 | available | [Open](https://buttocks.github.io/suplex-baked-player/noah-slamvision.html) |
-| NOAH Great Voyage (noah-voyage) | 70 | available | [Open](https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=noah-voyage) |
-| NOAH N-1 Victory (noah-n1victory) | 71 | available | [Open](https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=noah-n1victory) |
-| NOAH Navigation (noah-navigatio) | 72 | available | [Open](https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=noah-navigatio) |
+| NOAH-TV (noah-tv) | 70 | available | [Open](https://buttocks.github.io/suplex-baked-player/noah-slamvision.html) |
+| NOAH Great Voyage (noah-voyage) | 71 | available | [Open](https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=noah-voyage) |
+| NOAH N-1 Victory (noah-n1victory) | 72 | available | [Open](https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=noah-n1victory) |
+| NOAH Navigation (noah-navigatio) | 73 | available | [Open](https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=noah-navigatio) |
 
 ## DDT Tube (1 active)
 
@@ -158,8 +159,8 @@ Provider dials change; iframe URLs use stable feed IDs.
 | Frontier Martial-Arts Wrestling (fmw) | 45 | available | [Open](https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=fmw) |
 | Kaientai Dojo (kaientai-dojo) | 51 | available | [Open](https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=kaientai-dojo) |
 | Michinoku Pro Wrestling (michinoku-pro) | 56 | available | [Open](https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=michinoku-pro) |
-| Osaka Pro Wrestling (osaka-pro) | 74 | available | [Open](https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=osaka-pro) |
-| The Great Muta (muta) | 89 | available | [Open](https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=muta) |
+| Osaka Pro Wrestling (osaka-pro) | 75 | available | [Open](https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=osaka-pro) |
+| The Great Muta (muta) | 90 | available | [Open](https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=muta) |
 | Big Japan Pro Wrestling (bjw) | 37 | unavailable | [Open](https://buttocks.github.io/suplex-baked-player/bjw-slamvision.html) |
 
 ## Indies / Hardcore Tube (10 active)
@@ -173,9 +174,9 @@ Provider dials change; iframe URLs use stable feed IDs.
 | Game Changer Wrestling (gcw-tv) | 46 | available | [Open](https://buttocks.github.io/suplex-baked-player/gcw-slamvision.html) |
 | Juggalo Championship Wrestling (jcw) | 47 | available | [Open](https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=jcw) |
 | Major League Wrestling (mlw) | 58 | available | [Open](https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=mlw) |
-| Pro Wrestling Guerrilla (pwg) | 75 | available | [Open](https://buttocks.github.io/suplex-baked-player/pwg-slamvision.html) |
-| Revolution Pro Wrestling (revpro) | 77 | available | [Open](https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=revpro) |
-| What Culture Pro Wrestling (wcpw) | 97 | available | [Open](https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=wcpw) |
+| Pro Wrestling Guerrilla (pwg) | 76 | available | [Open](https://buttocks.github.io/suplex-baked-player/pwg-slamvision.html) |
+| Revolution Pro Wrestling (revpro) | 78 | available | [Open](https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=revpro) |
+| What Culture Pro Wrestling (wcpw) | 98 | available | [Open](https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=wcpw) |
 | Maple leaf pro (mlp) | 59 | unavailable | [Open](https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=mlp) |
 | Wrestling Society X (wsx) | 118 | unavailable | [Open](https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=wsx) |
 
@@ -184,8 +185,8 @@ Provider dials change; iframe URLs use stable feed IDs.
 | Feed · Stable ID | Upstream # | Availability | Player |
 |---|---:|---|---|
 | Bloodsport Network (bsn) | 36 | available | [Open](https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=bsn) |
-| Shoot Interviews (si-tv) | 81 | available | [Open](https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=si-tv) |
-| The Shoot Network (tsn) | 92 | available | [Open](https://buttocks.github.io/suplex-baked-player/shoot-network-slamvision.html) |
+| Shoot Interviews (si-tv) | 82 | available | [Open](https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=si-tv) |
+| The Shoot Network (tsn) | 93 | available | [Open](https://buttocks.github.io/suplex-baked-player/shoot-network-slamvision.html) |
 | MMA (mma-tv) | 65 | unavailable | [Open](https://buttocks.github.io/suplex-baked-player/mma-slamvision.html) |
 
 ## Territories / Classic US Tube (4 active)
@@ -195,7 +196,7 @@ Provider dials change; iframe URLs use stable feed IDs.
 | American Wrestling Association (awa) | 33 | available | [Open](https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=awa) |
 | Memphis Wrestling (memphis) | 55 | available | [Open](https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=memphis) |
 | Mid-South Wrestling (midsouth) | 57 | available | [Open](https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=midsouth) |
-| NWA Crockett (nwa-crockett) | 73 | available | [Open](https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=nwa-crockett) |
+| NWA Crockett (nwa-crockett) | 74 | available | [Open](https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=nwa-crockett) |
 | The Territories (territories) | 98 | unavailable | [Open](https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=territories) |
 
 ## Years / Mixed Wrestling Tube (19 active)
@@ -220,15 +221,15 @@ Provider dials change; iframe URLs use stable feed IDs.
 | Wrestling in 2000 (year-2000) | 16 | available | [Open](https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=year-2000) |
 | Wrestling in 2001 (year-2001) | 17 | available | [Open](https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=year-2001) |
 | Monday night wars (mnw) | 59 | available | [Open](https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=mnw) |
-| Random wrestling (rndm) | 76 | available | [Open](https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=rndm) |
+| Random wrestling (rndm) | 77 | available | [Open](https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=rndm) |
 | Tag Team (tag) | 91 | unavailable | [Open](https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=tag) |
 
 ## Needs Review (4 active)
 
 | Feed · Stable ID | Upstream # | Availability | Player |
 |---|---:|---|---|
-| Roddy Piper (piper) | 78 | available | [Open](https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=piper) |
-| SMW TV (st-tv) | 82 | available | [Open](https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=st-tv) |
-| USWA TV (ut-tv) | 95 | available | [Open](https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=ut-tv) |
-| Von Erich (ve-tv) | 96 | available | [Open](https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=ve-tv) |
+| Roddy Piper (piper) | 79 | available | [Open](https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=piper) |
+| SMW TV (st-tv) | 83 | available | [Open](https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=st-tv) |
+| USWA TV (ut-tv) | 96 | available | [Open](https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=ut-tv) |
+| Von Erich (ve-tv) | 97 | available | [Open](https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=ve-tv) |
 
