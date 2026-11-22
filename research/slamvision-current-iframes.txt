@@ -392,6 +392,9 @@ Random wrestling (rndm)
 Herb Abrams Network (hauwf)
 <iframe src="https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=hauwf" width="1280" height="720" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
 
+HUSTLE - (hustle)
+<iframe src="https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=hustle" width="1280" height="720" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+
 IWA Japan (ij-tv)
 <iframe src="https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=ij-tv" width="1280" height="720" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
 
