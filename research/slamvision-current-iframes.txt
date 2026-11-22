@@ -311,6 +311,9 @@ Shoot Interviews (si-tv)
 The Shoot Network (tsn)
 <iframe src="https://buttocks.github.io/suplex-baked-player/shoot-network-slamvision.html" width="1280" height="720" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
 
+UWFi (uwfi-i-tv)
+<iframe src="https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=uwfi-i-tv" width="1280" height="720" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+
 
 === Territories / Classic US Tube ===
 American Wrestling Association (awa)
@@ -386,6 +389,21 @@ Random wrestling (rndm)
 
 
 === Needs Review ===
+Herb Abrams Network (hauwf)
+<iframe src="https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=hauwf" width="1280" height="720" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+
+IWA Japan (ij-tv)
+<iframe src="https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=ij-tv" width="1280" height="720" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+
+AJW Classics (ajwc-tv)
+<iframe src="https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=ajwc-tv" width="1280" height="720" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+
+JWP (jwp)
+<iframe src="https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=jwp" width="1280" height="720" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+
+Portland Wrestling (p-tv)
+<iframe src="https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=p-tv" width="1280" height="720" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+
 Roddy Piper (piper)
 <iframe src="https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=piper" width="1280" height="720" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
 
@@ -397,5 +415,11 @@ USWA TV (ut-tv)
 
 Von Erich (ve-tv)
 <iframe src="https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=ve-tv" width="1280" height="720" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+
+Wrestle 1 (w1-tv)
+<iframe src="https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=w1-tv" width="1280" height="720" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+
+XWF (xwf)
+<iframe src="https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=xwf" width="1280" height="720" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
 
 
