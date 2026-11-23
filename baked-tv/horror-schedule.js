@@ -82,13 +82,18 @@ function combine(sourceSets){
    films.push(f);
   }
  }
+ // Canonical source order keeps the entire pool identical across viewers.
+ // Broadcast order is shuffled deterministically per complete pass below.
+ films.sort((a,b)=>a.id.localeCompare(b.id,'en')||a.name.localeCompare(b.name,'en'));
  const starts=[];
  let sum=0;
  for(const f of films){starts.push(sum);sum+=f.seconds*1000;}
  const versions=SOURCE_IDS.map(s=>s+':'+(sourceSets[s]?.version||'-')).join('|');
+ // A metadata-only manifest version change must not reset the on-air film.
+ const signature=films.map(f=>f.id+':'+f.seconds+':'+(f.startSeconds||0)).join(';');
  return {films,starts,cycleMs:sum,anchorMs:ANCHOR,versions,sourceCount:SOURCE_IDS.filter(s=>sourceSets[s]?.films?.length).length,
    upstreamCount:SOURCE_IDS.reduce((n,s)=>n+(sourceSets[s]?.films?.length||0),0),
-   signature:versions+'|'+films.map(f=>f.id+':'+f.seconds).join(';')};
+   signature,rotation:'shuffle-bag-v1'};
 }
 export function fallbackHorrorCatalog(){return combine({});}
 export async function loadHorrorCatalog({force=false}={}){
@@ -124,14 +129,61 @@ export async function loadHorrorCatalog({force=false}={}){
  })().finally(()=>{inflight=null;});
  return inflight;
 }
+// Each complete run of the library gets a different seeded shuffle.
+// No duplicates are scheduled within a pass; a film is never cut at a weekly boundary.
+function passOrder(catalog,pass){
+ if(!catalog._shuffleCache)catalog._shuffleCache=new Map();
+ const cache=catalog._shuffleCache;
+ if(cache.has(pass))return cache.get(pass);
+ function hash(text){
+  let h=2166136261;
+  for(let i=0;i<text.length;i++)h=Math.imul(h^text.charCodeAt(i),16777619);
+  return h>>>0;
+ }
+ function rawOrder(which){
+  let state=hash('bakedtv|horror|shuffle-v1|'+catalog.signature+'|'+which);
+  const arr=Array.from({length:catalog.films.length},(_,i)=>i);
+  const random=()=>{
+   state=(state+0x6d2b79f5)>>>0;
+   let t=state;
+   t=Math.imul(t^(t>>>15),t|1);
+   t^=t+Math.imul(t^(t>>>7),t|61);
+   return ((t^(t>>>14))>>>0)/4294967296;
+  };
+  for(let i=arr.length-1;i>0;i--){
+   const j=Math.floor(random()*(i+1));
+   [arr[i],arr[j]]=[arr[j],arr[i]];
+  }
+  return arr;
+ }
+ const order=rawOrder(pass);
+ // A reshuffle boundary shouldn't immediately replay the last film.
+ if(order.length>2){
+  const prior=rawOrder(pass-1);
+  if(order[0]===prior[prior.length-1])[order[0],order[1]]=[order[1],order[0]];
+ }
+ const starts=[];let total=0;
+ for(const index of order){starts.push(total);total+=catalog.films[index].seconds*1000;}
+ const result={order,starts};
+ cache.set(pass,result);
+ if(cache.size>5)cache.delete(cache.keys().next().value);
+ return result;
+}
 export function horrorAt(catalog,at=Date.now()){
  if(!catalog?.films?.length||!catalog.cycleMs)throw Error('Empty horror catalog');
- const offset=((at-catalog.anchorMs)%catalog.cycleMs+catalog.cycleMs)%catalog.cycleMs;
- const starts=catalog.starts;
+ const pass=Math.floor((at-catalog.anchorMs)/catalog.cycleMs);
+ const passStart=catalog.anchorMs+pass*catalog.cycleMs;
+ const offset=at-passStart;
+ const plan=passOrder(catalog,pass);
+ const starts=plan.starts;
  let lo=0,hi=starts.length-1;
- while(lo<hi){const mid=Math.floor((lo+hi+1)/2);if(starts[mid]<=offset)lo=mid;else hi=mid-1;}
- const film=catalog.films[lo],startMs=at-(offset-starts[lo]);
- return {film,startMs,endMs:startMs+film.seconds*1000,key:film.id+'|'+startMs,position:lo};
+ while(lo<hi){
+  const mid=Math.floor((lo+hi+1)/2);
+  if(starts[mid]<=offset)lo=mid;else hi=mid-1;
+ }
+ const film=catalog.films[plan.order[lo]],startMs=passStart+starts[lo];
+ return {film,startMs,endMs:startMs+film.seconds*1000,key:film.id+'|'+startMs,
+   position:lo,pass};
 }
 export function horrorUpcoming(catalog,count=12,at=Date.now()){
  const result=[];
