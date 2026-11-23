@@ -9,7 +9,7 @@
       "name": "Horror Nightshift",
       "category": "Horror",
       "type": "original",
-      "description": "Five classic horror films on a clock-synchronized continuous rotation.",
+      "description": "Classic horror movies and filmmaker-published shorts, scheduled across Internet Archive and YouTube.",
       "player": "../horror-nightshift.html",
       "accent": "#ef668c",
       "guide": {
@@ -21,16 +21,44 @@
             "seconds": 5753
           },
           {
+            "title": "The Dollmaker · ALTER",
+            "seconds": 600
+          },
+          {
             "title": "House on Haunted Hill (1959)",
             "seconds": 4483
+          },
+          {
+            "title": "The Smiling Man · ALTER",
+            "seconds": 423
+          },
+          {
+            "title": "Other Side of the Box · ALTER",
+            "seconds": 900
           },
           {
             "title": "Carnival of Souls (1962)",
             "seconds": 4980
           },
           {
+            "title": "The Hidebehind · ALTER",
+            "seconds": 600
+          },
+          {
+            "title": "The Armoire · ALTER",
+            "seconds": 900
+          },
+          {
             "title": "The Phantom of the Opera (1925)",
             "seconds": 6389
+          },
+          {
+            "title": "Portrait of God · Dylan Clark",
+            "seconds": 480
+          },
+          {
+            "title": "Lights Out · David F. Sandberg",
+            "seconds": 162
           },
           {
             "title": "The Cabinet of Dr. Caligari (1920)",
