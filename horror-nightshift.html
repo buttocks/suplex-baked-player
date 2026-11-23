@@ -12,7 +12,7 @@ video{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;backgr
 .group{display:flex;gap:7px;pointer-events:auto;flex-wrap:wrap}button{cursor:pointer;background:#170b14ec;color:#fff;border:1px solid #8a6a7a;padding:8px 11px;border-radius:7px;font:600 12px system-ui;min-height:36px}button:hover{background:#452032}button:focus-visible{outline:2px solid #ffc6d8;outline-offset:2px}
 #guide{position:absolute;z-index:6;top:57px;left:11px;width:min(460px,calc(100vw - 22px));max-height:72vh;overflow:auto;background:#160c16f6;border:1px solid #8b5d71;border-radius:9px;box-shadow:0 15px 40px #000a}
 #guide[hidden],#overlay[hidden]{display:none}#guide header{padding:13px 14px 10px;border-bottom:1px solid #543345}#guide h2{font-size:14px;letter-spacing:.06em;margin:0 0 4px}#guide small,#guide footer{font-size:11px;color:#c5a9b9}#guide ol{margin:0;padding:0;list-style:none}#guide li{display:grid;grid-template-columns:75px 1fr;gap:9px;padding:10px 13px;border-bottom:1px solid #452838;font-size:13px}#guide li.now{border-left:3px solid #f0789b;background:#381b2b;padding-left:10px}#guide .time{font-size:11px;color:#e5afc7;font-variant-numeric:tabular-nums}#guide .sub{font-size:11px;color:#c5a9b9;margin-top:3px}#guide footer{padding:12px;line-height:1.45}
-#caption{position:absolute;bottom:0;left:0;right:0;z-index:2;background:linear-gradient(transparent,#100710ed);padding:40px 17px 15px;pointer-events:none}#station{color:#f09aaf;letter-spacing:.18em;font-weight:800;font-size:11px}#current{font-size:clamp(16px,2.8vw,27px);font-weight:750;margin:4px 0}#next{font-size:12px;color:#e6cbd6}
+#caption{position:absolute;bottom:0;left:0;right:0;z-index:2;background:linear-gradient(transparent,#100710ed);padding:40px 17px 15px;pointer-events:none;opacity:1;transition:opacity .9s ease}#caption.is-hidden{opacity:0}#station{color:#f09aaf;letter-spacing:.18em;font-weight:800;font-size:11px}#current{font-size:clamp(16px,2.8vw,27px);font-weight:750;margin:4px 0}#next{font-size:12px;color:#e6cbd6}
 #overlay{position:absolute;inset:0;z-index:7;background:linear-gradient(125deg,#11060bea,#23101be8);display:flex;align-items:center;justify-content:center;text-align:center;padding:24px}#overlay section{max-width:550px}#overlay .eyebrow{letter-spacing:.19em;font-size:12px;color:#f09aaf;font-weight:750}#overlay h1{font-size:clamp(27px,5vw,46px);margin:10px 0}#status{font-size:14px;line-height:1.55;color:#ead5df;white-space:pre-line}#start{padding:12px 20px;font-size:14px;background:#f8dbe5;color:#290e1c;margin-top:17px;border-color:#f8dbe5}#start[hidden]{display:none}
 @media(max-width:450px){#toolbar{left:7px;right:7px;top:7px}button{padding:7px;font-size:11px}#guide{top:46px;left:7px;width:calc(100vw - 14px);max-height:60vh}#caption{padding-left:10px}}
 </style>
@@ -35,8 +35,8 @@ const FILMS=[
  {id:'caligari',name:'The Cabinet of Dr. Caligari (1920)',archive:'DasKabinettdesDoktorCaligariTheCabinetofDrCaligari',file:'The_Cabinet_of_Dr._Caligari_512kb.mp4',seconds:3061}
 ];
 const ANCHOR=Date.UTC(2026,0,1),CYCLE=FILMS.reduce((n,f)=>n+f.seconds*1000,0);
-const $=id=>document.getElementById(id),video=$('movie'),overlay=$('overlay'),status=$('status'),start=$('start'),guide=$('guide'),rows=$('guide-rows');
-let slot=null,slotKey='',failedKey='',muted=true,guideOpen=false,lastGuide=0;
+const $=id=>document.getElementById(id),video=$('movie'),overlay=$('overlay'),status=$('status'),start=$('start'),guide=$('guide'),rows=$('guide-rows'),caption=$('caption');
+let slot=null,slotKey='',failedKey='',muted=true,guideOpen=false,lastGuide=0,captionTimer=null,lastMotion=0;
 const positiveMod=(n,d)=>((n%d)+d)%d;
 const fmt=ms=>new Date(ms).toLocaleTimeString([],{hour:'numeric',minute:'2-digit'});
 const fileUrl=f=>'https://archive.org/download/'+encodeURIComponent(f.archive)+'/'+f.file.split('/').map(encodeURIComponent).join('/');
@@ -49,7 +49,8 @@ function prompt(message,showButton=true){overlay.hidden=false;status.textContent
 function targetTime(){if(!slot||!Number.isFinite(video.duration)||video.duration<=1)return null;return positiveMod((Date.now()-slot.startMs)/1000,Math.max(1,video.duration-.1));}
 function seekToBroadcast(force=false){if(!slot||video.readyState<1)return;const target=targetTime();if(target===null)return;if(force||Math.abs(video.currentTime-target)>6){try{video.currentTime=target;}catch{}}}
 function tryPlay(){if(!slot||failedKey===slotKey)return;const result=video.play();if(result?.then)result.then(()=>{overlay.hidden=true;}).catch(()=>prompt('Your browser blocked autoplay. Click Start watching to begin the channel.'));}
-function updateText(){if(!slot)return;$('current').textContent=slot.film.name;const next=currentAt(slot.endMs+1000);$('next').textContent='On until '+fmt(slot.endMs)+' · Up next '+fmt(slot.endMs)+': '+next.film.name;document.title=slot.film.name+' | Horror Nightshift';}
+function revealCaption(){caption.classList.remove('is-hidden');clearTimeout(captionTimer);captionTimer=setTimeout(()=>caption.classList.add('is-hidden'),5500);}
+function updateText(){if(!slot)return;revealCaption();$('current').textContent=slot.film.name;const next=currentAt(slot.endMs+1000);$('next').textContent='On until '+fmt(slot.endMs)+' · Up next '+fmt(slot.endMs)+': '+next.film.name;document.title=slot.film.name+' | Horror Nightshift';}
 function updateGuide(){if(!guideOpen)return;rows.replaceChildren();let t=Date.now();for(let i=0;i<10;i++){const s=currentAt(t);const li=document.createElement('li');if(i===0)li.className='now';const tm=document.createElement('div');tm.className='time';tm.textContent=i===0?'● NOW':fmt(s.startMs);const body=document.createElement('div'),name=document.createElement('div'),info=document.createElement('div');name.textContent=s.film.name;info.className='sub';info.textContent='Until '+fmt(s.endMs);body.append(name,info);li.append(tm,body);rows.append(li);t=s.endMs+1000;}lastGuide=Date.now();}
 function retune(force=false){const next=currentAt();if(!force&&slotKey===next.key)return;slot=next;slotKey=next.key;failedKey='';updateText();prompt('Tuning '+next.film.name+'…',false);video.pause();video.src=fileUrl(next.film);video.load();updateGuide();}
 video.addEventListener('loadedmetadata',()=>{if(!slot||failedKey===slotKey)return;seekToBroadcast(true);tryPlay();});
@@ -59,7 +60,10 @@ video.addEventListener('error',()=>{if(!slot)return;failedKey=slotKey;prompt('Th
 start.onclick=()=>{if(!slot)retune(true);if(failedKey===slotKey)retune(true);else tryPlay();};
 $('retune').onclick=()=>retune(true);
 $('guide-toggle').onclick=()=>{guideOpen=!guideOpen;guide.hidden=!guideOpen;$('guide-toggle').textContent=guideOpen?'✕ Hide Guide':'☷ TV Guide';$('guide-toggle').setAttribute('aria-expanded',String(guideOpen));updateGuide();};
-$('sound-toggle').onclick=()=>{muted=!muted;video.muted=muted;$('sound-toggle').textContent=muted?'🔇 Unmute':'🔊 Mute';tryPlay();};
+$('sound-toggle').onclick=()=>{muted=!muted;video.muted=muted;$('sound-toggle').textContent=muted?'🔇 Unmute':'🔊 Mute';tryPlay();revealCaption();};
+document.addEventListener('pointermove',()=>{const now=Date.now();if(now-lastMotion>800){lastMotion=now;revealCaption();}},{passive:true});
+document.addEventListener('pointerdown',revealCaption,{passive:true});
+document.addEventListener('keydown',revealCaption);
 function tick(){const next=currentAt();if(next.key!==slotKey){retune();return;}if(failedKey!==slotKey&&video.readyState>=2)seekToBroadcast();if(guideOpen&&Date.now()-lastGuide>15000)updateGuide();}
 retune();setInterval(tick,2500);
 })();
