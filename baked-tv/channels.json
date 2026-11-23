@@ -9,7 +9,7 @@
       "name": "Horror Nightshift",
       "category": "Horror",
       "type": "original",
-      "description": "Auto-updating horror and cult cinema merged from Daily Dread, Graveyard Shift, It Came From and our existing selections.",
+      "description": "Shuffled, no-repeat horror movie rotation; titles refresh from Daily Dread, Graveyard Shift, and It Came From.",
       "player": "../horror-nightshift.html",
       "accent": "#ef668c",
       "guide": {
