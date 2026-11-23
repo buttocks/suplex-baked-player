@@ -7,7 +7,9 @@
 <style>
 :root{font-family:system-ui,Segoe UI,Arial,sans-serif;color-scheme:dark}
 *{box-sizing:border-box}html,body{margin:0;width:100%;height:100%;background:#050306;color:#f7f1f2;overflow:hidden}
-video{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;background:#000}
+video,#youtube-layer{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;background:#000}
+#youtube-layer iframe{display:block;width:100%;height:100%;border:0}
+video[hidden],#youtube-layer[hidden]{display:none!important}
 #toolbar{position:absolute;top:11px;left:11px;right:11px;display:flex;justify-content:space-between;gap:10px;z-index:5;pointer-events:none}
 .group{display:flex;gap:7px;pointer-events:auto;flex-wrap:wrap}button{cursor:pointer;background:#170b14ec;color:#fff;border:1px solid #8a6a7a;padding:8px 11px;border-radius:7px;font:600 12px system-ui;min-height:36px}button:hover{background:#452032}button:focus-visible{outline:2px solid #ffc6d8;outline-offset:2px}
 #guide{position:absolute;z-index:6;top:57px;left:11px;width:min(460px,calc(100vw - 22px));max-height:72vh;overflow:auto;background:#160c16f6;border:1px solid #8b5d71;border-radius:9px;box-shadow:0 15px 40px #000a}
@@ -19,6 +21,7 @@ video{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;backgr
 </head>
 <body>
 <video id="movie" playsinline autoplay muted preload="metadata" controls></video>
+<div id="youtube-layer" hidden><div id="youtube-player"></div></div>
 <div id="toolbar"><div class="group"><button id="guide-toggle" type="button" aria-expanded="false">☷ TV Guide</button></div><div class="group"><button id="sound-toggle" type="button">🔇 Unmute</button><button id="retune" type="button">↻ Retune</button></div></div>
 <aside id="guide" hidden aria-label="Horror Nightshift programming guide"><header><h2>HORROR NIGHTSHIFT · TV GUIDE</h2><small>Continuous shared broadcast schedule · Times shown locally</small></header><ol id="guide-rows"></ol><footer>Films stream from Internet Archive; no video files are hosted here. Source availability and browser autoplay restrictions can affect playback. Movie runtimes are approximate.</footer></aside>
 <div id="caption"><div id="station">BAKED.TV · HORROR NIGHTSHIFT</div><div id="current">Tuning the midnight movies…</div><div id="next"></div></div>
@@ -27,15 +30,26 @@ video{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;backgr
 (()=>{'use strict';
 // Independently scheduled Baked.TV film rotation.
 // Film sources are hosted on Internet Archive.
-const FILMS=[
- {id:'night',name:'Night of the Living Dead (1968)',archive:'Night.Of.The.Living.Dead_1080p',file:'NightOfTheLivingDead.mp4',seconds:5753},
- {id:'haunted',name:'House on Haunted Hill (1959)',archive:'The_House_On_Haunted_Hill',file:'The_House_On_Haunted_Hill.mp4',seconds:4483},
- {id:'carnival',name:'Carnival of Souls (1962)',archive:'CarnivalofSouls',file:'CarnivalOfSouls.mp4',seconds:4980},
- {id:'phantom',name:'The Phantom of the Opera (1925)',archive:'ThePhantomoftheOpera',file:'Phantom_of_the_Opera_512kb.mp4',seconds:6389},
- {id:'caligari',name:'The Cabinet of Dr. Caligari (1920)',archive:'DasKabinettdesDoktorCaligariTheCabinetofDrCaligari',file:'The_Cabinet_of_Dr._Caligari_512kb.mp4',seconds:3061}
+const ALL_FILMS=[
+ {"id":"night","name":"Night of the Living Dead (1968)","archive":"Night.Of.The.Living.Dead_1080p","file":"NightOfTheLivingDead.mp4","seconds":5753},
+ {"id":"dollmaker","name":"The Dollmaker · ALTER","provider":"youtube","youtube":"OqSmb3n0j8o","seconds":600},
+ {"id":"haunted","name":"House on Haunted Hill (1959)","archive":"The_House_On_Haunted_Hill","file":"The_House_On_Haunted_Hill.mp4","seconds":4483},
+ {"id":"smiling","name":"The Smiling Man · ALTER","provider":"youtube","youtube":"zk-eY5S1Nck","seconds":423},
+ {"id":"other-side","name":"Other Side of the Box · ALTER","provider":"youtube","youtube":"OrOYvVf6tIM","seconds":900},
+ {"id":"carnival","name":"Carnival of Souls (1962)","archive":"CarnivalofSouls","file":"CarnivalOfSouls.mp4","seconds":4980},
+ {"id":"hidebehind","name":"The Hidebehind · ALTER","provider":"youtube","youtube":"tP7imEcclVk","seconds":600},
+ {"id":"armoire","name":"The Armoire · ALTER","provider":"youtube","youtube":"zHZxmkzdlmQ","seconds":900},
+ {"id":"phantom","name":"The Phantom of the Opera (1925)","archive":"ThePhantomoftheOpera","file":"Phantom_of_the_Opera_512kb.mp4","seconds":6389},
+ {"id":"portrait","name":"Portrait of God · Dylan Clark","provider":"youtube","youtube":"BI9fKfX5V68","seconds":480},
+ {"id":"lights","name":"Lights Out · David F. Sandberg","provider":"youtube","youtube":"-fDzdDfviLI","seconds":162},
+ {"id":"caligari","name":"The Cabinet of Dr. Caligari (1920)","archive":"DasKabinettdesDoktorCaligariTheCabinetofDrCaligari","file":"The_Cabinet_of_Dr._Caligari_512kb.mp4","seconds":3061}
 ];
+// Preview only: ?preview=youtube tests YouTube embeds without changing the broadcast schedule.
+const FILMS=new URLSearchParams(location.search).get('preview')==='youtube'
+ ? ALL_FILMS.filter(f=>f.provider==='youtube') : ALL_FILMS;
 const ANCHOR=Date.UTC(2026,0,1),CYCLE=FILMS.reduce((n,f)=>n+f.seconds*1000,0);
-const $=id=>document.getElementById(id),video=$('movie'),overlay=$('overlay'),status=$('status'),start=$('start'),guide=$('guide'),rows=$('guide-rows'),caption=$('caption');
+const $=id=>document.getElementById(id),video=$('movie'),youtubeLayer=$('youtube-layer'),overlay=$('overlay'),status=$('status'),start=$('start'),guide=$('guide'),rows=$('guide-rows'),caption=$('caption');
+let yt=null,ytReady=false,ytLoading=false;
 let slot=null,slotKey='',failedKey='',muted=true,guideOpen=false,lastGuide=0,captionTimer=null;
 const positiveMod=(n,d)=>((n%d)+d)%d;
 const fmt=ms=>new Date(ms).toLocaleTimeString([],{hour:'numeric',minute:'2-digit'});
@@ -46,24 +60,91 @@ function currentAt(ms=Date.now()){
  throw Error('The channel schedule is invalid');
 }
 function prompt(message,showButton=true){overlay.hidden=false;status.textContent=message;start.hidden=!showButton;}
-function targetTime(){if(!slot||!Number.isFinite(video.duration)||video.duration<=1)return null;return positiveMod((Date.now()-slot.startMs)/1000,Math.max(1,video.duration-.1));}
-function seekToBroadcast(force=false){if(!slot||video.readyState<1)return;const target=targetTime();if(target===null)return;if(force||Math.abs(video.currentTime-target)>6){try{video.currentTime=target;}catch{}}}
-function tryPlay(){if(!slot||failedKey===slotKey)return;const result=video.play();if(result?.then)result.then(()=>{overlay.hidden=true;}).catch(()=>prompt('Your browser blocked autoplay. Click Start watching to begin the channel.'));}
+function broadcastOffset(){return slot?Math.max(0,(Date.now()-slot.startMs)/1000):0;}
+function targetTime(){if(!slot||!Number.isFinite(video.duration)||video.duration<=1)return null;return Math.min(broadcastOffset(),video.duration-.4);}
+function seekToBroadcast(force=false){
+ if(!slot)return;
+ if(slot.film.provider==='youtube'){
+  if(!ytReady||!yt)return;
+  const duration=yt.getDuration?.()||0;
+  const target=duration>1?Math.min(broadcastOffset(),duration-.4):broadcastOffset();
+  if(force||Math.abs((yt.getCurrentTime?.()||0)-target)>8)try{yt.seekTo(target,true);}catch{}
+  return;
+ }
+ if(video.readyState<1)return;
+ const target=targetTime();if(target===null)return;
+ if(force||Math.abs(video.currentTime-target)>6)try{video.currentTime=target;}catch{}
+}
+function tryPlay(){
+ if(!slot||failedKey===slotKey)return;
+ if(slot.film.provider==='youtube'){
+  if(!ytReady){prompt('Loading YouTube player…',true);return;}
+  try{yt.playVideo();}catch{prompt('Click Start watching to play this YouTube film.');}
+  return;
+ }
+ const result=video.play();
+ if(result?.then)result.then(()=>{overlay.hidden=true;}).catch(()=>prompt('Your browser blocked autoplay. Click Start watching to begin the channel.'));
+}
+function loadYouTubeCurrent(){
+ if(!ytReady||!yt||!slot||slot.film.provider!=='youtube')return;
+ const f=slot.film;
+ try{
+  yt.loadVideoById({videoId:f.youtube,startSeconds:Math.floor(broadcastOffset())});
+  if(muted)yt.mute();else yt.unMute();
+ }catch{prompt('YouTube player could not start. Click Start watching to retry.');}
+}
+window.onYouTubeIframeAPIReady=()=>{
+ if(!window.YT?.Player)return;
+ yt=new YT.Player('youtube-player',{
+  width:'100%',height:'100%',
+  playerVars:{playsinline:1,autoplay:1,controls:1,rel:0,origin:location.origin},
+  events:{
+   onReady:()=>{ytReady=true;loadYouTubeCurrent();},
+   onStateChange:event=>{
+    if(slot?.film.provider!=='youtube')return;
+    if(event.data===YT.PlayerState.PLAYING){overlay.hidden=true;seekToBroadcast();}
+    if(event.data===YT.PlayerState.ENDED)prompt('Short film finished. Next program at '+fmt(slot.endMs)+'.',false);
+   },
+   onAutoplayBlocked:()=>{if(slot?.film.provider==='youtube')prompt('Click Start watching to begin the YouTube film.');},
+   onError:event=>{if(slot?.film.provider==='youtube'){failedKey=slotKey;prompt('This YouTube video cannot be embedded right now (error '+event.data+'). The next program is scheduled for '+fmt(slot.endMs)+'.',false);}}
+  }
+ });
+};
+const ytScript=document.createElement('script');ytScript.src='https://www.youtube.com/iframe_api';ytScript.async=true;
+ytScript.onerror=()=>{if(slot?.film.provider==='youtube')prompt('Could not load the YouTube player. Check the connection and refresh.');};
+document.head.append(ytScript);
 function revealCaption(){caption.classList.remove('is-hidden');clearTimeout(captionTimer);captionTimer=setTimeout(()=>caption.classList.add('is-hidden'),5500);}
 function updateText(){if(!slot)return;revealCaption();$('current').textContent=slot.film.name;const next=currentAt(slot.endMs+1000);$('next').textContent='On until '+fmt(slot.endMs)+' · Up next '+fmt(slot.endMs)+': '+next.film.name;document.title=slot.film.name+' | Horror Nightshift';}
 function updateGuide(){if(!guideOpen)return;rows.replaceChildren();let t=Date.now();for(let i=0;i<10;i++){const s=currentAt(t);const li=document.createElement('li');if(i===0)li.className='now';const tm=document.createElement('div');tm.className='time';tm.textContent=i===0?'● NOW':fmt(s.startMs);const body=document.createElement('div'),name=document.createElement('div'),info=document.createElement('div');name.textContent=s.film.name;info.className='sub';info.textContent='Until '+fmt(s.endMs);body.append(name,info);li.append(tm,body);rows.append(li);t=s.endMs+1000;}lastGuide=Date.now();}
-function retune(force=false){const next=currentAt();if(!force&&slotKey===next.key)return;slot=next;slotKey=next.key;failedKey='';updateText();prompt('Tuning '+next.film.name+'…',false);video.pause();video.src=fileUrl(next.film);video.load();updateGuide();}
-video.addEventListener('loadedmetadata',()=>{if(!slot||failedKey===slotKey)return;seekToBroadcast(true);tryPlay();});
-video.addEventListener('playing',()=>{overlay.hidden=true;});
-video.addEventListener('ended',()=>{if(!slot||failedKey===slotKey)return;if(currentAt().key!==slotKey){retune();return;}seekToBroadcast(true);tryPlay();});
-video.addEventListener('error',()=>{if(!slot)return;failedKey=slotKey;prompt('This Internet Archive video is unavailable right now.\nThe channel will advance at the next scheduled program. You can also try Retune.');});
-start.onclick=()=>{if(!slot)retune(true);if(failedKey===slotKey)retune(true);else tryPlay();};
+function retune(force=false){
+ const next=currentAt();
+ if(!force&&slotKey===next.key)return;
+ slot=next;slotKey=next.key;failedKey='';
+ updateText();prompt('Tuning '+next.film.name+'…',false);
+ if(next.film.provider==='youtube'){
+  video.pause();video.removeAttribute('src');video.load();video.hidden=true;
+  youtubeLayer.hidden=false;
+  if(ytReady)loadYouTubeCurrent();
+  else if(window.YT?.Player&&!yt)window.onYouTubeIframeAPIReady();
+  else prompt('Loading YouTube player…',false);
+ }else{
+  if(ytReady&&yt)try{yt.stopVideo();}catch{}
+  youtubeLayer.hidden=true;video.hidden=false;
+  video.pause();video.src=fileUrl(next.film);video.load();
+ }
+ updateGuide();
+}
+video.addEventListener('loadedmetadata',()=>{if(!slot||slot.film.provider==='youtube'||failedKey===slotKey)return;seekToBroadcast(true);tryPlay();});
+video.addEventListener('playing',()=>{if(slot?.film.provider!=='youtube')overlay.hidden=true;});
+video.addEventListener('ended',()=>{if(!slot||slot.film.provider==='youtube'||failedKey===slotKey)return;if(currentAt().key!==slotKey){retune();return;}prompt('Film finished. Next program at '+fmt(slot.endMs)+'.',false);});
+video.addEventListener('error',()=>{if(!slot||slot.film.provider==='youtube')return;failedKey=slotKey;prompt('This Internet Archive video is unavailable right now.\nThe channel will advance at the next scheduled program. You can also try Retune.');});
+start.onclick=()=>{if(!slot)retune(true);if(failedKey===slotKey)retune(true);else if(slot.film.provider==='youtube'&&!ytReady)window.onYouTubeIframeAPIReady&&window.YT?.Player&&window.onYouTubeIframeAPIReady();else tryPlay();};
 $('retune').onclick=()=>retune(true);
 $('guide-toggle').onclick=()=>{guideOpen=!guideOpen;guide.hidden=!guideOpen;$('guide-toggle').textContent=guideOpen?'✕ Hide Guide':'☷ TV Guide';$('guide-toggle').setAttribute('aria-expanded',String(guideOpen));updateGuide();};
-$('sound-toggle').onclick=()=>{muted=!muted;video.muted=muted;$('sound-toggle').textContent=muted?'🔇 Unmute':'🔊 Mute';tryPlay();revealCaption();};
+$('sound-toggle').onclick=()=>{muted=!muted;video.muted=muted;if(ytReady&&yt)try{if(muted)yt.mute();else yt.unMute();}catch{}$('sound-toggle').textContent=muted?'🔇 Unmute':'🔊 Mute';tryPlay();revealCaption();};
 document.addEventListener('pointerdown',revealCaption,{passive:true});
 document.addEventListener('keydown',revealCaption);
-function tick(){const next=currentAt();if(next.key!==slotKey){retune();return;}if(failedKey!==slotKey&&video.readyState>=2)seekToBroadcast();if(guideOpen&&Date.now()-lastGuide>15000)updateGuide();}
+function tick(){const next=currentAt();if(next.key!==slotKey){retune();return;}if(failedKey!==slotKey&&(slot.film.provider==='youtube'?ytReady:video.readyState>=2))seekToBroadcast();if(guideOpen&&Date.now()-lastGuide>15000)updateGuide();}
 retune();setInterval(tick,2500);
 })();
 </script>
