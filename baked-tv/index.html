@@ -41,6 +41,7 @@ main{min-width:0}.player-panel{border:1px solid #39323a;border-radius:15px;overf
 <script type="module">
 import {Broadcast} from '../broadcast.js';
 import {resolveAt} from '../schedule-engine.js';
+import {loadHorrorCatalog,horrorUpcoming} from './horror-schedule.js';
 const $=id=>document.getElementById(id);
 const els={clock:$('clock'),total:$('station-total'),count:$('count'),filters:$('filters'),stations:$('stations'),search:$('search'),panel:$('player-panel'),player:$('player'),standby:$('standby'),selectedLabel:$('selected-label'),selectedName:$('selected-name'),descTitle:$('desc-title'),descBody:$('desc-body'),open:$('open-player'),retune:$('retune'),copy:$('copy-embed'),nowTitle:$('now-title'),nowUntil:$('now-until'),guideSource:$('guide-source'),schedule:$('schedule')};
 const root=new URL('../',document.baseURI);
@@ -63,6 +64,14 @@ function displayFilters(){els.filters.replaceChildren();for(const name of ['All'
 els.search.addEventListener('input',displayDirectory);
 function cycleAt(guide,ms){const anchor=Date.parse(guide.anchor);if(!Number.isFinite(anchor))throw Error('Invalid schedule anchor');const items=guide.items;if(!items?.length)throw Error('Empty channel schedule');const cycle=items.reduce((n,f)=>n+f.seconds*1000,0);if(cycle<=0)throw Error('Invalid schedule length');const elapsed=((ms-anchor)%cycle+cycle)%cycle;let cursor=0;for(const f of items){const len=f.seconds*1000;if(elapsed<cursor+len){const startMs=ms-(elapsed-cursor);return {title:f.title,startMs,endMs:startMs+len};}cursor+=len;}throw Error('Unable to read channel schedule');}
 async function getPrograms(ch){
+ if(ch.guide?.type==='horror-feed'){
+  const catalog=await loadHorrorCatalog();
+  const items=horrorUpcoming(catalog,8,Date.now());
+  const source=catalog.sourceCount
+   ?'BAKED.TV · '+catalog.films.length+' PROGRAMS · AUTO-UPDATING'
+   :'BAKED.TV · BACKUP SCHEDULE';
+  return {source,items};
+ }
  if(ch.guide?.type==='cycle'){const list=[];let cursor=Date.now();for(let i=0;i<7;i++){const p=cycleAt(ch.guide,cursor);list.push(p);cursor=p.endMs+1;}return {source:'BAKED.TV · SHARED SCHEDULE',items:list};}
  if(ch.guide?.type==='broadcast'){const c=await broadcast.channel(ch.guide.id),list=[];let cursor=Date.now();for(let i=0;i<35&&list.length<7;i++){const p=resolveAt(c.playlist,cursor);if(p.endMs<=cursor)break;if(!list.length||p.item.type==='video')list.push({title:p.item.title||(p.item.type==='video'?'Untitled program':'Station break'),startMs:p.startMs,endMs:p.endMs});cursor=p.endMs+1;}return {source:'PUBLIC BROADCAST SCHEDULE',items:list};}
  return {source:'PLAYER-PROVIDED GUIDE',items:[]};
