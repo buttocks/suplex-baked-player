@@ -11,7 +11,7 @@ video{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;backgr
 #toolbar{position:absolute;top:11px;left:11px;right:11px;display:flex;justify-content:space-between;gap:10px;z-index:5;pointer-events:none}
 .group{display:flex;gap:7px;pointer-events:auto;flex-wrap:wrap}button{cursor:pointer;background:#170b14ec;color:#fff;border:1px solid #8a6a7a;padding:8px 11px;border-radius:7px;font:600 12px system-ui;min-height:36px}button:hover{background:#452032}button:focus-visible{outline:2px solid #ffc6d8;outline-offset:2px}
 #guide{position:absolute;z-index:6;top:57px;left:11px;width:min(460px,calc(100vw - 22px));max-height:72vh;overflow:auto;background:#160c16f6;border:1px solid #8b5d71;border-radius:9px;box-shadow:0 15px 40px #000a}
-#guide[hidden],#overlay[hidden]{display:none}#guide header{padding:13px 14px 10px;border-bottom:1px solid #543345}#guide h2{font-size:14px;letter-spacing:.06em;margin:0 0 4px}#guide small,#guide footer{font-size:11px;color:#c5a9b9}#guide ol{margin:0;padding:0;list-style:none}#guide li{display:grid;grid-template-columns:75px 1fr;gap:9px;padding:10px 13px;border-bottom:1px solid #452838;font-size:13px}#guide li.now{border-left:3px solid #f0789b;background:#381b2b;padding-left:10px}#guide .time{font-size:11px;color:#e5afc7;font-variant-numeric:tabular-nums}#guide .sub{font-size:11px;color:#c5a9b9;margin-top:3px}#guide footer{padding:12px;line-height:1.45}
+#guide[hidden],#overlay[hidden]{display:none}#guide header{padding:13px 14px 10px;border-bottom:1px solid #543345}#guide h2{font-size:14px;letter-spacing:.06em;margin:0 0 4px}#guide small,#guide footer{font-size:11px;color:#c5a9b9}#guide ol{margin:0;padding:0;list-style:none}#guide li{display:grid;grid-template-columns:75px 1fr;gap:9px;padding:10px 13px;border-bottom:1px solid #452838;font-size:13px}#guide li.now{border-left:3px solid #f0789b;background:#381b2b;padding-left:10px}#guide .time{font-size:11px;color:#e5afc7;font-variant-numeric:tabular-nums}#guide .sub{font-size:11px;color:#c5a9b9;margin-top:3px}#guide footer{padding:12px;line-height:1.45}#guide .feed-status{margin-top:6px;font-size:11px;color:#e0bac9;line-height:1.5}
 #caption{position:absolute;bottom:0;left:0;right:0;z-index:2;background:linear-gradient(transparent,#100710ed);padding:40px 17px 15px;pointer-events:none;opacity:1;transition:opacity .9s ease}#caption.is-hidden{opacity:0}#station{color:#f09aaf;letter-spacing:.18em;font-weight:800;font-size:11px}#current{font-size:clamp(16px,2.8vw,27px);font-weight:750;margin:4px 0}#next{font-size:12px;color:#e6cbd6}
 #overlay{position:absolute;inset:0;z-index:7;background:linear-gradient(125deg,#11060bea,#23101be8);display:flex;align-items:center;justify-content:center;text-align:center;padding:24px}#overlay section{max-width:550px}#overlay h1{font-size:clamp(27px,5vw,46px);margin:10px 0}#status{font-size:14px;line-height:1.55;color:#ead5df;white-space:pre-line}#start{padding:12px 20px;font-size:14px;background:#f8dbe5;color:#290e1c;margin-top:17px;border-color:#f8dbe5}#start[hidden]{display:none}
 @media(max-width:450px){#toolbar{left:7px;right:7px;top:7px}button{padding:7px;font-size:11px}#guide{top:46px;left:7px;width:calc(100vw - 14px);max-height:60vh}#caption{padding-left:10px}}
@@ -20,65 +20,160 @@ video{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;backgr
 <body>
 <video id="movie" playsinline autoplay muted preload="metadata" controls></video>
 <div id="toolbar"><div class="group"><button id="guide-toggle" type="button" aria-expanded="false">☷ TV Guide</button></div><div class="group"><button id="sound-toggle" type="button">🔇 Unmute</button><button id="retune" type="button">↻ Retune</button></div></div>
-<aside id="guide" hidden aria-label="Horror Nightshift programming guide"><header><h2>HORROR NIGHTSHIFT · TV GUIDE</h2><small>Continuous shared broadcast schedule · Times shown locally</small></header><ol id="guide-rows"></ol><footer>Videos stream directly from Internet Archive and Wikimedia Commons. Some files may be unavailable or restricted; schedules use published runtimes. <a href="https://commons.wikimedia.org/wiki/File:There_Is_No_Antimemetics_Division.webm" target="_blank" rel="noopener noreferrer">There Is No Antimemetics Division</a> by A Rose on Thorne Street, <a href="https://creativecommons.org/licenses/by-sa/3.0/" target="_blank" rel="noopener noreferrer">CC BY-SA 3.0</a>.</footer></aside>
+<aside id="guide" hidden aria-label="Horror Nightshift programming guide"><header><h2>HORROR NIGHTSHIFT · TV GUIDE</h2><small>Continuous shared broadcast schedule · Times shown locally</small><div id="guide-status" class="feed-status">Checking film catalog…</div></header><ol id="guide-rows"></ol><footer>Horror Nightshift automatically merges the latest published movie catalogs from Daily Dread, Graveyard Shift and It Came From, alongside our existing films. Video files remain on their source hosts. Content availability and rights vary. <a href="https://commons.wikimedia.org/wiki/File:There_Is_No_Antimemetics_Division.webm" target="_blank" rel="noopener noreferrer">There Is No Antimemetics Division</a> by A Rose on Thorne Street, <a href="https://creativecommons.org/licenses/by-sa/3.0/" target="_blank" rel="noopener noreferrer">CC BY-SA 3.0</a>.</footer></aside>
 <div id="caption"><div id="station">BAKED.TV · HORROR NIGHTSHIFT</div><div id="current">Tuning the midnight movies…</div><div id="next"></div></div>
 <div id="overlay"><section><h1>HORROR NIGHTSHIFT</h1><div id="status">Tuning the midnight movies…</div><button id="start" type="button">▶ Start watching</button></section></div>
-<script>
-(()=>{'use strict';
-// Independently scheduled Baked.TV film rotation.
-// Film sources use Internet Archive and Wikimedia Commons. No YouTube embeds.
-const ALL_FILMS=[
- {"id":"night","name":"Night of the Living Dead (1968)","archive":"Night.Of.The.Living.Dead_1080p","file":"NightOfTheLivingDead.mp4","seconds":5753},
- {"id":"antimemetics","name":"There Is No Antimemetics Division (2024)","seconds":1000,"provider":"commons","url":"https://upload.wikimedia.org/wikipedia/commons/1/13/There_Is_No_Antimemetics_Division.webm","source":"https://commons.wikimedia.org/wiki/File:There_Is_No_Antimemetics_Division.webm"},
- {"id":"vampire-bat","name":"The Vampire Bat (1933)","seconds":3760,"provider":"commons","url":"https://upload.wikimedia.org/wikipedia/commons/5/5b/The_Vampire_Bat_(1933).webm","source":"https://commons.wikimedia.org/wiki/File:The_Vampire_Bat_(1933).webm"},
- {"id":"haunted","name":"House on Haunted Hill (1959)","archive":"The_House_On_Haunted_Hill","file":"The_House_On_Haunted_Hill.mp4","seconds":4483},
- {"id":"usher","name":"The Fall of the House of Usher (1928)","seconds":792,"provider":"commons","url":"https://upload.wikimedia.org/wikipedia/commons/1/19/The_Fall_of_the_House_of_Usher_(1928).webm","source":"https://commons.wikimedia.org/wiki/File:The_Fall_of_the_House_of_Usher_(1928).webm"},
- {"id":"night-ghouls","name":"Night of the Ghouls (1959)","seconds":4166,"provider":"commons","url":"https://upload.wikimedia.org/wikipedia/commons/6/6d/Night_of_the_Ghouls_(1959).webm","source":"https://commons.wikimedia.org/wiki/File:Night_of_the_Ghouls_(1959).webm"},
- {"id":"carnival","name":"Carnival of Souls (1962)","archive":"CarnivalofSouls","file":"CarnivalOfSouls.mp4","seconds":4980},
- {"id":"cat-canary","name":"The Cat and the Canary (1927)","seconds":5039,"provider":"commons","url":"https://upload.wikimedia.org/wikipedia/commons/9/96/The_Cat_and_the_Canary_(1927).webm","source":"https://commons.wikimedia.org/wiki/File:The_Cat_and_the_Canary_(1927).webm"},
- {"id":"dementia","name":"Dementia 13 (1963)","seconds":4496,"provider":"commons","url":"https://upload.wikimedia.org/wikipedia/commons/1/13/Dementia_13.webm","source":"https://commons.wikimedia.org/wiki/File:Dementia_13.webm"},
- {"id":"phantom","name":"The Phantom of the Opera (1925)","archive":"ThePhantomoftheOpera","file":"Phantom_of_the_Opera_512kb.mp4","seconds":6389},
- {"id":"haunted-keaton","name":"The Haunted House (1921)","seconds":1236,"provider":"commons","url":"https://upload.wikimedia.org/wikipedia/commons/b/bd/The_Haunted_House_(1921).webm","source":"https://commons.wikimedia.org/wiki/File:The_Haunted_House_(1921).webm"},
- {"id":"jekyll","name":"Dr. Jekyll and Mr. Hyde (1920)","seconds":4762,"provider":"commons","url":"https://upload.wikimedia.org/wikipedia/commons/0/0d/Dr._Jekyll_and_Mr._Hyde_(1920).webm","source":"https://commons.wikimedia.org/wiki/File:Dr._Jekyll_and_Mr._Hyde_(1920).webm"},
- {"id":"caligari","name":"The Cabinet of Dr. Caligari (1920)","archive":"DasKabinettdesDoktorCaligariTheCabinetofDrCaligari","file":"The_Cabinet_of_Dr._Caligari_512kb.mp4","seconds":3061},
- {"id":"nosferatu","name":"Nosferatu (1922, English intertitles)","seconds":5060,"provider":"commons","url":"https://upload.wikimedia.org/wikipedia/commons/0/02/Nosferatu_(1922%2C_English_titles_1947).webm","source":"https://commons.wikimedia.org/wiki/File:Nosferatu_(1922%2C_English_titles_1947).webm"},
- {"id":"plan9","name":"Plan 9 from Outer Space (1959)","seconds":4697,"provider":"commons","url":"https://upload.wikimedia.org/wikipedia/commons/e/e8/Plan_9_from_Outer_Space_(1959_film).webm","source":"https://commons.wikimedia.org/wiki/File:Plan_9_from_Outer_Space_(1959_film).webm"}
-];
-// Source preview intentionally starts from the first Commons program; regular viewers use the shared clock.
-const COMMONS_PREVIEW=new URLSearchParams(location.search).get('preview')==='commons';
-const FILMS=COMMONS_PREVIEW?ALL_FILMS.filter(f=>f.provider==='commons'):ALL_FILMS;
-const ANCHOR=COMMONS_PREVIEW?Date.now():Date.UTC(2026,0,1),CYCLE=FILMS.reduce((n,f)=>n+f.seconds*1000,0);
-const $=id=>document.getElementById(id),video=$('movie'),overlay=$('overlay'),status=$('status'),start=$('start'),guide=$('guide'),rows=$('guide-rows'),caption=$('caption');
-let slot=null,slotKey='',failedKey='',muted=true,guideOpen=false,lastGuide=0,captionTimer=null;
-const positiveMod=(n,d)=>((n%d)+d)%d;
-const fmt=ms=>new Date(ms).toLocaleTimeString([],{hour:'numeric',minute:'2-digit'});
-const fileUrl=f=>f.provider==='commons'?f.url:'https://archive.org/download/'+encodeURIComponent(f.archive)+'/'+f.file.split('/').map(encodeURIComponent).join('/');
-function currentAt(ms=Date.now()){
- const offset=positiveMod(ms-ANCHOR,CYCLE);let cursor=0;
- for(const film of FILMS){const len=film.seconds*1000;if(offset<cursor+len){const startMs=ms-(offset-cursor);return{film,startMs,endMs:startMs+len,key:film.id+'|'+startMs};}cursor+=len;}
- throw Error('The channel schedule is invalid');
+<script type="module">
+import {loadHorrorCatalog,fallbackHorrorCatalog,horrorAt,horrorUpcoming,horrorVideoUrl} from './baked-tv/horror-schedule.js';
+
+const $=id=>document.getElementById(id);
+const video=$('movie'),overlay=$('overlay'),status=$('status'),start=$('start');
+const guide=$('guide'),rows=$('guide-rows'),caption=$('caption'),guideStatus=$('guide-status');
+const preview=new URLSearchParams(location.search).get('preview')==='commons';
+const fallback=fallbackHorrorCatalog();
+function previewCatalog(){
+ const films=fallback.films.filter(f=>f.provider==='commons');
+ let cycleMs=0;const starts=films.map(f=>{const t=cycleMs;cycleMs+=f.seconds*1000;return t;});
+ return {films,starts,cycleMs,anchorMs:Date.now(),sourceCount:0,versions:'commons-preview',
+   signature:'commons-preview',upstreamCount:0};
 }
+let catalog=preview?previewCatalog():fallback;
+let slot=null,slotKey='',failedKey='',muted=true,guideOpen=false,lastGuide=0,captionTimer=null;
+let feedTime=0,refreshPending=false,lastError='';
+const fmt=ms=>new Date(ms).toLocaleTimeString([],{hour:'numeric',minute:'2-digit'});
+const currentAt=ms=>horrorAt(catalog,ms);
 function prompt(message,showButton=true){overlay.hidden=false;status.textContent=message;start.hidden=!showButton;}
-function targetTime(){if(!slot||!Number.isFinite(video.duration)||video.duration<=1)return null;return positiveMod((Date.now()-slot.startMs)/1000,Math.max(1,video.duration-.1));}
-function seekToBroadcast(force=false){if(!slot||video.readyState<1)return;const target=targetTime();if(target===null)return;if(force||Math.abs(video.currentTime-target)>6){try{video.currentTime=target;}catch{}}}
-function tryPlay(){if(!slot||failedKey===slotKey)return;const result=video.play();if(result?.then)result.then(()=>{overlay.hidden=true;}).catch(()=>prompt('Your browser blocked autoplay. Click Start watching to begin the channel.'));}
-function revealCaption(){caption.classList.remove('is-hidden');clearTimeout(captionTimer);captionTimer=setTimeout(()=>caption.classList.add('is-hidden'),5500);}
-function updateText(){if(!slot)return;revealCaption();$('current').textContent=slot.film.name;const next=currentAt(slot.endMs+1000);$('next').textContent='On until '+fmt(slot.endMs)+' · Up next '+fmt(slot.endMs)+': '+next.film.name;document.title=slot.film.name+' | Horror Nightshift';}
-function updateGuide(){if(!guideOpen)return;rows.replaceChildren();let t=Date.now();for(let i=0;i<Math.min(FILMS.length,18);i++){const s=currentAt(t);const li=document.createElement('li');if(i===0)li.className='now';const tm=document.createElement('div');tm.className='time';tm.textContent=i===0?'● NOW':fmt(s.startMs);const body=document.createElement('div'),name=document.createElement('div'),info=document.createElement('div');name.textContent=s.film.name;info.className='sub';info.textContent='Until '+fmt(s.endMs);body.append(name,info);li.append(tm,body);rows.append(li);t=s.endMs+1000;}lastGuide=Date.now();}
-function retune(force=false){const next=currentAt();if(!force&&slotKey===next.key)return;slot=next;slotKey=next.key;failedKey='';updateText();prompt('Tuning '+next.film.name+'…',false);video.pause();video.src=fileUrl(next.film);video.load();updateGuide();}
-video.addEventListener('loadedmetadata',()=>{if(!slot||failedKey===slotKey)return;seekToBroadcast(true);tryPlay();});
+function broadcastOffset(){return slot?Math.max(0,(Date.now()-slot.startMs)/1000):0;}
+function targetTime(){
+ if(!slot||!Number.isFinite(video.duration)||video.duration<=1)return null;
+ return Math.max(0,Math.min(Number(slot.film.startSeconds||0)+broadcastOffset(),video.duration-.5));
+}
+function seekToBroadcast(force=false){
+ if(!slot||video.readyState<1||failedKey===slotKey)return;
+ const target=targetTime();
+ if(target===null)return;
+ if(force||Math.abs(video.currentTime-target)>7)try{video.currentTime=target;}catch{}
+}
+function tryPlay(){
+ if(!slot||failedKey===slotKey)return;
+ const result=video.play();
+ if(result?.then)result.then(()=>{overlay.hidden=true;}).catch(()=>{
+  prompt('Your browser blocked autoplay. Select Start watching to play the channel.',true);
+ });
+}
+function revealCaption(){
+ caption.classList.remove('is-hidden');clearTimeout(captionTimer);
+ captionTimer=setTimeout(()=>caption.classList.add('is-hidden'),5500);
+}
+function updateStatus(){
+ if(preview){guideStatus.textContent='Wikimedia Commons preview · independent of live rotation';return;}
+ const count=catalog.films.length,sources=catalog.sourceCount;
+ guideStatus.textContent=count+' programs · '+(sources?('Auto-updating from '+sources+'/3 source feeds'): 'Offline fallback catalog')+' · Next source check every 10 min';
+}
+function updateText(){
+ if(!slot)return;
+ revealCaption();$('current').textContent=slot.film.name;
+ const next=currentAt(slot.endMs+1);
+ $('next').textContent='On until '+fmt(slot.endMs)+' · Up next '+fmt(next.startMs)+': '+next.film.name;
+ document.title=slot.film.name+' | Horror Nightshift | Baked.TV';
+}
+function updateGuide(){
+ if(!guideOpen)return;
+ rows.replaceChildren();
+ const upcoming=horrorUpcoming(catalog,Math.min(18,catalog.films.length),Date.now());
+ for(let i=0;i<upcoming.length;i++){
+  const s=upcoming[i],li=document.createElement('li');
+  if(i===0)li.className='now';
+  const time=document.createElement('div');time.className='time';
+  time.textContent=i===0?'● NOW':fmt(s.startMs);
+  const body=document.createElement('div'),name=document.createElement('div'),info=document.createElement('div');
+  name.textContent=s.title;info.className='sub';info.textContent='Until '+fmt(s.endMs);
+  body.append(name,info);li.append(time,body);rows.append(li);
+ }
+ lastGuide=Date.now();
+}
+function retune(force=false){
+ const next=currentAt(Date.now());
+ if(!force&&slotKey===next.key)return;
+ slot=next;slotKey=next.key;failedKey='';
+ updateText();
+ prompt('Tuning '+next.film.name+'…',false);
+ video.pause();video.src=horrorVideoUrl(next.film);video.load();
+ updateGuide();
+}
+async function refreshFeed(first=false){
+ if(preview||refreshPending)return;
+ refreshPending=true;
+ try{
+  const incoming=await loadHorrorCatalog({force:!first});
+  feedTime=Date.now();lastError='';
+  if(incoming?.films?.length&&incoming.signature!==catalog.signature){
+   catalog=incoming;
+   // All viewers derive the position from the same UTC clock and manifest order.
+   // Current content may change when an upstream catalog is published.
+   retune(true);
+  }
+  updateStatus();
+  if(guideOpen)updateGuide();
+ }catch(error){
+  lastError=String(error);
+  console.warn('Horror Nightshift catalog refresh:',error);
+  updateStatus();
+ }finally{refreshPending=false;}
+}
+video.addEventListener('loadedmetadata',()=>{
+ if(!slot||failedKey===slotKey)return;
+ seekToBroadcast(true);tryPlay();
+});
 video.addEventListener('playing',()=>{overlay.hidden=true;});
-video.addEventListener('ended',()=>{if(!slot||failedKey===slotKey)return;if(currentAt().key!==slotKey){retune();return;}seekToBroadcast(true);tryPlay();});
-video.addEventListener('error',()=>{if(!slot)return;failedKey=slotKey;prompt('This hosted video is unavailable right now.\nThe channel will advance at the next scheduled program. You can also try Retune.');});
-start.onclick=()=>{if(!slot)retune(true);if(failedKey===slotKey)retune(true);else tryPlay();};
-$('retune').onclick=()=>retune(true);
-$('guide-toggle').onclick=()=>{guideOpen=!guideOpen;guide.hidden=!guideOpen;$('guide-toggle').textContent=guideOpen?'✕ Hide Guide':'☷ TV Guide';$('guide-toggle').setAttribute('aria-expanded',String(guideOpen));updateGuide();};
-$('sound-toggle').onclick=()=>{muted=!muted;video.muted=muted;$('sound-toggle').textContent=muted?'🔇 Unmute':'🔊 Mute';tryPlay();revealCaption();};
+video.addEventListener('ended',()=>{
+ if(!slot||failedKey===slotKey)return;
+ if(currentAt(Date.now()).key!==slotKey){retune();return;}
+ prompt('The film has ended. Next scheduled program at '+fmt(slot.endMs)+'.',false);
+});
+video.addEventListener('error',()=>{
+ if(!slot)return;failedKey=slotKey;
+ prompt('This hosted video is unavailable right now.\nThe next scheduled program will begin at '+fmt(slot.endMs)+'.\nYou can also try Retune.',false);
+});
+start.addEventListener('click',()=>{
+ if(!slot||failedKey===slotKey)retune(true);
+ else tryPlay();
+});
+$('retune').addEventListener('click',()=>retune(true));
+$('guide-toggle').addEventListener('click',()=>{
+ guideOpen=!guideOpen;guide.hidden=!guideOpen;
+ $('guide-toggle').textContent=guideOpen?'✕ Hide Guide':'☷ TV Guide';
+ $('guide-toggle').setAttribute('aria-expanded',String(guideOpen));updateGuide();
+});
+$('sound-toggle').addEventListener('click',()=>{
+ muted=!muted;video.muted=muted;
+ $('sound-toggle').textContent=muted?'🔇 Unmute':'🔊 Mute';
+ tryPlay();revealCaption();
+});
 document.addEventListener('pointerdown',revealCaption,{passive:true});
 document.addEventListener('keydown',revealCaption);
-function tick(){const next=currentAt();if(next.key!==slotKey){retune();return;}if(failedKey!==slotKey&&video.readyState>=2)seekToBroadcast();if(guideOpen&&Date.now()-lastGuide>15000)updateGuide();}
-retune();setInterval(tick,2500);
-})();
+function tick(){
+ if(currentAt(Date.now()).key!==slotKey){retune();return;}
+ if(failedKey!==slotKey&&video.readyState>=2&&!video.ended)seekToBroadcast();
+ if(guideOpen&&Date.now()-lastGuide>15000)updateGuide();
+}
+async function boot(){
+ updateStatus();
+ prompt('Loading the Horror Nightshift schedule…',false);
+ if(!preview)await refreshFeed(true);
+ retune(true);
+ setInterval(tick,2500);
+ if(!preview){
+  setInterval(()=>refreshFeed(),10*60*1000);
+  document.addEventListener('visibilitychange',()=>{
+   if(!document.hidden&&Date.now()-feedTime>10*60*1000)refreshFeed();
+  });
+ }
+}
+boot().catch(error=>{
+ console.error('Horror Nightshift startup:',error);
+ prompt('The live guide could not be loaded. Retune to try the fallback schedule.',true);
+});
 </script>
 </body>
 </html>
