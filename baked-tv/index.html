@@ -68,7 +68,7 @@ async function getPrograms(ch){
   const catalog=await loadHorrorCatalog();
   const items=horrorUpcoming(catalog,8,Date.now());
   const source=catalog.sourceCount
-   ?'BAKED.TV · '+catalog.films.length+' PROGRAMS · AUTO-UPDATING'
+   ?'BAKED.TV · '+catalog.films.length+' PROGRAMS · SHUFFLED / AUTO-UPDATING'
    :'BAKED.TV · BACKUP SCHEDULE';
   return {source,items};
  }
