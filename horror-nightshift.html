@@ -68,7 +68,7 @@ function revealCaption(){
 function updateStatus(){
  if(preview){guideStatus.textContent='Wikimedia Commons preview · independent of live rotation';return;}
  const count=catalog.films.length,sources=catalog.sourceCount;
- guideStatus.textContent=count+' programs · '+(sources?('Auto-updating from '+sources+'/3 source feeds'): 'Offline fallback catalog')+' · Next source check every 10 min';
+ guideStatus.textContent=count+' programs · Shuffled rotation, no repeats per complete pass · '+(sources?(sources+'/3 source feeds checked every 10 min'):'Backup catalog');
 }
 function updateText(){
  if(!slot)return;
