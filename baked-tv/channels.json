@@ -9,7 +9,7 @@
       "name": "Horror Nightshift",
       "category": "Horror",
       "type": "original",
-      "description": "Classic horror movies on a continuous scheduled rotation, streamed from Internet Archive.",
+      "description": "Classic horror films and short features from Internet Archive and Wikimedia Commons, on a continuous ad-free schedule.",
       "player": "../horror-nightshift.html",
       "accent": "#ef668c",
       "guide": {
@@ -21,20 +21,60 @@
             "seconds": 5753
           },
           {
+            "title": "There Is No Antimemetics Division (2024)",
+            "seconds": 1000
+          },
+          {
+            "title": "The Vampire Bat (1933)",
+            "seconds": 3760
+          },
+          {
             "title": "House on Haunted Hill (1959)",
             "seconds": 4483
+          },
+          {
+            "title": "The Fall of the House of Usher (1928)",
+            "seconds": 792
+          },
+          {
+            "title": "Night of the Ghouls (1959)",
+            "seconds": 4166
           },
           {
             "title": "Carnival of Souls (1962)",
             "seconds": 4980
           },
           {
+            "title": "The Cat and the Canary (1927)",
+            "seconds": 5039
+          },
+          {
+            "title": "Dementia 13 (1963)",
+            "seconds": 4496
+          },
+          {
             "title": "The Phantom of the Opera (1925)",
             "seconds": 6389
           },
           {
+            "title": "The Haunted House (1921)",
+            "seconds": 1236
+          },
+          {
+            "title": "Dr. Jekyll and Mr. Hyde (1920)",
+            "seconds": 4762
+          },
+          {
             "title": "The Cabinet of Dr. Caligari (1920)",
             "seconds": 3061
+          },
+          {
+            "title": "Nosferatu (1922, English intertitles)",
+            "seconds": 5060
+          },
+          {
+            "title": "Plan 9 from Outer Space (1959)",
+            "seconds": 4697
           }
         ]
       }
