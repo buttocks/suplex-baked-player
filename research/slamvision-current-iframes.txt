@@ -19,9 +19,6 @@ NJPW G1 Climax (njpw-g1climax)
 NJPW New Japan Cup (njpw-japan)
 <iframe src="https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=njpw-japan" width="1280" height="720" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
 
-NJPW Starrcade in Tokyo Dome (njpw-starrcade)
-<iframe src="https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=njpw-starrcade" width="1280" height="720" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
-
 NJPW The New Beginning (njpw-beginning)
 <iframe src="https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=njpw-beginning" width="1280" height="720" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
 
@@ -36,9 +33,6 @@ NJPW Wrestling Dontaku (njpw-wrestling)
 
 
 === AJPW Tube ===
-All Japan Pro-Wrestling (ajpw)
-<iframe src="https://buttocks.github.io/suplex-baked-player/ajpw-slamvision.html" width="1280" height="720" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
-
 AJPW Champion Carnival (ajpw-carnival)
 <iframe src="https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=ajpw-carnival" width="1280" height="720" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
 
@@ -96,14 +90,8 @@ TJPW (tjpw-tv)
 
 
 === WWF / WWE Tube ===
-Andre The Giant (atg)
-<iframe src="https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=atg" width="1280" height="720" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
-
 John Cena (cena)
 <iframe src="https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=cena" width="1280" height="720" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
-
-The Hart Family (hart)
-<iframe src="https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=hart" width="1280" height="720" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
 
 The Hulk Hogan Network (hhn)
 <iframe src="https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=hhn" width="1280" height="720" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
@@ -117,9 +105,6 @@ Wwe (wwe)
 WWE Velocity (wwe-velocity)
 <iframe src="https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=wwe-velocity" width="1280" height="720" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
 
-wwf (wwf)
-<iframe src="https://buttocks.github.io/suplex-baked-player/wwf-slamvision.html" width="1280" height="720" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
-
 WWF 1990-2000 (wwf-90-00)
 <iframe src="https://buttocks.github.io/suplex-baked-player/wwf-90-00-slamvision.html" width="1280" height="720" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
 
@@ -132,9 +117,6 @@ WWF Prime Time Wrestling (wwf-ptw)
 WWF Sunday Night Heat (wwf-heat)
 <iframe src="https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=wwf-heat" width="1280" height="720" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
 
-WWF Superstars of Wrestling (wwf-sow)
-<iframe src="https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=wwf-sow" width="1280" height="720" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
-
 WWF WrestleMania (wwf-mania)
 <iframe src="https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=wwf-mania" width="1280" height="720" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
 
@@ -145,6 +127,9 @@ WWF Wrestling Challenge (wwf-challenge)
 === WCW Tube ===
 World Championship Wrestling (wcw)
 <iframe src="https://buttocks.github.io/suplex-baked-player/wcw-slamvision.html" width="1280" height="720" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+
+World Championship Wrestling (wcw-tv)
+<iframe src="https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=wcw-tv" width="1280" height="720" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
 
 WCW Clash of the Champions (wcw-cotc)
 <iframe src="https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=wcw-cotc" width="1280" height="720" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
@@ -195,17 +180,14 @@ ECW Hardcore TV (ecw-hardcoretv)
 
 
 === AEW Tube ===
-All Elite Wrestling (aew-tv)
-<iframe src="https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=aew-tv" width="1280" height="720" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
-
 AEW Dark Elevation (aew-elevation)
 <iframe src="https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=aew-elevation" width="1280" height="720" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
 
 AEW Rampage (aew-rampage)
 <iframe src="https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=aew-rampage" width="1280" height="720" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
 
-ALL ELITE WRESTLING DYNAMITE (aew2)
-<iframe src="https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=aew2" width="1280" height="720" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+Best of All In (aew-ai)
+<iframe src="https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=aew-ai" width="1280" height="720" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
 
 Kenny Omega (omega-24-7)
 <iframe src="https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=omega-24-7" width="1280" height="720" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
@@ -308,9 +290,6 @@ Bloodsport Network (bsn)
 Shoot Interviews (si-tv)
 <iframe src="https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=si-tv" width="1280" height="720" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
 
-The Shoot Network (tsn)
-<iframe src="https://buttocks.github.io/suplex-baked-player/shoot-network-slamvision.html" width="1280" height="720" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
-
 UWFi (uwfi-i-tv)
 <iframe src="https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=uwfi-i-tv" width="1280" height="720" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
 
@@ -318,6 +297,9 @@ UWFi (uwfi-i-tv)
 === Territories / Classic US Tube ===
 American Wrestling Association (awa)
 <iframe src="https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=awa" width="1280" height="720" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+
+American Wrestling Association (amer)
+<iframe src="https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=amer" width="1280" height="720" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
 
 Memphis Wrestling (memphis)
 <iframe src="https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=memphis" width="1280" height="720" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
@@ -381,17 +363,11 @@ Wrestling in 2000 (year-2000)
 Wrestling in 2001 (year-2001)
 <iframe src="https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=year-2001" width="1280" height="720" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
 
-Monday night wars (mnw)
-<iframe src="https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=mnw" width="1280" height="720" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
-
 Random wrestling (rndm)
 <iframe src="https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=rndm" width="1280" height="720" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
 
 
 === Needs Review ===
-Herb Abrams Network (hauwf)
-<iframe src="https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=hauwf" width="1280" height="720" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
-
 HUSTLE - (hustle)
 <iframe src="https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=hustle" width="1280" height="720" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
 
@@ -403,9 +379,6 @@ AJW Classics (ajwc-tv)
 
 JWP (jwp)
 <iframe src="https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=jwp" width="1280" height="720" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
-
-Portland Wrestling (p-tv)
-<iframe src="https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=p-tv" width="1280" height="720" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
 
 Roddy Piper (piper)
 <iframe src="https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=piper" width="1280" height="720" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
