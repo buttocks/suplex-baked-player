@@ -1,0 +1,98 @@
+{
+  "schema": 1,
+  "collection": "Modern Horror — Vimeo Screen Test",
+  "note": "Candidate filmmaker-uploaded horror shorts. Test Vimeo embed availability and accurate runtimes before scheduling on Horror Nightshift.",
+  "source": "Public Vimeo creator pages; embedded video remains hosted and controlled by its publisher.",
+  "videos": [
+    {
+      "id": "queue",
+      "title": "The Queue",
+      "year": 2023,
+      "creator": "Michael Rich",
+      "vimeoId": "935546630",
+      "category": "Psychological / technology",
+      "description": "An internet content moderator is confronted by increasingly disturbing footage."
+    },
+    {
+      "id": "fullmoon",
+      "title": "Full Moon [Redacted]",
+      "year": 2024,
+      "creator": "Thom Newell / Radio Silence",
+      "vimeoId": "1132545287",
+      "category": "Creature feature",
+      "description": "A horror festival short with a werewolf twist."
+    },
+    {
+      "id": "doomscroll",
+      "title": "Doom Scroll",
+      "year": 2025,
+      "creator": "Tim Sparks / Deep Field Cinema",
+      "vimeoId": "1135501414",
+      "category": "Tech horror",
+      "description": "A psychological horror short produced for a 48-hour film competition."
+    },
+    {
+      "id": "devil-rock",
+      "title": "The Devil Left Us a Rock Wall",
+      "year": 2025,
+      "creator": "Ethan Locy",
+      "vimeoId": "1070674985",
+      "category": "Found footage / supernatural",
+      "description": "Old tapes and a small attic door lead somewhere disturbing."
+    },
+    {
+      "id": "wet-ingredients",
+      "title": "Wet Ingredients",
+      "year": 2024,
+      "creator": "Matthew Ragsdale & Kendy Paxia",
+      "vimeoId": "1011402671",
+      "category": "Horror comedy / gore",
+      "description": "A venomously cute bubblegum-horror love spell goes wrong."
+    },
+    {
+      "id": "deimos",
+      "title": "DEIMOS",
+      "year": 2024,
+      "creator": "Kyle Bogart & Cliff Bogart",
+      "vimeoId": "931262802",
+      "category": "Supernatural horror",
+      "description": "An art professor uncovers a demonic painting that stares back."
+    },
+    {
+      "id": "she-screams",
+      "title": "She Screams at Night",
+      "year": 2025,
+      "creator": "Dakota Roth",
+      "vimeoId": "1123418468",
+      "category": "Supernatural / suspense",
+      "description": "Two babysitters ignore a warning not to check on a screaming child."
+    },
+    {
+      "id": "immersion",
+      "title": "Immersion",
+      "year": 2023,
+      "creator": "JoVaughn Trammell",
+      "vimeoId": "854223147",
+      "category": "Sci-fi / VR horror",
+      "description": "A VR gamer sees a creature from a game appear in real life."
+    },
+    {
+      "id": "pixel-rot",
+      "title": "Pixel Rot",
+      "year": 2025,
+      "creator": "Independent filmmaker",
+      "vimeoId": "1133225567",
+      "category": "Experimental horror",
+      "description": "An unusual horror short shot on a Nintendo 3DS."
+    },
+    {
+      "id": "eyestitched",
+      "title": "Its Eyes Are Stitched Shut",
+      "year": 2025,
+      "creator": "Independent filmmaker",
+      "vimeoId": "1134482756",
+      "category": "Creature horror",
+      "description": "A recent original horror short."
+    }
+  ]
+}
