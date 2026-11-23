@@ -20,26 +20,39 @@ video{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;backgr
 <body>
 <video id="movie" playsinline autoplay muted preload="metadata" controls></video>
 <div id="toolbar"><div class="group"><button id="guide-toggle" type="button" aria-expanded="false">☷ TV Guide</button></div><div class="group"><button id="sound-toggle" type="button">🔇 Unmute</button><button id="retune" type="button">↻ Retune</button></div></div>
-<aside id="guide" hidden aria-label="Horror Nightshift programming guide"><header><h2>HORROR NIGHTSHIFT · TV GUIDE</h2><small>Continuous shared broadcast schedule · Times shown locally</small></header><ol id="guide-rows"></ol><footer>Films stream from Internet Archive; no video files are hosted here. Source availability and browser autoplay restrictions can affect playback. Movie runtimes are approximate.</footer></aside>
+<aside id="guide" hidden aria-label="Horror Nightshift programming guide"><header><h2>HORROR NIGHTSHIFT · TV GUIDE</h2><small>Continuous shared broadcast schedule · Times shown locally</small></header><ol id="guide-rows"></ol><footer>Videos stream directly from Internet Archive and Wikimedia Commons. Some files may be unavailable or restricted; schedules use published runtimes. <a href="https://commons.wikimedia.org/wiki/File:There_Is_No_Antimemetics_Division.webm" target="_blank" rel="noopener noreferrer">There Is No Antimemetics Division</a> by A Rose on Thorne Street, <a href="https://creativecommons.org/licenses/by-sa/3.0/" target="_blank" rel="noopener noreferrer">CC BY-SA 3.0</a>.</footer></aside>
 <div id="caption"><div id="station">BAKED.TV · HORROR NIGHTSHIFT</div><div id="current">Tuning the midnight movies…</div><div id="next"></div></div>
 <div id="overlay"><section><h1>HORROR NIGHTSHIFT</h1><div id="status">Tuning the midnight movies…</div><button id="start" type="button">▶ Start watching</button></section></div>
 <script>
 (()=>{'use strict';
 // Independently scheduled Baked.TV film rotation.
-// Film sources are hosted on Internet Archive.
-const FILMS=[
- {id:'night',name:'Night of the Living Dead (1968)',archive:'Night.Of.The.Living.Dead_1080p',file:'NightOfTheLivingDead.mp4',seconds:5753},
- {id:'haunted',name:'House on Haunted Hill (1959)',archive:'The_House_On_Haunted_Hill',file:'The_House_On_Haunted_Hill.mp4',seconds:4483},
- {id:'carnival',name:'Carnival of Souls (1962)',archive:'CarnivalofSouls',file:'CarnivalOfSouls.mp4',seconds:4980},
- {id:'phantom',name:'The Phantom of the Opera (1925)',archive:'ThePhantomoftheOpera',file:'Phantom_of_the_Opera_512kb.mp4',seconds:6389},
- {id:'caligari',name:'The Cabinet of Dr. Caligari (1920)',archive:'DasKabinettdesDoktorCaligariTheCabinetofDrCaligari',file:'The_Cabinet_of_Dr._Caligari_512kb.mp4',seconds:3061}
+// Film sources use Internet Archive and Wikimedia Commons. No YouTube embeds.
+const ALL_FILMS=[
+ {"id":"night","name":"Night of the Living Dead (1968)","archive":"Night.Of.The.Living.Dead_1080p","file":"NightOfTheLivingDead.mp4","seconds":5753},
+ {"id":"antimemetics","name":"There Is No Antimemetics Division (2024)","seconds":1000,"provider":"commons","url":"https://upload.wikimedia.org/wikipedia/commons/1/13/There_Is_No_Antimemetics_Division.webm","source":"https://commons.wikimedia.org/wiki/File:There_Is_No_Antimemetics_Division.webm"},
+ {"id":"vampire-bat","name":"The Vampire Bat (1933)","seconds":3760,"provider":"commons","url":"https://upload.wikimedia.org/wikipedia/commons/5/5b/The_Vampire_Bat_(1933).webm","source":"https://commons.wikimedia.org/wiki/File:The_Vampire_Bat_(1933).webm"},
+ {"id":"haunted","name":"House on Haunted Hill (1959)","archive":"The_House_On_Haunted_Hill","file":"The_House_On_Haunted_Hill.mp4","seconds":4483},
+ {"id":"usher","name":"The Fall of the House of Usher (1928)","seconds":792,"provider":"commons","url":"https://upload.wikimedia.org/wikipedia/commons/1/19/The_Fall_of_the_House_of_Usher_(1928).webm","source":"https://commons.wikimedia.org/wiki/File:The_Fall_of_the_House_of_Usher_(1928).webm"},
+ {"id":"night-ghouls","name":"Night of the Ghouls (1959)","seconds":4166,"provider":"commons","url":"https://upload.wikimedia.org/wikipedia/commons/6/6d/Night_of_the_Ghouls_(1959).webm","source":"https://commons.wikimedia.org/wiki/File:Night_of_the_Ghouls_(1959).webm"},
+ {"id":"carnival","name":"Carnival of Souls (1962)","archive":"CarnivalofSouls","file":"CarnivalOfSouls.mp4","seconds":4980},
+ {"id":"cat-canary","name":"The Cat and the Canary (1927)","seconds":5039,"provider":"commons","url":"https://upload.wikimedia.org/wikipedia/commons/9/96/The_Cat_and_the_Canary_(1927).webm","source":"https://commons.wikimedia.org/wiki/File:The_Cat_and_the_Canary_(1927).webm"},
+ {"id":"dementia","name":"Dementia 13 (1963)","seconds":4496,"provider":"commons","url":"https://upload.wikimedia.org/wikipedia/commons/1/13/Dementia_13.webm","source":"https://commons.wikimedia.org/wiki/File:Dementia_13.webm"},
+ {"id":"phantom","name":"The Phantom of the Opera (1925)","archive":"ThePhantomoftheOpera","file":"Phantom_of_the_Opera_512kb.mp4","seconds":6389},
+ {"id":"haunted-keaton","name":"The Haunted House (1921)","seconds":1236,"provider":"commons","url":"https://upload.wikimedia.org/wikipedia/commons/b/bd/The_Haunted_House_(1921).webm","source":"https://commons.wikimedia.org/wiki/File:The_Haunted_House_(1921).webm"},
+ {"id":"jekyll","name":"Dr. Jekyll and Mr. Hyde (1920)","seconds":4762,"provider":"commons","url":"https://upload.wikimedia.org/wikipedia/commons/0/0d/Dr._Jekyll_and_Mr._Hyde_(1920).webm","source":"https://commons.wikimedia.org/wiki/File:Dr._Jekyll_and_Mr._Hyde_(1920).webm"},
+ {"id":"caligari","name":"The Cabinet of Dr. Caligari (1920)","archive":"DasKabinettdesDoktorCaligariTheCabinetofDrCaligari","file":"The_Cabinet_of_Dr._Caligari_512kb.mp4","seconds":3061},
+ {"id":"nosferatu","name":"Nosferatu (1922, English intertitles)","seconds":5060,"provider":"commons","url":"https://upload.wikimedia.org/wikipedia/commons/0/02/Nosferatu_(1922%2C_English_titles_1947).webm","source":"https://commons.wikimedia.org/wiki/File:Nosferatu_(1922%2C_English_titles_1947).webm"},
+ {"id":"plan9","name":"Plan 9 from Outer Space (1959)","seconds":4697,"provider":"commons","url":"https://upload.wikimedia.org/wikipedia/commons/e/e8/Plan_9_from_Outer_Space_(1959_film).webm","source":"https://commons.wikimedia.org/wiki/File:Plan_9_from_Outer_Space_(1959_film).webm"}
 ];
-const ANCHOR=Date.UTC(2026,0,1),CYCLE=FILMS.reduce((n,f)=>n+f.seconds*1000,0);
+// Source preview intentionally starts from the first Commons program; regular viewers use the shared clock.
+const COMMONS_PREVIEW=new URLSearchParams(location.search).get('preview')==='commons';
+const FILMS=COMMONS_PREVIEW?ALL_FILMS.filter(f=>f.provider==='commons'):ALL_FILMS;
+const ANCHOR=COMMONS_PREVIEW?Date.now():Date.UTC(2026,0,1),CYCLE=FILMS.reduce((n,f)=>n+f.seconds*1000,0);
 const $=id=>document.getElementById(id),video=$('movie'),overlay=$('overlay'),status=$('status'),start=$('start'),guide=$('guide'),rows=$('guide-rows'),caption=$('caption');
 let slot=null,slotKey='',failedKey='',muted=true,guideOpen=false,lastGuide=0,captionTimer=null;
 const positiveMod=(n,d)=>((n%d)+d)%d;
 const fmt=ms=>new Date(ms).toLocaleTimeString([],{hour:'numeric',minute:'2-digit'});
-const fileUrl=f=>'https://archive.org/download/'+encodeURIComponent(f.archive)+'/'+f.file.split('/').map(encodeURIComponent).join('/');
+const fileUrl=f=>f.provider==='commons'?f.url:'https://archive.org/download/'+encodeURIComponent(f.archive)+'/'+f.file.split('/').map(encodeURIComponent).join('/');
 function currentAt(ms=Date.now()){
  const offset=positiveMod(ms-ANCHOR,CYCLE);let cursor=0;
  for(const film of FILMS){const len=film.seconds*1000;if(offset<cursor+len){const startMs=ms-(offset-cursor);return{film,startMs,endMs:startMs+len,key:film.id+'|'+startMs};}cursor+=len;}
@@ -51,12 +64,12 @@ function seekToBroadcast(force=false){if(!slot||video.readyState<1)return;const 
 function tryPlay(){if(!slot||failedKey===slotKey)return;const result=video.play();if(result?.then)result.then(()=>{overlay.hidden=true;}).catch(()=>prompt('Your browser blocked autoplay. Click Start watching to begin the channel.'));}
 function revealCaption(){caption.classList.remove('is-hidden');clearTimeout(captionTimer);captionTimer=setTimeout(()=>caption.classList.add('is-hidden'),5500);}
 function updateText(){if(!slot)return;revealCaption();$('current').textContent=slot.film.name;const next=currentAt(slot.endMs+1000);$('next').textContent='On until '+fmt(slot.endMs)+' · Up next '+fmt(slot.endMs)+': '+next.film.name;document.title=slot.film.name+' | Horror Nightshift';}
-function updateGuide(){if(!guideOpen)return;rows.replaceChildren();let t=Date.now();for(let i=0;i<10;i++){const s=currentAt(t);const li=document.createElement('li');if(i===0)li.className='now';const tm=document.createElement('div');tm.className='time';tm.textContent=i===0?'● NOW':fmt(s.startMs);const body=document.createElement('div'),name=document.createElement('div'),info=document.createElement('div');name.textContent=s.film.name;info.className='sub';info.textContent='Until '+fmt(s.endMs);body.append(name,info);li.append(tm,body);rows.append(li);t=s.endMs+1000;}lastGuide=Date.now();}
+function updateGuide(){if(!guideOpen)return;rows.replaceChildren();let t=Date.now();for(let i=0;i<Math.min(FILMS.length,18);i++){const s=currentAt(t);const li=document.createElement('li');if(i===0)li.className='now';const tm=document.createElement('div');tm.className='time';tm.textContent=i===0?'● NOW':fmt(s.startMs);const body=document.createElement('div'),name=document.createElement('div'),info=document.createElement('div');name.textContent=s.film.name;info.className='sub';info.textContent='Until '+fmt(s.endMs);body.append(name,info);li.append(tm,body);rows.append(li);t=s.endMs+1000;}lastGuide=Date.now();}
 function retune(force=false){const next=currentAt();if(!force&&slotKey===next.key)return;slot=next;slotKey=next.key;failedKey='';updateText();prompt('Tuning '+next.film.name+'…',false);video.pause();video.src=fileUrl(next.film);video.load();updateGuide();}
 video.addEventListener('loadedmetadata',()=>{if(!slot||failedKey===slotKey)return;seekToBroadcast(true);tryPlay();});
 video.addEventListener('playing',()=>{overlay.hidden=true;});
 video.addEventListener('ended',()=>{if(!slot||failedKey===slotKey)return;if(currentAt().key!==slotKey){retune();return;}seekToBroadcast(true);tryPlay();});
-video.addEventListener('error',()=>{if(!slot)return;failedKey=slotKey;prompt('This Internet Archive video is unavailable right now.\nThe channel will advance at the next scheduled program. You can also try Retune.');});
+video.addEventListener('error',()=>{if(!slot)return;failedKey=slotKey;prompt('This hosted video is unavailable right now.\nThe channel will advance at the next scheduled program. You can also try Retune.');});
 start.onclick=()=>{if(!slot)retune(true);if(failedKey===slotKey)retune(true);else tryPlay();};
 $('retune').onclick=()=>retune(true);
 $('guide-toggle').onclick=()=>{guideOpen=!guideOpen;guide.hidden=!guideOpen;$('guide-toggle').textContent=guideOpen?'✕ Hide Guide':'☷ TV Guide';$('guide-toggle').setAttribute('aria-expanded',String(guideOpen));updateGuide();};
