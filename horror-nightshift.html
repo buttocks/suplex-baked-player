@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="color-scheme" content="dark">
-<title>Horror Nightshift | SlamVision</title>
+<title>Horror Nightshift | Baked.TV</title>
 <style>
 :root{font-family:system-ui,Segoe UI,Arial,sans-serif;color-scheme:dark}
 *{box-sizing:border-box}html,body{margin:0;width:100%;height:100%;background:#050306;color:#f7f1f2;overflow:hidden}
@@ -21,12 +21,12 @@ video{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;backgr
 <video id="movie" playsinline autoplay muted preload="metadata" controls></video>
 <div id="toolbar"><div class="group"><button id="guide-toggle" type="button" aria-expanded="false">☷ TV Guide</button></div><div class="group"><button id="sound-toggle" type="button">🔇 Unmute</button><button id="retune" type="button">↻ Retune</button></div></div>
 <aside id="guide" hidden aria-label="Horror Nightshift programming guide"><header><h2>HORROR NIGHTSHIFT · TV GUIDE</h2><small>Continuous shared broadcast schedule · Times shown locally</small></header><ol id="guide-rows"></ol><footer>Films stream from Internet Archive; no video files are hosted here. Source availability and browser autoplay restrictions can affect playback. Movie runtimes are approximate.</footer></aside>
-<div id="caption"><div id="station">SLAMVISION · HORROR NIGHTSHIFT</div><div id="current">Tuning the midnight movies…</div><div id="next"></div></div>
-<div id="overlay"><section><div class="eyebrow">SLAMVISION · TEST BROADCAST</div><h1>HORROR NIGHTSHIFT</h1><div id="status">Tuning the midnight movies…</div><button id="start" type="button">▶ Start watching</button></section></div>
+<div id="caption"><div id="station">BAKED.TV · HORROR NIGHTSHIFT</div><div id="current">Tuning the midnight movies…</div><div id="next"></div></div>
+<div id="overlay"><section><div class="eyebrow">BAKED.TV · ORIGINAL CHANNEL</div><h1>HORROR NIGHTSHIFT</h1><div id="status">Tuning the midnight movies…</div><button id="start" type="button">▶ Start watching</button></section></div>
 <script>
 (()=>{'use strict';
-// Independently scheduled film rotation; not connected to other SlamVision feeds.
-// Sources reference the same Internet Archive catalog used by the existing player.
+// Independently scheduled Baked.TV film rotation.
+// Film sources are hosted on Internet Archive.
 const FILMS=[
  {id:'night',name:'Night of the Living Dead (1968)',archive:'Night.Of.The.Living.Dead_1080p',file:'NightOfTheLivingDead.mp4',seconds:5753},
  {id:'haunted',name:'House on Haunted Hill (1959)',archive:'The_House_On_Haunted_Hill',file:'The_House_On_Haunted_Hill.mp4',seconds:4483},
@@ -36,7 +36,7 @@ const FILMS=[
 ];
 const ANCHOR=Date.UTC(2026,0,1),CYCLE=FILMS.reduce((n,f)=>n+f.seconds*1000,0);
 const $=id=>document.getElementById(id),video=$('movie'),overlay=$('overlay'),status=$('status'),start=$('start'),guide=$('guide'),rows=$('guide-rows'),caption=$('caption');
-let slot=null,slotKey='',failedKey='',muted=true,guideOpen=false,lastGuide=0,captionTimer=null,lastMotion=0;
+let slot=null,slotKey='',failedKey='',muted=true,guideOpen=false,lastGuide=0,captionTimer=null;
 const positiveMod=(n,d)=>((n%d)+d)%d;
 const fmt=ms=>new Date(ms).toLocaleTimeString([],{hour:'numeric',minute:'2-digit'});
 const fileUrl=f=>'https://archive.org/download/'+encodeURIComponent(f.archive)+'/'+f.file.split('/').map(encodeURIComponent).join('/');
@@ -61,7 +61,6 @@ start.onclick=()=>{if(!slot)retune(true);if(failedKey===slotKey)retune(true);els
 $('retune').onclick=()=>retune(true);
 $('guide-toggle').onclick=()=>{guideOpen=!guideOpen;guide.hidden=!guideOpen;$('guide-toggle').textContent=guideOpen?'✕ Hide Guide':'☷ TV Guide';$('guide-toggle').setAttribute('aria-expanded',String(guideOpen));updateGuide();};
 $('sound-toggle').onclick=()=>{muted=!muted;video.muted=muted;$('sound-toggle').textContent=muted?'🔇 Unmute':'🔊 Mute';tryPlay();revealCaption();};
-document.addEventListener('pointermove',()=>{const now=Date.now();if(now-lastMotion>800){lastMotion=now;revealCaption();}},{passive:true});
 document.addEventListener('pointerdown',revealCaption,{passive:true});
 document.addEventListener('keydown',revealCaption);
 function tick(){const next=currentAt();if(next.key!==slotKey){retune();return;}if(failedKey!==slotKey&&video.readyState>=2)seekToBroadcast();if(guideOpen&&Date.now()-lastGuide>15000)updateGuide();}
