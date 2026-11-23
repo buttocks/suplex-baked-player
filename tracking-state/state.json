@@ -1,9 +1,9 @@
 {
   "schema": 1,
   "first_successful_scan_utc": "2026-11-17T17:40:53.687Z",
-  "last_successful_scan_utc": "2026-11-23T00:29:52Z",
-  "successful_scan_count": 17,
-  "total_feeds": 130,
+  "last_successful_scan_utc": "2026-11-23T08:15:13Z",
+  "successful_scan_count": 18,
+  "total_feeds": 121,
   "channels_by_id": {
     "year-1985": {
       "id": "year-1985",
@@ -124,793 +124,730 @@
       "callsign": "YR-2001",
       "category": "eras"
     },
-    "aew-tv": {
-      "id": "aew-tv",
-      "number": 20,
-      "name": "All Elite Wrestling",
-      "callsign": "AEW",
-      "category": "promotions"
-    },
     "aew-elevation": {
       "id": "aew-elevation",
-      "number": 21,
+      "number": 20,
       "name": "AEW Dark Elevation",
       "callsign": "AEW-ELEVATION",
       "category": "shows"
     },
     "aew-rampage": {
       "id": "aew-rampage",
-      "number": 22,
+      "number": 21,
       "name": "AEW Rampage",
       "callsign": "AEW-RAMPAGE",
       "category": "shows"
     },
-    "aew2": {
-      "id": "aew2",
-      "number": 23,
-      "name": "ALL ELITE WRESTLING DYNAMITE",
-      "callsign": "AEW2",
+    "aew-ai": {
+      "id": "aew-ai",
+      "number": 22,
+      "name": "Best of All In",
+      "callsign": "AEW-ALLIN",
       "category": "shows"
-    },
-    "ajpw": {
-      "id": "ajpw",
-      "number": 24,
-      "name": "All Japan Pro-Wrestling",
-      "callsign": "AJPW",
-      "category": "promotions"
     },
     "ajpw-carnival": {
       "id": "ajpw-carnival",
-      "number": 25,
+      "number": 23,
       "name": "AJPW Champion Carnival",
       "callsign": "AJPW-CARNIVAL",
       "category": "shows"
     },
     "ajpw-dynamite": {
       "id": "ajpw-dynamite",
-      "number": 26,
+      "number": 24,
       "name": "AJPW Dynamite Series",
       "callsign": "AJPW-DYNAMITE",
       "category": "shows"
     },
     "ajpw-excite": {
       "id": "ajpw-excite",
-      "number": 27,
+      "number": 25,
       "name": "AJPW Excite Series",
       "callsign": "AJPW-EXCITE",
       "category": "shows"
     },
     "ajpw-series": {
       "id": "ajpw-series",
-      "number": 28,
+      "number": 26,
       "name": "AJPW New Year Giant Series",
       "callsign": "AJPW-SERIES",
       "category": "shows"
     },
     "ajpw-tagleague": {
       "id": "ajpw-tagleague",
-      "number": 29,
+      "number": 27,
       "name": "AJPW Real World Tag League",
       "callsign": "AJPW-TAGLEAGUE",
       "category": "shows"
     },
     "ajpw-summer": {
       "id": "ajpw-summer",
-      "number": 30,
+      "number": 28,
       "name": "AJPW Summer Action Series",
       "callsign": "AJPW-SUMMER",
       "category": "shows"
     },
-    "atg": {
-      "id": "atg",
-      "number": 31,
-      "name": "Andre The Giant",
-      "callsign": "ATG",
-      "category": "wrestlers"
-    },
     "ain": {
       "id": "ain",
-      "number": 32,
+      "number": 29,
       "name": "Antonio Inoki Network",
       "callsign": "AIN",
       "category": "wrestlers"
     },
     "awa": {
       "id": "awa",
-      "number": 33,
+      "number": 30,
       "name": "American Wrestling Association",
       "callsign": "AWA",
       "category": "promotions"
     },
+    "amer": {
+      "id": "amer",
+      "number": 31,
+      "name": "American Wrestling Association",
+      "callsign": "AMER",
+      "category": "promotions"
+    },
     "battlarts": {
       "id": "battlarts",
-      "number": 34,
+      "number": 32,
       "name": "BattlArts",
       "callsign": "BATTLARTS",
       "category": "promotions"
     },
     "big-japan": {
       "id": "big-japan",
-      "number": 35,
+      "number": 33,
       "name": "Big Japan Pro Wrestling",
       "callsign": "BJW",
       "category": "promotions"
     },
     "bsn": {
       "id": "bsn",
-      "number": 36,
+      "number": 34,
       "name": "Bloodsport Network",
       "callsign": "BSN",
       "category": "promotions"
     },
     "chi": {
       "id": "chi",
-      "number": 37,
+      "number": 35,
       "name": "Chikara",
       "callsign": "CHI",
       "category": "promotions"
     },
     "czw-tv": {
       "id": "czw-tv",
-      "number": 38,
+      "number": 36,
       "name": "Combat Zone Wrestling",
       "callsign": "CZW",
       "category": "promotions"
     },
     "ddt-pro": {
       "id": "ddt-pro",
-      "number": 39,
+      "number": 37,
       "name": "DDT Pro-Wrestling",
       "callsign": "DDT",
       "category": "promotions"
     },
     "death": {
       "id": "death",
-      "number": 40,
+      "number": 38,
       "name": "Deathmatch",
       "callsign": "DEATH",
       "category": "wrestlers"
     },
     "dgtv": {
       "id": "dgtv",
-      "number": 41,
+      "number": 39,
       "name": "Dragongate",
       "callsign": "DGTV",
       "category": "promotions"
     },
     "ecw-tv": {
       "id": "ecw-tv",
-      "number": 42,
+      "number": 40,
       "name": "Extreme Championship Wrestling",
       "callsign": "ECW",
       "category": "promotions"
     },
     "ecw-hardcoretv": {
       "id": "ecw-hardcoretv",
-      "number": 43,
+      "number": 41,
       "name": "ECW Hardcore TV",
       "callsign": "ECW-HARDCORE",
       "category": "shows"
     },
     "euromat": {
       "id": "euromat",
-      "number": 44,
+      "number": 42,
       "name": "EuroMat",
       "callsign": "EUROMAT",
       "category": "wrestlers"
     },
     "fmw": {
       "id": "fmw",
-      "number": 45,
+      "number": 43,
       "name": "Frontier Martial-Arts Wrestling",
       "callsign": "FMW",
       "category": "promotions"
     },
     "gcw-tv": {
       "id": "gcw-tv",
-      "number": 46,
+      "number": 44,
       "name": "Game Changer Wrestling",
       "callsign": "GCW",
       "category": "promotions"
     },
-    "hauwf": {
-      "id": "hauwf",
-      "number": 47,
-      "name": "Herb Abrams Network",
-      "callsign": "HAUWF",
-      "category": "wrestlers"
-    },
     "hustle": {
       "id": "hustle",
-      "number": 48,
+      "number": 45,
       "name": "HUSTLE -",
       "callsign": "HUSTLE",
       "category": "wrestlers"
     },
     "ij-tv": {
       "id": "ij-tv",
-      "number": 49,
+      "number": 46,
       "name": "IWA Japan",
       "callsign": "IJ-TV",
       "category": "wrestlers"
     },
     "jcw": {
       "id": "jcw",
-      "number": 50,
+      "number": 47,
       "name": "Juggalo Championship Wrestling",
       "callsign": "JCW",
       "category": "promotions"
     },
     "cena": {
       "id": "cena",
-      "number": 51,
+      "number": 48,
       "name": "John Cena",
       "callsign": "CENA",
       "category": "wrestlers"
     },
     "joshi-indies": {
       "id": "joshi-indies",
-      "number": 52,
+      "number": 49,
       "name": "Joshi Indies",
       "callsign": "JOSHI-INDIES",
       "category": "promotions"
     },
     "joshi": {
       "id": "joshi",
-      "number": 53,
+      "number": 50,
       "name": "Joshi Puroresu",
       "callsign": "JOSHI",
       "category": "promotions"
     },
     "ajwc-tv": {
       "id": "ajwc-tv",
-      "number": 54,
+      "number": 51,
       "name": "AJW Classics",
       "callsign": "AJWC-TV",
       "category": "shows"
     },
     "jwp": {
       "id": "jwp",
-      "number": 55,
+      "number": 52,
       "name": "JWP",
       "callsign": "JWP",
       "category": "wrestlers"
     },
     "kaientai-dojo": {
       "id": "kaientai-dojo",
-      "number": 56,
+      "number": 53,
       "name": "Kaientai Dojo",
       "callsign": "K-DOJO",
       "category": "promotions"
     },
     "omega-24-7": {
       "id": "omega-24-7",
-      "number": 57,
+      "number": 54,
       "name": "Kenny Omega",
       "callsign": "OMEGA 24/7",
       "category": "wrestlers"
     },
     "100-lucha": {
       "id": "100-lucha",
-      "number": 58,
+      "number": 55,
       "name": "Lucha Libre",
       "callsign": "100% LUCHA",
       "category": "promotions"
     },
     "marigold": {
       "id": "marigold",
-      "number": 59,
+      "number": 56,
       "name": "Marigold",
       "callsign": "MARIGOLD",
       "category": "promotions"
     },
     "memphis": {
       "id": "memphis",
-      "number": 60,
+      "number": 57,
       "name": "Memphis Wrestling",
       "callsign": "MEMPHIS",
       "category": "promotions"
     },
     "michinoku-pro": {
       "id": "michinoku-pro",
-      "number": 61,
+      "number": 58,
       "name": "Michinoku Pro Wrestling",
       "callsign": "MICHI-PRO",
       "category": "promotions"
     },
     "midsouth": {
       "id": "midsouth",
-      "number": 62,
+      "number": 59,
       "name": "Mid-South Wrestling",
       "callsign": "MIDSOUTH",
       "category": "promotions"
     },
     "mlw": {
       "id": "mlw",
-      "number": 63,
+      "number": 60,
       "name": "Major League Wrestling",
       "callsign": "MLW",
       "category": "promotions"
     },
-    "mnw": {
-      "id": "mnw",
-      "number": 64,
-      "name": "Monday night wars",
-      "callsign": "MNW",
-      "category": "eras"
-    },
     "njpw": {
       "id": "njpw",
-      "number": 65,
+      "number": 61,
       "name": "New Japan Pro-Wrestling",
       "callsign": "NJPW",
       "category": "promotions"
     },
     "njpw-destructi": {
       "id": "njpw-destructi",
-      "number": 66,
+      "number": 62,
       "name": "NJPW Destruction",
       "callsign": "NJPW-DESTRUCTI",
       "category": "shows"
     },
     "njpw-fighting": {
       "id": "njpw-fighting",
-      "number": 67,
+      "number": 63,
       "name": "NJPW Fighting Spirit",
       "callsign": "NJPW-FIGHTING",
       "category": "shows"
     },
     "njpw-g1climax": {
       "id": "njpw-g1climax",
-      "number": 68,
+      "number": 64,
       "name": "NJPW G1 Climax",
       "callsign": "NJPW-G1",
       "category": "shows"
     },
     "njpw-japan": {
       "id": "njpw-japan",
-      "number": 69,
+      "number": 65,
       "name": "NJPW New Japan Cup",
       "callsign": "NJPW-JAPAN",
       "category": "shows"
     },
-    "njpw-starrcade": {
-      "id": "njpw-starrcade",
-      "number": 70,
-      "name": "NJPW Starrcade in Tokyo Dome",
-      "callsign": "NJPW-STARRCADE",
-      "category": "shows"
-    },
     "njpw-beginning": {
       "id": "njpw-beginning",
-      "number": 71,
+      "number": 66,
       "name": "NJPW The New Beginning",
       "callsign": "NJPW-BEGINNING",
       "category": "shows"
     },
     "njpw-wp": {
       "id": "njpw-wp",
-      "number": 72,
+      "number": 67,
       "name": "NJPW World Pro-Wrestling",
       "callsign": "NJPW-WORLDPRO",
       "category": "shows"
     },
     "njpw-wk": {
       "id": "njpw-wk",
-      "number": 73,
+      "number": 68,
       "name": "NJPW Wrestle Kingdom",
       "callsign": "NJPW-WK",
       "category": "shows"
     },
     "njpw-wrestling": {
       "id": "njpw-wrestling",
-      "number": 74,
+      "number": 69,
       "name": "NJPW Wrestling Dontaku",
       "callsign": "NJPW-WRESTLING",
       "category": "shows"
     },
     "noah-tv": {
       "id": "noah-tv",
-      "number": 75,
+      "number": 70,
       "name": "NOAH-TV",
       "callsign": "NOAH",
       "category": "promotions"
     },
     "noah-voyage": {
       "id": "noah-voyage",
-      "number": 76,
+      "number": 71,
       "name": "NOAH Great Voyage",
       "callsign": "NOAH-VOYAGE",
       "category": "shows"
     },
     "noah-n1victory": {
       "id": "noah-n1victory",
-      "number": 77,
+      "number": 72,
       "name": "NOAH N-1 Victory",
       "callsign": "NOAH-N1VICTORY",
       "category": "shows"
     },
     "noah-navigatio": {
       "id": "noah-navigatio",
-      "number": 78,
+      "number": 73,
       "name": "NOAH Navigation",
       "callsign": "NOAH-NAVIGATIO",
       "category": "shows"
     },
     "nwa-crockett": {
       "id": "nwa-crockett",
-      "number": 79,
+      "number": 74,
       "name": "NWA Crockett",
       "callsign": "NWA-JCP",
       "category": "wrestlers"
     },
     "osaka-pro": {
       "id": "osaka-pro",
-      "number": 80,
+      "number": 75,
       "name": "Osaka Pro Wrestling",
       "callsign": "OSAKA-PRO",
       "category": "promotions"
     },
-    "p-tv": {
-      "id": "p-tv",
-      "number": 81,
-      "name": "Portland Wrestling",
-      "callsign": "P-TV",
-      "category": "promotions"
-    },
     "pwg": {
       "id": "pwg",
-      "number": 82,
+      "number": 76,
       "name": "Pro Wrestling Guerrilla",
       "callsign": "PWG",
       "category": "promotions"
     },
     "rndm": {
       "id": "rndm",
-      "number": 83,
+      "number": 77,
       "name": "Random wrestling",
       "callsign": "RNDM",
       "category": "promotions"
     },
     "revpro": {
       "id": "revpro",
-      "number": 84,
+      "number": 78,
       "name": "Revolution Pro Wrestling",
       "callsign": "REVPRO",
       "category": "promotions"
     },
     "piper": {
       "id": "piper",
-      "number": 85,
+      "number": 79,
       "name": "Roddy Piper",
       "callsign": "PIPER",
       "category": "wrestlers"
     },
     "croh": {
       "id": "croh",
-      "number": 86,
+      "number": 80,
       "name": "Classic ROH",
       "callsign": "CROH",
       "category": "eras"
     },
     "roh-wrestling": {
       "id": "roh-wrestling",
-      "number": 87,
+      "number": 81,
       "name": "ROH Wrestling",
       "callsign": "ROH-WRESTLING",
       "category": "shows"
     },
     "si-tv": {
       "id": "si-tv",
-      "number": 88,
+      "number": 82,
       "name": "Shoot Interviews",
       "callsign": "SI-TV",
       "category": "wrestlers"
     },
     "st-tv": {
       "id": "st-tv",
-      "number": 89,
+      "number": 83,
       "name": "SMW TV",
       "callsign": "ST-TV",
       "category": "wrestlers"
     },
     "sh-tv": {
       "id": "sh-tv",
-      "number": 90,
+      "number": 84,
       "name": "Stan Hansen",
       "callsign": "SH-TV",
       "category": "wrestlers"
     },
     "star": {
       "id": "star",
-      "number": 91,
+      "number": 85,
       "name": "Stardom",
       "callsign": "STAR",
       "category": "promotions"
     },
     "stardom-5star": {
       "id": "stardom-5star",
-      "number": 92,
+      "number": 86,
       "name": "Stardom 5Star Grand Prix",
       "callsign": "STARDOM-5STAR",
       "category": "shows"
     },
     "stardom-cinder": {
       "id": "stardom-cinder",
-      "number": 93,
+      "number": 87,
       "name": "Stardom Cinderella Tournament",
       "callsign": "STARDOM-CINDER",
       "category": "shows"
     },
     "stardom-goddes": {
       "id": "stardom-goddes",
-      "number": 94,
+      "number": 88,
       "name": "Stardom Goddesses of Stardom",
       "callsign": "STARDOM-GODDES",
       "category": "shows"
     },
     "tbn": {
       "id": "tbn",
-      "number": 95,
+      "number": 89,
       "name": "The Baba Network",
       "callsign": "TBN",
       "category": "wrestlers"
     },
     "muta": {
       "id": "muta",
-      "number": 96,
+      "number": 90,
       "name": "The Great Muta",
       "callsign": "MUTA",
       "category": "wrestlers"
     },
-    "hart": {
-      "id": "hart",
-      "number": 97,
-      "name": "The Hart Family",
-      "callsign": "HART",
-      "category": "wrestlers"
-    },
     "hhn": {
       "id": "hhn",
-      "number": 98,
+      "number": 91,
       "name": "The Hulk Hogan Network",
       "callsign": "HHN",
       "category": "wrestlers"
     },
-    "tsn": {
-      "id": "tsn",
-      "number": 99,
-      "name": "The Shoot Network",
-      "callsign": "TSN",
-      "category": "wrestlers"
-    },
     "tjpw-tv": {
       "id": "tjpw-tv",
-      "number": 100,
+      "number": 92,
       "name": "TJPW",
       "callsign": "TJPW",
       "category": "promotions"
     },
     "tna": {
       "id": "tna",
-      "number": 101,
+      "number": 93,
       "name": "Total Nonstop Action Wrestling",
       "callsign": "TNA",
       "category": "promotions"
     },
     "ut-tv": {
       "id": "ut-tv",
-      "number": 102,
+      "number": 94,
       "name": "USWA TV",
       "callsign": "UT-TV",
       "category": "wrestlers"
     },
     "uwfi-i-tv": {
       "id": "uwfi-i-tv",
-      "number": 103,
+      "number": 95,
       "name": "UWFi",
       "callsign": "UWFI-I TV",
       "category": "wrestlers"
     },
     "ve-tv": {
       "id": "ve-tv",
-      "number": 104,
+      "number": 96,
       "name": "Von Erich",
       "callsign": "VE-TV",
       "category": "wrestlers"
     },
     "wcpw": {
       "id": "wcpw",
-      "number": 105,
+      "number": 97,
       "name": "What Culture Pro Wrestling",
       "callsign": "WCPW",
       "category": "promotions"
     },
     "wcw": {
       "id": "wcw",
-      "number": 106,
+      "number": 98,
       "name": "World Championship Wrestling",
       "callsign": "WCW",
       "category": "promotions"
     },
+    "wcw-tv": {
+      "id": "wcw-tv",
+      "number": 99,
+      "name": "World Championship Wrestling",
+      "callsign": "WCW-TV",
+      "category": "promotions"
+    },
     "wcw-cotc": {
       "id": "wcw-cotc",
-      "number": 107,
+      "number": 100,
       "name": "WCW Clash of the Champions",
       "callsign": "WCW-CLASH",
       "category": "shows"
     },
     "wcw-fallbrawl": {
       "id": "wcw-fallbrawl",
-      "number": 108,
+      "number": 101,
       "name": "WCW Fall Brawl",
       "callsign": "WCW-FALLBRAWL",
       "category": "shows"
     },
     "wcw-bash": {
       "id": "wcw-bash",
-      "number": 109,
+      "number": 102,
       "name": "WCW Great American Bash",
       "callsign": "WCW-BASH",
       "category": "shows"
     },
     "wcw-halloween": {
       "id": "wcw-halloween",
-      "number": 110,
+      "number": 103,
       "name": "WCW Halloween Havoc",
       "callsign": "WCW-HALLOWEEN",
       "category": "shows"
     },
     "wcw-mainevent": {
       "id": "wcw-mainevent",
-      "number": 111,
+      "number": 104,
       "name": "WCW Main Event",
       "callsign": "WCW-MAINEVENT",
       "category": "shows"
     },
     "wcw-mn": {
       "id": "wcw-mn",
-      "number": 112,
+      "number": 105,
       "name": "WCW Monday Nitro",
       "callsign": "WCW-NITRO",
       "category": "shows"
     },
     "wcw-powerhour": {
       "id": "wcw-powerhour",
-      "number": 113,
+      "number": 106,
       "name": "WCW Power Hour",
       "callsign": "WCW-POWERHOUR",
       "category": "shows"
     },
     "wcw-prime": {
       "id": "wcw-prime",
-      "number": 114,
+      "number": 107,
       "name": "WCW Prime",
       "callsign": "WCW-PRIME",
       "category": "shows"
     },
     "wcw-pw": {
       "id": "wcw-pw",
-      "number": 115,
+      "number": 108,
       "name": "WCW Pro Wrestling",
       "callsign": "WCW-PRO",
       "category": "shows"
     },
     "wcw-sn": {
       "id": "wcw-sn",
-      "number": 116,
+      "number": 109,
       "name": "WCW Saturday Night",
       "callsign": "WCW-SATNIGHT",
       "category": "shows"
     },
     "wcw-starrcade": {
       "id": "wcw-starrcade",
-      "number": 117,
+      "number": 110,
       "name": "WCW Starrcade in Tokyo Dome",
       "callsign": "WCW-STARRCADE",
       "category": "shows"
     },
     "wcw-superbrawl": {
       "id": "wcw-superbrawl",
-      "number": 118,
+      "number": 111,
       "name": "WCW SuperBrawl",
       "callsign": "WCW-SUPERBRAWL",
       "category": "shows"
     },
     "wcw-worldwide": {
       "id": "wcw-worldwide",
-      "number": 119,
+      "number": 112,
       "name": "WCW Worldwide",
       "callsign": "WCW-WORLDWIDE",
       "category": "shows"
     },
     "w1-tv": {
       "id": "w1-tv",
-      "number": 120,
+      "number": 113,
       "name": "Wrestle 1",
       "callsign": "W1-TV",
       "category": "wrestlers"
     },
     "wm": {
       "id": "wm",
-      "number": 121,
+      "number": 114,
       "name": "Wrestlemania",
       "callsign": "WM",
       "category": "wrestlers"
     },
     "wwe": {
       "id": "wwe",
-      "number": 122,
+      "number": 115,
       "name": "Wwe",
       "callsign": "WWE",
       "category": "promotions"
     },
     "wwe-velocity": {
       "id": "wwe-velocity",
-      "number": 123,
+      "number": 116,
       "name": "WWE Velocity",
       "callsign": "WWE-VELOCITY",
       "category": "shows"
     },
-    "wwf": {
-      "id": "wwf",
-      "number": 124,
-      "name": "wwf",
-      "callsign": "WWF",
-      "category": "promotions"
-    },
     "wwf-90-00": {
       "id": "wwf-90-00",
-      "number": 125,
+      "number": 117,
       "name": "WWF 1990-2000",
       "callsign": "WWF-RAW",
       "category": "shows"
     },
     "wwf-wrestling": {
       "id": "wwf-wrestling",
-      "number": 126,
+      "number": 118,
       "name": "WWF All American Wrestling",
       "callsign": "WWF-WRESTLING",
       "category": "shows"
     },
     "wwf-ptw": {
       "id": "wwf-ptw",
-      "number": 127,
+      "number": 119,
       "name": "WWF Prime Time Wrestling",
       "callsign": "WWF-PRIMETIME",
       "category": "shows"
     },
     "wwf-heat": {
       "id": "wwf-heat",
-      "number": 128,
+      "number": 120,
       "name": "WWF Sunday Night Heat",
       "callsign": "WWF-HEAT",
       "category": "shows"
     },
-    "wwf-sow": {
-      "id": "wwf-sow",
-      "number": 129,
-      "name": "WWF Superstars of Wrestling",
-      "callsign": "WWF-SUPERSTARS",
-      "category": "shows"
-    },
     "wwf-mania": {
       "id": "wwf-mania",
-      "number": 130,
+      "number": 121,
       "name": "WWF WrestleMania",
       "callsign": "WWF-MANIA",
       "category": "shows"
     },
     "wwf-challenge": {
       "id": "wwf-challenge",
-      "number": 131,
+      "number": 122,
       "name": "WWF Wrestling Challenge",
       "callsign": "WWF-CHALLENGE",
       "category": "shows"
     },
     "xwf": {
       "id": "xwf",
-      "number": 132,
+      "number": 123,
       "name": "XWF",
       "callsign": "XWF",
       "category": "wrestlers"
@@ -934,119 +871,110 @@
     "15": "year-1999",
     "16": "year-2000",
     "17": "year-2001",
-    "20": "aew-tv",
-    "21": "aew-elevation",
-    "22": "aew-rampage",
-    "23": "aew2",
-    "24": "ajpw",
-    "25": "ajpw-carnival",
-    "26": "ajpw-dynamite",
-    "27": "ajpw-excite",
-    "28": "ajpw-series",
-    "29": "ajpw-tagleague",
-    "30": "ajpw-summer",
-    "31": "atg",
-    "32": "ain",
-    "33": "awa",
-    "34": "battlarts",
-    "35": "big-japan",
-    "36": "bsn",
-    "37": "chi",
-    "38": "czw-tv",
-    "39": "ddt-pro",
-    "40": "death",
-    "41": "dgtv",
-    "42": "ecw-tv",
-    "43": "ecw-hardcoretv",
-    "44": "euromat",
-    "45": "fmw",
-    "46": "gcw-tv",
-    "47": "hauwf",
-    "48": "hustle",
-    "49": "ij-tv",
-    "50": "jcw",
-    "51": "cena",
-    "52": "joshi-indies",
-    "53": "joshi",
-    "54": "ajwc-tv",
-    "55": "jwp",
-    "56": "kaientai-dojo",
-    "57": "omega-24-7",
-    "58": "100-lucha",
-    "59": "marigold",
-    "60": "memphis",
-    "61": "michinoku-pro",
-    "62": "midsouth",
-    "63": "mlw",
-    "64": "mnw",
-    "65": "njpw",
-    "66": "njpw-destructi",
-    "67": "njpw-fighting",
-    "68": "njpw-g1climax",
-    "69": "njpw-japan",
-    "70": "njpw-starrcade",
-    "71": "njpw-beginning",
-    "72": "njpw-wp",
-    "73": "njpw-wk",
-    "74": "njpw-wrestling",
-    "75": "noah-tv",
-    "76": "noah-voyage",
-    "77": "noah-n1victory",
-    "78": "noah-navigatio",
-    "79": "nwa-crockett",
-    "80": "osaka-pro",
-    "81": "p-tv",
-    "82": "pwg",
-    "83": "rndm",
-    "84": "revpro",
-    "85": "piper",
-    "86": "croh",
-    "87": "roh-wrestling",
-    "88": "si-tv",
-    "89": "st-tv",
-    "90": "sh-tv",
-    "91": "star",
-    "92": "stardom-5star",
-    "93": "stardom-cinder",
-    "94": "stardom-goddes",
-    "95": "tbn",
-    "96": "muta",
-    "97": "hart",
-    "98": "hhn",
-    "99": "tsn",
-    "100": "tjpw-tv",
-    "101": "tna",
-    "102": "ut-tv",
-    "103": "uwfi-i-tv",
-    "104": "ve-tv",
-    "105": "wcpw",
-    "106": "wcw",
-    "107": "wcw-cotc",
-    "108": "wcw-fallbrawl",
-    "109": "wcw-bash",
-    "110": "wcw-halloween",
-    "111": "wcw-mainevent",
-    "112": "wcw-mn",
-    "113": "wcw-powerhour",
-    "114": "wcw-prime",
-    "115": "wcw-pw",
-    "116": "wcw-sn",
-    "117": "wcw-starrcade",
-    "118": "wcw-superbrawl",
-    "119": "wcw-worldwide",
-    "120": "w1-tv",
-    "121": "wm",
-    "122": "wwe",
-    "123": "wwe-velocity",
-    "124": "wwf",
-    "125": "wwf-90-00",
-    "126": "wwf-wrestling",
-    "127": "wwf-ptw",
-    "128": "wwf-heat",
-    "129": "wwf-sow",
-    "130": "wwf-mania",
-    "131": "wwf-challenge",
-    "132": "xwf"
+    "20": "aew-elevation",
+    "21": "aew-rampage",
+    "22": "aew-ai",
+    "23": "ajpw-carnival",
+    "24": "ajpw-dynamite",
+    "25": "ajpw-excite",
+    "26": "ajpw-series",
+    "27": "ajpw-tagleague",
+    "28": "ajpw-summer",
+    "29": "ain",
+    "30": "awa",
+    "31": "amer",
+    "32": "battlarts",
+    "33": "big-japan",
+    "34": "bsn",
+    "35": "chi",
+    "36": "czw-tv",
+    "37": "ddt-pro",
+    "38": "death",
+    "39": "dgtv",
+    "40": "ecw-tv",
+    "41": "ecw-hardcoretv",
+    "42": "euromat",
+    "43": "fmw",
+    "44": "gcw-tv",
+    "45": "hustle",
+    "46": "ij-tv",
+    "47": "jcw",
+    "48": "cena",
+    "49": "joshi-indies",
+    "50": "joshi",
+    "51": "ajwc-tv",
+    "52": "jwp",
+    "53": "kaientai-dojo",
+    "54": "omega-24-7",
+    "55": "100-lucha",
+    "56": "marigold",
+    "57": "memphis",
+    "58": "michinoku-pro",
+    "59": "midsouth",
+    "60": "mlw",
+    "61": "njpw",
+    "62": "njpw-destructi",
+    "63": "njpw-fighting",
+    "64": "njpw-g1climax",
+    "65": "njpw-japan",
+    "66": "njpw-beginning",
+    "67": "njpw-wp",
+    "68": "njpw-wk",
+    "69": "njpw-wrestling",
+    "70": "noah-tv",
+    "71": "noah-voyage",
+    "72": "noah-n1victory",
+    "73": "noah-navigatio",
+    "74": "nwa-crockett",
+    "75": "osaka-pro",
+    "76": "pwg",
+    "77": "rndm",
+    "78": "revpro",
+    "79": "piper",
+    "80": "croh",
+    "81": "roh-wrestling",
+    "82": "si-tv",
+    "83": "st-tv",
+    "84": "sh-tv",
+    "85": "star",
+    "86": "stardom-5star",
+    "87": "stardom-cinder",
+    "88": "stardom-goddes",
+    "89": "tbn",
+    "90": "muta",
+    "91": "hhn",
+    "92": "tjpw-tv",
+    "93": "tna",
+    "94": "ut-tv",
+    "95": "uwfi-i-tv",
+    "96": "ve-tv",
+    "97": "wcpw",
+    "98": "wcw",
+    "99": "wcw-tv",
+    "100": "wcw-cotc",
+    "101": "wcw-fallbrawl",
+    "102": "wcw-bash",
+    "103": "wcw-halloween",
+    "104": "wcw-mainevent",
+    "105": "wcw-mn",
+    "106": "wcw-powerhour",
+    "107": "wcw-prime",
+    "108": "wcw-pw",
+    "109": "wcw-sn",
+    "110": "wcw-starrcade",
+    "111": "wcw-superbrawl",
+    "112": "wcw-worldwide",
+    "113": "w1-tv",
+    "114": "wm",
+    "115": "wwe",
+    "116": "wwe-velocity",
+    "117": "wwf-90-00",
+    "118": "wwf-wrestling",
+    "119": "wwf-ptw",
+    "120": "wwf-heat",
+    "121": "wwf-mania",
+    "122": "wwf-challenge",
+    "123": "xwf"
   },
   "checks_by_local_hour": {
     "2:1": 1,
@@ -1065,14 +993,16 @@
     "5:22": 1,
     "6:6": 1,
     "6:14": 1,
-    "6:19": 1
+    "6:19": 1,
+    "0:3": 1
   },
   "checks_by_local_day": {
     "2026-11-18": 4,
     "2026-11-19": 3,
     "2026-11-20": 3,
     "2026-11-21": 4,
-    "2026-11-22": 3
+    "2026-11-22": 3,
+    "2026-11-23": 1
   },
-  "last_scan_change_count": 0
+  "last_scan_change_count": 229
 }
