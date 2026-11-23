@@ -1,0 +1,167 @@
+{
+  "schema": 1,
+  "name": "Baked.TV",
+  "description": "Independent channel hub and TV guide. Original scheduled streams and existing embedded players.",
+  "channels": [
+    {
+      "id": "horror-nightshift",
+      "number": "01",
+      "name": "Horror Nightshift",
+      "category": "Horror",
+      "type": "original",
+      "description": "Five classic horror films on a clock-synchronized continuous rotation.",
+      "player": "../horror-nightshift.html",
+      "accent": "#ef668c",
+      "guide": {
+        "type": "cycle",
+        "anchor": "2026-01-01T00:00:00Z",
+        "items": [
+          {
+            "title": "Night of the Living Dead (1968)",
+            "seconds": 5753
+          },
+          {
+            "title": "House on Haunted Hill (1959)",
+            "seconds": 4483
+          },
+          {
+            "title": "Carnival of Souls (1962)",
+            "seconds": 4980
+          },
+          {
+            "title": "The Phantom of the Opera (1925)",
+            "seconds": 6389
+          },
+          {
+            "title": "The Cabinet of Dr. Caligari (1920)",
+            "seconds": 3061
+          }
+        ]
+      }
+    },
+    {
+      "id": "daily-dread",
+      "number": "02",
+      "name": "Daily Dread",
+      "category": "Horror",
+      "type": "archive",
+      "description": "Classic horror and cult-film broadcasts, based on the public Spelunkr schedule.",
+      "player": "../daily-dread.html",
+      "accent": "#d67880",
+      "guide": {
+        "type": "broadcast",
+        "id": "daily-dread"
+      }
+    },
+    {
+      "id": "graveyard-shift",
+      "number": "03",
+      "name": "Graveyard Shift",
+      "category": "Horror",
+      "type": "archive",
+      "description": "Hosted horror showcases, midnight movies and creature features.",
+      "player": "../graveyard-shift.html",
+      "accent": "#ad78d4",
+      "guide": {
+        "type": "broadcast",
+        "id": "graveyard-shift"
+      }
+    },
+    {
+      "id": "it-came-from",
+      "number": "04",
+      "name": "It Came From",
+      "category": "Horror",
+      "type": "archive",
+      "description": "Retro science-fiction and monster-movie programming.",
+      "player": "../it-came-from.html",
+      "accent": "#7dbdb0",
+      "guide": {
+        "type": "broadcast",
+        "id": "it-came-from"
+      }
+    },
+    {
+      "id": "suplex",
+      "number": "05",
+      "name": "SUPLEX",
+      "category": "Wrestling",
+      "type": "archive",
+      "description": "Classic wrestling on a continuously scheduled archive feed.",
+      "player": "../index.html",
+      "accent": "#e59f54",
+      "guide": {
+        "type": "broadcast",
+        "id": "suplex"
+      }
+    },
+    {
+      "id": "njpw",
+      "number": "06",
+      "name": "NJPW-TV",
+      "category": "Wrestling",
+      "type": "slamvision",
+      "description": "New Japan wrestling with the existing SlamVision live feed.",
+      "player": "../njpw-slamvision.html",
+      "accent": "#e8c266",
+      "guide": {
+        "type": "player"
+      }
+    },
+    {
+      "id": "wcw",
+      "number": "07",
+      "name": "WCW-TV",
+      "category": "Wrestling",
+      "type": "slamvision",
+      "description": "WCW wrestling from the existing SlamVision feed.",
+      "player": "../wcw-slamvision.html",
+      "accent": "#88acec",
+      "guide": {
+        "type": "player"
+      }
+    },
+    {
+      "id": "toonertia",
+      "number": "08",
+      "name": "Toonertia",
+      "category": "Animation",
+      "type": "archive",
+      "description": "Classic animated television from the public Spelunkr schedule.",
+      "player": "../toonertia.html",
+      "accent": "#9acc8c",
+      "guide": {
+        "type": "broadcast",
+        "id": "toonertia"
+      }
+    },
+    {
+      "id": "radio-active-tv",
+      "number": "09",
+      "name": "Radio-Active TV",
+      "category": "Music",
+      "type": "archive",
+      "description": "Retro music television and music-video blocks.",
+      "player": "../radio-active-tv.html",
+      "accent": "#e68db9",
+      "guide": {
+        "type": "broadcast",
+        "id": "radio-active-tv"
+      }
+    },
+    {
+      "id": "warp-zone",
+      "number": "10",
+      "name": "Warp Zone",
+      "category": "Retro",
+      "type": "archive",
+      "description": "Retro gaming television, computer culture and nostalgia.",
+      "player": "../warp-zone.html",
+      "accent": "#75b6d8",
+      "guide": {
+        "type": "broadcast",
+        "id": "warp-zone"
+      }
+    }
+  ]
+}
