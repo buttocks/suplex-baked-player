@@ -23,7 +23,7 @@ video[hidden],#youtube-layer[hidden]{display:none!important}
 <video id="movie" playsinline autoplay muted preload="metadata" controls></video>
 <div id="youtube-layer" hidden><div id="youtube-player"></div></div>
 <div id="toolbar"><div class="group"><button id="guide-toggle" type="button" aria-expanded="false">☷ TV Guide</button></div><div class="group"><button id="sound-toggle" type="button">🔇 Unmute</button><button id="retune" type="button">↻ Retune</button></div></div>
-<aside id="guide" hidden aria-label="Horror Nightshift programming guide"><header><h2>HORROR NIGHTSHIFT · TV GUIDE</h2><small>Continuous shared broadcast schedule · Times shown locally</small></header><ol id="guide-rows"></ol><footer>Films stream from Internet Archive; no video files are hosted here. Source availability and browser autoplay restrictions can affect playback. Movie runtimes are approximate.</footer></aside>
+<aside id="guide" hidden aria-label="Horror Nightshift programming guide"><header><h2>HORROR NIGHTSHIFT · TV GUIDE</h2><small>Continuous shared broadcast schedule · Times shown locally</small></header><ol id="guide-rows"></ol><footer>Videos play through Internet Archive and YouTube. Source availability and browser autoplay rules can affect playback; scheduled runtimes for YouTube shorts are provisional.</footer></aside>
 <div id="caption"><div id="station">BAKED.TV · HORROR NIGHTSHIFT</div><div id="current">Tuning the midnight movies…</div><div id="next"></div></div>
 <div id="overlay"><section><h1>HORROR NIGHTSHIFT</h1><div id="status">Tuning the midnight movies…</div><button id="start" type="button">▶ Start watching</button></section></div>
 <script>
@@ -49,7 +49,7 @@ const FILMS=new URLSearchParams(location.search).get('preview')==='youtube'
  ? ALL_FILMS.filter(f=>f.provider==='youtube') : ALL_FILMS;
 const ANCHOR=Date.UTC(2026,0,1),CYCLE=FILMS.reduce((n,f)=>n+f.seconds*1000,0);
 const $=id=>document.getElementById(id),video=$('movie'),youtubeLayer=$('youtube-layer'),overlay=$('overlay'),status=$('status'),start=$('start'),guide=$('guide'),rows=$('guide-rows'),caption=$('caption');
-let yt=null,ytReady=false,ytLoading=false;
+let yt=null,ytReady=false;
 let slot=null,slotKey='',failedKey='',muted=true,guideOpen=false,lastGuide=0,captionTimer=null;
 const positiveMod=(n,d)=>((n%d)+d)%d;
 const fmt=ms=>new Date(ms).toLocaleTimeString([],{hour:'numeric',minute:'2-digit'});
@@ -61,7 +61,7 @@ function currentAt(ms=Date.now()){
 }
 function prompt(message,showButton=true){overlay.hidden=false;status.textContent=message;start.hidden=!showButton;}
 function broadcastOffset(){return slot?Math.max(0,(Date.now()-slot.startMs)/1000):0;}
-function targetTime(){if(!slot||!Number.isFinite(video.duration)||video.duration<=1)return null;return Math.min(broadcastOffset(),video.duration-.4);}
+function targetTime(){if(!slot||!Number.isFinite(video.duration)||video.duration<=1)return null;return Math.max(0,Math.min(broadcastOffset(),video.duration-.4));}
 function seekToBroadcast(force=false){
  if(!slot)return;
  if(slot.film.provider==='youtube'){
@@ -94,7 +94,7 @@ function loadYouTubeCurrent(){
  }catch{prompt('YouTube player could not start. Click Start watching to retry.');}
 }
 window.onYouTubeIframeAPIReady=()=>{
- if(!window.YT?.Player)return;
+ if(yt||!window.YT?.Player)return;
  yt=new YT.Player('youtube-player',{
   width:'100%',height:'100%',
   playerVars:{playsinline:1,autoplay:1,controls:1,rel:0,origin:location.origin},
