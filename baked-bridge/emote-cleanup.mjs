@@ -16,38 +16,64 @@ function normalize(raw){
     return u.href;
   }catch{return null;}
 }
+export function isImgurRemovedPlaceholder(raw) {
+  if(typeof raw!=='string')return false;
+  try{
+    const u=new URL(raw);
+    return u.hostname.toLowerCase()==='i.imgur.com' &&
+      /^\\/removed\\.(?:png|jpe?g|gif|webp)$/i.test(u.pathname);
+  }catch{return false;}
+}
 async function probe(req,url){
   const result={url,status:'unknown',first:null,verify:null,reason:''};
   async function check(method){
-    const opts={timeout:TIMEOUT,maxRedirects:4,failOnStatusCode:false};
+    const opts={timeout:TIMEOUT,maxRedirects:6,failOnStatusCode:false};
     if(method==='GET')opts.headers={Range:'bytes=0-0'};
     const response=method==='HEAD'?await req.head(url,opts):await req.get(url,opts);
     const status=response.status();
     const mime=String(response.headers()['content-type']||'').split(';')[0].toLowerCase();
+    const finalUrl=response.url();
     await response.dispose();
-    return {status,mime};
+    return {status,mime,finalUrl,removed:isImgurRemovedPlaceholder(finalUrl)};
   }
   try{
     const first=await check('HEAD');result.first=first;
-    if(first.status>=200&&first.status<300&&first.mime.startsWith('image/')){
-      result.status='working';return result;
+    // Imgur's "removed.png" is a valid HTTP-200 image. A status/MIME
+    // check alone incorrectly treats deleted macros as working.
+    // Confirm a redirect/placeholder with a second independent request.
+    const source=new URL(url).hostname.toLowerCase();
+    const imgurHost=source==='i.imgur.com'||source==='imgur.com';
+    if(first.removed||imgurHost||
+      !((first.status>=200&&first.status<300)&&first.mime.startsWith('image/'))){
+      const second=await check('GET');result.verify=second;
+      if(first.removed&&second.removed){
+        result.status='dead';result.reason='confirmed-imgur-removed-placeholder';return result;
+      }
+      if(!first.removed&&second.removed){
+        // HEAD and GET sometimes take different CDN paths.
+        const third=await check('GET');
+        result.recheck=third;
+        if(third.removed){
+          result.status='dead';result.reason='confirmed-imgur-removed-placeholder';return result;
+        }
+      }
+      if(first.removed||second.removed){
+        result.reason='unconfirmed-imgur-placeholder';return result;
+      }
+      if(second.status>=200&&second.status<300&&second.mime.startsWith('image/')){
+        result.status='working';return result;
+      }
+      if([404,410].includes(first.status)&&[404,410].includes(second.status)){
+        result.status='dead';result.reason='confirmed-http-404-or-410';return result;
+      }
+      if(first.status>=200&&first.status<300&&second.status>=200&&second.status<300&&
+        /^(text\/html|application\/xhtml\+xml)$/.test(first.mime)&&
+        /^(text\/html|application\/xhtml\+xml)$/.test(second.mime)){
+        result.status='dead';result.reason='confirmed-html-instead-of-image';return result;
+      }
+      result.reason='ambiguous-response';return result;
     }
-    if([403,429].includes(first.status)||first.status>=500){
-      result.reason='access-restricted-or-transient';return result;
-    }
-    const second=await check('GET');result.verify=second;
-    if(second.status>=200&&second.status<300&&second.mime.startsWith('image/')){
-      result.status='working';return result;
-    }
-    if(([404,410].includes(first.status)&&[404,410].includes(second.status))){
-      result.status='dead';result.reason='confirmed-http-404-or-410';return result;
-    }
-    if(first.status>=200&&first.status<300&&second.status>=200&&second.status<300&&
-      /^(text\/html|application\/xhtml\+xml)$/.test(first.mime)&&
-      /^(text\/html|application\/xhtml\+xml)$/.test(second.mime)){
-      result.status='dead';result.reason='confirmed-html-instead-of-image';return result;
-    }
-    result.reason='ambiguous-response';return result;
+    result.status='working';return result;
   }catch(e){
     result.reason='request-failed-or-timed-out';return result;
   }
