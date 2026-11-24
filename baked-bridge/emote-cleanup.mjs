@@ -21,7 +21,7 @@ export function isImgurRemovedPlaceholder(raw) {
   try{
     const u=new URL(raw);
     return u.hostname.toLowerCase()==='i.imgur.com' &&
-      /^\\/removed\\.(?:png|jpe?g|gif|webp)$/i.test(u.pathname);
+      /^\/removed\.(?:png|jpe?g|gif|webp)$/i.test(u.pathname);
   }catch{return false;}
 }
 async function probe(req,url){
