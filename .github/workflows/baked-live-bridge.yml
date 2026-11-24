@@ -60,6 +60,9 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: baked-live-bridge-result
-          path: baked-bridge/result.json
+          path: |
+            baked-bridge/result.json
+            baked-bridge/skin-css-backup.css
+            baked-bridge/skin-preview.png
           if-no-files-found: ignore
           retention-days: 7
