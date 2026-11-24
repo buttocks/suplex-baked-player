@@ -27,11 +27,19 @@ function safeUrl(value){
 }
 function validate(raw){
   if(!raw||typeof raw!=='object'||Array.isArray(raw))throw Error('Request must be an object');
-  const allowed=['schema','request_id','channel','action','title','src','old_src'];
+  const allowed=['schema','request_id','channel','action','title','src','old_src','offset','limit'];
   for(const key of Object.keys(raw))if(!allowed.includes(key))throw Error('Unknown request key: '+key);
   if(raw.schema!==1||!CHANNELS.has(raw.channel))throw Error('Unsupported schema or unauthorized channel');
-  if(!['audit','audit_skin','backup_skin','add_iframe','replace_iframe'].includes(raw.action))throw Error('Unsupported bridge action');
+  if(!['audit','audit_skin','backup_skin','audit_emotes','add_iframe','replace_iframe'].includes(raw.action))throw Error('Unsupported bridge action');
   if(typeof raw.request_id!=='string'||!/^[a-zA-Z0-9_-]{6,80}$/.test(raw.request_id))throw Error('Invalid request_id');
+  if(raw.action==='audit_emotes'){
+    if(raw.src||raw.old_src||raw.title)throw Error('Emote audit cannot mutate');
+    const offset=raw.offset??0,limit=raw.limit??250;
+    if(!Number.isInteger(offset)||offset<0||offset>15000||
+       !Number.isInteger(limit)||limit<1||limit>2000)throw Error('Invalid emote audit range');
+    return {schema:1,request_id:raw.request_id,channel:raw.channel,action:raw.action,offset,limit};
+  }
+  if(raw.offset!==undefined||raw.limit!==undefined)throw Error('Audit range on non-emote operation');
   if(['audit','audit_skin','backup_skin'].includes(raw.action)){
     if(raw.src||raw.old_src||raw.title)throw Error('Audit requests cannot contain mutations');
     return {schema:1,request_id:raw.request_id,channel:raw.channel,action:raw.action};
@@ -144,6 +152,10 @@ async function run(request){
     const before=initial.queue.map(entry=>({index:entry.index,title:entry.title,src:entry.src,temp:entry.temp}));
     console.log('Authenticated '+USERNAME+' on '+request.channel+
       '; rank='+initial.rank+'; items='+before.length);
+    if(request.action==='audit_emotes'){
+      const {auditEmoteUrls}=await import('./emote-cleanup.mjs');
+      return await auditEmoteUrls({page,request,initial});
+    }
     if(request.action==='backup_skin'){
       const {backupCurrentSkin}=await import('./skin-backup.mjs');
       return await backupCurrentSkin({page,request,initial});
@@ -238,6 +250,7 @@ function selfTest(){
   assert.equal(audit.action,'audit');
   assert.equal(validate({schema:1,request_id:'test_skin_01',channel:'luchatube',action:'audit_skin'}).action,'audit_skin');
   assert.equal(validate({schema:1,request_id:'test_backup_01',channel:'luchatube',action:'backup_skin'}).action,'backup_skin');
+  assert.equal(validate({schema:1,request_id:'test_emotes_01',channel:'luchatube',action:'audit_emotes',offset:0,limit:25}).limit,25);
   const url='https://buttocks.github.io/suplex-baked-player/lucha-slamvision.html';
   assert.equal(validate({schema:1,request_id:'test_add_01',channel:'luchatube',
     action:'add_iframe',title:'Lucha',src:url}).src,url);
