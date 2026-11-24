@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "request_id": "lucha_emote_full_url_audit_20261124_01",
+  "request_id": "lucha_redirect_audit_20261124_01",
   "channel": "luchatube",
   "action": "audit_emotes",
   "offset": 0,
