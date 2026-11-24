@@ -1,9 +1,9 @@
 {
   "schema": 1,
   "first_successful_scan_utc": "2026-11-17T17:40:53.687Z",
-  "last_successful_scan_utc": "2026-11-23T20:34:19Z",
-  "successful_scan_count": 19,
-  "total_feeds": 130,
+  "last_successful_scan_utc": "2026-11-24T04:59:06Z",
+  "successful_scan_count": 20,
+  "total_feeds": 136,
   "channels_by_id": {
     "year-1985": {
       "id": "year-1985",
@@ -914,6 +914,48 @@
       "name": "YR-1978",
       "callsign": "YR-1978",
       "category": "eras"
+    },
+    "yr-1979": {
+      "id": "yr-1979",
+      "number": 133,
+      "name": "YR-1979",
+      "callsign": "YR-1979",
+      "category": "eras"
+    },
+    "yr-1980": {
+      "id": "yr-1980",
+      "number": 134,
+      "name": "YR-1980",
+      "callsign": "YR-1980",
+      "category": "eras"
+    },
+    "yr-1981": {
+      "id": "yr-1981",
+      "number": 135,
+      "name": "YR-1981",
+      "callsign": "YR-1981",
+      "category": "eras"
+    },
+    "yr-1982": {
+      "id": "yr-1982",
+      "number": 136,
+      "name": "YR-1982",
+      "callsign": "YR-1982",
+      "category": "eras"
+    },
+    "yr-1983": {
+      "id": "yr-1983",
+      "number": 137,
+      "name": "YR-1983",
+      "callsign": "YR-1983",
+      "category": "eras"
+    },
+    "yr-1984": {
+      "id": "yr-1984",
+      "number": 138,
+      "name": "YR-1984",
+      "callsign": "YR-1984",
+      "category": "eras"
     }
   },
   "dial_to_id": {
@@ -1046,7 +1088,13 @@
     "129": "yr-1975",
     "130": "yr-1976",
     "131": "yr-1977",
-    "132": "yr-1978"
+    "132": "yr-1978",
+    "133": "yr-1979",
+    "134": "yr-1980",
+    "135": "yr-1981",
+    "136": "yr-1982",
+    "137": "yr-1983",
+    "138": "yr-1984"
   },
   "checks_by_local_hour": {
     "2:1": 1,
@@ -1067,7 +1115,8 @@
     "6:14": 1,
     "6:19": 1,
     "0:3": 1,
-    "0:15": 1
+    "0:15": 1,
+    "0:23": 1
   },
   "checks_by_local_day": {
     "2026-11-18": 4,
@@ -1075,7 +1124,7 @@
     "2026-11-20": 3,
     "2026-11-21": 4,
     "2026-11-22": 3,
-    "2026-11-23": 2
+    "2026-11-23": 3
   },
-  "last_scan_change_count": 229
+  "last_scan_change_count": 12
 }

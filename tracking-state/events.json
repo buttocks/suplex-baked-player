@@ -24880,6 +24880,144 @@
       "name": "YR-1978",
       "number": 132,
       "dial_previously_held": null
+    },
+    {
+      "type": "dial_changed",
+      "first_detected_utc": "2026-11-24T04:59:06Z",
+      "last_confirmed_prior_utc": "2026-11-23T20:34:19Z",
+      "time_accuracy": "observed between checks, not exact upstream change time",
+      "number": 133,
+      "old_id": null,
+      "new_id": "yr-1979",
+      "old_name": null,
+      "new_name": "YR-1979",
+      "old_id_new_number": null,
+      "new_id_previous_number": null
+    },
+    {
+      "type": "dial_changed",
+      "first_detected_utc": "2026-11-24T04:59:06Z",
+      "last_confirmed_prior_utc": "2026-11-23T20:34:19Z",
+      "time_accuracy": "observed between checks, not exact upstream change time",
+      "number": 134,
+      "old_id": null,
+      "new_id": "yr-1980",
+      "old_name": null,
+      "new_name": "YR-1980",
+      "old_id_new_number": null,
+      "new_id_previous_number": null
+    },
+    {
+      "type": "dial_changed",
+      "first_detected_utc": "2026-11-24T04:59:06Z",
+      "last_confirmed_prior_utc": "2026-11-23T20:34:19Z",
+      "time_accuracy": "observed between checks, not exact upstream change time",
+      "number": 135,
+      "old_id": null,
+      "new_id": "yr-1981",
+      "old_name": null,
+      "new_name": "YR-1981",
+      "old_id_new_number": null,
+      "new_id_previous_number": null
+    },
+    {
+      "type": "dial_changed",
+      "first_detected_utc": "2026-11-24T04:59:06Z",
+      "last_confirmed_prior_utc": "2026-11-23T20:34:19Z",
+      "time_accuracy": "observed between checks, not exact upstream change time",
+      "number": 136,
+      "old_id": null,
+      "new_id": "yr-1982",
+      "old_name": null,
+      "new_name": "YR-1982",
+      "old_id_new_number": null,
+      "new_id_previous_number": null
+    },
+    {
+      "type": "dial_changed",
+      "first_detected_utc": "2026-11-24T04:59:06Z",
+      "last_confirmed_prior_utc": "2026-11-23T20:34:19Z",
+      "time_accuracy": "observed between checks, not exact upstream change time",
+      "number": 137,
+      "old_id": null,
+      "new_id": "yr-1983",
+      "old_name": null,
+      "new_name": "YR-1983",
+      "old_id_new_number": null,
+      "new_id_previous_number": null
+    },
+    {
+      "type": "dial_changed",
+      "first_detected_utc": "2026-11-24T04:59:06Z",
+      "last_confirmed_prior_utc": "2026-11-23T20:34:19Z",
+      "time_accuracy": "observed between checks, not exact upstream change time",
+      "number": 138,
+      "old_id": null,
+      "new_id": "yr-1984",
+      "old_name": null,
+      "new_name": "YR-1984",
+      "old_id_new_number": null,
+      "new_id_previous_number": null
+    },
+    {
+      "type": "feed_appeared",
+      "first_detected_utc": "2026-11-24T04:59:06Z",
+      "last_confirmed_prior_utc": "2026-11-23T20:34:19Z",
+      "time_accuracy": "observed between checks, not exact upstream change time",
+      "id": "yr-1979",
+      "name": "YR-1979",
+      "number": 133,
+      "dial_previously_held": null
+    },
+    {
+      "type": "feed_appeared",
+      "first_detected_utc": "2026-11-24T04:59:06Z",
+      "last_confirmed_prior_utc": "2026-11-23T20:34:19Z",
+      "time_accuracy": "observed between checks, not exact upstream change time",
+      "id": "yr-1980",
+      "name": "YR-1980",
+      "number": 134,
+      "dial_previously_held": null
+    },
+    {
+      "type": "feed_appeared",
+      "first_detected_utc": "2026-11-24T04:59:06Z",
+      "last_confirmed_prior_utc": "2026-11-23T20:34:19Z",
+      "time_accuracy": "observed between checks, not exact upstream change time",
+      "id": "yr-1981",
+      "name": "YR-1981",
+      "number": 135,
+      "dial_previously_held": null
+    },
+    {
+      "type": "feed_appeared",
+      "first_detected_utc": "2026-11-24T04:59:06Z",
+      "last_confirmed_prior_utc": "2026-11-23T20:34:19Z",
+      "time_accuracy": "observed between checks, not exact upstream change time",
+      "id": "yr-1982",
+      "name": "YR-1982",
+      "number": 136,
+      "dial_previously_held": null
+    },
+    {
+      "type": "feed_appeared",
+      "first_detected_utc": "2026-11-24T04:59:06Z",
+      "last_confirmed_prior_utc": "2026-11-23T20:34:19Z",
+      "time_accuracy": "observed between checks, not exact upstream change time",
+      "id": "yr-1983",
+      "name": "YR-1983",
+      "number": 137,
+      "dial_previously_held": null
+    },
+    {
+      "type": "feed_appeared",
+      "first_detected_utc": "2026-11-24T04:59:06Z",
+      "last_confirmed_prior_utc": "2026-11-23T20:34:19Z",
+      "time_accuracy": "observed between checks, not exact upstream change time",
+      "id": "yr-1984",
+      "name": "YR-1984",
+      "number": 138,
+      "dial_previously_held": null
     }
   ]
 }
