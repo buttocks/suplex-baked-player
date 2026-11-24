@@ -10,7 +10,7 @@ import assert from 'node:assert/strict';
 
 const SITE='https://baked.live';
 const USERNAME='buttman-gpt';
-const CHANNELS=new Set(['luchatube']);
+const CHANNELS=new Set(['luchatube','NJPW']);
 const PLAYER_ORIGIN='https://buttocks.github.io';
 const PLAYER_ROOT='/suplex-baked-player/';
 const REQUEST_PATH=process.env.BAKED_BRIDGE_REQUEST || 'baked-bridge/request.json';
@@ -279,6 +279,8 @@ async function run(request){
 function selfTest(){
   const audit=validate({schema:1,request_id:'test_audit_01',channel:'luchatube',action:'audit'});
   assert.equal(audit.action,'audit');
+  assert.equal(validate({schema:1,request_id:'njpw_audit_01',channel:'NJPW',action:'audit'}).channel,'NJPW');
+  assert.equal(validate({schema:1,request_id:'njpw_backup_01',channel:'NJPW',action:'backup_skin'}).action,'backup_skin');
   assert.equal(validate({schema:1,request_id:'test_skin_01',channel:'luchatube',action:'audit_skin'}).action,'audit_skin');
   assert.equal(validate({schema:1,request_id:'test_backup_01',channel:'luchatube',action:'backup_skin'}).action,'backup_skin');
   assert.equal(validate({schema:1,request_id:'test_skin_deploy_01',channel:'luchatube',action:'deploy_skin'}).action,'deploy_skin');
