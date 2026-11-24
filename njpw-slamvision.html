@@ -16,6 +16,13 @@ button:hover{background:#252c3c}
 #status[hidden]{display:none}
 #guide{position:absolute;z-index:4;left:12px;top:56px;width:min(420px,calc(100vw - 24px));max-height:min(75vh,530px);overflow:auto;background:#101621f5;border:1px solid #667085;border-radius:7px;box-shadow:0 16px 40px #000a}
 #guide[hidden]{display:none}
+/* Shared fade-on-idle overlays: invisible while video plays, restored by hover. */
+#controls{transition:opacity .7s ease,visibility 0s linear .7s}
+body.sv-overlay-idle #controls{opacity:0;visibility:hidden;pointer-events:none}
+body:not(.sv-overlay-idle) #controls{opacity:1;visibility:visible;transition-delay:0s}
+#sv-hover-top{position:absolute;z-index:6;top:0;left:0;right:0;height:64px;pointer-events:none;background:transparent}
+body.sv-overlay-idle #sv-hover-top{pointer-events:auto}
+@media(prefers-reduced-motion:reduce){#controls{transition:none!important}}
 #guide header{padding:12px 14px;position:sticky;top:0;background:#151c29;border-bottom:1px solid #384254}
 #guide header strong{letter-spacing:.07em}
 #guide small{color:#9ca9bb}
@@ -34,6 +41,7 @@ button:hover{background:#252c3c}
 <div id="status">Tuning NJPW…</div>
 <div id="controls"><div><button id="guide-toggle" type="button" aria-expanded="false">☷ TV Guide</button></div><div><button id="sound-toggle" type="button">🔇 Unmute</button></div></div>
 <aside id="guide" hidden aria-label="Live NJPW program schedule"><header><strong id="guide-title">NJPW-TV SCHEDULE</strong><div><small id="guide-refresh">Loading…</small></div></header><ol id="guide-rows"></ol><footer>Schedule: SlamVision · Videos: Internet Archive · Times shown locally</footer></aside>
+<div id="sv-hover-top" aria-hidden="true"></div>
 <script src="./slamvision-direct-fallback.js"></script>
 <script>
 (()=>{
@@ -131,4 +139,5 @@ setInterval(refreshData,45000);
 refreshData();
 })();
 </script>
+<script src="./slamvision-overlay.js?v=hover2-20261124"></script>
 </body></html>
