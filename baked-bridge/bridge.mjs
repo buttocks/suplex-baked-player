@@ -75,7 +75,7 @@ async function snapshot(page){
     return {connected:!!window.socket?.connected,channel:window.CHANNEL?.name,
       username:client.name,rank:client.rank,loggedIn:!!client.logged_in,playing:window.PL_CURRENT,
       permissions:{add:permission('playlistadd'),custom:permission('playlistaddcustom'),
-        permanent:permission('playlistaddnontemp'),move:permission('playlistmove'),remove:permission('playlistdelete')},
+        permanent:permission('addnontemp'),move:permission('playlistmove'),remove:permission('playlistdelete')},
       queue};
   });
 }
