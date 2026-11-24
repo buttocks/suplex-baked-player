@@ -61,6 +61,64 @@ body .container, #mainpage { max-width: none; }
 }
 #motdwrap #motd a { color: #fff0bf; text-decoration: underline; }
 #motdwrap #motd > center { margin-bottom: 3px; }
+/* Compact Lucha masthead: original art and image URL stay untouched.
+   Limit the existing 450px-wide MOTD graphic and its transparent whitespace. */
+#motdwrap {
+  padding: 4px 12px 7px !important;
+  margin: 4px 0 8px !important;
+  min-height: 0 !important;
+}
+#motdwrap::before {
+  padding: 2px 6px 3px !important;
+  margin: 0 5px 2px !important;
+  font-size: 9px !important;
+  letter-spacing: .13em !important;
+}
+#motdwrap #motd,
+#motdwrap #motd > .head2,
+#motdwrap #motd > .head2 > .head2 {
+  margin: 0 !important;
+  padding: 0 !important;
+  min-height: 0 !important;
+}
+#motdwrap #motd > .head2 > center:first-child {
+  margin: 0 !important;
+  padding: 0 !important;
+  line-height: 0 !important;
+}
+#motdwrap #motd img[src*="GQsScF2"] {
+  display: inline-block !important;
+  width: auto !important;
+  max-width: min(300px, 78vw) !important;
+  max-height: 128px !important;
+  height: auto !important;
+  object-fit: contain;
+}
+#motdwrap #motd > .head2 > .head2 > h4 {
+  margin: 0 0 3px !important;
+  padding: 0 !important;
+  font-size: 12px !important;
+  line-height: 1.3 !important;
+}
+#motdwrap #motd > .head2 > .head2 > center {
+  margin: 0 !important;
+  padding: 0 !important;
+  line-height: 1 !important;
+}
+#motdwrap #motd > .head2 > .head2 > center > .btn {
+  padding: 4px 10px !important;
+  min-height: 0 !important;
+  font-size: 11px !important;
+  line-height: 1.2 !important;
+}
+@media (max-width: 767px) {
+  #motdwrap #motd img[src*="GQsScF2"] {
+    max-width: min(245px, 80vw) !important;
+    max-height: 100px !important;
+  }
+  #motdwrap #motd > .head2 > .head2 > h4 { font-size: 11px !important; }
+}
+
 /* The original image URLs, banner logos and modal links are unchanged. */
 #motdwrap .btn,
 #chatwrap .btn, #videowrap .btn, #playlistwrap .btn {
