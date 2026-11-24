@@ -38,6 +38,7 @@ jobs:
         run: |
           node --check baked-bridge/bridge.mjs
           node --check baked-bridge/skin-backup.mjs
+          node --check baked-bridge/skin-apply.mjs
           node --check baked-bridge/emote-cleanup.mjs
           node --input-type=module -e "import {isImgurRemovedPlaceholder as f} from './baked-bridge/emote-cleanup.mjs'; if (!f('https://i.imgur.com/removed.png') || !f('https://i.imgur.com/removed.png?token=1') || f('https://i.imgur.com/valid.png') || f('https://other.example/removed.png')) process.exit(1);"
           node baked-bridge/bridge.mjs --self-test
@@ -67,6 +68,11 @@ jobs:
             baked-bridge/result.json
             baked-bridge/skin-css-backup.css
             baked-bridge/skin-preview.png
+            baked-bridge/skin-before-deploy.css
+            baked-bridge/skin-after-deploy.css
+            baked-bridge/luchatube-arena-poster-preview.png
+            baked-bridge/legacy-emote-cleanup.json
+            baked-bridge/emotes-before-legacy-cleanup.json
             baked-bridge/backup/
             baked-bridge/emote-url-audit.json
             baked-bridge/emote-url-cleanup.json
