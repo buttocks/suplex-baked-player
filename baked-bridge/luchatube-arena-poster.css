@@ -89,13 +89,16 @@ body .container, #mainpage { max-width: none; }
 #motdwrap #motd img[src*="GQsScF2"] {
   display: inline-block !important;
   width: auto !important;
-  max-width: min(300px, 78vw) !important;
-  max-height: 128px !important;
+  max-width: min(360px, 82vw) !important;
+  max-height: 170px !important;
   height: auto !important;
   object-fit: contain;
 }
+#motdwrap #motd > .head2 > .head2 {
+  margin-top: -10px !important;
+}
 #motdwrap #motd > .head2 > .head2 > h4 {
-  margin: 0 0 3px !important;
+  margin: -6px 0 2px !important;
   padding: 0 !important;
   font-size: 12px !important;
   line-height: 1.3 !important;
@@ -113,10 +116,14 @@ body .container, #mainpage { max-width: none; }
 }
 @media (max-width: 767px) {
   #motdwrap #motd img[src*="GQsScF2"] {
-    max-width: min(245px, 80vw) !important;
-    max-height: 100px !important;
+    max-width: min(280px, 82vw) !important;
+    max-height: 125px !important;
   }
-  #motdwrap #motd > .head2 > .head2 > h4 { font-size: 11px !important; }
+  #motdwrap #motd > .head2 > .head2 { margin-top: -6px !important; }
+  #motdwrap #motd > .head2 > .head2 > h4 {
+    margin: -3px 0 2px !important;
+    font-size: 11px !important;
+  }
 }
 
 /* The original image URLs, banner logos and modal links are unchanged. */
