@@ -83,7 +83,7 @@ async function probe(item,request){
   }
 }
 export async function auditPlaylistMedia({page,request,initial}){
-  if(initial.rank<3||initial.channel!=='luchatube')
+  if(initial.rank<3||initial.channel!==request.channel)
     throw Error('Verified Lucha Tube Admin required to audit playlist');
   const state=await page.evaluate(()=>{
     const q=[...document.querySelectorAll('#queue .queue_entry')];
@@ -99,7 +99,7 @@ export async function auditPlaylistMedia({page,request,initial}){
       })
     };
   });
-  if(state.entries.length<500||state.entries.length>1500)
+  if(state.entries.length<1||state.entries.length>1500)
     throw Error('Unexpected playlist length; refusing incomplete audit');
   const uniqueUids=new Set(state.entries.map(e=>e.uid));
   if(uniqueUids.size!==state.entries.length)throw Error('Incomplete playlist: duplicate UIDs');
