@@ -18,3 +18,12 @@ Some tubes deliberately include additional or modified features.
 For Lucha Tube: the Nov 24, 2026 old-school Mexican wrestling skin is CSS-only. The existing inline JS was preserved unchanged. The original full channel backup is saved in the authorized GitHub Actions artifact and was provided to the owner as a private ZIP.
 
 When future development warrants a shared JS module, separate shared logic from channel-specific configuration and override hooks rather than forcibly synchronizing entire JS blobs.
+
+## Hands-off deployment policy
+
+- The owner describes the result; the assistant makes the required repository and live changes through the existing authenticated bridge.
+- Do **not** respond with CSS/JS snippets or manual paste instructions when the bridge supports the operation.
+- Every change runs as: inspect current state → preserve rollback → edit the smallest relevant code/configuration → run validation → deploy → verify live state and show the result.
+- Only request human intervention for access/permissions that the available connection actually cannot perform.
+- Keep built-in CSS/JS only when capacity allows; prefer GitHub-hosted additions when the internal size cap would be exceeded. Never overwrite external script/style links without first comparing and backing them up.
+- For each tube, preserve its customized JavaScript while using WrestleTube as the shared reference.
