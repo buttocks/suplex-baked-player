@@ -37,6 +37,7 @@ jobs:
       - name: Validate bridge code and command
         run: |
           node --check baked-bridge/bridge.mjs
+          node --check baked-bridge/skin-backup.mjs
           node baked-bridge/bridge.mjs --self-test
           test -f baked-bridge/request.json || { echo 'No bridge request: contact maintainer to create it.'; exit 1; }
 
