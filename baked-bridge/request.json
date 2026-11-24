@@ -1,6 +1,8 @@
 {
   "schema": 1,
-  "request_id": "lucha_full_filters_macro_emotes_backup_20261124_02",
+  "request_id": "lucha_emote_url_sample_20261124_01",
   "channel": "luchatube",
-  "action": "backup_skin"
+  "action": "audit_emotes",
+  "offset": 0,
+  "limit": 200
 }
