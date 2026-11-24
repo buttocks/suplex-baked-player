@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "request_id": "lucha_legacy_emotes_cleanup_20261124_01",
+  "request_id": "lucha_lensdump_cleanup_20261124_01",
   "channel": "luchatube",
   "action": "remove_legacy_uncertain_emotes"
 }
