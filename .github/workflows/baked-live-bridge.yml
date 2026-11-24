@@ -68,5 +68,7 @@ jobs:
             baked-bridge/skin-preview.png
             baked-bridge/backup/
             baked-bridge/emote-url-audit.json
+            baked-bridge/emote-url-cleanup.json
+            baked-bridge/emotes-before-cleanup.json
           if-no-files-found: ignore
           retention-days: 7
