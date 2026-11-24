@@ -122,18 +122,32 @@ async function run(request){
     page.setDefaultTimeout(20000);
     await login(page,password);
     await page.goto(SITE+'/tv/'+request.channel,{waitUntil:'domcontentloaded',timeout:45000});
-    const initial=await waitFor(page,state=>state.connected&&state.loggedIn&&
+    let initial=await waitFor(page,state=>state.connected&&state.loggedIn&&
       String(state.username||'').toLowerCase()===USERNAME&&state.channel===request.channel,
       'Could not confirm authenticated account and channel connection',30000);
-    if(!Number.isFinite(initial.rank)||initial.rank<3)
-      throw Error('buttman-gpt is not an Admin on '+request.channel);
-    const before=initial.queue.map(entry=>({index:entry.index,title:entry.title,src:entry.src,temp:entry.temp}));
-    console.log('Authenticated '+USERNAME+' as channel Admin; playlist items: '+before.length);
-    if(request.action==='audit'){
-      return {request_id:request.request_id,channel:request.channel,action:request.action,status:'audited',
-        items:before.length,iframes:before.filter(x=>x.src),canAddCustom:initial.permissions.custom,
-        canMove:initial.permissions.move,canRemove:initial.permissions.remove};
+    // Channel rank and playlist events can arrive after the login identity event.
+    // Allow them to settle. Read-only audits also work when rank is insufficient;
+    // all mutations continue to require verified Admin rank.
+    await page.waitForTimeout(2200);
+    initial=await snapshot(page);
+    if(initial.rank<3){
+      try{
+        initial=await waitFor(page,state=>state.rank>=3,
+          'Channel Admin rank not observed before timeout',8000);
+      }catch{initial=await snapshot(page);}
     }
+    const before=initial.queue.map(entry=>({index:entry.index,title:entry.title,src:entry.src,temp:entry.temp}));
+    console.log('Authenticated '+USERNAME+' on '+request.channel+
+      '; rank='+initial.rank+'; items='+before.length);
+    if(request.action==='audit'){
+      return {request_id:request.request_id,channel:request.channel,action:request.action,
+        status:'audited',authenticated_user:initial.username,rank:initial.rank,
+        admin_verified:Number.isFinite(initial.rank)&&initial.rank>=3,
+        permissions:initial.permissions,items:before.length,
+        iframes:before.filter(x=>x.src)};
+    }
+    if(!Number.isFinite(initial.rank)||initial.rank<3)
+      throw Error('buttman-gpt does not have verified Admin rank on '+request.channel);
     mutationAllowed(initial,request.action);
     const already=exactMatches(initial,request.src);
     if(already.length>1)throw Error('Multiple existing copies of target iframe; refusing duplicate actions');
