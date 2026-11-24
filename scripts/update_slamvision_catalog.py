@@ -138,7 +138,7 @@ def rebuild(prev, upstream, guide, now):
                    if isinstance(r, dict) and isinstance(r.get("channel"), dict)
                    and r["channel"].get("id")}
     changes = {k: [] for k in ("added", "missing", "removed", "restored",
-                              "renamed", "renumbered", "details_changed", "review")}
+                              "renamed", "renumbered", "details_changed", "recategorized", "review")}
     entries = []
     for old in prev["channels"]:
         c = dict(old)
@@ -297,13 +297,30 @@ def self_test():
                            ("revpro", "Indies / Hardcore Tube"),
                            ("mystery-show", "Needs Review")]:
         assert classify({"id": feed, "name": feed}) == expected
+    # Regression: classify a formerly unknown feed while preserving its iframe.
+    review_url = PAGES + "slamvision-feed.html?id=mystery-show"
+    review_base = {"destination_tubes": {"Needs Review": 1},
+                   "channels": [{"id": "mystery-show", "name": "Mystery Show",
+                                 "number": 99, "tube": "Needs Review",
+                                 "embed_url": review_url, "availability": "available"}]}
+    promoted, promoted_changes, promoted_flag = rebuild(
+        review_base,
+        [{"id": "mystery-show", "number": 99, "name": "NJPW Wrestling Classics"}],
+        None, now)
+    assert promoted_flag and promoted_changes["recategorized"] == ["mystery-show"]
+    assert promoted["channels"][0]["tube"] == "NJPW Tube"
+    assert promoted["channels"][0]["embed_url"] == review_url
+    rerun, repeat_changes, repeat_flag = rebuild(
+        promoted, [{"id": "mystery-show", "number": 99, "name": "NJPW Wrestling Classics"}],
+        None, now)
+    assert not repeat_flag and not any(repeat_changes.values())
     try:
         indexed([{"id": "njpw"}, {"id": "njpw"}], {"channels": []})
     except RuntimeError:
         pass
     else:
         raise AssertionError("Duplicate feed ID not rejected")
-    print("PASS: stable ID rotation, 2-scan removal, recovery, preserve legacy URL, unknown review, 7 category tests")
+    print("PASS: stable IDs, 2-scan removal, recovery, preserve legacy URL, recategorization, no-change repeat, unknown review, 7 category tests")
 
 
 def scan(dry_run):
