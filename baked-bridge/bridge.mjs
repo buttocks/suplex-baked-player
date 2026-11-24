@@ -30,11 +30,11 @@ function validate(raw){
   const allowed=['schema','request_id','channel','action','title','src','old_src'];
   for(const key of Object.keys(raw))if(!allowed.includes(key))throw Error('Unknown request key: '+key);
   if(raw.schema!==1||!CHANNELS.has(raw.channel))throw Error('Unsupported schema or unauthorized channel');
-  if(!['audit','add_iframe','replace_iframe'].includes(raw.action))throw Error('Unsupported bridge action');
+  if(!['audit','audit_skin','add_iframe','replace_iframe'].includes(raw.action))throw Error('Unsupported bridge action');
   if(typeof raw.request_id!=='string'||!/^[a-zA-Z0-9_-]{6,80}$/.test(raw.request_id))throw Error('Invalid request_id');
-  if(raw.action==='audit'){
+  if(raw.action==='audit'||raw.action==='audit_skin'){
     if(raw.src||raw.old_src||raw.title)throw Error('Audit requests cannot contain mutations');
-    return {schema:1,request_id:raw.request_id,channel:raw.channel,action:'audit'};
+    return {schema:1,request_id:raw.request_id,channel:raw.channel,action:raw.action};
   }
   if(typeof raw.title!=='string'||raw.title.trim().length<4||raw.title.length>100)throw Error('Missing or invalid title');
   const request={schema:1,request_id:raw.request_id,channel:raw.channel,action:raw.action,title:raw.title.trim(),src:safeUrl(raw.src)};
@@ -144,6 +144,39 @@ async function run(request){
     const before=initial.queue.map(entry=>({index:entry.index,title:entry.title,src:entry.src,temp:entry.temp}));
     console.log('Authenticated '+USERNAME+' on '+request.channel+
       '; rank='+initial.rank+'; items='+before.length);
+    if(request.action==='audit_skin'){
+      const skin=await page.evaluate(()=>{
+        const channel=window.CHANNEL||{};
+        const css=typeof channel.css==='string'?channel.css:'';
+        const js=typeof channel.js==='string'?channel.js:'';
+        const selectors=['body','html','#wrap','#motdwrap','#main','#mainpage',
+          '#videowrap','#chatwrap','#messagebuffer','#queue'];
+        const computed=Object.fromEntries(selectors.map(sel=>{
+          const element=document.querySelector(sel);
+          if(!element)return [sel,null];
+          const st=getComputedStyle(element);
+          return [sel,{backgroundImage:st.backgroundImage,backgroundColor:st.backgroundColor,
+            color:st.color,fontFamily:st.fontFamily,borderColor:st.borderTopColor}];
+        }));
+        const references=[...css.matchAll(/url\(\s*(['"]?)(.*?)\1\s*\)/g)]
+          .map(match=>match[2].trim()).filter(Boolean);
+        const images=[...document.querySelectorAll('img')].slice(0,30)
+          .map(img=>({src:img.currentSrc||img.src,alt:img.alt||''}));
+        return {css,cssLength:css.length,jsLength:js.length,
+          externalCss:channel.opts?.externalcss||'',
+          externalJs:channel.opts?.externaljs||'',
+          pageTitle:channel.opts?.pagetitle||document.title,
+          backgroundReferences:[...new Set(references)],
+          computed,images};
+      });
+      // Exact CSS backup stays in a short-lived workflow artifact, not Git.
+      await fs.writeFile('baked-bridge/skin-css-backup.css',skin.css,'utf8');
+      await page.screenshot({path:'baked-bridge/skin-preview.png',fullPage:false,
+        animations:'disabled',timeout:20000});
+      delete skin.css;
+      return {request_id:request.request_id,channel:request.channel,action:request.action,
+        status:'skin-audited',rank:initial.rank,skin};
+    }
     if(request.action==='audit'){
       return {request_id:request.request_id,channel:request.channel,action:request.action,
         status:'audited',authenticated_user:initial.username,rank:initial.rank,
@@ -199,6 +232,7 @@ async function run(request){
 function selfTest(){
   const audit=validate({schema:1,request_id:'test_audit_01',channel:'luchatube',action:'audit'});
   assert.equal(audit.action,'audit');
+  assert.equal(validate({schema:1,request_id:'test_skin_01',channel:'luchatube',action:'audit_skin'}).action,'audit_skin');
   const url='https://buttocks.github.io/suplex-baked-player/lucha-slamvision.html';
   assert.equal(validate({schema:1,request_id:'test_add_01',channel:'luchatube',
     action:'add_iframe',title:'Lucha',src:url}).src,url);
