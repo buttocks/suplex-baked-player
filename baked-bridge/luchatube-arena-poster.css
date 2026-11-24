@@ -81,24 +81,31 @@ body .container, #mainpage { max-width: none; }
   padding: 0 !important;
   min-height: 0 !important;
 }
+/* Source logo is 660x378px but actual artwork ends at y=224.
+   Crop its transparent lower 154px in the display container, retaining
+   the original large mask and LUCHA TUBE lettering without empty layout. */
 #motdwrap #motd > .head2 > center:first-child {
+  display: block !important;
+  height: 153px !important;
+  overflow: hidden !important;
   margin: 0 !important;
   padding: 0 !important;
   line-height: 0 !important;
 }
 #motdwrap #motd img[src*="GQsScF2"] {
   display: inline-block !important;
-  width: auto !important;
-  max-width: min(360px, 82vw) !important;
-  max-height: 170px !important;
+  width: 450px !important;
+  max-width: 450px !important;
+  max-height: none !important;
   height: auto !important;
   object-fit: contain;
+  vertical-align: top !important;
 }
 #motdwrap #motd > .head2 > .head2 {
-  margin-top: -10px !important;
+  margin-top: 0 !important;
 }
 #motdwrap #motd > .head2 > .head2 > h4 {
-  margin: -6px 0 2px !important;
+  margin: 2px 0 3px !important;
   padding: 0 !important;
   font-size: 12px !important;
   line-height: 1.3 !important;
@@ -115,14 +122,23 @@ body .container, #mainpage { max-width: none; }
   line-height: 1.2 !important;
 }
 @media (max-width: 767px) {
-  #motdwrap #motd img[src*="GQsScF2"] {
-    max-width: min(280px, 82vw) !important;
-    max-height: 125px !important;
+  #motdwrap #motd > .head2 > center:first-child {
+    height: 105px !important;
   }
-  #motdwrap #motd > .head2 > .head2 { margin-top: -6px !important; }
+  #motdwrap #motd img[src*="GQsScF2"] {
+    width: 310px !important;
+    max-width: min(310px, 88vw) !important;
+    max-height: none !important;
+  }
+  #motdwrap #motd > .head2 > .head2 { margin-top: 0 !important; }
   #motdwrap #motd > .head2 > .head2 > h4 {
-    margin: -3px 0 2px !important;
+    margin: 2px 0 3px !important;
     font-size: 11px !important;
+  }
+}
+@media (max-width: 352px) {
+  #motdwrap #motd > .head2 > center:first-child {
+    height: 92px !important;
   }
 }
 
