@@ -18,7 +18,7 @@ concurrency:
 jobs:
   update-iframe:
     if: github.ref == 'refs/heads/main'
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     timeout-minutes: 15
     env:
       BAKED_LIVE_PASSWORD: ${{ secrets.BAKED_LIVE_PASSWORD }}
