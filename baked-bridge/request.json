@@ -1,8 +1,6 @@
 {
   "schema": 1,
-  "request_id": "lucha_add_rey619_20261124_01",
+  "request_id": "lucha_skin_audit_20261124_01",
   "channel": "luchatube",
-  "action": "add_iframe",
-  "title": "Rey Mysterio Greatest Hits",
-  "src": "https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=619"
+  "action": "audit_skin"
 }
