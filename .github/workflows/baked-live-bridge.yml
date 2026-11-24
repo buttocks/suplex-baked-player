@@ -64,5 +64,6 @@ jobs:
             baked-bridge/result.json
             baked-bridge/skin-css-backup.css
             baked-bridge/skin-preview.png
+            baked-bridge/backup/
           if-no-files-found: ignore
           retention-days: 7
