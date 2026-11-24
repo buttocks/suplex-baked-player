@@ -54,13 +54,18 @@ async function writeResult(result){
 async function snapshot(page){
   return page.evaluate(()=>{
     function fromMedia(media){
-      if(media?.type!=='cu'||typeof media.id!=='string')return null;
-      const text=media.id;
-      const match=text.match(/<iframe\b[^>]*\bsrc\s*=\s*["']([^"']+)["']/i);
-      if(!match)return null;
+      if(media?.type!=='cu')return null;
+      // CyTube hashes custom embed HTML into a cu:... media ID. The actual
+      // iframe URL is sent to clients as media.meta.embed.src, not media.id.
+      let raw=media.meta?.embed?.src;
+      if(typeof raw!=='string'&&typeof media.id==='string'){
+        const match=media.id.match(/<iframe\b[^>]*\bsrc\s*=\s*["']([^"']+)["']/i);
+        raw=match?.[1];
+      }
+      if(typeof raw!=='string')return null;
       try{
         const element=document.createElement('textarea');
-        element.innerHTML=match[1]; // decode HTML entities in src attribute
+        element.innerHTML=raw;
         return new URL(element.value,location.href).href;
       }catch{return null;}
     }
