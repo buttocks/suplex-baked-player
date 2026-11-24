@@ -236,8 +236,10 @@ export async function removeLegacyUncertainEmotes({page,request,initial}){
   const previouslyRejected=url=>{
     try{
       const u=new URL(url);
-      return u.hostname==='cdn.oblivionent.com'?'defunct-oblivionent':
-        u.hostname==='billing.hyperstar.host'&&u.pathname.startsWith('/images/')?
+      const host=u.hostname.toLowerCase();
+      if(host==='lensdump.com'||host.endsWith('.lensdump.com'))return 'defunct-lensdump-host';
+      return host==='cdn.oblivionent.com'?'defunct-oblivionent':
+        host==='billing.hyperstar.host'&&u.pathname.startsWith('/images/')?
         'previously-rejected-hyperstar-images':null;
     }catch{return null;}
   };
