@@ -144,36 +144,41 @@ export async function backupCurrentSkin({page,request,initial}){
   const fetchContext=await page.context().browser().newContext();
   // No authenticated cookies are carried to public image hosts.
   const client=fetchContext.request;
-  let downloaded=0,totalBytes=0;
-  for(let i=0;i<resources.length;i++){
-    const resource=resources[i];
-    if(i>=MAX_ASSETS){resource.status='skipped-limit';continue;}
-    if(totalBytes>=MAX_TOTAL_BYTES){resource.status='skipped-total-size-limit';continue;}
-    try{
-      const response=await client.get(resource.url,{timeout:18000,maxRedirects:3});
-      const mime=(response.headers()['content-type']||'').split(';')[0].toLowerCase();
-      const declared=Number(response.headers()['content-length']||0);
-      if(!response.ok())throw Error('HTTP '+response.status());
-      if(declared>MAX_ASSET_BYTES)throw Error('exceeds per-file limit');
-      if(!/^image\/(png|jpeg|gif|webp|svg\+xml|avif|bmp)$/.test(mime)&&
-         !(resource.groups.includes('externalCss')&&mime==='text/css')&&
-         !(resource.groups.includes('externalJs')&&/^(text|application)\/javascript$/.test(mime)))
-        throw Error('not a recognized image/style/script ('+mime+')');
-      const data=await response.body();
-      if(data.byteLength>MAX_ASSET_BYTES||totalBytes+data.byteLength>MAX_TOTAL_BYTES)
-        throw Error('backup size limit reached');
-      const filename=String(i+1).padStart(3,'0')+'-'+hash(resource.url).slice(0,12)+suffix(mime,resource.url);
-      await fs.writeFile(DIR+'/assets/'+filename,data);
-      resource.savedAs='assets/'+filename;
-      resource.mime=mime;
-      resource.bytes=data.byteLength;
-      resource.sha256=hash(data);
-      resource.status='saved'; downloaded++;totalBytes+=data.byteLength;
-    }catch(error){
-      resource.status='unavailable';
-      resource.reason=String(error.message||error).slice(0,140);
+  let downloaded=0,totalBytes=0,nextIndex=0;
+  async function worker(){
+    while(true){
+      const i=nextIndex++;
+      if(i>=resources.length)return;
+      const resource=resources[i];
+      if(i>=MAX_ASSETS){resource.status='skipped-limit';continue;}
+      if(totalBytes>=MAX_TOTAL_BYTES){resource.status='skipped-total-size-limit';continue;}
+      try{
+        const response=await client.get(resource.url,{timeout:18000,maxRedirects:3});
+        const mime=(response.headers()['content-type']||'').split(';')[0].toLowerCase();
+        const declared=Number(response.headers()['content-length']||0);
+        if(!response.ok())throw Error('HTTP '+response.status());
+        if(declared>MAX_ASSET_BYTES)throw Error('exceeds per-file limit');
+        if(!/^image\/(png|jpeg|gif|webp|svg\+xml|avif|bmp)$/.test(mime)&&
+           !(resource.groups.includes('externalCss')&&mime==='text/css')&&
+           !(resource.groups.includes('externalJs')&&/^(text|application)\/javascript$/.test(mime)))
+          throw Error('not a recognized image/style/script ('+mime+')');
+        const data=await response.body();
+        if(data.byteLength>MAX_ASSET_BYTES||totalBytes+data.byteLength>MAX_TOTAL_BYTES)
+          throw Error('backup size limit reached');
+        const filename=String(i+1).padStart(3,'0')+'-'+hash(resource.url).slice(0,12)+suffix(mime,resource.url);
+        await fs.writeFile(DIR+'/assets/'+filename,data);
+        resource.savedAs='assets/'+filename;
+        resource.mime=mime;
+        resource.bytes=data.byteLength;
+        resource.sha256=hash(data);
+        resource.status='saved';downloaded++;totalBytes+=data.byteLength;
+      }catch(error){
+        resource.status='unavailable';
+        resource.reason=String(error.message||error).slice(0,140);
+      }
     }
   }
+  await Promise.all(Array.from({length:8},()=>worker()));
   await fetchContext.close();
   const info={
     schema:1,backupType:'Baked.live Lucha Tube skin and channel snapshot',
