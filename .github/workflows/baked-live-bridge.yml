@@ -40,6 +40,7 @@ jobs:
           node --check baked-bridge/skin-backup.mjs
           node --check baked-bridge/skin-apply.mjs
           node --check baked-bridge/emote-cleanup.mjs
+          node --check baked-bridge/playlist-audit.mjs
           node --input-type=module -e "import {isImgurRemovedPlaceholder as f} from './baked-bridge/emote-cleanup.mjs'; if (!f('https://i.imgur.com/removed.png') || !f('https://i.imgur.com/removed.png?token=1') || f('https://i.imgur.com/valid.png') || f('https://other.example/removed.png')) process.exit(1);"
           node baked-bridge/bridge.mjs --self-test
           test -f baked-bridge/request.json || { echo 'No bridge request: contact maintainer to create it.'; exit 1; }
@@ -75,6 +76,8 @@ jobs:
             baked-bridge/emotes-before-legacy-cleanup.json
             baked-bridge/backup/
             baked-bridge/emote-url-audit.json
+            baked-bridge/playlist-media-audit.json
+            baked-bridge/playlist-before-cleanup.json
             baked-bridge/emote-url-cleanup.json
             baked-bridge/emotes-before-cleanup.json
           if-no-files-found: ignore
