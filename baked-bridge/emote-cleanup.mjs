@@ -79,6 +79,7 @@ export async function auditEmoteUrls({page,request,initial}){
       tested[i]=item.url?await probe(req,item.url):
         {url:item.raw,status:'dead',reason:'invalid-image-url'};
       tested[i].names=item.names;
+      tested[i].original=item.raw;
       tested[i].index=start+i;
       done++;
       if(done%100===0)console.log('Emote checks '+done+'/'+tasks.length+
@@ -99,4 +100,84 @@ export async function auditEmoteUrls({page,request,initial}){
     uniqueUrls:urls.length,start,counts:report.statusCounts,
     confirmedDead:tested.filter(x=>x.status==='dead').map(x=>({names:x.names,url:x.url||x.raw,reason:x.reason})),
     noChangesMade:true};
+}
+
+
+/**
+ * Bounded, conservative removal. Check every URL again immediately before
+ * removal; skip any ambiguous or unverified result. Remove one unique emote
+ * name at a time and wait for the server's removeEmote event.
+ */
+export async function cleanDeadEmotes({page,request,initial}){
+  if(initial.rank<3||!initial.loggedIn)throw Error('Verified channel Admin required');
+  if(request.offset!==0||request.limit<6500)throw Error('Cleanup requires full emote URL coverage');
+  await auditEmoteUrls({page,request,initial});
+  const report=JSON.parse(await fs.readFile(FILE,'utf8'));
+  if(report.limit<report.totalUniqueUrls)throw Error('Emote check did not cover all unique URLs');
+  const dead=report.results.filter(x=>x.status==='dead');
+  const entries=dead.flatMap(hit=>hit.names.map(name=>({
+    name,oldUrl:hit.original,reason:hit.reason,index:hit.index
+  })));
+  const before=await page.evaluate(()=>(window.CHANNEL?.emotes||[]).map(e=>({
+    name:e.name,image:e.image,source:e.source
+  })));
+  if(before.length!==report.totalEmotes)throw Error('Emote list changed during audit; refusing changes');
+  await fs.writeFile('baked-bridge/emotes-before-cleanup.json',JSON.stringify(before,null,2)+'\n');
+  const byName=new Map();
+  for(const e of before)byName.set(e.name,(byName.get(e.name)||0)+1);
+  const eligible=entries.filter(e=>byName.get(e.name)===1&&
+    before.some(old=>old.name===e.name&&old.image===e.oldUrl));
+  const skipped=entries.filter(e=>!eligible.includes(e));
+  if(eligible.length>250)throw Error('More than 250 confirmed-dead emotes; refusing bulk deletion; review audit first');
+  const removed=[];
+  const log={requestId:request.request_id,channel:request.channel,
+    beforeCount:before.length,verifiedDeadURLs:dead.length,
+    eligibleCount:eligible.length,removed,skipped,completed:false};
+  const logPath='baked-bridge/emote-url-cleanup.json';
+  await fs.writeFile(logPath,JSON.stringify(log,null,2)+'\n');
+  for(const item of eligible){
+    // Do not delete by name alone when the entry was modified or duplicated.
+    const receipt=await page.evaluate(({name,oldUrl})=>new Promise((resolve,reject)=>{
+      const emotes=window.CHANNEL?.emotes||[];
+      const matches=emotes.filter(e=>e.name===name);
+      if(matches.length!==1||matches[0].image!==oldUrl)
+        return reject(Error('Emote changed before deletion: '+name));
+      const socket=window.socket;
+      if(!socket?.connected)return reject(Error('Disconnected before emote deletion'));
+      const count=emotes.length;
+      let timer;
+      const unbind=()=>{
+        clearTimeout(timer);
+        if(typeof socket.off==='function')socket.off('removeEmote',listener);
+        else if(typeof socket.removeListener==='function')socket.removeListener('removeEmote',listener);
+      };
+      const listener=e=>{
+        if(e?.name!==name)return;
+        unbind();
+        setTimeout(()=>{
+          const newEmotes=window.CHANNEL?.emotes||[];
+          if(newEmotes.some(x=>x.name===name)||newEmotes.length!==count-1)
+            return reject(Error('Server removal was not reflected in emote list: '+name));
+          resolve({name,countBefore:count,countAfter:newEmotes.length});
+        },30);
+      };
+      timer=setTimeout(()=>{unbind();reject(Error('Server did not confirm emote removal: '+name));},8500);
+      socket.on('removeEmote',listener);
+      socket.emit('removeEmote',{name});
+    }),item);
+    removed.push({...item,countAfter:receipt.countAfter});
+    if(removed.length%25===0)console.log('Removed '+removed.length+'/'+eligible.length+
+      ' confirmed dead emote URLs');
+    await fs.writeFile(logPath,JSON.stringify(log,null,2)+'\n');
+    await page.waitForTimeout(80);
+  }
+  log.completed=true;
+  log.afterCount=await page.evaluate(()=>window.CHANNEL?.emotes?.length??null);
+  log.checkedAt=report.checkedAt;
+  await fs.writeFile(logPath,JSON.stringify(log,null,2)+'\n');
+  return {request_id:request.request_id,channel:request.channel,
+    action:request.action,status:'dead-emotes-cleaned',beforeCount:before.length,
+    afterCount:log.afterCount,checkedURLs:report.totalUniqueUrls,
+    deadURLs:dead.length,removedCount:removed.length,skippedCount:skipped.length,
+    unknownURLs:report.statusCounts.unknown};
 }
