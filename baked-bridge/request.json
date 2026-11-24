@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "request_id": "lucha_skin_audit_20261124_01",
+  "request_id": "lucha_full_skin_backup_20261124_01",
   "channel": "luchatube",
-  "action": "audit_skin"
+  "action": "backup_skin"
 }
