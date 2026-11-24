@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "request_id": "njpw_admin_audit_20261124_01",
+  "request_id": "njpw_full_original_backup_20261124_01",
   "channel": "NJPW",
-  "action": "audit"
+  "action": "backup_skin"
 }
