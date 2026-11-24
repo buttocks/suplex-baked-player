@@ -6,6 +6,7 @@ on:
     paths:
       - baked-bridge/bridge.mjs
       - baked-bridge/skin-backup.mjs
+      - baked-bridge/emote-cleanup.mjs
       - .github/workflows/baked-live-bridge.yml
       - .github/workflows/baked-live-bridge-validate.yml
   workflow_dispatch:
@@ -26,4 +27,5 @@ jobs:
         run: |
           node --check baked-bridge/bridge.mjs
           node --check baked-bridge/skin-backup.mjs
+          node --check baked-bridge/emote-cleanup.mjs
           node baked-bridge/bridge.mjs --self-test
