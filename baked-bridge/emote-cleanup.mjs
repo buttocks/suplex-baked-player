@@ -24,8 +24,22 @@ export function isImgurRemovedPlaceholder(raw) {
       /^\/removed\.(?:png|jpe?g|gif|webp)$/i.test(u.pathname);
   }catch{return false;}
 }
+export function retiredEmoteHostReason(raw){
+  if(typeof raw!=='string')return null;
+  try{
+    const u=new URL(raw);
+    const host=u.hostname.toLowerCase();
+    if(host==='lensdump.com'||host.endsWith('.lensdump.com'))return 'owner-confirmed-lensdump-retired';
+    if(host==='cdn.oblivionent.com')return 'previously-rejected-oblivionent-host';
+    if(host==='billing.hyperstar.host'&&u.pathname.startsWith('/images/'))
+      return 'previously-rejected-hyperstar-images';
+    return null;
+  }catch{return null;}
+}
 async function probe(req,url){
   const result={url,status:'unknown',first:null,verify:null,reason:''};
+  const retired=retiredEmoteHostReason(url);
+  if(retired){result.status='dead';result.reason=retired;return result;}
   async function check(method){
     const opts={timeout:TIMEOUT,maxRedirects:6,failOnStatusCode:false};
     if(method==='GET')opts.headers={Range:'bytes=0-0'};
@@ -84,7 +98,7 @@ export async function auditEmoteUrls({page,request,initial}){
     const e=window.CHANNEL?.emotes||[];
     return e.map(x=>({name:String(x.name||''),image:String(x.image||'')}));
   });
-  if(emotes.length<1000)throw Error('Emote list not loaded fully; refusing audit');
+  if(!Array.isArray(emotes)||emotes.length<1)throw Error('Emote list not loaded; refusing audit');
   const unique=new Map();
   for(const emote of emotes){
     const normalized=normalize(emote.image);
