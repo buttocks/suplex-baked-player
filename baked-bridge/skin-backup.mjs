@@ -115,8 +115,8 @@ export async function backupCurrentSkin({page,request,initial}){
       capturedAt:new Date().toISOString()
     };
   });
-  if(state.channel!==request.channel)throw Error('Backup channel identity mismatch');
-  if(!Array.isArray(state.emotes)||state.emotes.length===0)
+  if(String(state.channel).toLowerCase()!==String(request.channel).toLowerCase())throw Error('Backup channel identity mismatch');
+  if(!Array.isArray(state.emotes))
     throw Error('Emote list not loaded; refusing incomplete backup');
   const emoteList=state.emotes.map(e=>({name:e.name,image:e.image,source:e.source}))
     .filter(e=>typeof e.name==='string'&&typeof e.image==='string');
@@ -139,7 +139,7 @@ export async function backupCurrentSkin({page,request,initial}){
     'resource-links.json':JSON.stringify(state.resourceLinks,null,2)+'\n'
   };
   for(const [name,data] of Object.entries(sources))await fs.writeFile(DIR+'/'+name,data,'utf8');
-  await page.screenshot({path:DIR+'/luchatube-before.png',fullPage:true,
+  await page.screenshot({path:DIR+'/'+request.channel.toLowerCase()+'-before.png',fullPage:true,
     animations:'disabled',timeout:30000});
   const external={
     externalCss:state.options?.externalcss||'',
@@ -204,7 +204,7 @@ export async function backupCurrentSkin({page,request,initial}){
   await Promise.all(Array.from({length:8},()=>worker()));
   await fetchContext.close();
   const info={
-    schema:1,backupType:'Baked.live Lucha Tube skin and channel snapshot',
+    schema:1,backupType:'Baked.live '+state.channel+' skin and channel snapshot',
     channel:state.channel,account:'buttman-gpt',capturedAt:state.capturedAt,
     page:state.page,title:state.title,
     cssBytes:Buffer.byteLength(state.css),jsBytes:Buffer.byteLength(state.js),
@@ -218,7 +218,7 @@ export async function backupCurrentSkin({page,request,initial}){
   };
   await fs.writeFile(DIR+'/BACKUP-MANIFEST.json',JSON.stringify(info,null,2)+'\n');
   const readme=[
-    '# Lucha Tube original skin backup',
+    '# '+state.channel+' original skin backup',
     '',
     'Captured (UTC): '+state.capturedAt,
     'Channel: '+state.page,
@@ -235,7 +235,7 @@ export async function backupCurrentSkin({page,request,initial}){
     'Original playlist metadata for reference: playlist-snapshot.json',
     'Background and stylesheet runtime values: page-styles.json',
     'Page images/stylesheet sources: dom-images.json, resource-links.json',
-    'Screenshot: luchatube-before.png',
+    'Screenshot: '+request.channel.toLowerCase()+'-before.png',
     'Downloaded artwork/resources: assets/ and BACKUP-MANIFEST.json',
     '',
     'A backup does not modify the live channel.',
