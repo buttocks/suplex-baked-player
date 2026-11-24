@@ -1,6 +1,8 @@
 {
   "schema": 1,
-  "request_id": "lucha_audit_20261124_04",
+  "request_id": "lucha_add_100lucha_20261124_01",
   "channel": "luchatube",
-  "action": "audit"
+  "action": "add_iframe",
+  "title": "SlamVision — 100% LUCHA",
+  "src": "https://buttocks.github.io/suplex-baked-player/lucha-slamvision.html"
 }
