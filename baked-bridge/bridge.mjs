@@ -96,12 +96,15 @@ function mutationAllowed(state,action){
 }
 async function login(page,password){
   await page.goto(SITE+'/login',{waitUntil:'domcontentloaded',timeout:45000});
-  const user=page.locator('input[name="name"]');
-  const pass=page.locator('input[name="password"]');
+  // Baked.live serves a header login form as well as the main login form.
+  // Scope all fields and submit to one form to avoid strict-selector collisions.
+  const form=page.locator('form[action="/login"]').last();
+  const user=form.locator('input[name="name"]');
+  const pass=form.locator('input[name="password"]');
   await user.waitFor({state:'visible',timeout:20000});
   await user.fill(USERNAME);
   await pass.fill(password);
-  await page.locator('form[action="/login"] button[type="submit"]').click();
+  await form.locator('button[type="submit"]').click();
   await page.waitForLoadState('domcontentloaded');
   const body=await page.locator('body').innerText();
   if(/Login Failed|Invalid username\/password/i.test(body))throw Error('Baked.live login failed');
