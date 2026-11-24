@@ -208,3 +208,107 @@ export async function cleanDeadEmotes({page,request,initial}){
     deadURLs:dead.length,removedCount:removed.length,skippedCount:skipped.length,
     unknownURLs:report.statusCounts.unknown};
 }
+
+
+/**
+ * Follow-up cleanup requested by owner on 2026-11-24:
+ * remove the remaining uncertain old-host links while explicitly keeping
+ * postimg.cc / i.postimg.cc entries (known host false failures).
+ *
+ * Exact nine URL candidates from the prior saved 6,757-URL audit.
+ * Additional previously rejected URL *patterns* are included only if found.
+ * Everything else (including any later new unknown URLs) is untouched.
+ */
+export async function removeLegacyUncertainEmotes({page,request,initial}){
+  if(request.channel!=='luchatube'||initial.rank<3||!initial.loggedIn)
+    throw Error('Verified Lucha Tube Admin access required');
+  const known={
+    'https://cdn.420chan.org/emoticons/bo.png':'legacy-unreachable-420chan',
+    'https://cdn.420chan.org/emoticons/tanashiba.png':'legacy-unreachable-420chan',
+    'https://cdn.420chan.org/emoticons/daniel.png':'legacy-unreachable-420chan',
+    'https://4put.ru/pictures/max/293/900169.gif':'legacy-unreachable-4put',
+    'https://www.doomworld.com/gbd2/misc/doomdance.gif':'legacy-blocked-403',
+    'https://roleplay.gg/image/pv.png':'legacy-host-502',
+    'https://images.hobbydatabase.com/processed_uploads/subject_photo/subject_photo/image/44533/1539903724-31137-9621/LWO_20logo_large.png':'legacy-host-timeout',
+    'https://cdn.oblivionent.com/mjf.png':'defunct-oblivionent',
+    'https://thumbs.gfycat.com/BraveAnchoredCoelacanth-size_restricted.gif':'retired-gfycat'
+  };
+  const previouslyRejected=url=>{
+    try{
+      const u=new URL(url);
+      return u.hostname==='cdn.oblivionent.com'?'defunct-oblivionent':
+        u.hostname==='billing.hyperstar.host'&&u.pathname.startsWith('/images/')?
+        'previously-rejected-hyperstar-images':null;
+    }catch{return null;}
+  };
+  const emotes=await page.evaluate(()=>window.CHANNEL.emotes.map(e=>({
+    name:e.name,image:e.image,source:e.source
+  })));
+  if(emotes.length<6000||emotes.length>6900)
+    throw Error('Unexpected emote count; will not remove any entries');
+  await fs.writeFile('baked-bridge/emotes-before-legacy-cleanup.json',
+    JSON.stringify(emotes,null,2)+'\n');
+  const countByName=new Map();
+  for(const e of emotes)countByName.set(e.name,(countByName.get(e.name)||0)+1);
+  const planned=emotes.filter(e=>{
+    if(typeof e.image!=='string'||typeof e.name!=='string')return false;
+    const host=(()=>{try{return new URL(e.image).hostname}catch{return ''}})();
+    if(host==='postimg.cc'||host.endsWith('.postimg.cc'))return false;
+    return Object.hasOwn(known,e.image)||!!previouslyRejected(e.image);
+  }).map(e=>({...e,reason:known[e.image]||previouslyRejected(e.image)}));
+  if(planned.length>30)throw Error('Too many legacy candidates; refusing to mutate');
+  if(planned.some(x=>countByName.get(x.name)!==1))
+    throw Error('Duplicate emote names in candidate list; refusing deletion');
+  const report={requestId:request.request_id,channel:request.channel,
+    action:'remove_legacy_uncertain_emotes',beforeCount:emotes.length,
+    selected:planned,removed:[],afterCount:null,completed:false,
+    postimgPreserved:true};
+  const path='baked-bridge/legacy-emote-cleanup.json';
+  await fs.writeFile(path,JSON.stringify(report,null,2)+'\n');
+  for(const entry of planned){
+    await page.evaluate(({name,image})=>new Promise((resolve,reject)=>{
+      const current=window.CHANNEL?.emotes||[];
+      const matches=current.filter(e=>e.name===name);
+      if(matches.length!==1||matches[0].image!==image)
+        return reject(Error('Emote changed or disappeared: '+name));
+      if(!window.socket?.connected)return reject(Error('Disconnected before emote removal'));
+      const previous=current.length;
+      const sk=window.socket;
+      let timeout;
+      function detach(){
+        clearTimeout(timeout);
+        if(sk.off)sk.off('removeEmote',onRemove);
+        else if(sk.removeListener)sk.removeListener('removeEmote',onRemove);
+      }
+      function onRemove(payload){
+        if(payload?.name!==name)return;
+        detach();
+        setTimeout(()=>{
+          const updated=window.CHANNEL?.emotes||[];
+          if(updated.some(x=>x.name===name)||updated.length!==previous-1)
+            return reject(Error('Removal acknowledgement mismatch: '+name));
+          resolve();
+        },40);
+      }
+      timeout=setTimeout(()=>{detach();reject(Error('Emote removal not acknowledged: '+name));},9000);
+      sk.on('removeEmote',onRemove);
+      sk.emit('removeEmote',{name});
+    }),{name:entry.name,image:entry.image});
+    report.removed.push(entry);
+    await fs.writeFile(path,JSON.stringify(report,null,2)+'\n');
+    await page.waitForTimeout(150);
+  }
+  const after=await page.evaluate(()=>window.CHANNEL?.emotes||[]);
+  for(const x of planned)if(after.some(e=>e.name===x.name&&e.image===x.image))
+    throw Error('A removed legacy entry remains: '+x.name);
+  report.afterCount=after.length;
+  report.completed=true;
+  await fs.writeFile(path,JSON.stringify(report,null,2)+'\n');
+  console.log('Legacy emotes removed: '+report.removed.length+
+    ', Postimages untouched, remaining='+after.length);
+  return {request_id:request.request_id,channel:request.channel,action:request.action,
+    status:'legacy-emotes-cleaned',removedCount:report.removed.length,
+    beforeCount:report.beforeCount,afterCount:report.afterCount,
+    removed:report.removed.map(x=>({name:x.name,reason:x.reason})),
+    postimgPreserved:true};
+}
