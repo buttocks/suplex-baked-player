@@ -36,7 +36,7 @@ function validate(raw){
     if(raw.src||raw.old_src||raw.title)throw Error('Emote audit cannot mutate');
     const offset=raw.offset??0,limit=raw.limit??250;
     if(!Number.isInteger(offset)||offset<0||offset>15000||
-       !Number.isInteger(limit)||limit<1||limit>2000)throw Error('Invalid emote audit range');
+       !Number.isInteger(limit)||limit<1||limit>8000)throw Error('Invalid emote audit range');
     return {schema:1,request_id:raw.request_id,channel:raw.channel,action:raw.action,offset,limit};
   }
   if(raw.offset!==undefined||raw.limit!==undefined)throw Error('Audit range on non-emote operation');
