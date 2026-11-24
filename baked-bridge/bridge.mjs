@@ -30,8 +30,17 @@ function validate(raw){
   const allowed=['schema','request_id','channel','action','title','src','old_src','offset','limit'];
   for(const key of Object.keys(raw))if(!allowed.includes(key))throw Error('Unknown request key: '+key);
   if(raw.schema!==1||!CHANNELS.has(raw.channel))throw Error('Unsupported schema or unauthorized channel');
-  if(!['audit','audit_skin','backup_skin','audit_emotes','clean_dead_emotes','deploy_skin','remove_legacy_uncertain_emotes','add_iframe','replace_iframe'].includes(raw.action))throw Error('Unsupported bridge action');
+  if(!['audit','audit_skin','backup_skin','audit_emotes','clean_dead_emotes','deploy_skin','remove_legacy_uncertain_emotes','audit_playlist_media','add_iframe','replace_iframe'].includes(raw.action))throw Error('Unsupported bridge action');
   if(typeof raw.request_id!=='string'||!/^[a-zA-Z0-9_-]{6,80}$/.test(raw.request_id))throw Error('Invalid request_id');
+  if(raw.action==='audit_playlist_media'){
+    if(raw.src||raw.old_src||raw.title)throw Error('Playlist audit cannot mutate');
+    const offset=raw.offset??0,limit=raw.limit??1500;
+    if(!Number.isInteger(offset)||offset<0||offset>1400||
+       !Number.isInteger(limit)||limit<1||limit>1500)
+      throw Error('Invalid playlist audit range');
+    return {schema:1,request_id:raw.request_id,channel:raw.channel,
+      action:raw.action,offset,limit};
+  }
   if(raw.action==='audit_emotes'||raw.action==='clean_dead_emotes'){
     if(raw.src||raw.old_src||raw.title)throw Error('Emote audit cannot mutate');
     const offset=raw.offset??0,limit=raw.limit??250;
@@ -154,6 +163,10 @@ async function run(request){
     const before=initial.queue.map(entry=>({index:entry.index,title:entry.title,src:entry.src,temp:entry.temp}));
     console.log('Authenticated '+USERNAME+' on '+request.channel+
       '; rank='+initial.rank+'; items='+before.length);
+    if(request.action==='audit_playlist_media'){
+      const {auditPlaylistMedia}=await import('./playlist-audit.mjs');
+      return await auditPlaylistMedia({page,request,initial});
+    }
     if(request.action==='deploy_skin'){
       const {deploySkin}=await import('./skin-apply.mjs');
       return await deploySkin({page,request,initial});
@@ -266,6 +279,7 @@ function selfTest(){
   assert.equal(validate({schema:1,request_id:'test_backup_01',channel:'luchatube',action:'backup_skin'}).action,'backup_skin');
   assert.equal(validate({schema:1,request_id:'test_skin_deploy_01',channel:'luchatube',action:'deploy_skin'}).action,'deploy_skin');
   assert.equal(validate({schema:1,request_id:'test_legacy_cleanup_01',channel:'luchatube',action:'remove_legacy_uncertain_emotes'}).action,'remove_legacy_uncertain_emotes');
+  assert.equal(validate({schema:1,request_id:'test_playlist_01',channel:'luchatube',action:'audit_playlist_media',offset:0,limit:1500}).limit,1500);
   assert.equal(validate({schema:1,request_id:'test_emotes_01',channel:'luchatube',action:'audit_emotes',offset:0,limit:25}).limit,25);
   assert.throws(()=>validate({schema:1,request_id:'test_cleanup_bad_01',channel:'luchatube',action:'clean_dead_emotes',limit:20}));
   assert.equal(validate({schema:1,request_id:'test_cleanup_ok_01',channel:'luchatube',action:'clean_dead_emotes',limit:7000}).limit,7000);
