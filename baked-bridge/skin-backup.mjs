@@ -59,6 +59,18 @@ export async function backupCurrentSkin({page,request,initial}){
   await fs.mkdir(DIR+'/assets',{recursive:true});
   // Everything in the evaluation is READ ONLY. No emit(), admin changes,
   // public files, credential access, or playlist mutations.
+  // Explicitly request the full ordered filter list from the server:
+  // filters are not included in normal CHANNEL initialization.
+  const filters=await page.evaluate(()=>new Promise((resolve,reject)=>{
+    if(!window.socket||!window.socket.connected)return reject(Error('No channel socket for filter backup'));
+    const timer=setTimeout(()=>reject(Error('Timed out requesting chat filters')),12000);
+    window.socket.once('chatFilters',items=>{
+      clearTimeout(timer);
+      if(!Array.isArray(items))return reject(Error('Unexpected chat filters response'));
+      resolve(items);
+    });
+    window.socket.emit('requestChatFilters');
+  }));
   const state=await page.evaluate(()=>{
     const c=window.CHANNEL||{};
     const css=typeof c.css==='string'?c.css:'';
@@ -95,6 +107,8 @@ export async function backupCurrentSkin({page,request,initial}){
       channel:c.name||'',css,js,motd,
       options:c.opts||{},permissions:c.perms||{},
       emotes:c.emotes||null,
+      macroInterface:{buttonLabel:document.querySelector('#emotelistbtn')?.textContent||'',
+        macroKeys:Object.keys(c).filter(k=>/macro/i.test(k))},
       backgroundStyles:computed,
       domImages,resourceLinks,playlist,
       title:document.title,page:location.origin+location.pathname,
@@ -102,6 +116,11 @@ export async function backupCurrentSkin({page,request,initial}){
     };
   });
   if(state.channel!==request.channel)throw Error('Backup channel identity mismatch');
+  if(!Array.isArray(state.emotes)||state.emotes.length===0)
+    throw Error('Emote list not loaded; refusing incomplete backup');
+  const emoteList=state.emotes.map(e=>({name:e.name,image:e.image,source:e.source}))
+    .filter(e=>typeof e.name==='string'&&typeof e.image==='string');
+  if(emoteList.length!==state.emotes.length)throw Error('Emote list contains invalid entries');
   const opts=sanitizeOptions(state.options);
   const sources={
     'skin-inline.css':state.css,
@@ -110,6 +129,10 @@ export async function backupCurrentSkin({page,request,initial}){
     'channel-options.json':JSON.stringify(opts,null,2)+'\n',
     'channel-permissions.json':JSON.stringify(state.permissions,null,2)+'\n',
     'channel-emotes.json':JSON.stringify(state.emotes,null,2)+'\n',
+    'emote-import.json':JSON.stringify(emoteList,null,2)+'\n',
+    'macros-emotes.json':JSON.stringify(emoteList,null,2)+'\n',
+    'macro-interface.json':JSON.stringify(state.macroInterface,null,2)+'\n',
+    'chat-filters.json':JSON.stringify(filters,null,2)+'\n',
     'playlist-snapshot.json':JSON.stringify(state.playlist,null,2)+'\n',
     'page-styles.json':JSON.stringify(state.backgroundStyles,null,2)+'\n',
     'dom-images.json':JSON.stringify(state.domImages,null,2)+'\n',
@@ -188,7 +211,7 @@ export async function backupCurrentSkin({page,request,initial}){
     motdBytes:Buffer.byteLength(state.motd),
     cssSha256:hash(state.css),jsSha256:hash(state.js),
     motdSha256:hash(state.motd),
-    playlistItems:state.playlist.length,
+    playlistItems:state.playlist.length,chatFilters:filters.length,emotes:emoteList.length,
     references:resources,downloadedAssets:downloaded,assetBytes:totalBytes,
     allAssetsSaved:resources.every(r=>r.status==='saved'),
     external
@@ -206,6 +229,9 @@ export async function backupCurrentSkin({page,request,initial}){
     'Appearance/channel options: channel-options.json',
     'Original channel permissions: channel-permissions.json',
     'Original emote metadata: channel-emotes.json',
+    'Restorable emote data: emote-import.json, macros-emotes.json',
+    'Original ordered chat filters: chat-filters.json',
+    'Macro UI configuration: macro-interface.json',
     'Original playlist metadata for reference: playlist-snapshot.json',
     'Background and stylesheet runtime values: page-styles.json',
     'Page images/stylesheet sources: dom-images.json, resource-links.json',
@@ -232,6 +258,7 @@ export async function backupCurrentSkin({page,request,initial}){
     ', playlist='+info.playlistItems);
   return {request_id:request.request_id,channel:request.channel,action:request.action,
     status:'skin-backed-up',cssBytes:info.cssBytes,jsBytes:info.jsBytes,
+    filters:info.chatFilters,emotes:info.emotes,
     motdBytes:info.motdBytes,playlistItems:info.playlistItems,
     assetsFound:resources.length,assetsDownloaded:downloaded,
     missingAssets:resources.filter(r=>r.status!=='saved').map(r=>({url:r.url,reason:r.reason||r.status})),
