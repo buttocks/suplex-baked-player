@@ -154,7 +154,8 @@ export async function cleanDeadEmotes({page,request,initial}){
   const eligible=entries.filter(e=>byName.get(e.name)===1&&
     before.some(old=>old.name===e.name&&old.image===e.oldUrl));
   const skipped=entries.filter(e=>!eligible.includes(e));
-  if(eligible.length>250)throw Error('More than 250 confirmed-dead emotes; refusing bulk deletion; review audit first');
+  if(eligible.length>500||eligible.length>Math.ceil(before.length*0.1))
+    throw Error('Unexpectedly large dead-emote set; review the audit before deleting');
   const removed=[];
   const log={requestId:request.request_id,channel:request.channel,
     beforeCount:before.length,verifiedDeadURLs:dead.length,
@@ -195,7 +196,7 @@ export async function cleanDeadEmotes({page,request,initial}){
     if(removed.length%25===0)console.log('Removed '+removed.length+'/'+eligible.length+
       ' confirmed dead emote URLs');
     await fs.writeFile(logPath,JSON.stringify(log,null,2)+'\n');
-    await page.waitForTimeout(80);
+    await page.waitForTimeout(160);
   }
   log.completed=true;
   log.afterCount=await page.evaluate(()=>window.CHANNEL?.emotes?.length??null);
