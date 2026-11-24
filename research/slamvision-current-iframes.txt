@@ -25,6 +25,9 @@ NJPW The New Beginning (njpw-beginning)
 NJPW World Pro-Wrestling (njpw-wp)
 <iframe src="https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=njpw-wp" width="1280" height="720" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
 
+NJPW World Tag League (njpw-league)
+<iframe src="https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=njpw-league" width="1280" height="720" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+
 NJPW Wrestle Kingdom (njpw-wk)
 <iframe src="https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=njpw-wk" width="1280" height="720" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
 
@@ -128,9 +131,6 @@ WWF Wrestling Challenge (wwf-challenge)
 World Championship Wrestling (wcw)
 <iframe src="https://buttocks.github.io/suplex-baked-player/wcw-slamvision.html" width="1280" height="720" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
 
-World Championship Wrestling (wcw-tv)
-<iframe src="https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=wcw-tv" width="1280" height="720" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
-
 WCW Clash of the Champions (wcw-cotc)
 <iframe src="https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=wcw-cotc" width="1280" height="720" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
 
@@ -172,9 +172,6 @@ WCW Worldwide (wcw-worldwide)
 
 
 === ECW Tube ===
-Extreme Championship Wrestling (ecw-tv)
-<iframe src="https://buttocks.github.io/suplex-baked-player/ecw-slamvision.html" width="1280" height="720" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
-
 ECW Hardcore TV (ecw-hardcoretv)
 <iframe src="https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=ecw-hardcoretv" width="1280" height="720" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
 
@@ -298,9 +295,6 @@ UWFi (uwfi-i-tv)
 American Wrestling Association (awa)
 <iframe src="https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=awa" width="1280" height="720" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
 
-American Wrestling Association (amer)
-<iframe src="https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=amer" width="1280" height="720" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
-
 Memphis Wrestling (memphis)
 <iframe src="https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=memphis" width="1280" height="720" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
 
@@ -368,6 +362,27 @@ Random wrestling (rndm)
 
 
 === Needs Review ===
+1996 E-C-DUB (96ecdub)
+<iframe src="https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=96ecdub" width="1280" height="720" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+
+2000ECDUB (200ecdub)
+<iframe src="https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=200ecdub" width="1280" height="720" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+
+93ECDUB (93ecdub)
+<iframe src="https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=93ecdub" width="1280" height="720" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+
+94ECDUB (94ecdub)
+<iframe src="https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=94ecdub" width="1280" height="720" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+
+97ECDUB (97ecdub)
+<iframe src="https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=97ecdub" width="1280" height="720" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+
+98ECDUB (98ecdub)
+<iframe src="https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=98ecdub" width="1280" height="720" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+
+99ECDUB (99ecdub)
+<iframe src="https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=99ecdub" width="1280" height="720" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+
 HUSTLE - (hustle)
 <iframe src="https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=hustle" width="1280" height="720" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
 
@@ -397,5 +412,35 @@ Wrestle 1 (w1-tv)
 
 XWF (xwf)
 <iframe src="https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=xwf" width="1280" height="720" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+
+YR-1975 (yr-1975)
+<iframe src="https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=yr-1975" width="1280" height="720" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+
+YR-1976 (yr-1976)
+<iframe src="https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=yr-1976" width="1280" height="720" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+
+YR-1977 (yr-1977)
+<iframe src="https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=yr-1977" width="1280" height="720" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+
+YR-1978 (yr-1978)
+<iframe src="https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=yr-1978" width="1280" height="720" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+
+YR-1979 (yr-1979)
+<iframe src="https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=yr-1979" width="1280" height="720" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+
+YR-1980 (yr-1980)
+<iframe src="https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=yr-1980" width="1280" height="720" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+
+YR-1981 (yr-1981)
+<iframe src="https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=yr-1981" width="1280" height="720" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+
+YR-1982 (yr-1982)
+<iframe src="https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=yr-1982" width="1280" height="720" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+
+YR-1983 (yr-1983)
+<iframe src="https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=yr-1983" width="1280" height="720" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+
+YR-1984 (yr-1984)
+<iframe src="https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=yr-1984" width="1280" height="720" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
 
 
