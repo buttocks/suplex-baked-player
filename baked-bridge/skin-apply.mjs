@@ -59,12 +59,31 @@ export async function deploySkin({page,request,initial}){
     }));
     if(state.css===target){
       if(sha(state.js)!==sha(before.js))throw Error('JavaScript changed during CSS deployment');
+      // Confirm rendered geometry, not only that the server stored CSS.
+      const logoLayout=await page.evaluate(()=>{
+        const banner=document.querySelector('#motdwrap');
+        const img=document.querySelector('#motdwrap #motd img[src*="GQsScF2"]');
+        const cropped=document.querySelector('#motdwrap #motd > .head2 > center:first-child');
+        const welcome=document.querySelector('#motdwrap #motd > .head2 > .head2 > h4');
+        const rect=el=>el?el.getBoundingClientRect():null;
+        const b=rect(banner),i=rect(img),c=rect(cropped),w=rect(welcome);
+        return {bannerHeight:b?Math.round(b.height):null,
+          logoImageWidth:i?Math.round(i.width):null,
+          logoImageHeight:i?Math.round(i.height):null,
+          visibleLogoHeight:c?Math.round(c.height):null,
+          welcomeGap:c&&w?Math.round(w.top-c.bottom):null,
+          croppedOverflow:cropped?getComputedStyle(cropped).overflow:null};
+      });
+      if(logoLayout.logoImageWidth===null||logoLayout.visibleLogoHeight===null)
+        throw Error('MOTD logo elements not found; CSS stored but visual verification failed');
+      if(logoLayout.croppedOverflow!=='hidden')
+        throw Error('Logo image overflow not clipped as expected');
       await page.screenshot({path:'baked-bridge/luchatube-arena-poster-preview.png',
         fullPage:false,animations:'disabled',timeout:20000});
       return {request_id:request.request_id,channel:request.channel,action:request.action,
         status:'deployed',originalCssSha256:sha(before.css),cssSha256:sha(target),
         originalJsSha256:sha(before.js),cssBytes:Buffer.byteLength(target),
-        jsPreserved:true,motdPreserved:true,externalCssPreserved:true};
+        logoLayout,jsPreserved:true,motdPreserved:true,externalCssPreserved:true};
     }
     await page.waitForTimeout(250);
   }
