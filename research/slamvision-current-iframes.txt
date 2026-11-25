@@ -36,6 +36,9 @@ NJPW Wrestling Dontaku (njpw-wrestling)
 
 
 === AJPW Tube ===
+All Japan Pro-Wrestling (ajpw)
+<iframe src="https://buttocks.github.io/suplex-baked-player/ajpw-slamvision.html" width="1280" height="720" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+
 AJPW Champion Carnival (ajpw-carnival)
 <iframe src="https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=ajpw-carnival" width="1280" height="720" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
 
@@ -107,6 +110,9 @@ Wwe (wwe)
 
 WWE Velocity (wwe-velocity)
 <iframe src="https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=wwe-velocity" width="1280" height="720" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+
+wwf (wwf)
+<iframe src="https://buttocks.github.io/suplex-baked-player/wwf-slamvision.html" width="1280" height="720" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
 
 WWF 1990-2000 (wwf-90-00)
 <iframe src="https://buttocks.github.io/suplex-baked-player/wwf-90-00-slamvision.html" width="1280" height="720" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
@@ -192,6 +198,9 @@ ECW 1999 (99ecdub)
 
 ECW 2000 (200ecdub)
 <iframe src="https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=200ecdub" width="1280" height="720" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+
+Extreme Championship Wrestling (ecw-tv)
+<iframe src="https://buttocks.github.io/suplex-baked-player/ecw-slamvision.html" width="1280" height="720" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
 
 ECW Hardcore TV (ecw-hardcoretv)
 <iframe src="https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=ecw-hardcoretv" width="1280" height="720" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
@@ -300,6 +309,9 @@ Revolution Pro Wrestling (revpro)
 What Culture Pro Wrestling (wcpw)
 <iframe src="https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=wcpw" width="1280" height="720" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
 
+Wrestling Society X (wsx)
+<iframe src="https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=wsx" width="1280" height="720" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+
 
 === Shoot / MMA Tube ===
 Bloodsport Network (bsn)
@@ -307,6 +319,9 @@ Bloodsport Network (bsn)
 
 Shoot Interviews (si-tv)
 <iframe src="https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=si-tv" width="1280" height="720" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+
+The Shoot Network (tsn)
+<iframe src="https://buttocks.github.io/suplex-baked-player/shoot-network-slamvision.html" width="1280" height="720" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
 
 UWFi (uwfi-i-tv)
 <iframe src="https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=uwfi-i-tv" width="1280" height="720" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
@@ -415,6 +430,9 @@ Random wrestling (rndm)
 === Needs Review ===
 Crockett Cup (cc-tv)
 <iframe src="https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=cc-tv" width="1280" height="720" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+
+Herb Abrams Network (hauwf)
+<iframe src="https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=hauwf" width="1280" height="720" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
 
 HUSTLE - (hustle)
 <iframe src="https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=hustle" width="1280" height="720" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
