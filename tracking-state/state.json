@@ -1,8 +1,8 @@
 {
   "schema": 1,
   "first_successful_scan_utc": "2026-11-17T17:40:53.687Z",
-  "last_successful_scan_utc": "2026-11-24T15:52:57Z",
-  "successful_scan_count": 21,
+  "last_successful_scan_utc": "2026-11-25T00:43:18Z",
+  "successful_scan_count": 22,
   "total_feeds": 137,
   "channels_by_id": {
     "yr-1975": {
@@ -1125,7 +1125,8 @@
     "0:3": 1,
     "0:15": 1,
     "0:23": 1,
-    "1:10": 1
+    "1:10": 1,
+    "1:19": 1
   },
   "checks_by_local_day": {
     "2026-11-18": 4,
@@ -1134,7 +1135,7 @@
     "2026-11-21": 4,
     "2026-11-22": 3,
     "2026-11-23": 3,
-    "2026-11-24": 1
+    "2026-11-24": 2
   },
-  "last_scan_change_count": 294
+  "last_scan_change_count": 0
 }
