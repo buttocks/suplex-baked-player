@@ -34764,6 +34764,18 @@
       "name": "1999 RAW",
       "number": 40,
       "dial_previously_held": "ain"
+    },
+    {
+      "type": "feed_renamed",
+      "first_detected_utc": "2026-11-26T21:56:08Z",
+      "last_confirmed_prior_utc": "2026-11-26T12:29:33Z",
+      "time_accuracy": "observed between checks, not exact upstream change time",
+      "id": "cc-tv",
+      "number": 61,
+      "old_name": "Crockett Cup",
+      "new_name": "Thanksgiving Network Today",
+      "old_callsign": "CC-TV",
+      "new_callsign": "TNT-TV"
     }
   ]
 }
