@@ -134,6 +134,27 @@ WWF Wrestling Challenge (wwf-challenge)
 
 
 === WCW Tube ===
+1995 Nitro (nitro-95)
+<iframe src="https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=nitro-95" width="1280" height="720" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+
+1996 NItro (nitro-96)
+<iframe src="https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=nitro-96" width="1280" height="720" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+
+1997 Nitro (nitro-97)
+<iframe src="https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=nitro-97" width="1280" height="720" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+
+1998 Nitro (nitro-98)
+<iframe src="https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=nitro-98" width="1280" height="720" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+
+1999 Nitro (nitro-99)
+<iframe src="https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=nitro-99" width="1280" height="720" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+
+2000 Nitro (nitro-2000)
+<iframe src="https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=nitro-2000" width="1280" height="720" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+
+2001 Nitro (nitro-2001)
+<iframe src="https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=nitro-2001" width="1280" height="720" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+
 World Championship Wrestling (wcw)
 <iframe src="https://buttocks.github.io/suplex-baked-player/wcw-slamvision.html" width="1280" height="720" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
 
@@ -428,6 +449,30 @@ Random wrestling (rndm)
 
 
 === Needs Review ===
+1993 RAW (raw-93)
+<iframe src="https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=raw-93" width="1280" height="720" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+
+1994 RAW (raw-94)
+<iframe src="https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=raw-94" width="1280" height="720" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+
+1995 RAW (raw-95)
+<iframe src="https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=raw-95" width="1280" height="720" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+
+1997 RAW (raw-97)
+<iframe src="https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=raw-97" width="1280" height="720" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+
+1998 RAW (raw-98)
+<iframe src="https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=raw-98" width="1280" height="720" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+
+1999 RAW (raw-99)
+<iframe src="https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=raw-99" width="1280" height="720" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+
+2000 RAW (raw-2000)
+<iframe src="https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=raw-2000" width="1280" height="720" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+
+2001 RAW (raw-2001)
+<iframe src="https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=raw-2001" width="1280" height="720" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+
 Crockett Cup (cc-tv)
 <iframe src="https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=cc-tv" width="1280" height="720" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
 
@@ -445,6 +490,9 @@ AJW Classics (ajwc-tv)
 
 JWP (jwp)
 <iframe src="https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=jwp" width="1280" height="720" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+
+1996 RAW (raw-96)
+<iframe src="https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=raw-96" width="1280" height="720" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
 
 Roddy Piper (piper)
 <iframe src="https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=piper" width="1280" height="720" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
