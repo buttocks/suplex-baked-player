@@ -473,7 +473,7 @@ Random wrestling (rndm)
 2001 RAW (raw-2001)
 <iframe src="https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=raw-2001" width="1280" height="720" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
 
-Crockett Cup (cc-tv)
+Thanksgiving Network Today (cc-tv)
 <iframe src="https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=cc-tv" width="1280" height="720" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
 
 Herb Abrams Network (hauwf)

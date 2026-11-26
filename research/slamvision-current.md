@@ -1,6 +1,6 @@
 # SlamVision channel embeds by Baked.live tube
 
-Last catalog update: 2026-11-26T08:50:00.050337+00:00
+Last catalog update: 2026-11-26T21:52:28.571199+00:00
 
 Active: 159 · Tracked: 183
 
@@ -264,7 +264,7 @@ Provider dials change; iframe URLs use stable feed IDs.
 | 1999 RAW (raw-99) | 40 | available | [Open](https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=raw-99) |
 | 2000 RAW (raw-2000) | 42 | available | [Open](https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=raw-2000) |
 | 2001 RAW (raw-2001) | 44 | available | [Open](https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=raw-2001) |
-| Crockett Cup (cc-tv) | 61 | available | [Open](https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=cc-tv) |
+| Thanksgiving Network Today (cc-tv) | 61 | available | [Open](https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=cc-tv) |
 | Herb Abrams Network (hauwf) | 78 | available | [Open](https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=hauwf) |
 | HUSTLE - (hustle) | 79 | available | [Open](https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=hustle) |
 | IWA Japan (ij-tv) | 80 | available | [Open](https://buttocks.github.io/suplex-baked-player/slamvision-feed.html?id=ij-tv) |
