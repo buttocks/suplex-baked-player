@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="dark">
+<title>RMP Wrestling Stream — Baked Network</title>
+<style>
+*{box-sizing:border-box}
+html,body{width:100%;height:100%;margin:0;overflow:hidden;background:#000;color:#f7f4fa;font:14px/1.4 system-ui,-apple-system,"Segoe UI",sans-serif}
+#screen{position:relative;width:100%;height:100%;background:#000}
+#video{position:absolute;inset:0;width:100%;height:100%;border:0;background:#000}
+#guideToggle{position:absolute;z-index:3;right:12px;top:12px;border:1px solid #ffffff38;border-radius:6px;background:#15121acc;color:#f4eef6;padding:8px 11px;font:700 12px system-ui;cursor:pointer}
+#guide{position:absolute;z-index:4;right:12px;top:56px;width:min(390px,calc(100% - 24px));max-height:calc(100% - 68px);overflow:auto;border:1px solid #ffffff42;border-radius:10px;background:#16121eeF;box-shadow:0 14px 45px #000a;padding:14px}
+#guide[hidden]{display:none}
+header{display:flex;align-items:center;justify-content:space-between;gap:12px;padding-bottom:10px;border-bottom:1px solid #ffffff20;color:#edc16a;font-weight:900;letter-spacing:.08em;text-transform:uppercase;font-size:12px}
+#close{border:0;background:transparent;color:#eee;font-size:20px;cursor:pointer}
+.label{margin:12px 0 6px;color:#fa4968;font-size:10px;font-weight:900;letter-spacing:.1em;text-transform:uppercase}
+#now{font-size:13px;line-height:1.35}
+#list{display:grid}
+.item{display:grid;grid-template-columns:28px 1fr;gap:8px;padding:10px 0;border-top:1px solid #ffffff17}
+.item button{all:unset;cursor:pointer;display:contents}
+.item button:focus-visible{outline:2px solid #edc16a}
+.num{color:#fa4968;font-weight:900}
+.name{font-size:12px}
+.meta{margin-top:3px;color:#a9a4b2;font-size:10px}
+@media(max-width:600px){#guide{right:6px;top:48px;max-height:calc(100% - 54px)}#guideToggle{right:6px;top:6px}}
+</style>
+</head>
+<body>
+<main id="screen" aria-label="RMP wrestling stream">
+  <iframe id="video" title="RMP Charged 526" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe>
+  <button id="guideToggle" type="button" aria-expanded="true" aria-controls="guide">TV Guide</button>
+  <aside id="guide" aria-label="Upcoming wrestling videos">
+    <header><span>RMP Wrestling Schedule</span><button id="close" type="button" aria-label="Close TV Guide">×</button></header>
+    <div class="label">Now playing</div>
+    <div id="now"></div>
+    <div class="label">Up next</div>
+    <div id="list"></div>
+  </aside>
+</main>
+<script>
+(()=>{
+'use strict';
+const shows=[
+ {title:"The Wake and SOB go to war ahead of their huge No Man's Land match | RMP Charged 526 | FULL EPISODE",id:"v7gqzme",duration:3285,source:"https://rumble.com/v7ixcjw-the-wake-and-sob-go-to-war-ahead-of-their-huge-no-mans-land-match-rmp-charg.html"},
+ {title:"Charged enters Bounce Empire + Wake/SOB conflict reaches next level | RMP Charged 525 | FULL EPISODE",id:"v7gdna0",duration:3037,source:"https://rumble.com/v7ik07i-charged-enters-bounce-empire-wakesob-conflict-reaches-next-level-rmp-charge.html"},
+ {title:"Three RMP Champions take gold into their Bierstadt Brawls! | RMP Charged 524 | FULL EPISODE",id:"v7g1h7k",duration:3078,source:"https://rumble.com/v7i7u52-three-rmp-champions-take-gold-into-their-bierstadt-brawls-rmp-charged-524-f.html"},
+ {title:"Rio and Bruce Wayans fight off Cease and Desist + Remy and Marcio! | RMP Charged 523 | FULL EPISODE",id:"v7fpfks",duration:3428,source:"https://rumble.com/v7hvsia-rio-and-bruce-wayans-fight-off-cease-and-desist-remy-and-marcio-rmp-charged.html"},
+ {title:"Hunter Grey welcomes new talent to RMP! | RMP Charged 522 | FULL EPISODE",id:"v7fd2m0",duration:3120,source:"https://rumble.com/v7hjfji-hunter-grey-welcomes-new-talent-to-rmp-rmp-charged-522-full-episode.html"}
+];
+let current=0;
+const iframe=document.getElementById('video'),guide=document.getElementById('guide'),list=document.getElementById('list'),now=document.getElementById('now'),toggle=document.getElementById('guideToggle');
+function setVideo(index){
+ current=(index+shows.length)%shows.length;
+ const show=shows[current];
+ now.textContent=show.title;
+ iframe.title=show.title;
+ iframe.src='https://rumble.com/embed/'+show.id+'/?autoplay=2&muted=1';
+ list.replaceChildren();
+ for(let offset=1;offset<shows.length;offset++){
+  const idx=(current+offset)%shows.length, item=shows[idx], row=document.createElement('div');
+  row.className='item';
+  const button=document.createElement('button');button.type='button';button.setAttribute('aria-label','Play next: '+item.title);
+  const num=document.createElement('span');num.className='num';num.textContent=String(offset).padStart(2,'0');
+  const info=document.createElement('span');info.className='name';info.textContent=item.title;
+  const detail=document.createElement('span');detail.className='meta';detail.textContent='Runtime '+Math.floor(item.duration/60)+' min';
+  info.append(detail);button.append(num,info);button.addEventListener('click',()=>setVideo(idx));row.append(button);list.append(row);
+ }
+}
+function showGuide(open){guide.hidden=!open;toggle.setAttribute('aria-expanded',String(open))}
+toggle.addEventListener('click',()=>showGuide(guide.hidden));
+document.getElementById('close').addEventListener('click',()=>showGuide(false));
+setVideo(0);showGuide(true);
+})();
+</script>
+</body>
+</html>
