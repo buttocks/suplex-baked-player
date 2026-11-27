@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="color-scheme" content="dark">
+<title>AcFun Wrestling Stream — Baked Network</title>
+<style>
+:root{color-scheme:dark;--bg:#0b0b10;--panel:#17131a;--line:#38323c;--ink:#f6f3f7;--muted:#b7aeba;--pink:#fa4968;--gold:#edc16a;font:15px/1.45 system-ui,-apple-system,"Segoe UI",sans-serif}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at 50% -30%,#4b172c 0,#15111a 35rem,var(--bg) 75rem);color:var(--ink)}a{color:inherit}.wrap{width:min(1160px,calc(100% - 28px));margin:auto;padding:18px 0 24px}.brand{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:8px 0 12px;border-bottom:1px solid #ffffff20;color:var(--gold);font-weight:900;font-size:12px;letter-spacing:.15em;text-transform:uppercase}.brand small{color:var(--muted);font-weight:500;letter-spacing:0;text-transform:none;font-size:12px}.title{display:flex;align-items:end;justify-content:space-between;gap:15px;padding:16px 0 12px}.title h1{font-size:clamp(22px,4vw,36px);line-height:1.05;margin:0}.title p{margin:0;color:var(--muted);font-size:13px}.player{border:1px solid #59414b;border-radius:9px;background:#000;overflow:hidden}.playing{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:10px 14px;background:#17131a}.playing strong{font-size:14px}.playing a{font-size:12px;color:#ffc5d0}.framebox{aspect-ratio:16/9;background:#000}.framebox iframe{width:100%;height:100%;display:block;border:0}.controls{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:10px 12px;background:#17131a;border-top:1px solid #ffffff18}.buttons{display:flex;gap:8px}.controls button{border:1px solid #54414d;border-radius:6px;background:#241a24;color:#fff;padding:8px 12px;font:700 13px system-ui;cursor:pointer}.controls button:hover{border-color:var(--pink);background:#38202b}.controls button:focus-visible{outline:2px solid var(--gold);outline-offset:2px}.count{color:var(--muted);font-size:12px}.queue{margin-top:14px;border:1px solid var(--line);border-radius:8px;background:#15131a;overflow:hidden}.queue-head{padding:10px 13px;border-bottom:1px solid var(--line);font-size:13px;font-weight:800}.items{max-height:210px;overflow:auto}.item{display:flex;align-items:center;gap:10px;width:100%;text-align:left;border:0;border-bottom:1px solid #ffffff12;background:transparent;color:var(--ink);padding:10px 13px;font:13px/1.35 system-ui;cursor:pointer}.item:last-child{border-bottom:0}.item:hover,.item.active{background:#2a1823}.item.active{box-shadow:inset 3px 0 var(--pink)}.num{min-width:26px;color:var(--pink);font-weight:800}.item-title{flex:1}.item-promo{color:var(--muted);font-size:11px}.foot{padding-top:10px;color:#aaa2ad;font-size:11px}
+@media(max-width:600px){.wrap{width:calc(100% - 18px);padding-top:8px}.brand{align-items:flex-start}.title{align-items:flex-start;flex-direction:column}.playing{align-items:flex-start}.controls{align-items:flex-start;flex-direction:column}}
+</style>
+</head>
+<body>
+<main class="wrap">
+  <header class="brand"><span>Baked Network · Alternate Sources</span><small>AcFun wrestling uploads</small></header>
+  <section class="title"><h1>AcFun Wrestling Stream</h1><p>Five uploads in playlist order · source video stays on AcFun</p></section>
+  <section class="player" aria-label="AcFun wrestling stream">
+    <header class="playing"><strong id="now">Loading first video…</strong><a id="source" href="https://www.acfun.cn/u/2327201" target="_blank" rel="noopener noreferrer">Open on AcFun ↗</a></header>
+    <div class="framebox" id="framebox"></div>
+    <nav class="controls" aria-label="Stream controls"><div class="buttons"><button type="button" id="prev">Previous</button><button type="button" id="next">Next video</button></div><span class="count" id="count" aria-live="polite"></span></nav>
+  </section>
+  <section class="queue" aria-label="Playlist"><div class="queue-head">Up next</div><div class="items" id="items"></div></section>
+  <footer class="foot">AcFun public profile: <a href="https://www.acfun.cn/u/2327201" target="_blank" rel="noopener noreferrer">プロレス愛Channel</a>. If the player blocks playback, open the current post on AcFun.</footer>
+</main>
+<script>
+(()=>{'use strict';
+const videos=[
+ {promotion:'NJPW',title:'NJPW World Tag League 2026 第四日 2026.11.27',id:'ac49029564'},
+ {promotion:'AJPW',title:'AJPW 世界最強タッグ決定リーグ戦2026 第六日 2026.11.26',id:'ac49027973'},
+ {promotion:'AEW',title:'AEW Collision #172 - Thanksgiving 2026.11.26',id:'ac49027922'},
+ {promotion:'TNA',title:'TNA iMPACT #141 2026.11.26',id:'ac49027801'},
+ {promotion:'AEW',title:'AEW Collision #172 2026.11.25 Bandido vs. 竹下幸之介',id:'ac49029607'}
+];
+let current=0;
+const list=document.getElementById('items'),framebox=document.getElementById('framebox');
+function select(index){
+ current=(index+videos.length)%videos.length;
+ const v=videos[current];
+ document.getElementById('now').textContent=v.promotion+' — '+v.title;
+ document.getElementById('source').href='https://www.acfun.cn/v/'+v.id;
+ document.getElementById('count').textContent='Video '+(current+1)+' of '+videos.length;
+ const frame=document.createElement('iframe');
+ frame.title=v.title+' — AcFun';
+ frame.src='https://www.acfun.cn/player/'+v.id+'?autoplay=true';
+ frame.allow='autoplay; fullscreen; picture-in-picture';
+ frame.allowFullscreen=true;
+ frame.referrerPolicy='strict-origin-when-cross-origin';
+ framebox.replaceChildren(frame);
+ for(const [i,button] of [...list.children].entries()){
+  button.classList.toggle('active',i===current);
+  button.setAttribute('aria-current',i===current?'true':'false');
+ }
+}
+for(const [i,v] of videos.entries()){
+ const button=document.createElement('button');button.type='button';button.className='item';
+ const num=document.createElement('span');num.className='num';num.textContent=String(i+1).padStart(2,'0');
+ const title=document.createElement('span');title.className='item-title';title.textContent=v.title;
+ const promo=document.createElement('span');promo.className='item-promo';promo.textContent=v.promotion;
+ button.append(num,title,promo);button.addEventListener('click',()=>select(i));list.append(button);
+}
+document.getElementById('prev').addEventListener('click',()=>select(current-1));
+document.getElementById('next').addEventListener('click',()=>select(current+1));
+select(0);
+})();
+</script>
+</body>
+</html>
