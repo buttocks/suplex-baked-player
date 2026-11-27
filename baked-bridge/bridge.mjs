@@ -10,7 +10,7 @@ import assert from 'node:assert/strict';
 
 const SITE='https://baked.live';
 const USERNAME='buttman-gpt';
-const CHANNELS=new Set(['luchatube','NJPW']);
+const CHANNELS=new Set(['luchatube','NJPW','Gallios_Lair']);
 const PLAYER_ORIGIN='https://buttocks.github.io';
 const PLAYER_ROOT='/suplex-baked-player/';
 const REQUEST_PATH=process.env.BAKED_BRIDGE_REQUEST || 'baked-bridge/request.json';
@@ -74,19 +74,13 @@ async function snapshot(page){
   return page.evaluate(()=>{
     function fromMedia(media){
       if(media?.type!=='cu')return null;
-      // CyTube hashes custom embed HTML into a cu:... media ID. The actual
-      // iframe URL is sent to clients as media.meta.embed.src, not media.id.
       let raw=media.meta?.embed?.src;
       if(typeof raw!=='string'&&typeof media.id==='string'){
         const match=media.id.match(/<iframe\b[^>]*\bsrc\s*=\s*["']([^"']+)["']/i);
         raw=match?.[1];
       }
       if(typeof raw!=='string')return null;
-      try{
-        const element=document.createElement('textarea');
-        element.innerHTML=raw;
-        return new URL(element.value,location.href).href;
-      }catch{return null;}
+      try{const element=document.createElement('textarea');element.innerHTML=raw;return new URL(element.value,location.href).href;}catch{return null;}
     }
     const queue=[...document.querySelectorAll('#queue .queue_entry')].map((el,idx)=>{
       const media=window.jQuery?window.jQuery(el).data('media')||{}:{};
@@ -120,8 +114,6 @@ function mutationAllowed(state,action){
 }
 async function login(page,password){
   await page.goto(SITE+'/login',{waitUntil:'domcontentloaded',timeout:45000});
-  // Baked.live serves a header login form as well as the main login form.
-  // Scope all fields and submit to one form to avoid strict-selector collisions.
   const form=page.locator('form[action="/login"]').last();
   const user=form.locator('input[name="name"]');
   const pass=form.locator('input[name="password"]');
@@ -132,7 +124,6 @@ async function login(page,password){
   await page.waitForLoadState('domcontentloaded');
   const body=await page.locator('body').innerText();
   if(/Login Failed|Invalid username\/password/i.test(body))throw Error('Baked.live login failed');
-  // The channel's CLIENT state below provides the authoritative login/rank check.
 }
 async function run(request){
   const password=process.env.BAKED_LIVE_PASSWORD;
@@ -149,20 +140,14 @@ async function run(request){
     let initial=await waitFor(page,state=>state.connected&&state.loggedIn&&
       String(state.username||'').toLowerCase()===USERNAME&&state.channel===request.channel,
       'Could not confirm authenticated account and channel connection',30000);
-    // Channel rank and playlist events can arrive after the login identity event.
-    // Allow them to settle. Read-only audits also work when rank is insufficient;
-    // all mutations continue to require verified Admin rank.
     await page.waitForTimeout(2200);
     initial=await snapshot(page);
     if(initial.rank<3){
-      try{
-        initial=await waitFor(page,state=>state.rank>=3,
-          'Channel Admin rank not observed before timeout',8000);
-      }catch{initial=await snapshot(page);}
+      try{initial=await waitFor(page,state=>state.rank>=3,'Channel Admin rank not observed before timeout',8000);}
+      catch{initial=await snapshot(page);}
     }
     const before=initial.queue.map(entry=>({index:entry.index,title:entry.title,src:entry.src,temp:entry.temp}));
-    console.log('Authenticated '+USERNAME+' on '+request.channel+
-      '; rank='+initial.rank+'; items='+before.length);
+    console.log('Authenticated '+USERNAME+' on '+request.channel+'; rank='+initial.rank+'; items='+before.length);
     if(request.action==='audit_playlist_media'){
       const {auditPlaylistMedia}=await import('./playlist-audit.mjs');
       return await auditPlaylistMedia({page,request,initial});
@@ -193,46 +178,24 @@ async function run(request){
     }
     if(request.action==='audit_skin'){
       const skin=await page.evaluate(()=>{
-        const channel=window.CHANNEL||{};
-        const css=typeof channel.css==='string'?channel.css:'';
-        const js=typeof channel.js==='string'?channel.js:'';
-        const selectors=['body','html','#wrap','#motdwrap','#main','#mainpage',
-          '#videowrap','#chatwrap','#messagebuffer','#queue'];
-        const computed=Object.fromEntries(selectors.map(sel=>{
-          const element=document.querySelector(sel);
-          if(!element)return [sel,null];
-          const st=getComputedStyle(element);
-          return [sel,{backgroundImage:st.backgroundImage,backgroundColor:st.backgroundColor,
-            color:st.color,fontFamily:st.fontFamily,borderColor:st.borderTopColor}];
-        }));
-        const references=[...css.matchAll(/url\(\s*(['"]?)(.*?)\1\s*\)/g)]
-          .map(match=>match[2].trim()).filter(Boolean);
-        const images=[...document.querySelectorAll('img')].slice(0,30)
-          .map(img=>({src:img.currentSrc||img.src,alt:img.alt||''}));
-        return {css,cssLength:css.length,jsLength:js.length,
-          externalCss:channel.opts?.externalcss||'',
-          externalJs:channel.opts?.externaljs||'',
-          pageTitle:channel.opts?.pagetitle||document.title,
-          backgroundReferences:[...new Set(references)],
-          computed,images};
+        const channel=window.CHANNEL||{},css=typeof channel.css==='string'?channel.css:'',js=typeof channel.js==='string'?channel.js:'';
+        const selectors=['body','html','#wrap','#motdwrap','#main','#mainpage','#videowrap','#chatwrap','#messagebuffer','#queue'];
+        const computed=Object.fromEntries(selectors.map(sel=>{const element=document.querySelector(sel);if(!element)return [sel,null];const st=getComputedStyle(element);return [sel,{backgroundImage:st.backgroundImage,backgroundColor:st.backgroundColor,color:st.color,fontFamily:st.fontFamily,borderColor:st.borderTopColor}];}));
+        const references=[...css.matchAll(/url\(\s*(["']?)(.*?)\1\s*\)/g)].map(match=>match[2].trim()).filter(Boolean);
+        const images=[...document.querySelectorAll('img')].slice(0,30).map(img=>({src:img.currentSrc||img.src,alt:img.alt||''}));
+        return {css,cssLength:css.length,jsLength:js.length,externalCss:channel.opts?.externalcss||'',externalJs:channel.opts?.externaljs||'',pageTitle:channel.opts?.pagetitle||document.title,backgroundReferences:[...new Set(references)],computed,images};
       });
-      // Exact CSS backup stays in a short-lived workflow artifact, not Git.
       await fs.writeFile('baked-bridge/skin-css-backup.css',skin.css,'utf8');
-      await page.screenshot({path:'baked-bridge/skin-preview.png',fullPage:false,
-        animations:'disabled',timeout:20000});
+      await page.screenshot({path:'baked-bridge/skin-preview.png',fullPage:false,animations:'disabled',timeout:20000});
       delete skin.css;
-      return {request_id:request.request_id,channel:request.channel,action:request.action,
-        status:'skin-audited',rank:initial.rank,skin};
+      return {request_id:request.request_id,channel:request.channel,action:request.action,status:'skin-audited',rank:initial.rank,skin};
     }
     if(request.action==='audit'){
       return {request_id:request.request_id,channel:request.channel,action:request.action,
         status:'audited',authenticated_user:initial.username,rank:initial.rank,
-        admin_verified:Number.isFinite(initial.rank)&&initial.rank>=3,
-        permissions:initial.permissions,items:before.length,
-        iframes:before.filter(x=>x.src)};
+        admin_verified:Number.isFinite(initial.rank)&&initial.rank>=3,permissions:initial.permissions,items:before.length,iframes:before.filter(x=>x.src)};
     }
-    if(!Number.isFinite(initial.rank)||initial.rank<3)
-      throw Error('buttman-gpt does not have verified Admin rank on '+request.channel);
+    if(!Number.isFinite(initial.rank)||initial.rank<3)throw Error('buttman-gpt does not have verified Admin rank on '+request.channel);
     mutationAllowed(initial,request.action);
     const already=exactMatches(initial,request.src);
     if(already.length>1)throw Error('Multiple existing copies of target iframe; refusing duplicate actions');
@@ -248,32 +211,18 @@ async function run(request){
       predecessor=old.index>0?initial.queue[old.index-1].uid:'prepend';
       if(already.length)throw Error('New iframe already exists elsewhere; refusing ambiguous replacement');
     }
-    // Queue as permanent media; never advance live playback.
-    await page.evaluate(({markup,title})=>{
-      window.socket.emit('queue',{id:markup,title,type:'cu',pos:'end',temp:false});
-    },{markup:embedHtml(request.src),title:request.title});
-    let after=await waitFor(page,s=>exactMatches(s,request.src).length===1,
-      'Baked.live did not confirm new iframe in playlist');
+    await page.evaluate(({markup,title})=>{window.socket.emit('queue',{id:markup,title,type:'cu',pos:'end',temp:false});},{markup:embedHtml(request.src),title:request.title});
+    let after=await waitFor(page,s=>exactMatches(s,request.src).length===1,'Baked.live did not confirm new iframe in playlist');
     const added=exactMatches(after,request.src)[0];
     if(added.temp)throw Error('New iframe was only added temporarily; review channel permissions');
     console.log('Verified permanent iframe added: '+request.src);
     if(request.action==='replace_iframe'){
-      await page.evaluate(({uid,after})=>window.socket.emit('moveMedia',{from:uid,after}),
-        {uid:added.uid,after:predecessor});
-      after=await waitFor(page,s=>{
-        const now=exactMatches(s,request.src)[0];
-        if(!now)return false;
-        const wanted=predecessor==='prepend'?0:s.queue.findIndex(x=>x.uid===predecessor)+1;
-        return now.index===wanted;
-      },'New iframe queued but position could not be verified; old entry left unchanged');
+      await page.evaluate(({uid,after})=>window.socket.emit('moveMedia',{from:uid,after}),{uid:added.uid,after:predecessor});
+      after=await waitFor(page,s=>{const now=exactMatches(s,request.src)[0];if(!now)return false;const wanted=predecessor==='prepend'?0:s.queue.findIndex(x=>x.uid===predecessor)+1;return now.index===wanted;},'New iframe queued but position could not be verified; old entry left unchanged');
       await page.evaluate(uid=>window.socket.emit('delete',uid),old.uid);
-      after=await waitFor(page,s=>!s.queue.some(x=>x.uid===old.uid),
-        'Old iframe was not removed; review playlist manually');
-      console.log('Old iframe replaced at original playlist position.');
+      after=await waitFor(page,s=>!s.queue.some(x=>x.uid===old.uid),'Old iframe was not removed; review playlist manually');
     }
-    return {request_id:request.request_id,channel:request.channel,action:request.action,
-      status:request.action==='replace_iframe'?'replaced':'added',src:request.src,
-      old_src:request.old_src||undefined,items_before:initial.queue.length,items_after:after.queue.length};
+    return {request_id:request.request_id,channel:request.channel,action:request.action,status:request.action==='replace_iframe'?'replaced':'added',src:request.src,old_src:request.old_src||undefined,items_before:initial.queue.length,items_after:after.queue.length};
   }finally{await browser.close();}
 }
 function selfTest(){
@@ -291,27 +240,17 @@ function selfTest(){
   assert.throws(()=>validate({schema:1,request_id:'test_cleanup_bad_01',channel:'luchatube',action:'clean_dead_emotes',limit:20}));
   assert.equal(validate({schema:1,request_id:'test_cleanup_ok_01',channel:'luchatube',action:'clean_dead_emotes',limit:7000}).limit,7000);
   const url='https://buttocks.github.io/suplex-baked-player/lucha-slamvision.html';
-  assert.equal(validate({schema:1,request_id:'test_add_01',channel:'luchatube',
-    action:'add_iframe',title:'Lucha',src:url}).src,url);
+  assert.equal(validate({schema:1,request_id:'test_add_01',channel:'luchatube',action:'add_iframe',title:'Lucha',src:url}).src,url);
   for(const candidate of [
     {schema:1,request_id:'test_bad_01',channel:'other',action:'audit'},
-    {schema:1,request_id:'test_bad_02',channel:'luchatube',action:'add_iframe',
-      title:'Test',src:'https://example.com/attack.html'},
-    {schema:1,request_id:'test_bad_03',channel:'luchatube',action:'add_iframe',
-      title:'Test',src:'https://buttocks.github.io/suplex-baked-player/../attack.html'}
+    {schema:1,request_id:'test_bad_02',channel:'luchatube',action:'add_iframe',title:'Test',src:'https://example.com/attack.html'},
+    {schema:1,request_id:'test_bad_03',channel:'luchatube',action:'add_iframe',title:'Test',src:'https://buttocks.github.io/suplex-baked-player/../attack.html'}
   ])assert.throws(()=>validate(candidate));
   assert.equal(embedHtml(url).includes('type="cu"'),false);
   console.log('PASS: request validation, channel allowlist, URL allowlist and embed format');
 }
 if(process.argv.includes('--self-test'))selfTest();
 else{
-  try{
-    const request=validate(JSON.parse(await fs.readFile(REQUEST_PATH,'utf8')));
-    const result=await run(request);
-    await writeResult(result);
-  }catch(error){
-    // Never log environment variables, browser cookies, page HTML or login fields.
-    console.error('Bridge failed: '+String(error.message||error).slice(0,400));
-    process.exitCode=1;
-  }
+  try{const request=validate(JSON.parse(await fs.readFile(REQUEST_PATH,'utf8')));const result=await run(request);await writeResult(result);}
+  catch(error){console.error('Bridge failed: '+String(error.message||error).slice(0,400));process.exitCode=1;}
 }
