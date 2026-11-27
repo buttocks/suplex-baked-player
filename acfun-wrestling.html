@@ -13,7 +13,7 @@
 </style>
 </head>
 <body>
-<iframe id="player" title="AcFun wrestling video" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe>
+<iframe id="player" title="AcFun wrestling video" scrolling="no" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe>
 <button id="guidebtn" type="button" aria-expanded="false" aria-controls="guide">TV Guide</button>
 <aside id="guide" aria-label="Upcoming videos">
 <header class="guidehead"><span>AcFun Wrestling Schedule</span><button type="button" id="close" aria-label="Close TV Guide">×</button></header>
@@ -29,7 +29,7 @@ const videos=[
  {promotion:'AEW',title:'AEW Collision #172 2026.11.25 Bandido vs. 竹下幸之介',id:'ac49029607'}
 ];
 const current=0;
-document.getElementById('player').src='https://www.acfun.cn/player/'+videos[current].id+'?autoplay=true';
+document.getElementById('player').src='https://www.acfun.cn/player/'+videos[current].id+'?autoplay=true&mute=true&disablePlaylist=true';
 document.getElementById('current').textContent=videos[current].promotion+' — '+videos[current].title;
 const list=document.getElementById('schedule');
 for(let offset=1;offset<videos.length;offset++){
