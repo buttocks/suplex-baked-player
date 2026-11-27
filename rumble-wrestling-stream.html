@@ -56,7 +56,7 @@ function setVideo(index){
  const show=shows[current];
  now.textContent=show.title;
  iframe.title=show.title;
- iframe.src='https://rumble.com/embed/'+show.id+'/?autoplay=2&muted=1';
+ iframe.src='https://rumble.com/embed/'+show.id+'/?pub=4&autoplay=2&muted=1';
  list.replaceChildren();
  for(let offset=1;offset<shows.length;offset++){
   const idx=(current+offset)%shows.length, item=shows[idx], row=document.createElement('div');
