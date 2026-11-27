@@ -1,6 +1,8 @@
 {
   "schema": 1,
-  "request_id": "njpw_full_original_backup_20261124_01",
-  "channel": "NJPW",
-  "action": "backup_skin"
+  "request_id": "gallios_rumble_stream_20261127_01",
+  "channel": "Gallios_Lair",
+  "action": "add_iframe",
+  "title": "RMP Wrestling Stream — Rumble",
+  "src": "https://buttocks.github.io/suplex-baked-player/rumble-wrestling-stream.html"
 }
