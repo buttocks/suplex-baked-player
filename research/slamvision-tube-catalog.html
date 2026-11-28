@@ -4,13 +4,13 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="color-scheme" content="dark">
-<title>SlamVision — Channel-to-Tube Embed Catalog</title>
+<title>Baked Network — Wrestling Feed Catalog</title>
 <style>
-:root{color-scheme:dark;font:15px/1.5 system-ui,-apple-system,Segoe UI,sans-serif;background:#0c1019;color:#f1f4fc}
+:root{color-scheme:dark;font:15px/1.5 system-ui,-apple-system,Segoe UI,sans-serif;background:#100b12;color:#f7f1f5}
 *{box-sizing:border-box}body{margin:0;min-height:100vh}main{max-width:1240px;padding:24px 20px 80px;margin:auto}
-a{color:#9bc8ff}h1{font-size:clamp(25px,4vw,40px);margin:0 0 8px}h2{font-size:21px;margin:30px 0 6px}
+a{color:#f5b9d0}h1{font-size:clamp(25px,4vw,40px);margin:0 0 8px}h2{font-size:21px;margin:30px 0 6px}
 small,.muted{color:#a3aec1}.intro{margin:0 0 20px;color:#c2cada;max-width:900px}
-header{padding:23px 0 5px;border-bottom:1px solid #303748;margin-bottom:18px}
+header{padding:23px 0 5px;border-bottom:1px solid #49313d;margin-bottom:18px}
 .summary{display:flex;gap:10px;flex-wrap:wrap;margin:0 0 20px}
 .summary div{border:1px solid #39445a;padding:10px 16px;border-radius:9px;background:#151c29;min-width:120px}
 .summary strong{font-size:24px;display:block}.summary span{font-size:12px;color:#bbc5d7}
@@ -40,17 +40,17 @@ button.primary{background:#2063a4;border-color:#4588c8}button.primary:hover{back
 details.recent{margin:12px 0;border:1px solid #36465b;border-radius:8px;padding:10px 15px;background:#101826}
 details.recent summary{cursor:pointer;font-weight:600;color:#dbe6f8}
 details.recent p{margin:5px 0;font-size:12px;color:#b9c5d9}
-</style>
+.brandmark{margin:0 0 7px;color:#f5bd5b;font-size:12px;font-weight:800;letter-spacing:.16em}.brandmark span{color:#ff4778}\n.summary div{border-color:#49313d;background:#1b111a}\n.filters{background:#1b111a;border-color:#49313d}\n.card{background:#1a121b;border-color:#49313d}\nbutton.primary{background:#8e294b;border-color:#c34469}button.primary:hover{background:#aa355a}\n</style>
 </head>
 <body>
 <main>
 <header>
-<h1>SlamVision — Tube Embed Catalog</h1>
-<p class="intro">Find the right wrestling feeds for each Baked.live tube. This list is organized by <b>where to embed</b>, not the upstream provider's categories. Channel numbers may rotate; feed IDs remain the correct reference.</p>
+<p class="brandmark">BAKED NETWORK <span>·</span> ALTERNATE SOURCES</p>\n<h1>Wrestling Feed Catalog</h1>
+<p class="intro">Find wrestling feeds for each Baked.live tube. Browse by destination tube, open the original source, or copy the iframe for a compatible player. Feed IDs stay stable when channel numbers rotate.</p>
 </header>
 <div class="summary" id="summary"><div><strong>…</strong><span>Loading current feeds</span></div></div>
 <div class="notice" id="catalog-notice">Loading latest catalog update…</div>
-<details class="recent" id="recent"><summary id="change-heading">Latest lineup changes</summary><div id="change-details"></div></details>
+<details class="recent" id="recent"><summary id="change-heading">Latest feed changes</summary><div id="change-details"></div></details>
 <p class="muted"><a href="./slamvision-current.md">Current categorized list</a> · <a href="./slamvision-current.csv">Current CSV</a> · <a href="./slamvision-current-iframes.txt">Current iframe snippets</a> · <a href="./slamvision-change-log.json">Catalog change history</a> · <a href="./slamvision-rotation-report.html">Channel rotation tracker (Eastern timestamps)</a></p>
 <div class="filters">
 <label>Destination tube<select id="tube"><option value="">All tubes</option></select></label>
@@ -60,7 +60,7 @@ details.recent p{margin:5px 0;font-size:12px;color:#b9c5d9}
 </div>
 <p id="message" aria-live="polite"></p>
 <div id="catalog"></div>
-<footer>Source: public SlamVision channel API and four-hour guide. Automatic lineup checks run every six hours (GitHub scheduling may be delayed). The original iframe URLs are preserved; new ones follow stable feed IDs. Missing feeds are rechecked before being marked unavailable. Unknown-category feeds appear under Needs Review. Individual source videos may fail independently.</footer>
+<footer>Feed discovery: public SlamVision channel API and four-hour guide. Automatic catalog refreshes run every six hours (GitHub scheduling may be delayed). The original iframe URLs are preserved; new ones follow stable feed IDs. Missing feeds are rechecked before being marked unavailable. Unknown-category feeds appear under Needs Review. Individual source videos may fail independently.</footer>
 </main>
 <script>
 (()=>{
